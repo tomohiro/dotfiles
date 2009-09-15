@@ -1,0 +1,169 @@
+" Tomohiro .vimperatorrc
+" for Vimperator 2.0pre
+
+" これらの機能で新規タブを開いた際はアクティブにする
+set activate=homepage,tabopen,paste
+
+" TAB キー押さなくても自動補完
+set wildoptions=auto
+
+" :[tab]open コマンドで補完する候補と順番
+set complete=sbhS
+
+" ブラウザタイトルの変更
+set titlestring="Firefox"
+
+" 開いているページがひとつだけならタブを非表示にする
+set showtabline=1
+
+" GUI オプション
+set go=rb
+
+" Hit-a-Hintのフォントを大きく
+"highlight Hint background-color: red; color: #fff; font-weight: bold; font-size:15px;
+
+" visualbell有効
+set visualbell
+
+" onload 時にテキストボックス等にオートフォーカスしないようにする
+set focuscontent
+
+" C-r でブラウザ再起動
+map <C-r> :restart<CR>
+
+" 設定ファイルを再読み込み
+map ,s :so .vimperatorrc<CR>
+map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so .vimperatorrc<CR>
+
+" バーの表示切り替え
+map <C-0> :set go=<CR>:set stal=0<CR>
+map <C-1> :set go=<CR>:set stal=1<CR>
+map <C-2> :set go=b<CR>:set stal=1<CR>
+map <C-3> :set go=bT<CR>:set stal=1<CR>
+map <C-4> :set go=bTm<CR>:set stal=1<CR>
+
+" 上のディレクトリに移動
+map <BS> gu
+map <C-BS> gU
+
+" ]]/[[ で次/前のページに移動
+set nextpattern+=次を表示,次のページ,\b次.*,→\b
+set previouspattern+=前を表示,前のページ,\b前.*,\b←
+
+" j/k でのスクロール幅を1行から3行に変更
+map j 3<C-e>
+map k 3<C-y>
+
+" J/K をC-d/u互換に
+map J <C-d>
+map K <C-u>
+
+" h/l でタブ移動
+map h <C-p><Esc>
+map l <C-n><Esc>
+
+" C-h/l でタブ位置変更
+map <C-h> :tabmove! -1<CR>
+map <C-l> :tabmove! +1<CR>
+
+" C-j を無効化
+cmap <C-j> <Nop>
+imap <C-j> <Nop>
+map <C-j> <Nop>
+
+" ex modeでUp/DownをTab/S-Tab互換に
+cmap <Down> <Tab>
+cmap <Up> <S-Tab>
+
+" ! でページのCSSをon/off
+map ! :set invum<CR>
+
+" ページのアクセスキーを無効化 
+js <<EOM
+  liberator.modules.options.setPref('ui.key.generalAccessKey', 0);
+EOM
+
+" Statusline Settings
+" ==================================================
+"hi StatusLine font-size: 11px; color: #aaa; background: url("chrome://global/skin/statusbar-background.gif") #444; repeat-x top left; border-top: 1px solid #eee; height: 22px; padding-left: 0.5em;
+"hi StatusLineSecure font-size: 11px; color: #262626; background: url("chrome://global/skin/statusbar-background.gif") #949393 repeat-x top left; border-top: 1px solid #888; height: 22px; padding-left: 0.5em;
+"hi StatusLineBroken font-size: 11px; color: #d00f0f; background: url("chrome://global/skin/statusbar-background.gif") #949393 repeat-x top left; border-top: 1px solid #888; height: 22px; padding-left: 0.5em;
+
+" ステータスラインに RSS フィードアイコンを表示
+js <<EOM
+(function(){
+    var feedPanel = document.createElement('statusbarpanel');
+    var feedButton = document.getElementById('feed-button');
+    feedPanel.setAttribute('id','feed-panel-clone');
+    feedPanel.appendChild(feedButton.cloneNode(true));
+    feedButton.parentNode.removeChild(feedButton);
+    document.getElementById('status-bar').insertBefore(feedPanel,document.getElementById('security-button'));
+})();
+EOM
+
+" ステータスラインに favicon 表示
+js <<EOM
+liberator.plugins.faviconizeStatusBar = function () {
+    var panelInit = function () {
+        var panel = document.getElementById('page-proxy-favicon-clone');
+        if (!panel) {
+            panel = document.createElement('statusbarpanel');
+            panel.setAttribute('id', 'page-proxy-favicon-clone');
+        }
+
+        while (panel.childNodes.length > 0) {
+            panel.removeChild(panel.childNodes.item(0));
+        }
+
+        return panel;
+    };
+
+    var base = document.getElementById('page-proxy-favicon');
+    var panel = panelInit();
+    panel.appendChild(base.cloneNode(true));
+    //base.parentNode.removeChild(base);
+
+    document.getElementById('status-bar').insertBefore(
+        panel,
+        document.getElementById('liberator-statusline')
+    );
+}
+liberator.modules.autocommands.add(
+    'LocationChange',
+    '.*',
+    'js liberator.plugins.faviconizeStatusBar()'
+);
+liberator.modules.autocommands.add(
+    'DOMLoad',
+    '.*',
+    'js liberator.plugins.faviconizeStatusBar()'
+);
+EOM
+
+" Plugin Settings
+" ==================================================
+" copy.js
+map c :copy<Space>
+js <<EOM
+liberator.globalVariables.copy_templates = [
+  { label: 'titleAndURL',    value: '%TITLE% %URL%' },
+  { label: 'title',          value: '%TITLE%' },
+  { label: 'url',            value: '%URL%' },
+  { label: 'markdown',       value: '[%TITLE%](%URL% "%TITLE%")' },
+  { label: 'markdownsel',    value: '[%SEL%](%URL% "%TITLE%")' },
+  { label: 'htmlblockquote', value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' }
+];
+EOM
+
+" feedSomeKeys_2.js
+autocmd LocationChange .* :fmapc
+" Gmail
+autocmd LocationChange mail\.google\.com/(mail|a)/ :fmap -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
+" LDR/Fastladder/OpenFL
+autocmd LocationChange http://fastladder\.com/reader/ :fmap j k s a p v c z Z b i r < > o,vj J,<Space> K,<S-Space> q w g u
+" Fastladder Reblog用 (要tombloo.xpi/ldr+tombloo.user.js)
+autocmd LocationChange http://fastladder\.com/reader/ :fmap i,Tj
+autocmd LocationChange http://fastladder\.com/reader/ :fmap e,Tj
+
+" 読み込んだ事を出力
+echo ".vimperatorrc sourced"
