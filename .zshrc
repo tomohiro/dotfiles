@@ -1,17 +1,3 @@
-##### Set Local Options #####
-local BLACK=$'%{\e[00;47;30m%}'
-local RED=$'%{\e[00;31m%}'
-local GREEN=$'%{\e[00;32m%}'
-local YELLOW=$'%{\e[00;33m%}'
-local BLUE=$'%{\e[00;34m%}'
-local MAGENTA=$'%{\e[00;35m%}'
-local CYAN=$'%{\e[00;36m%}'
-local WHITE=$'%{\e[00;37m%}'
-
-##### Prompt Settings #####
-PROMPT=$RED'[%n@%m]'$YELLOW'[%d]'$GREEN'
-:-) '$WHITE
-
 ##### Environment Settings #####
 export SHELL=zsh
 export LANG=ja_JP.UTF-8
@@ -26,13 +12,17 @@ export TERM=xterm-256color
 export TERM_256=$TERM
 export LS_COLORS='di=01;36'
 
+
+##### Prompt Settings #####
+PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
+:-) %F{white}"
+
 ###### Auto Load Settings #####
 autoload -U colors
 colors
 
 autoload -U compinit
 compinit
-
 zstyle ':completion:*:sudo:*' command-path $PATH
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -42,6 +32,11 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%r/%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%r/%b|%a]'
+zstyle ':vcs_info:*' branchformat '%b:%r'
 
 _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
 
@@ -149,6 +144,13 @@ if [ $TERM = $TERM_256 ]; then
     }
     chpwd
 fi
+
+# VCS info
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
 # screen completion
 HARDCOPYFILE=$HOME/tmp/screen-hardcopy
