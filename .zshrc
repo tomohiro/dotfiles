@@ -98,6 +98,7 @@ alias ll='ls -lh'
 alias vi=$EDITOR
 alias diff='colordiff'
 alias gopen='gnome-open'
+alias irssi="irssi --config=$HOME/.irssi/config.$OS"
 
 # Suffix Aliases
 alias -s txt=$EDITOR
