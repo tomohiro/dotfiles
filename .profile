@@ -1,7 +1,14 @@
+export OS=`uname`
 
-# MacPorts Installer addition on 2009-08-29_at_18:02:48: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+# Path settings
+if [ $OS = Darwin ]; then
+    # MacPorts Installer addition on 2009-08-29_at_18:02:48: adding an appropriate PATH variable for use with MacPorts.
+    PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
+    # Finished adapting your PATH environment variable for use with MacPorts.
+else
+    PATH=$HOME/bin:$PATH:/sbin:/usr/sbin
+fi
+export $PATH
 
 # keychain settings
 HOST=`hostname`
@@ -11,13 +18,15 @@ SSH_AGENT=~/.keychain/$HOST-sh
 $KEYCHAIN $IDENTITY
  . $SSH_AGENT
 
+if [ -f ~/.network ]; then
+    . ~/.network
+fi
+
 case $TERM in
     linux) LANG=C ;;
     *) LANG=ja_JP.UTF-8 ;;
 esac
 
-if [ $TERM == dumb ];then
-    echo $TERM
-elif [ $TERM != xterm ];then
+if [ $TERM != xterm ];then
     exec `which zsh`
 fi

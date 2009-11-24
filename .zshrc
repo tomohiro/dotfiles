@@ -7,11 +7,22 @@ export SVN_EDITOR=$EDITOR
 export PAGER=lv
 export LISTMAX=10000
 export GEM_PATH=/var/lib/gems/1.8/bin
-export PATH=$GEM_PATH:$PATH
 export TERM=xterm-256color
 export TERM_256=$TERM
 export LS_COLORS='di=01;36'
 
+#### Google GO Settings
+export GOROOT=$HOME/Dropbox/Development/go
+export GOBIN=$GOROOT/bin
+if [ $OS = Darwin ]; then
+    export GOOS=darwin
+    export GOARCH=amd64
+else
+    export GOOS=linux
+    export GOARCH=x86
+fi
+
+export PATH=$GOBIN:$GEM_PATH:$PATH
 
 ##### Prompt Settings #####
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
@@ -75,7 +86,11 @@ alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias mkdir='nocorrect mkdir'
 
-alias ls='ls -hF --color'
+if [ $OS = Darwin ]; then
+    alias ls='ls -hF -G'
+else
+    alias ls='ls -hF --color'
+fi
 alias la='ls -lAh'
 alias ll='ls -lh'
 
