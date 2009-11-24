@@ -69,8 +69,8 @@ set wildmenu
 set viminfo=
 set nobackup
 set backspace=indent,eol,start
-set directory=$HOME/tmp/swp
-set listchars=tab:>_,eol:^
+set directory=/tmp/
+set listchars=tab:>_
 set list
 set hlsearch
 set iminsert=0
@@ -177,4 +177,5 @@ if filereadable($VIM.'/vim72/colors/inkpot.vim')
     set background=dark
 else
     colorscheme desert
+    set background=dark
 endif

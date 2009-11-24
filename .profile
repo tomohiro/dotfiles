@@ -11,10 +11,6 @@ SSH_AGENT=~/.keychain/$HOST-sh
 $KEYCHAIN $IDENTITY
  . $SSH_AGENT
 
-# Network default settings
-export http_proxy=
-export HTTP_HOME=http://github.com/Tomohiro
-
 case $TERM in
     linux) LANG=C ;;
     *) LANG=ja_JP.UTF-8 ;;
@@ -25,4 +21,3 @@ if [ $TERM == dumb ];then
 elif [ $TERM != xterm ];then
     exec `which zsh`
 fi
-

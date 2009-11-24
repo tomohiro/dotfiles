@@ -7,7 +7,7 @@ export SVN_EDITOR=$EDITOR
 export PAGER=lv
 export LISTMAX=10000
 export GEM_PATH=/var/lib/gems/1.8/bin
-export PATH=$GEM_PATH:$PATH:~/scratch/
+export PATH=$GEM_PATH:$PATH
 export TERM=xterm-256color
 export TERM_256=$TERM
 export LS_COLORS='di=01;36'
@@ -82,6 +82,7 @@ alias ll='ls -lh'
 # Application Aliases
 alias vi=$EDITOR
 alias diff='colordiff'
+alias gopen='gnome-open'
 
 # Suffix Aliases
 alias -s txt=$EDITOR
@@ -153,7 +154,7 @@ precmd () {
 }
 
 # screen completion
-HARDCOPYFILE=$HOME/tmp/screen-hardcopy
+HARDCOPYFILE=/tmp/screen-hardcopy
 touch $HARDCOPYFILE
 
 dabbrev-complete () {
