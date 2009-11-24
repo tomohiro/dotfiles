@@ -1,1 +1,1 @@
-../notify.pl
+notify.pl
