@@ -120,6 +120,7 @@ map <C-l> <C-w>l
 autocmd BufRead ~/.*            :set fileencoding=utf-8
 autocmd BufRead ~/.vimperatorrc :set ft=vimperator
 autocmd BufRead ~/*.ihtml       :set ft=php
+autocmd BufRead *.go            :set ft=go
 autocmd FileType ruby           :set tabstop=2 shiftwidth=2
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 
