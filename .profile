@@ -6,9 +6,8 @@ if [ $OS = Darwin ]; then
     PATH=$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH
     # Finished adapting your PATH environment variable for use with MacPorts.
 else
-    PATH=$HOME/bin:$PATH:/sbin:/usr/sbin
+    PATH=$HOME/bin:/usr/sbin:/sbin:$PATH
 fi
-export $PATH
 
 # keychain settings
 HOST=`hostname`
@@ -27,6 +26,7 @@ case $TERM in
     *) LANG=ja_JP.UTF-8 ;;
 esac
 
-if [ $TERM != xterm ];then
-    exec `which zsh`
+ZSH=`which zsh`
+if [ $? = 0 ]; then
+    exec $ZSH
 fi

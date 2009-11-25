@@ -70,10 +70,10 @@ bindkey -v
 bindkey '^Q' push-line-or-edit
 bindkey '^R' history-incremental-search-backward
 
-##### Set Library #####
-#export LD_LIBRARY_PATH=/usr/lib/oracle/10.2.0.1/client/lib
+##### Set Database Settings #####
 
 # For Oracle
+#export LD_LIBRARY_PATH=/usr/lib/oracle/10.2.0.1/client/lib
 #export NLS_LANG=Japanese_Japan.JA16SJIS
 #export NLS_TIMESTAMP_FORMAT="YYYY-MM-DD HH24:MI:SS"
 
