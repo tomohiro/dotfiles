@@ -1,5 +1,5 @@
 " Tomohiro .vimperatorrc
-" for Vimperator 2.0pre
+" for Vimperator 2
 
 " これらの機能で新規タブを開いた際はアクティブにする
 set activate=homepage,tabopen,paste
