@@ -173,9 +173,8 @@ let skk_use_face = 1
 
 " for Vim colorscheme Settings
 "
-if filereadable($VIM.'/vim72/colors/inkpot.vim')
+if filereadable($HOME . '/.vim/colors/inkpot.vim')
     colorscheme inkpot
-    set background=dark
 else
     colorscheme desert
     set background=dark

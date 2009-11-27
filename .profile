@@ -27,6 +27,6 @@ case $TERM in
 esac
 
 ZSH=`which zsh`
-if [ $? = 0 ]; then
-    exec $ZSH
-fi
+case $TERM in
+    xterm) exec $ZSH ;;
+esac
