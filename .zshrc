@@ -6,13 +6,15 @@ export EDITOR=`which vim`
 export SVN_EDITOR=$EDITOR
 export PAGER=lv
 export LISTMAX=10000
+export DEV_DIR=$HOME/Development
+export GISTY_DIR=$DEV_DIR/gists
 export GEM_PATH=/var/lib/gems/1.8/bin
 export TERM=xterm-256color
 export TERM_256=$TERM
 export LS_COLORS='di=01;36'
 
 #### Google GO Settings
-export GOROOT=$HOME/Dropbox/Development/go
+export GOROOT=$DEV_DIR/go
 export GOBIN=$GOROOT/bin
 if [ $OS = Darwin ]; then
     export GOOS=darwin
