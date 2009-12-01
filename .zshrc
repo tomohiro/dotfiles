@@ -1,7 +1,7 @@
 ##### Environment Settings #####
 export SHELL=zsh
 export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
+export LC_ALL=$LANG
 export EDITOR=`which vim`
 export SVN_EDITOR=$EDITOR
 export PAGER=lv
@@ -9,8 +9,8 @@ export LISTMAX=10000
 export DEV_DIR=$HOME/Development
 export GISTY_DIR=$DEV_DIR/gists
 export GEM_PATH=/var/lib/gems/1.8/bin
-export TERM=xterm-256color
-export TERM_256=$TERM
+export TERM_256=xterm-256color
+export TERM=$TERM_256
 export LS_COLORS='di=01;36'
 
 #### Google GO Settings
@@ -90,6 +90,7 @@ alias mkdir='nocorrect mkdir'
 
 if [ $OS = Darwin ]; then
     alias ls='ls -hF -G'
+    alias gopen='gnome-open'
 else
     alias ls='ls -hF --color'
 fi
@@ -99,15 +100,7 @@ alias ll='ls -lh'
 # Application Aliases
 alias vi=$EDITOR
 alias diff='colordiff'
-alias gopen='gnome-open'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
-
-# Suffix Aliases
-alias -s txt=$EDITOR
-alias -s xml=$EDITOR
-alias -s log='tail -f'
-alias -s tgz='tar zxvf'
-alias -s tar.gz='tar zxvf'
 
 ##### Set Functions #####
 #
@@ -187,10 +180,10 @@ bindkey '^o' dabbrev-complete
 bindkey '^o^_' reverse-menu-complete
 
 # Function For Screen
-if [ $TERM = $TERM_256 ]; then
-    alias ssh=ssh_screen
-fi
+alias ssh=ssh_screen
 function ssh_screen() {
+    cd $HOME
     eval server=\${$#}
     screen -t $server ssh "$@"
+    cd -
 }
