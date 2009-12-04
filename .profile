@@ -9,24 +9,31 @@ else
     PATH=$HOME/bin:/usr/sbin:/sbin:$PATH
 fi
 
-# keychain settings
-HOST=`hostname`
+# keychain setting
 KEYCHAIN=`which keychain`
-IDENTITY=~/.ssh/id_rsa
-SSH_AGENT=~/.keychain/$HOST-sh
-$KEYCHAIN $IDENTITY
- . $SSH_AGENT
+if [ $? = 0 ]; then
+    HOST=`hostname`
+    IDENTITY=~/.ssh/id_rsa
+    SSH_AGENT=~/.keychain/$HOST-sh
+    $KEYCHAIN $IDENTITY
+    . $SSH_AGENT
+fi
 
+# network setting
 if [ -f ~/.network ]; then
     . ~/.network
 fi
 
+# Language Setting
 case $TERM in
     linux) LANG=C ;;
     *) LANG=ja_JP.UTF-8 ;;
 esac
 
+# replace bash to zsh
 ZSH=`which zsh`
-case $TERM in
-    xterm) exec $ZSH ;;
-esac
+if [ $? = 0 ]; then
+    case $TERM in
+        xterm) exec $ZSH ;;
+    esac
+fi
