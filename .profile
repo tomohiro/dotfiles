@@ -35,6 +35,6 @@ ZSH=`which zsh`
 if [ $? = 0 ]; then
     case $TERM in
         xterm) exec $ZSH ;;
-        xterm-265color) exec $ZSH ;;
+        xterm-256color) exec $ZSH ;;
     esac
 fi
