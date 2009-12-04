@@ -1,8 +1,8 @@
 escape ^t^t
 
 backtick 0 0 5 ${HOME}/.screen/irc_notify_check.sh
-backtick 1 0 60 more /tmp/gmail_unread_count.txt
-backtick 2 0 60 more /tmp/mixi_unread_count.txt
+backtick 1 0 60 more /tmp/gmail_unread_count
+backtick 2 0 60 more /tmp/mixi_unread_count
 
 bindkey -k kb stuff \010
 
