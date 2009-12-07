@@ -68,6 +68,7 @@ set number
 set wildmenu
 set viminfo=
 set nobackup
+set nowritebackup
 set backspace=indent,eol,start
 set directory=/tmp/
 set listchars=tab:>_
