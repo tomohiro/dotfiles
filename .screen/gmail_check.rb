@@ -17,7 +17,11 @@ ARGV.options do |o|
 end
 
 proxy = ENV['https_proxy'] || ENV['http_proxy']
-https = Net::HTTP::Proxy(URI.parse(proxy).host, URI.parse(proxy).port).new('mail.google.com', 443)
+if proxy
+  https = Net::HTTP::Proxy(URI.parse(proxy).host, URI.parse(proxy).port).new('mail.google.com', 443)
+else 
+  https = Net::HTTP.new('mail.google.com', 443)
+end
 https.use_ssl = true
 https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
