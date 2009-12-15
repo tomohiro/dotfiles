@@ -11,7 +11,7 @@ require 'mechanize'
 require 'nokogiri'
 
 ARGV.options do |o|
-  o.on('-e', '--email Email', 'mixi Email') { |v| @email= v }
+  o.on('-e', '--email Email', 'mixi Email') { |v| @email = v }
   o.on('-p', '--password PASSWORD', 'mixi Password') { |v| @password = v }
   o.parse!
 end

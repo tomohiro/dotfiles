@@ -1,8 +1,9 @@
 escape ^t^t
 
 backtick 0 0 5 ${HOME}/.screen/irc_notify_check.sh
-backtick 1 0 60 more /tmp/gmail_unread_count
-backtick 2 0 60 more /tmp/mixi_unread_count
+backtick 1 0 90 more /tmp/gmail_unread_count
+backtick 2 0 90 more /tmp/mixi_unread_count
+backtick 3 0 90 more /tmp/openpne_unread_count
 
 bindkey -k kb stuff \010
 
@@ -82,4 +83,4 @@ register ] "\033:se ai\015a"
 bind ^] paste [.]
 
 caption always " %-w%{= rw} %n %t %{-}%+w %= "
-hardstatus alwayslastline "%{= bw} %Y-%m-%d %c:%s | @Gmail(%1`) @mixi(%2`) %?%{= rw}%0`%{= bw} %= %l"
+hardstatus alwayslastline "%{= bw} %Y-%m-%d %c:%s | @Gmail(%1`) @mixi(%2`) @OpenPNE(%3`) %?%{= rw}%0`%{= bw} %= %l"
