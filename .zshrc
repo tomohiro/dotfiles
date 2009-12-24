@@ -82,6 +82,11 @@ bindkey '^R' history-incremental-search-backward
 # For DB2
 #export DB2CODEPAGE=943
 
+# For PostgreSQL
+if [ $OS = Darwin ]; then
+    export PATH=/opt/local/lib/postgresql84/bin:$PATH
+fi
+
 ##### Set Aliases #####
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
