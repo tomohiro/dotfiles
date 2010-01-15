@@ -95,8 +95,8 @@ alias mkdir='nocorrect mkdir'
 
 if [ $OS = Darwin ]; then
     alias ls='ls -hF -G'
-    alias gopen='gnome-open'
 else
+    alias open='gnome-open'
     alias ls='ls -hF --color'
 fi
 alias la='ls -lAh'
