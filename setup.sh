@@ -13,14 +13,13 @@ ln -s -f .vimperator $HOME/
 ln -s -f .git $HOME/
 ln -s -f .gitconfig $HOME/
 ln -s -f .irbrc $HOME/
-ln -s -f .screenrc $HOME/
 ln -s -f .screen $HOME/
 ln -s -f .ssh $HOME/
 ln -s -f .irssi $HOME/
 
 OS=`uname`
 
-if [ $OS = ]; then
+if [ $OS = Linux ]; then
     ln -s -f .network $HOME/
 else
     ln -s -f .inputrc $HOME/
