@@ -1,5 +1,6 @@
 /.gitconfig
 /.vimperator/info
 /.ssh/id_rsa
-/.ssh/known_hosts
+/.ssh/known_hosts*
 /.vim/.netrwhist
+/.network
