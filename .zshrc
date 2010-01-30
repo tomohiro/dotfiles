@@ -106,6 +106,7 @@ alias ll='ls -lh'
 alias vi=$EDITOR
 alias diff='colordiff'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
+alias screen="screen -c $HOME/.screen/.screenrc.$OS"
 
 ##### Set Functions #####
 #
