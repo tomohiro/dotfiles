@@ -10,7 +10,6 @@ ln -s -f $BASE.vim $HOME/
 ln -s -f $BASE.vimrc $HOME/
 ln -s -f $BASE.vimperatorrc $HOME/
 ln -s -f $BASE.vimperator $HOME/
-ln -s -f $BASE.gitconfig $HOME/
 ln -s -f $BASE.irbrc $HOME/
 ln -s -f $BASE.screen $HOME/
 ln -s -f $BASE.ssh $HOME/
