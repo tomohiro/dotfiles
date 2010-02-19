@@ -15,7 +15,7 @@ ARGV.options do |o|
   o.parse!
 end
 
-agent = WWW::Mechanize.new
+agent = Mechanize.new
 
 proxy = ENV['https_proxy'] || ENV['http_proxy']
 if proxy
@@ -24,5 +24,7 @@ if proxy
 end
 
 style = (Nokogiri::HTML(agent.get(@source).body)/'div.forecast-icon').first.attributes['style']
-image = style.match(/background: url\("(.+?)"\)/)
-puts image
+style.text.match(/background:url\('(.+?)'\)/)
+image = $1
+
+`wget "#{image}" -O /tmp/weather.png`

@@ -16,7 +16,7 @@ ARGV.options do |o|
   o.parse!
 end
 
-agent = WWW::Mechanize.new
+agent = Mechanize.new
 
 proxy = ENV['https_proxy'] || ENV['http_proxy']
 if proxy
