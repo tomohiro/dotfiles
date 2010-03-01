@@ -4,7 +4,7 @@ ln -s -f $HOME/Dropbox/Development $HOME/
 
 BASE=$HOME/Development/dotfiles/
 
-ln -s -f $BASE/bin $HOME/
+ln -s -f {$BASE}bin $HOME/
 ln -s -f $BASE.profile $HOME/
 ln -s -f $BASE.zshrc $HOME/
 ln -s -f $BASE.vim $HOME/
