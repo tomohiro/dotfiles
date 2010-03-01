@@ -1,3 +1,5 @@
+$KCODE = 'u'
+
 require 'irb/completion'
 
 require 'irb/ext/save-history'
@@ -6,10 +8,13 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_PATH] = File::expand_path("~/.irb.history")
 
 require 'pp'
+require 'ostruct'
+require 'yaml'
 
 # RubyGems
 require 'rubygems'
 require 'open-uri'
 require 'nokogiri'
+require 'mechanize'
 require 'rss'
 require 'json'
