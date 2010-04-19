@@ -1,6 +1,6 @@
 escape ^t^t
 
-backtick 0 0 5 ${HOME}/.screen/irc_notify_check.sh
+backtick 0 0 10 more /tmp/irc_notify_count
 backtick 1 0 90 more /tmp/gmail_unread_count
 backtick 2 0 90 more /tmp/mixi_unread_count
 
@@ -75,11 +75,11 @@ bind 'E' eval "encoding euc"
 bind 'J' eval "encoding sjis"
 
 # soruce 
-bind 'R' eval "source $HOME/.screenrc"
+bind 'R' eval "source $HOME/.screen/.screenrc.Darwin"
 
 register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 bind ^] paste [.]
 
 caption always " %-w%{= rw} %n %t %{-}%+w %= "
-hardstatus alwayslastline "%{= bw} %Y-%m-%d %c:%s | @Gmail(%1`) @mixi(%2`) %?%{= rw}%0`%{= bw} %= %l"
+hardstatus alwayslastline "%{= bw} %Y-%m-%d %c:%s | @Gmail(%1`) @mixi(%2`) @IRC(%0`) %{= bw} %= %l"
