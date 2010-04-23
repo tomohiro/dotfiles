@@ -121,11 +121,13 @@ map <C-l> <C-w>l
 autocmd BufRead ~/.*            :set fileencoding=utf-8
 autocmd BufRead ~/.vimperatorrc :set ft=vimperator
 autocmd BufRead ~/*.ihtml       :set ft=php
+autocmd BufRead ~/*.mkdn        :set ft=mkd
 autocmd BufRead *.go            :set ft=go
 autocmd BufWritePost *.mkdn     :silent !m2h
-autocmd FileType ruby           :set tabstop=2 shiftwidth=2
+autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
-autocmd FileType yaml           :set fileencoding=utf-8
+autocmd FileType yaml           :set fenc=utf-8
+autocmd FileType css            :set fenc=utf-8
 
 " for PHP Settings
 "
@@ -146,33 +148,11 @@ if v:version >= 700
 
     map <F5> gt
     map <F6> gT
-
-    " <TAB> キーで補完できるようにする
-    inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-    function InsertTabWrapper()
-        if pumvisible()
-            return "\<c-n>"
-        endif
-        let col = col('.') - 1
-        if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-            return "\<tab>"
-        elseif exists('&omnifunc') && &omnifunc == ''
-            return "\<c-n>"
-        else
-            return "\<c-x>\<c-o>"
-        endif
-    endfunction
 endif
 
-" for skk.vim
-"
-let skk_jisyo = '~/.skk-jisyo'
-let skk_large_jisyo = '/usr/share/skk/SKK-JISYO.L'
-let skk_auto_save_jisyo = 1
-let skk_keep_state = 0
-let skk_egg_like_newline = 1
-let skk_show_annotation = 1
-let skk_use_face = 1
+" for zencoding.vim
+" 
+let g:user_zen_expandabbr_key = '<c-e>'  
 
 " for Vim colorscheme Settings
 "

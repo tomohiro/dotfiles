@@ -33,7 +33,7 @@ map <C-r> :restart<CR>
 
 " 設定ファイルを再読み込み
 map ,s :so .vimperatorrc<CR>
-map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so .vimperatorrc<CR>
+map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so ~/.vimperatorrc<CR>
 
 " バーの表示切り替え
 map <C-0> :set go=<CR>:set stal=0<CR>
@@ -70,6 +70,9 @@ map <C-l> :tabmove! +1<CR>
 cmap <C-j> <Nop>
 imap <C-j> <Nop>
 map <C-j> <Nop>
+
+" ソース閲覧
+map V gf
 
 " ex modeでUp/DownをTab/S-Tab互換に
 cmap <Down> <Tab>
