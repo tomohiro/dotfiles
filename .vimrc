@@ -121,9 +121,8 @@ map <C-l> <C-w>l
 autocmd BufRead ~/.*            :set fileencoding=utf-8
 autocmd BufRead ~/.vimperatorrc :set ft=vimperator
 autocmd BufRead ~/*.ihtml       :set ft=php
-autocmd BufRead ~/*.mkdn        :set ft=mkd
 autocmd BufRead *.go            :set ft=go
-autocmd BufWritePost *.mkdn     :silent !m2h
+autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null
 autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 autocmd FileType yaml           :set fenc=utf-8
@@ -153,6 +152,7 @@ endif
 " for zencoding.vim
 " 
 let g:user_zen_expandabbr_key = '<c-e>'  
+let g:user_zen_settings = {'indentation' : '    '}
 
 " for Vim colorscheme Settings
 "
