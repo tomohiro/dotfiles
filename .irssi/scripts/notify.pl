@@ -26,7 +26,7 @@ sub notify {
     return if (!$server || !($dest->{level} & MSGLEVEL_HILIGHT));
 
     $stripped =~ s/[^a-zA-Z0-9 .,!\?@\:\<\>]//g;
-    system("notify-send -i gtk-dialog-info -t 5000 '$dest->{target}' '$stripped'");
+    system("notify-send -u critical -i gtk-dialog-info -t 5000 '$dest->{target}' '$stripped'");
 }
 
 Irssi::signal_add('print text', 'notify');
