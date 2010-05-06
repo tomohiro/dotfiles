@@ -107,6 +107,7 @@ alias vi=$EDITOR
 alias diff='colordiff'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
 alias screen="screen -c $HOME/.screen/.screenrc.$OS"
+alias site="vi $HOME/Development/tomohiro.github.com/markdown"
 
 ##### Set Functions #####
 #
@@ -121,7 +122,8 @@ function google() {
         opt='search?num=50&hl=ja&ie=utf-8&oe=utf-8&lr=lang_ja'
         opt="${opt}&q=${str}"
     fi
-    command w3m http://www.google.co.jp/$opt
+    #command w3m http://www.google.co.jp/$opt
+    open http://www.google.co.jp/$opt
 }
 
 # screen window title set at exec command
