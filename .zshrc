@@ -170,6 +170,8 @@ precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+    check_background_process.rb `history -n -1 | head -1`
 }
 
 # screen completion
