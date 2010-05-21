@@ -77,11 +77,11 @@ bind 'E' eval "encoding euc"
 bind 'J' eval "encoding sjis"
 
 # soruce 
-bind 'R' eval "source $HOME/.screen/screenrc.Linux"
+bind 'R' eval "source $HOME/.screen/.screenrc.Linux"
 
 register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 bind ^] paste [.]
 
-caption always " %-w%{= rw} %n %t %{-}%+w %= %4`"
+caption always " %-w%{= rw} %n %t %{-}%+w %= %4` 合掌、藤岡弘、"
 hardstatus alwayslastline "%{= bw} %Y-%m-%d %c:%s | @Gmail(%1`) @mixi(%2`) @OpenPNE(%3`) %?%{= rw}%0`%{= bw} %= %l"
