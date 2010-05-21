@@ -119,8 +119,9 @@ map <C-l> <C-w>l
 " for FileType Settings
 "
 autocmd BufRead ~/.*            :set fileencoding=utf-8
-autocmd BufRead ~/.vimperatorrc :set ft=vimperator
-autocmd BufRead ~/*.ihtml       :set ft=php
+autocmd BufRead .vimperatorrc   :set ft=vimperator
+autocmd BufRead .screenrc*      :set ft=screen
+autocmd BufRead *.ihtml         :set ft=php
 autocmd BufRead *.go            :set ft=go
 autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && reload_firefox.rb
 autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
