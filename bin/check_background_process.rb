@@ -11,5 +11,6 @@ current = ENV['WINDOW']
 %x{ screen -Q windows; screen -X redisplay }.split('  ').each do |window|
   if window.include? '*' and current != window[/^(\d+)/]
     %x{ #{notify} }
+    break
   end
 end

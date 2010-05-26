@@ -32,6 +32,6 @@ end
 if $0 == __FILE__
   chirp('Tomohiro', 'rules7189') do |h|
     puts "<@#{h['user']['screen_name']}> #{h['text']}" if h.key?('text')
-    puts "#{h['event']}:#{h}" if h.key?('event')
+    #puts "#{h['event']}:#{h}" if h.key?('event')
   end
 end

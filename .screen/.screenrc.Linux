@@ -84,5 +84,5 @@ register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 bind ^] paste [.]
 
-caption always " %-w%{= rw} %n %t %{-}%+w %="
+caption always " %-w%{= rw} %n %t %{-}%+w %= "
 hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @mixi(%2`) @OpenPNE(%3`) %?%{= rw}%0`%{= bw} %= %l"

@@ -155,6 +155,9 @@ endif
 let g:user_zen_expandabbr_key = '<c-e>'  
 let g:user_zen_settings = {'indentation' : '    '}
 
+" vimshell
+let g:VimShell_EnableInteractive = 1
+
 " for Vim colorscheme Settings
 "
 if filereadable($HOME . '/.vim/colors/inkpot.vim')
