@@ -1,0 +1,6 @@
+source defaults
+ 
+hardstatus alwayslastline "%{= gw}%0` 合掌、藤岡弘、"
+backtick 0 0 90 more /tmp/samuraihiroshi
+ 
+screen screen -qUmc ".screenrc.${OS}"
