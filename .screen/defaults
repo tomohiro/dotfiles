@@ -1,6 +1,5 @@
-# Keys
-# \233 is "Meta-Ctrl-[", or "Meta-Esc".
-escape \233\233
+# Meta Screen Keys
+escape ^a^a
  
 # no zombie ... upper screen termination should propagate to this one.
 zombie
@@ -53,9 +52,13 @@ autonuke on
 # Dsiable scroll buffer, should be implemented in upper screens.
 defscrollback 0
 
+# Charactor Encoding
+defencoding utf8
+encoding utf8 utf8
+
 # Tell applications  who this is.   The ``screen-256color'' terminfo is  in the
 # ncurses-term package for debian.
-term screen-256color
+term xterm-256color
 
 # chdir is useful for invoking scripts there.
 chdir "$HOME/.screen"

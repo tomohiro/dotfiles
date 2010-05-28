@@ -1,6 +1,13 @@
 source defaults
  
-hardstatus alwayslastline "%{= gw}%0` 合掌、藤岡弘、"
-backtick 0 0 90 more /tmp/samuraihiroshi
+# soruce 
+bind R eval "source $HOME/.screen/launcher"
+
+# Define byobu settings
+backtick 0 9999999 9999999 byobu-status logo
+backtick 1 599 599         byobu-status release
+backtick 2 9999999 9999999 byobu-status arch
+
+hardstatus alwayslastline "%{= WK}%0` %1`%2`"
  
 screen screen -qUmc ".screenrc.${OS}"
