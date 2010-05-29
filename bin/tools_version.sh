@@ -1,12 +1,15 @@
 #!/bin/sh
 
-zsh=`zsh --version`
-vim=`vim --version | head -n 1`
-screen=`screen --version`
-ruby=`ruby -v`
-gem=`gem -v`
-echo $zsh
-echo $vim
-echo $screen
-echo $ruby
-echo "RubyGems $gem"
+echo `zsh --version`
+echo `vim --version | head -n 1`
+echo `screen --version`
+echo `irssi --version`
+
+
+echo ' '
+echo 'Programming Development'
+
+echo `ruby -v`
+echo "RubyGems" `gem -v`
+echo `perl --version | grep This`
+echo `python --version | head -n 1`
