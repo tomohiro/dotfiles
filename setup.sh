@@ -13,6 +13,7 @@ ln -s -f $BASE.vimperatorrc $HOME/
 ln -s -f $BASE.vimperator $HOME/
 ln -s -f $BASE.irbrc $HOME/
 ln -s -f $BASE.screen $HOME/
+ln -s -f $BASE.screenrc $HOME/
 ln -s -f $BASE.ssh $HOME/
 ln -s -f $BASE.irssi $HOME/
 ln -s -f $BASE.gem $HOME/
