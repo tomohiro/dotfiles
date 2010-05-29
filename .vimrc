@@ -120,7 +120,7 @@ map <C-l> <C-w>l
 "
 autocmd BufRead ~/.*            :set fileencoding=utf-8
 autocmd BufRead .vimperatorrc   :set ft=vimperator
-autocmd BufRead .screenrc*      :set ft=screen
+autocmd BufRead *screen*        :set ft=screen
 autocmd BufRead *.ihtml         :set ft=php
 autocmd BufRead *.go            :set ft=go
 autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && reload_firefox.rb
