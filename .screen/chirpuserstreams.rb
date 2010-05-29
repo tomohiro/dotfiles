@@ -44,14 +44,14 @@ end
 def showline(name, time, tweet, source)
   t = attribute(' dG', Time.parse(time).strftime('%H:%M:%S'))
   n = attribute ' dB', name
-  tweet = /.{0,140}/.match tweet.chomp
+  tweet = /.{0,200}/.match tweet.chomp
   source = source[/>.+?</].gsub(/>|</, '') rescue source
 
   printf "(%s)[%s] %s - %s\n", t, n, tweet[0], source
 end
 
 loop do
-  chirp(ENV['USERNAME'], 'rules7189') do |h|
+  chirp(ENV['USER'], 'password') do |h|
     if h.key? 'text'
       showline(h['user']['screen_name'], h['created_at'], h['text'], h['source'])
     end

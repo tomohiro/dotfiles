@@ -3,11 +3,17 @@ source defaults
 # soruce 
 bind R eval "source $HOME/.screen/launcher"
 
-# Define byobu settings
-backtick 0 9999999 9999999 byobu-status logo
-backtick 1 599 599         byobu-status release
-backtick 2 9999999 9999999 byobu-status arch
+backtick 0 0 0 ruby chirpuserstreams.rb
 
-hardstatus alwayslastline "%{= WK}%0` %1`%2`"
- 
-screen screen -qUmc ".screenrc.${OS}"
+# Define byobu settings
+backtick 1 9999999 9999999 byobu-status logo
+backtick 2 599 599         byobu-status release
+backtick 3 9999999 9999999 byobu-status arch
+
+caption always "%{= WK}%1` %2`%3` %-w%{= rw} %n %t %{-}%+w %= "
+hardstatus alwayslastline "%0`" 
+
+screen -t 'main' screen -qUmc ".screenrc.${OS}"
+#screen -t 'work' screen -qUmc ".screenrc.${OS}"
+#screen -t 'development' screen -qUmc ".screenrc.${OS}"
+#screen -t 'remote' screen -qUmc ".screenrc.${OS}"
