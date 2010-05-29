@@ -7,3 +7,4 @@
 /.gem
 /.irssi/config.Linux
 /.irssi/config.Darwin
+/bin/fusemount
