@@ -3,11 +3,8 @@
 require 'net/http'
 require 'rubygems'
 require 'json'
-require 'thread'
 
 Net::HTTP.version_1_2
-
-STDOUT.sync = true
 
 def chirp(id, pass)
   uri   = URI.parse('http://chirpstream.twitter.com/2b/user.json')
@@ -51,9 +48,17 @@ def showline(name, time, tweet, source)
 end
 
 loop do
-  chirp(ENV['USER'], 'password') do |h|
-    if h.key? 'text'
-      showline(h['user']['screen_name'], h['created_at'], h['text'], h['source'])
+  chirp(ENV['USER'], 'rules7189') do |h|
+    event = h['event'] || 'tweet'
+    case event
+    when 'retweet'
+      data = "#{event} to: @#{h['target_object']['user']['screen_name']}:#{h['target_object']['text']}"
+      showline(h['source']['screen_name'], h['created_at'], data, h['target_object']['source'])
+    when 'favorite'
+      data = "#{event} to: @#{h['target_object']['user']['screen_name']} #{h['target_object']['text']}"
+      showline(h['source']['screen_name'], h['created_at'], data, h['target_object']['source'])
+    else
+      showline(h['user']['screen_name'], h['created_at'], h['text'], h['source']) unless h['text'].nil?
     end
   end
 end
