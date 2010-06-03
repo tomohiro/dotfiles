@@ -34,12 +34,19 @@ bind ^\
 bind \\
 bind ^h
 bind h
+
 # make them better
 bind w windowlist -b
 bind K kill
 bind I login on
 bind O login off
 bind } history
+
+# window focus
+bind h eval 'focus left'
+bind j eval 'focus down'
+bind k eval 'focus up'
+bind l eval 'focus right'
 
 # encoding switching
 bind U eval "encoding utf8"

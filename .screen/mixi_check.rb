@@ -1,20 +1,14 @@
 #!/usr/bin/env ruby
-#
-# ex.
-#   ./mixi_check.rb -e your_email -p your_password
-#
-
-require 'optparse'
 
 require 'rubygems'
 require 'mechanize'
 require 'nokogiri'
+require 'pit'
 
-ARGV.options do |o|
-  o.on('-e', '--email Email', 'mixi Email') { |v| @email = v }
-  o.on('-p', '--password PASSWORD', 'mixi Password') { |v| @password = v }
-  o.parse!
-end
+config = Pit.get('mixi.jp', :require => {
+  :email    => 'your email in mixi.jp',
+  :password => 'your password in mixi.jp',
+})
 
 agent = Mechanize.new
 
@@ -26,8 +20,8 @@ end
 
 agent.get 'http://mixi.jp' do |login_page|
   login_page.form 'login_form' do |form|
-    form.email = @email
-    form.password = @password
+    form.email = config[:email]
+    form.password = config[:password]
   end.submit
 end
 

@@ -3,8 +3,11 @@
 require 'net/http'
 require 'rubygems'
 require 'json'
+require 'pit'
 
 Net::HTTP.version_1_2
+
+STDOUT.sync = true
 
 def chirp(id, pass)
   uri   = URI.parse('http://chirpstream.twitter.com/2b/user.json')
@@ -38,27 +41,38 @@ def attribute c, s
   end
 end
 
-def showline(name, time, tweet, source)
+def showline(name, time, event, tweet, source)
   t = attribute(' dG', Time.parse(time).strftime('%H:%M:%S'))
-  n = attribute ' dB', name
+  n = attribute(' dB', name)
+  e = attribute(' dR', event)
   tweet = /.{0,200}/.match tweet.chomp
   source = source[/>.+?</].gsub(/>|</, '') rescue source
 
-  printf "(%s)[%s] %s - %s\n", t, n, tweet[0], source
+  puts '(%s)[ %s ][%s] %s - %s' % [t, e, n, tweet[0], source]
 end
 
+puts 'ChirpUserStreams booting...'
+
+config = Pit.get('twitter.com', :require => {
+  :username => 'your username in twitter',
+  :password => 'your password in twitter'
+})
+
 loop do
-  chirp(ENV['USER'], 'rules7189') do |h|
+  chirp(config[:username], config[:password]) do |h|
     event = h['event'] || 'tweet'
     case event
     when 'retweet'
-      data = "#{event} to: @#{h['target_object']['user']['screen_name']}:#{h['target_object']['text']}"
-      showline(h['source']['screen_name'], h['created_at'], data, h['target_object']['source'])
+      event = [9851].pack('U')
+      data = "@#{h['target_object']['user']['screen_name']}:#{h['target_object']['text']}"
+      showline(h['source']['screen_name'], h['created_at'], event, data, h['target_object']['source'])
     when 'favorite'
-      data = "#{event} to: @#{h['target_object']['user']['screen_name']} #{h['target_object']['text']}"
-      showline(h['source']['screen_name'], h['created_at'], data, h['target_object']['source'])
+      event = [9829].pack('U')
+      data = "@#{h['target_object']['user']['screen_name']} #{h['target_object']['text']}"
+      showline(h['source']['screen_name'], h['created_at'], event, data, h['target_object']['source'])
     else
-      showline(h['user']['screen_name'], h['created_at'], h['text'], h['source']) unless h['text'].nil?
+      event = [9824].pack('U')
+      showline(h['user']['screen_name'], h['created_at'], event, h['text'], h['source']) unless h['text'].nil?
     end
   end
 end

@@ -1,20 +1,15 @@
 #!/usr/bin/env ruby
-#
-# ex.
-#   ./gmail_check.rb -a your_account -p your_password
-#
 
-require 'optparse'
 require 'net/https'
-
 require 'rubygems'
 require 'nokogiri'
+require 'pit'
 
-ARGV.options do |o|
-  o.on('-a', '--account ACCOUNT', 'Gmail Account. ') { |v| @account = v }
-  o.on('-p', '--password PASSWORD', 'Gmail Password') { |v| @password = v }
-  o.parse!
-end
+config = Pit.get('gmail.com', :require => {
+  :email    => 'your email in gmail',
+  :password => 'your password in gmail'
+})
+
 
 proxy = ENV['https_proxy'] || ENV['http_proxy']
 if proxy
@@ -26,7 +21,7 @@ https.use_ssl = true
 https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new('/mail/feed/atom')
-request.basic_auth(@account, @password)
+request.basic_auth(config[:email], config[:password])
 responce = https.request(request).body
 
 xml = Nokogiri::XML(responce)

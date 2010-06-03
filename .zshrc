@@ -13,19 +13,6 @@ export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
 
-#### Google GO Settings
-export GOROOT=$DEV_DIR/go
-export GOBIN=$GOROOT/bin
-if [ $OS = Darwin ]; then
-    export GOOS=darwin
-    export GOARCH=amd64
-else
-    export GOOS=linux
-    export GOARCH=x86
-fi
-
-export PATH=$GOBIN:$GEM_PATH:$PATH
-
 ##### Prompt Settings #####
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
 :-) %F{white}"

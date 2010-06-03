@@ -5,6 +5,7 @@
 /.vim/.netrwhist
 /.network
 /.gem
+/.pit
 /.irssi/config.Linux
 /.irssi/config.Darwin
 /bin/fusemount

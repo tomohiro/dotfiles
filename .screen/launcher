@@ -1,5 +1,8 @@
 source defaults
  
+# detach on hangup
+autodetach on
+
 # soruce 
 bind R eval "source $HOME/.screen/launcher"
 
