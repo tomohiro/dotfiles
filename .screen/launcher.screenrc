@@ -1,4 +1,4 @@
-source defaults
+source defaults.screenrc
  
 # detach on hangup
 autodetach on
@@ -6,7 +6,7 @@ autodetach on
 # soruce 
 bind R eval "source $HOME/.screen/launcher"
 
-backtick 0 0 0 ruby chirpuserstreams.rb
+backtick 0 0 0 ruby scripts/chirpuserstreams.rb
 
 # Define byobu settings
 backtick 1 9999999 9999999 byobu-status logo
@@ -16,7 +16,7 @@ backtick 3 9999999 9999999 byobu-status arch
 caption always "%{= WK}%1` %2`%3` %-w%{= rw} %n %t %{-}%+w %= "
 hardstatus alwayslastline "%0`" 
 
-screen -t 'main' screen -qUmc ".screenrc.${OS}"
+screen -t 'main' screen -qUmc "common.screenrc"
 #screen -t 'work' screen -qUmc ".screenrc.${OS}"
 #screen -t 'development' screen -qUmc ".screenrc.${OS}"
 #screen -t 'remote' screen -qUmc ".screenrc.${OS}"

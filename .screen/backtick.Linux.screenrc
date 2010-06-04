@@ -1,0 +1,19 @@
+# backtick
+backtick 0 0 5  "$HOME/.screen/scripts/irc_notify_check.sh"
+backtick 1 0 90 more /tmp/gmail_unread_count
+backtick 2 0 90 more /tmp/mixi_unread_count
+backtick 3 0 90 more /tmp/openpne_unread_count
+
+# Define byobu settings
+backtick 10    7   7       byobu-status updates_available
+backtick 11    29  29      byobu-status uptime
+backtick 12    2   2       byobu-status load_average
+backtick 13    7   7       byobu-status processes
+backtick 14    2   2       byobu-status cpu_freq
+backtick 15    47  47      byobu-status mem_available
+backtick 16    13  13      byobu-status mem_used
+backtick 17    13  13      byobu-status disk
+backtick 18    3   3       byobu-status network
+
+caption always " %-w%{= rw} %n %t %{-}%+w %= %l"
+hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @mixi(%2`) @OpenPNE(%3`) %?%{= rw}%0`%{= bw} %= %10`%11`%12`%13`%14`%15`%16`%17`%18`"

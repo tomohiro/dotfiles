@@ -1,4 +1,6 @@
-source defaults
+source defaults.screenrc
+source "backtick.$OS.screenrc"
+
 escape ^t^t
 
 bindkey -k kb stuff \010
@@ -11,9 +13,6 @@ autodetach on
 
 # multiuser setting
 multiuser on
-
-# don't display the copyright page
-startup_message off
 
 # emulate .logout message
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
@@ -44,25 +43,31 @@ bind I login on
 bind O login off
 bind } history
 
+# window resize
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^]  command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
+
+# window focus
+bind h eval 'focus left'
+bind j eval 'focus down'
+bind k eval 'focus up'
+bind l eval 'focus right'
+
 # encoding switching
 bind U eval "encoding utf8"
 bind E eval "encoding euc"
 bind J eval "encoding sjis"
 
 # soruce 
-bind 'R' eval "source $HOME/.screen/.screenrc.$OS"
+bind 'R' eval "source $HOME/.screen/common.screenrc"
 
 register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 bind ^] paste [.]
 
-# backtick
-backtick 1 0 90 more /tmp/gmail_unread_count
-backtick 2 0 90 more /tmp/mixi_unread_count
-
-caption always " %-w%{= rw} %n %t %{-}%+w %= %l"
-hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @mixi(%2`) %{= bw} %="
-sorendition "+rb .G"
+sorendition "+rb wM"
 
 # default screen
 chdir
