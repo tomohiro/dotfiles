@@ -1,3 +1,7 @@
+# screen blanker
+idle 120
+blankerprg fortune meigen
+
 # backtick
 backtick 0 0 5  "$HOME/.screen/scripts/irc_notify_check.sh"
 backtick 1 0 90 more /tmp/gmail_unread_count

@@ -1,3 +1,7 @@
+# screen blanker
+idle 3600
+blankerprg /opt/local/bin/fortune meigen
+
 # backtick
 backtick 1 0 90 more /tmp/gmail_unread_count
 backtick 2 0 90 more /tmp/mixi_unread_count
