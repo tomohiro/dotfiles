@@ -84,7 +84,7 @@ if [ $OS = Darwin ]; then
     alias ls='ls -hF -G'
 else
     alias open='gnome-open'
-    alias ls='ls -hF --color'
+    alias ls='ls -hF --color=auto'
 fi
 alias la='ls -lAh'
 alias ll='ls -lh'
@@ -113,8 +113,7 @@ function google() {
 }
 
 # screen window title set at exec command
-if [ $TERM = $TERM_256 ]; then
-    chpwd () { echo -n "_`dirs`\\" }
+if [ $WINDOW ]; then
     preexec() {
         # see [zsh-workers:13180]
         # http://www.zsh.org/mla/workers/2000/msg03993.html
@@ -122,33 +121,33 @@ if [ $TERM = $TERM_256 ]; then
         local -a cmd; cmd=(${(z)2})
         case $cmd[1] in
             fg)
-                if (( $#cmd == 1 )); then
-                    cmd=(builtin jobs -l %+)
-                else
-                    cmd=(builtin jobs -l $cmd[2])
-                fi
-                ;;
+            if (( $#cmd == 1 )); then
+                cmd=(builtin jobs -l %+)
+            else
+                cmd=(builtin jobs -l $cmd[2])
+            fi
+            ;;
             %*) 
-                cmd=(builtin jobs -l $cmd[1])
-                ;;
+            cmd=(builtin jobs -l $cmd[1])
+            ;;
             cd)
-                if (( $#cmd == 2)); then
-                    cmd[1]=$cmd[2]
-                fi
-                ;&
+            if (( $#cmd == 2)); then
+                cmd[1]=$cmd[2]
+            fi
+            ;&
             *)
-                echo -n "k$cmd[1]:t\\"
-                return
-                ;;
+            echo -n "k$cmd[1]:t\\"
+            return
+            ;;
         esac
 
         local -A jt; jt=(${(kv)jobtexts})
 
         $cmd >>(read num rest
-                 cmd=(${(z)${(e):-\$jt$num}})
-                 echo -n "k$cmd[1]:t\\") 2>/dev/null
+        cmd=(${(z)${(e):-\$jt$num}})
+        echo -n "k$cmd[1]:t\\") 2>/dev/null
     }
-    chpwd
+    #chpwd
 fi
 
 # VCS info
@@ -165,10 +164,10 @@ HARDCOPYFILE=/tmp/screen-hardcopy
 touch $HARDCOPYFILE
 
 dabbrev-complete () {
-        local reply lines=80
-        screen -X eval "hardcopy -h $HARDCOPYFILE"
-        reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
-        compadd - "${reply[@]%[*/=@|]}"
+    local reply lines=80
+    screen -X eval "hardcopy -h $HARDCOPYFILE"
+    reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
+    compadd - "${reply[@]%[*/=@|]}"
 }
 
 zle -C dabbrev-complete menu-complete dabbrev-complete
@@ -178,8 +177,15 @@ bindkey '^o^_' reverse-menu-complete
 # Function For Screen
 alias ssh=ssh_screen
 function ssh_screen() {
-    cd $HOME
-    eval server=\${$#}
-    screen -t $server ssh "$@"
-    cd -
+    if [ $WINDOW ]; then
+        cd $HOME
+        eval server=\${$#}
+        screen -t $server ssh "$@"
+        cd -
+    else
+        command ssh "$@"
+    fi
 }
+
+# Startup Message
+fortune meigen
