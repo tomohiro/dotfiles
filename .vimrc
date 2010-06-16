@@ -116,6 +116,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" for TeX Keybinding
+map <C-p> :silent !tex2preview.sh % > /dev/null <Enter>
+
 " for FileType Settings
 "
 autocmd BufRead ~/.*            :set fileencoding=utf-8
@@ -123,11 +126,12 @@ autocmd BufRead .vimperatorrc   :set ft=vimperator
 autocmd BufRead *screen*        :set ft=screen
 autocmd BufRead *.ihtml         :set ft=php
 autocmd BufRead *.go            :set ft=go
-autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && reload_firefox.rb
 autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 autocmd FileType yaml           :set fenc=utf-8
 autocmd FileType css            :set fenc=utf-8
+autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && reload_firefox.rb
+autocmd BufWritePost */slide/*.mkdn :silent !slidedown % > slide.html && reload_firefox.rb
 
 " for PHP Settings
 "
