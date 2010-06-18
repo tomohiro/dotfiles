@@ -2,6 +2,8 @@
 /.vimperator/info
 /.ssh/id_rsa
 /.ssh/known_hosts*
+/.zsh/cdd_pwd_list
+/.zsh/cdd_pwd_list.t
 /.vim/.netrwhist
 /.network
 /.gem
