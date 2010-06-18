@@ -6,9 +6,6 @@ export EDITOR=`which vim`
 export SVN_EDITOR=$EDITOR
 export PAGER=lv
 export LISTMAX=10000
-export DEV_DIR=$HOME/Development
-export GISTY_DIR=$DEV_DIR/gists
-export GEM_PATH=/var/lib/gems/1.8/bin
 export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
@@ -21,8 +18,10 @@ PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
 autoload -U colors
 colors
 
+fpath=($HOME/.zsh/functions $fpath)
 autoload -U compinit
 compinit
+
 zstyle ':completion:*:sudo:*' command-path $PATH
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -70,9 +69,9 @@ bindkey '^R' history-incremental-search-backward
 #export DB2CODEPAGE=943
 
 # For PostgreSQL
-if [ $OS = Darwin ]; then
-    export PATH=/opt/local/lib/postgresql84/bin:$PATH
-fi
+#if [ $OS = Darwin ]; then
+#    export PATH=/opt/local/lib/postgresql84/bin:$PATH
+#fi
 
 ##### Set Aliases #####
 alias cp='nocorrect cp'
@@ -93,70 +92,36 @@ alias ll='ls -lh'
 alias vi=$EDITOR
 alias diff='colordiff'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
+alias ssh=ssh_on_screen
 alias site="vi $HOME/Development/tomohiro.github.com/markdown"
 
 ##### Set Functions #####
 #
-# Google Search
-function google() {
-    local str opt
-    if [ $# != 0 ]; then 
-        for i in $*; do
-            str="$str+$i"
-        done
-        str=`echo $str | sed 's/^\+//'`
-        opt='search?num=50&hl=ja&ie=utf-8&oe=utf-8&lr=lang_ja'
-        opt="${opt}&q=${str}"
+# load my functions
+local func_dir=$HOME/.zsh/functions
+for script in `ls $func_dir`; do
+    source $func_dir/$script
+done
+
+preexec() {
+    if [ $WINDOW ]; then
+        set_screen_window_title ${(z)2}
     fi
-    #command w3m http://www.google.co.jp/$opt
-    open http://www.google.co.jp/$opt
 }
 
-# screen window title set at exec command
-if [ $WINDOW ]; then
-    preexec() {
-        # see [zsh-workers:13180]
-        # http://www.zsh.org/mla/workers/2000/msg03993.html
-        emulate -L zsh
-        local -a cmd; cmd=(${(z)2})
-        case $cmd[1] in
-            fg)
-            if (( $#cmd == 1 )); then
-                cmd=(builtin jobs -l %+)
-            else
-                cmd=(builtin jobs -l $cmd[2])
-            fi
-            ;;
-            %*) 
-            cmd=(builtin jobs -l $cmd[1])
-            ;;
-            cd)
-            if (( $#cmd == 2)); then
-                cmd[1]=$cmd[2]
-            fi
-            ;&
-            *)
-            echo -n "k$cmd[1]:t\\"
-            return
-            ;;
-        esac
-
-        local -A jt; jt=(${(kv)jobtexts})
-
-        $cmd >>(read num rest
-        cmd=(${(z)${(e):-\$jt$num}})
-        echo -n "k$cmd[1]:t\\") 2>/dev/null
-    }
-    #chpwd
-fi
-
-# VCS info
-precmd () {
+precmd() {
     psvar=()
+    # VCS info
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
+    # Check background process for Growl/notify-send
     check_background_process.rb `history -n -1 | head -1`
+}
+
+chpwd() {
+    _reg_pwd_screennum
+    ls
 }
 
 # screen completion
@@ -174,18 +139,5 @@ zle -C dabbrev-complete menu-complete dabbrev-complete
 bindkey '^o' dabbrev-complete
 bindkey '^o^_' reverse-menu-complete
 
-# Function For Screen
-alias ssh=ssh_screen
-function ssh_screen() {
-    if [ $WINDOW ]; then
-        cd $HOME
-        eval server=\${$#}
-        screen -t $server ssh "$@"
-        cd -
-    else
-        command ssh "$@"
-    fi
-}
-
 # Startup Message
-fortune meigen
+fortune

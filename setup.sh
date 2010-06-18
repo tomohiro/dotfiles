@@ -7,6 +7,7 @@ BASE=$HOME/Development/dotfiles/
 ln -s -f {$BASE}bin $HOME/
 ln -s -f $BASE.profile $HOME/
 ln -s -f $BASE.zshrc $HOME/
+ln -s -f $BASE.zsh $HOME/
 ln -s -f $BASE.vim $HOME/
 ln -s -f $BASE.vimrc $HOME/
 ln -s -f $BASE.vimperatorrc $HOME/
@@ -16,6 +17,7 @@ ln -s -f $BASE.screen $HOME/
 ln -s -f $BASE.screenrc $HOME/
 ln -s -f $BASE.ssh $HOME/
 ln -s -f $BASE.irssi $HOME/
+ln -s -f $BASE.pit $HOME/
 ln -s -f $BASE.gem $HOME/
 
 OS=`uname`
