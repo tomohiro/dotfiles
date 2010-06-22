@@ -191,8 +191,6 @@ hilights = (
   { text = "Tomohiro";   nick = "yes"; word = "yes"; },
   { text = "トモヒロ";   nick = "yes"; word = "yes"; },
   { text = "ともひろ";   nick = "yes"; word = "yes"; },
-  { text = "ともとも";   nick = "yes"; word = "yes"; },
   { text = "平良";       nick = "yes"; word = "yes"; },
   { text = "知広";       nick = "yes"; word = "yes"; },
-  { text = "タイラ";     nick = "yes"; word = "yes"; }
 );
