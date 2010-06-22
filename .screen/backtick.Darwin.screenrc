@@ -1,6 +1,6 @@
 # screen blanker
 idle 3600
-blankerprg /opt/local/bin/fortune meigen
+blankerprg fortune
 
 # backtick
 backtick 1 0 90 more /tmp/gmail_unread_count
