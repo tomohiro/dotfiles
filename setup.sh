@@ -18,6 +18,7 @@ ln -s -f $BASE.screenrc $HOME/
 ln -s -f $BASE.ssh $HOME/
 ln -s -f $BASE.irssi $HOME/
 ln -s -f $BASE.pit $HOME/
+ln -s -f $BASE.todo $HOME/
 ln -s -f $BASE.gem $HOME/
 
 OS=`uname`

@@ -94,6 +94,7 @@ alias diff='colordiff'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
 alias ssh=ssh_on_screen
 alias site="vi $HOME/Development/tomohiro.github.com/markdown"
+alias t=`which todo.sh`
 
 ##### Set Functions #####
 #
@@ -104,16 +105,14 @@ for script in `ls $func_dir`; do
 done
 
 preexec() {
-    if [ $WINDOW ]; then
-        set_screen_window_title ${(z)2}
-    fi
+    [[ -n $WINDOW ]] && set_screen_window_title ${(z)2}
 }
 
 precmd() {
     psvar=()
     # VCS info
     LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
 
     # Check background process for Growl/notify-send
     check_background_process.rb `history -n -1 | head -1`
