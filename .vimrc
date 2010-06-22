@@ -162,6 +162,9 @@ let g:user_zen_settings = {'indentation' : '    '}
 " vimshell
 let g:VimShell_EnableInteractive = 1
 
+" autocomplpop and snipMate
+let g:acp_behaviorSnipmateLength = 1
+
 " for Vim colorscheme Settings
 "
 if filereadable($HOME . '/.vim/colors/inkpot.vim')
