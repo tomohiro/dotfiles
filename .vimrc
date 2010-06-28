@@ -139,9 +139,10 @@ let php_sql_query=1
 let php_htmlInStrings=1
 let php_folding=0
 
-" for Vim omnifunc Settings
-"
+" for Vim 7
 if v:version >= 700
+    " for Vim omnifunc Settings
+    "
     set pumheight=15
     hi Pmenu ctermbg=darkgray
     hi PmenuSel ctermbg=blue
@@ -150,6 +151,7 @@ if v:version >= 700
     hi TabLineSel ctermbg=red
     hi TabLineFill ctermbg=white
 
+    " for tab
     map <F5> gt
     map <F6> gT
 endif
@@ -159,10 +161,19 @@ endif
 let g:user_zen_expandabbr_key = '<c-e>'  
 let g:user_zen_settings = {'indentation' : '    '}
 
-" vimshell
-let g:VimShell_EnableInteractive = 1
+" for VimShell
+"
+let g:vimshell_user_prompt = 'getcwd()'
+
+" for QFixHowm
+let QFixHowm_Key        = 'g'
+let howm_dir            = $HOME . '/Dropbox/howm'
+let howm_filename       = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let howm_fileencoding   = 'utf-8'
+let howm_fileformat     = 'unix'
 
 " autocomplpop and snipMate
+"
 let g:acp_behaviorSnipmateLength = 1
 
 " for Vim colorscheme Settings

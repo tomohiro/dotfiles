@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: exe.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 02 Apr 2010
+" Last Modified: 16 Jun 2010
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -24,65 +24,56 @@
 " }}}
 "=============================================================================
 
-function! vimshell#internal#exe#execute(program, args, fd, other_info)"{{{
+function! vimshell#internal#exe#execute(command, args, fd, other_info)"{{{
   let [l:args, l:options] = vimshell#parser#getopt(a:args, 
         \{ 'arg=' : ['--encoding']
         \})
   if !has_key(l:options, '--encoding')
     let l:options['--encoding'] = &termencoding
   endif
+
+  " Encoding conversion.
+  if l:options['--encoding'] != '' && l:options['--encoding'] != &encoding
+    call map(l:args, 'iconv(v:val, &encoding, l:options["--encoding"])')
+  endif
   
   " Execute command.
-  if g:VimShell_EnableInteractive
-    if s:init_process(a:fd, l:args, l:options)
-      return 0
-    endif
-
-    echo 'Running command.'
-    call append(line('$'), '')
-    
-    " Move line.
-    normal! j
-    redraw
-    while b:interactive.process.is_valid
-      call vimshell#interactive#execute_pipe_out()
-      
-      " Get input key.
-      let l:char = getchar(0)
-      if l:char != 0
-        let l:char = nr2char(l:char)
-        if l:char == "\<C-z>"
-          call vimshell#error_line(a:fd, 'Background Executed.')
-          
-          " Background execution.
-          call vimshell#internal#bg#init(l:args, a:other_info.is_interactive)
-          
-          wincmd w
-          unlet b:interactive
-          return 1
-        elseif l:char == "\<C-d>"
-          " Interrupt.
-          call vimshell#interactive#force_exit()
-          call vimshell#error_line(a:fd, 'Interrupted.')
-          return 0
-        endif
-      endif
-    endwhile
-    
-    redraw
-    echo ''
-    
-    let b:vimshell.system_variables['status'] = b:interactive.status
-  else
-    let l:fd = a:fd
-    " Null input.
-    if l:fd.stdin == ''
-      let l:fd.stdin = '/dev/null'
-    endif
-    return vimshell#internal#sexe#execute('sexe', a:args, l:fd, a:other_info)
+  if s:init_process(a:fd, l:args, l:options)
+    return
   endif
 
-  return 0
+  echo 'Running command.'
+  call append(line('$'), '')
+
+  " Move line.
+  normal! j
+  while b:interactive.process.is_valid
+    call vimshell#interactive#execute_pipe_out()
+
+    " Get input key.
+    let l:char = getchar(0)
+    if l:char != 0
+      let l:char = nr2char(l:char)
+      if l:char == "\<C-z>"
+        call vimshell#error_line(a:fd, 'exe: Background executed.')
+
+        " Background execution.
+        call vimshell#internal#bg#init(l:args, a:fd, a:other_info, 'vimshell-bg', a:other_info.is_interactive)
+
+        unlet b:interactive
+      elseif l:char == "\<C-d>"
+        " Interrupt.
+        call vimshell#interactive#force_exit()
+        call vimshell#error_line(a:fd, 'exe: Interrupted.')
+        return
+      endif
+    endif
+  endwhile
+
+  redraw
+  echo ''
+
+  let b:vimshell.system_variables['status'] = b:interactive.status
 endfunction"}}}
 
 function! s:init_process(fd, args, options)
@@ -90,16 +81,15 @@ function! s:init_process(fd, args, options)
     " Delete zombee process.
     call vimshell#interactive#force_exit()
   endif
+  
+  let l:commands = []
+  let l:command = {
+        \ 'args' : a:args,
+        \ 'fd' : {}
+        \}
+  call add(l:commands, l:command)
 
-  try
-    let l:sub = vimproc#popen3(join(a:args))
-  catch 'list index out of range'
-    let l:error = printf('File: "%s" is not found.', a:args[0])
-
-    call vimshell#error_line(a:fd, l:error)
-
-    return 0
-  endtry
+  let l:sub = vimproc#plineopen3(l:commands)
 
   " Set variables.
   let b:interactive = {
@@ -108,6 +98,7 @@ function! s:init_process(fd, args, options)
         \ 'encoding' : a:options['--encoding'], 
         \ 'is_pty' : !vimshell#iswin(), 
         \ 'is_background': 0, 
+        \ 'echoback_linenr' : -1,
         \}
 
   " Input from stdin.
@@ -116,5 +107,5 @@ function! s:init_process(fd, args, options)
   endif
   call b:interactive.process.stdin.close()
 
-  return 0
+  return
 endfunction

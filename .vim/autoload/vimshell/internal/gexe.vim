@@ -1,8 +1,7 @@
 "=============================================================================
 " FILE: gexe.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 26 Jun 2009
-" Usage: Just source this file.
+" Last Modified: 22 Jun 2010
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -23,29 +22,13 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 1.0, for Vim 7.0
-"-----------------------------------------------------------------------------
-" ChangeLog: "{{{
-"   1.0:
-"     - Initial version.
-""}}}
-"-----------------------------------------------------------------------------
-" TODO: "{{{
-"     - Nothing.
-""}}}
-" Bugs"{{{
-"     -
-""}}}
 "=============================================================================
 
-function! vimshell#internal#gexe#execute(program, args, fd, other_info)
-    " Execute GUI program.
-    if has('win32') || has('win64')
-        execute printf('!start %s', join(a:args))
-    else
-        " For *nix.
-
-        " Background execute.
-        call system(join(a:args) . '&')
-    endif
+function! vimshell#internal#gexe#execute(command, args, fd, other_info)
+  let l:command = join(a:args)
+  if &termencoding != '' && &termencoding != &encoding
+    let l:command = iconv(l:command, &encoding, &termencoding)
+  endif
+  
+  call vimproc#system_bg(l:command)
 endfunction

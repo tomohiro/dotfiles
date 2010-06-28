@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: bg.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 13 Apr 2010
+" Last Modified: 25 Jun 2010
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -28,8 +28,8 @@ augroup vimshell_bg
   autocmd!
 augroup END
 
-function! vimshell#internal#bg#execute(program, args, fd, other_info)"{{{
-  " Execute program in background.
+function! vimshell#internal#bg#execute(command, args, fd, other_info)"{{{
+  " Execute command in background.
   let [l:args, l:options] = vimshell#parser#getopt(a:args, 
         \{ 'arg=' : ['--encoding', '--filetype']
         \})
@@ -37,15 +37,15 @@ function! vimshell#internal#bg#execute(program, args, fd, other_info)"{{{
     let l:options['--encoding'] = &termencoding
   endif
   if !has_key(l:options, '--filetype')
-    let l:options['--filetype'] = 'background'
+    let l:options['--filetype'] = 'vimshell-bg'
   endif
 
   if empty(l:args)
-    return 
+    return
   elseif l:args[0] == 'shell'
     " Background shell.
     if has('win32') || has('win64')
-      if g:VimShell_UseCkw
+      if g:vimshell_use_ckw
         " Use ckw.
         silent execute printf('!start ckw -e %s', &shell)
       else
@@ -57,60 +57,49 @@ function! vimshell#internal#bg#execute(program, args, fd, other_info)"{{{
       " Can't Background execute.
       shell
     endif
-  elseif g:VimShell_EnableInteractive
-    " Background execute.
-    if exists('b:interactive') && b:interactive.process.is_valid
-      " Delete zombee process.
-      call vimshell#interactive#force_exit()
-    endif
 
-    " Initialize.
-    try
-      let l:sub = vimproc#popen3(join(l:args))
-    catch 'list index out of range'
-      let l:error = printf('File: "%s" is not found.', l:args[0])
-
-      call vimshell#error_line(a:fd, l:error)
-
-      return 0
-    endtry
-
-    " Set variables.
-    let l:interactive = {
-          \ 'process' : l:sub, 
-          \ 'fd' : a:fd, 
-          \ 'encoding' : l:options['--encoding'], 
-          \ 'is_pty' : !vimshell#iswin(), 
-          \ 'is_background' : 1, 
-          \ 'cached_output' : '', 
-          \}
-
-    " Input from stdin.
-    if l:interactive.fd.stdin != ''
-      call l:interactive.process.stdin.write(vimshell#read(a:fd))
-    endif
-    call l:interactive.process.stdin.close()
-    
-    return vimshell#internal#bg#init(l:args, a:fd, a:other_info, l:options['--filetype'], interactive)
-  else
-    " Execute in screen.
-    let l:other_info = a:other_info
-    return vimshell#internal#screen#execute(l:args[0], l:args[1:], a:fd, l:other_info)
+    return
   endif
+  
+  " Background execute.
+  if exists('b:interactive') && b:interactive.process.is_valid
+    " Delete zombee process.
+    call vimshell#interactive#force_exit()
+  endif
+  
+  " Encoding conversion.
+  if l:options['--encoding'] != '' && l:options['--encoding'] != &encoding
+    call map(l:args, 'iconv(v:val, &encoding, l:options["--encoding"])')
+  endif
+
+  " Initialize.
+  let l:sub = vimproc#popen3(l:args)
+
+  " Set variables.
+  let l:interactive = {
+        \ 'process' : l:sub, 
+        \ 'fd' : a:fd, 
+        \ 'encoding' : l:options['--encoding'], 
+        \ 'is_pty' : !vimshell#iswin(), 
+        \ 'is_background' : 1, 
+        \ 'cached_output' : '', 
+        \}
+
+  " Input from stdin.
+  if l:interactive.fd.stdin != ''
+    call l:interactive.process.stdin.write(vimshell#read(a:fd))
+  endif
+  call l:interactive.process.stdin.close()
+
+  return vimshell#internal#bg#init(l:args, a:fd, a:other_info, l:options['--filetype'], l:interactive)
 endfunction"}}}
 
 function! vimshell#internal#bg#vimshell_bg(args)"{{{
-  call vimshell#internal#bg#execute('bg', vimshell#parser#split_args(a:args), {'stdin' : '', 'stdout' : '', 'stderr' : ''}, {'is_interactive' : 0})
+  let [l:command, l:script] = vimshell#parser#parse_command(vimshell#parser#parse_alias(a:args))
+  call vimshell#internal#bg#execute('bg', vimshell#parser#split_args(l:command . ' ' . l:script), {'stdin' : '', 'stdout' : '', 'stderr' : ''}, {'is_interactive' : 0})
 endfunction"}}}
 
 function! vimshell#internal#bg#init(args, fd, other_info, filetype, interactive)"{{{
-  " Init buffer.
-  if a:other_info.is_interactive
-    let l:context = a:other_info
-    let l:context.fd = a:fd
-    call vimshell#print_prompt(l:context)
-  endif
-
   " Save current directiory.
   let l:cwd = getcwd()
 
@@ -122,6 +111,7 @@ function! vimshell#internal#bg#init(args, fd, other_info, filetype, interactive)
   setlocal buftype=nofile
   setlocal noswapfile
   setlocal nowrap
+  setlocal nomodifiable
   let &filetype = a:filetype
   let b:interactive = a:interactive
 
@@ -134,40 +124,34 @@ function! vimshell#internal#bg#init(args, fd, other_info, filetype, interactive)
   hi def link InteractiveError Error
   hi def link InteractiveErrorHidden Ignore
 
-  autocmd vimshell_bg BufUnload <buffer>       call s:on_exit()
-  autocmd vimshell_bg CursorHold <buffer>       call s:on_hold()
-  nnoremap <buffer><silent><C-c>       :<C-u>call vimshell#interactive#interrupt()<CR>
-  inoremap <buffer><silent><C-c>       <ESC>:<C-u>call <SID>on_exit()<CR>
-  nnoremap <buffer><silent><CR>       :<C-u>call <SID>on_execute()<CR>
+  augroup vimshell_bg
+    autocmd BufUnload <buffer>       call s:on_interrupt(expand('<afile>'))
+  augroup END
+  
+  nnoremap <buffer><silent> <Plug>(vimshell_interactive_execute_line)  :<C-u>call <SID>on_execute()<CR>
+  nnoremap <buffer><silent> <Plug>(vimshell_interactive_interrupt)       :<C-u>call vimshell#interactive#hang_up(a:afile)
+  nnoremap <buffer><silent> <Plug>(vimshell_interactive_exit)       :<C-u>call <SID>on_exit()<CR>
+  
+  nmap <buffer><CR>      <Plug>(vimshell_interactive_execute_line)
+  nmap <buffer><C-c>     <Plug>(vimshell_interactive_interrupt)
+  nmap <buffer>q         <Plug>(vimshell_interactive_exit)
+  
   call s:on_execute()
 
-  wincmd w
-  if has_key(a:other_info, 'is_insert') && a:other_info.is_insert
-    call vimshell#start_insert()
-  endif
-
-  return 1
+  wincmd p
 endfunction"}}}
 
-function! s:on_execute()
+function! s:on_execute()"{{{
+  setlocal modifiable
   echo 'Running command.'
   call vimshell#interactive#execute_pipe_out()
   redraw
   echo ''
-endfunction
+  setlocal nomodifiable
+endfunction"}}}
+function! s:on_exit()"{{{
+  if !b:interactive.process.is_valid
+    bdelete
+  endif  
+endfunction "}}}
 
-function! s:on_hold()
-  call vimshell#interactive#check_output(b:interactive, bufnr('%'), bufnr('%'))
-
-  if b:interactive.process.is_valid
-    call feedkeys("\<C-r>\<ESC>", 'n')
-  endif
-endfunction
-
-function! s:on_exit()
-  augroup vimshell_bg
-    autocmd! BufUnload <buffer>
-  augroup END
-
-  call vimshell#interactive#hang_up()
-endfunction
