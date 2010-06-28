@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'Date'
+require 'date'
 
 Dir.chdir "#{ENV['HOME']}/Development/okinawa_movie"
 

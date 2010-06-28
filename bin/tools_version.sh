@@ -2,6 +2,7 @@
 
 echo `zsh --version`
 echo `vim --version | head -n 1`
+echo `emacs --version | head -n 1`
 echo `screen --version`
 echo `irssi --version`
 
