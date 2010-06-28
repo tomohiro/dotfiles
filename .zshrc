@@ -78,6 +78,7 @@ alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias mkdir='nocorrect mkdir'
+alias sl='ls'
 
 if [ $OS = Darwin ]; then
     alias ls='ls -hF -G'

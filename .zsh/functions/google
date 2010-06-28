@@ -10,6 +10,7 @@ function google() {
         opt='search?num=50&hl=ja&ie=utf-8&oe=utf-8&lr=lang_ja'
         opt="${opt}&q=${str}"
     fi
-    w3m http://www.google.co.jp/$opt
-    #firefox open http://www.google.co.jp/$opt
+    open http://www.google.co.jp/$opt
 }
+
+alias g=google

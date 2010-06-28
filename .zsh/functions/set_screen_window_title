@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # screen window title set at exec command
 # see [zsh-workers:13180]
 # http://www.zsh.org/mla/workers/2000/msg03993.html
