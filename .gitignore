@@ -7,6 +7,7 @@
 /.vim/.netrwhist
 /.network
 /.gem
+/.gemrc
 /.pit
 /.irssi/config.Linux
 /.irssi/config.Darwin
