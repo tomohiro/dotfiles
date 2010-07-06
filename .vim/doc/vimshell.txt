@@ -184,10 +184,60 @@ BUGS							*vimshell-bugs*
 ==============================================================================
 CHANGELOG						*vimshell-changelog*
 
+2010-07-05
+- Improved texe update.
+
+2010-07-04
+- Improved history.
+- Added g:vimshell_external_history_path option.
+- Improved history and h command.
+- Highlights history output.
+- Implemented texe completion.
+- Improved commands completion.
+- Check window size.
+
+2010-07-03
+- Improved texe update.
+- Fixed terminal clear bug.
+- Improved escape highlight.
+- Added g:vimshell_disable_escape_highlight option.
+- Detect g:neocomplcache_enable_auto_select option.
+
+2010-07-02
+- Set $COLUMNS and $LINES.
+- Set $VIMSHELL_TERM.
+- Added g:vimshell_environment_term option.
+- Improved interactive history.
+- Set nomodifiable in texe.
+- Implemented send input.
+- Implemented texe auto update.
+
+2010-07-01
+- Added :VimShellTerminal command.
+- Improved split window.
+- Fixed <Plug>(vimshell_clear) bug.
+- Improved texe.
+- Fixed escape error in texe.
+- Fixed initial output in texe.
+- Supported scroll.
+
+2010-06-30
+- Improved cursor move.
+
+2010-06-29
+- Fixed texe update.
+
 2010-06-28
 - Fixed repeat error.
 - Refactoringed interactive.
 - Improved update timing.
+- Fixed print error.
+- Improved <Plug>(vimshell_int_execute_line) behaivior.
+- Fixed print bug.
+- Merged hamaco's change.
+- Fixed dirs and bcd and clear error.
+- Fixed open cursor file.
+- Fixed cursor position in texe.
 
 2010-06-27
 - Added g:vimshell_split_command option.

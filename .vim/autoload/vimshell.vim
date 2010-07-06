@@ -34,6 +34,7 @@ if !s:exists_vimproc_version || vimproc#version() < 401
   echoerr 'Please install vimproc Ver.4.1 or above.'
   finish
 endif
+let s:exists_eskk = exists('*eskk#is_enabled')
 
 " Initialize."{{{
 let s:prompt = exists('g:vimshell_prompt') ? g:vimshell_prompt : 'vimshell% '
@@ -72,6 +73,9 @@ endif"}}}
 augroup vimshell
   autocmd!
   autocmd GUIEnter * set vb t_vb=
+  
+  " Detect vimshell rc file.
+  autocmd BufNewFile,BufRead *.vimsh,.vimshrc set filetype=vimshrc
 augroup end
 
 " User utility functions.
@@ -141,13 +145,7 @@ function! vimshell#create_shell(split_flag, directory)"{{{
   endif
 
   " Load history.
-  let l:history_path = g:vimshell_temporary_directory . '/command-history'
-  if !filereadable(l:history_path)
-    " Create file.
-    call writefile([], l:history_path)
-  endif
-  let g:vimshell#hist_buffer = readfile(l:history_path)
-  let g:vimshell#hist_size = getfsize(l:history_path)
+  let g:vimshell#hist_buffer = vimshell#history#read()
 
   " Initialize variables.
   let b:vimshell = {}
@@ -171,11 +169,11 @@ function! vimshell#create_shell(split_flag, directory)"{{{
         \}
 
   " Set environment variables.
-  let $TERM = 'vt100'
+  let $TERM = g:vimshell_environment_term
   let $TERMCAP = 'COLUMNS=' . winwidth(0)
   let $VIMSHELL = 1
-  let $COLUMNS = winwidth(0) * 8 / 10
-  let $LINES = winheight(0) * 8 / 10
+  let $COLUMNS = winwidth(0)-5
+  let $LINES = winheight(0)
   let $SHELL = 'vimshell'
   let $EDITOR = g:vimshell_cat_command
   let $PAGER = g:vimshell_cat_command
@@ -454,36 +452,6 @@ function! vimshell#print_secondary_prompt()"{{{
   $
   let &modified = 0
 endfunction"}}}
-function! vimshell#append_history(command)"{{{
-  " Reduce blanks.
-  let l:command = substitute(a:command, '\s\+', ' ', 'g')
-  
-  let l:program = matchstr(l:command, vimshell#get_program_pattern())
-  if l:program != '' && has_key(g:vimshell_no_save_history_commands, l:program)
-    " No history command.
-    return
-  endif
-  
-  " Filtering.
-  call insert(filter(g:vimshell#hist_buffer, 'v:val != ' . string(a:command)), l:command)
-
-  " Trunk.
-  let g:vimshell#hist_buffer = g:vimshell#hist_buffer[:g:vimshell_max_command_history-1]
-
-  let l:history_path = g:vimshell_temporary_directory . '/command-history'
-  call writefile(g:vimshell#hist_buffer, l:history_path)
-
-  let vimshell#hist_size = getfsize(l:history_path)
-endfunction"}}}
-function! vimshell#remove_history(command)"{{{
-  " Filtering.
-  call filter(g:vimshell#hist_buffer, printf("v:val !~ '^%s\s*'", a:command))
-
-  let l:history_path = g:vimshell_temporary_directory . '/command-history'
-  call writefile(g:vimshell#hist_buffer, l:history_path)
-
-  let vimshell#hist_size = getfsize(l:history_path)
-endfunction"}}}
 function! vimshell#getfilename(program)"{{{
   " Command search.
   if vimshell#iswin()
@@ -694,7 +662,7 @@ function! vimshell#alternate_buffer()"{{{
 endfunction"}}}
 function! vimshell#imdisable()"{{{
   " Disable input method.
-  if exists('*eskk#is_enabled') && eskk#is_enabled()
+  if exists(s:exists_eskk) && eskk#is_enabled()
     call feedkeys(eskk#disable(), 'n')
   elseif exists('b:skk_on') && b:skk_on && exists('*SkkDisable')
     call feedkeys(SkkDisable(), 'n')
