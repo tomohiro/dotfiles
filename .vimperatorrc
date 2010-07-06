@@ -168,5 +168,19 @@ autocmd LocationChange http://fastladder\.com/reader/ :fmap j k s a p v c z Z b 
 autocmd LocationChange http://fastladder\.com/reader/ :fmap i,Tj
 autocmd LocationChange http://fastladder\.com/reader/ :fmap e,Tj
 
+
+let g:refcontrol_enabled = "true"
+javascript <<EOM
+liberator.globalVariables.refcontrol = {
+    '@DEFAULT'          : '@NORMAL',
+    'fc2.com'           : '@FORGE',
+    'blogs.yahoo.co.jp' : '@FORGE',
+    'blog.goo.ne.jp'    : '@FORGE',
+    'ameblo.jp'         : '@FORGE',
+    'nekobooru.net'     : '@FORGE',
+    'drawr.net'         : '@FORGE',
+};
+EOM
+
 " 読み込んだ事を出力
 echo ".vimperatorrc sourced"
