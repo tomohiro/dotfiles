@@ -1,7 +1,5 @@
 $KCODE = 'u'
 
-require 'irb/completion'
-
 require 'irb/ext/save-history'
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:SAVE_HISTORY] = 1000
@@ -18,3 +16,7 @@ require 'nokogiri'
 require 'mechanize'
 require 'rss'
 require 'json'
+require 'wirble'
+
+Wirble.init(:skip_prompt => :DEFAULT)
+Wirble.colorize
