@@ -4,7 +4,8 @@ blankerprg fortune
 
 # backtick
 backtick 1 0 90 more /tmp/gmail_unread_count
-backtick 2 0 90 more /tmp/mixi_unread_count
+backtick 2 0 90 more /tmp/pop_unread_count
+backtick 3 0 90 more /tmp/mixi_unread_count
 
 caption always " %-w%{= rw} %n %t %{-}%+w %= %l"
-hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @mixi(%2`) %{= bw} %="
+hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @OCC(%2`) @mixi(%3`) %{= bw} %="
