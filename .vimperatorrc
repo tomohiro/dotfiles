@@ -146,7 +146,7 @@ EOM
 " Plugin Settings
 " ==================================================
 " copy.js
-map c :copy<Space>
+map cp :copy<Space>
 js <<EOM
 liberator.globalVariables.copy_templates = [
   { label: 'titleAndURL',    value: '%TITLE% %URL%' },
@@ -168,7 +168,7 @@ autocmd LocationChange http://fastladder\.com/reader/ :fmap j k s a p v c z Z b 
 autocmd LocationChange http://fastladder\.com/reader/ :fmap i,Tj
 autocmd LocationChange http://fastladder\.com/reader/ :fmap e,Tj
 
-
+" refcontrol.js
 let g:refcontrol_enabled = "true"
 javascript <<EOM
 liberator.globalVariables.refcontrol = {
@@ -177,10 +177,12 @@ liberator.globalVariables.refcontrol = {
     'blogs.yahoo.co.jp' : '@FORGE',
     'blog.goo.ne.jp'    : '@FORGE',
     'ameblo.jp'         : '@FORGE',
-    'nekobooru.net'     : '@FORGE',
-    'drawr.net'         : '@FORGE',
 };
 EOM
+
+" hatenabookmark.js
+map <S-h> :hb<Space>
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " 読み込んだ事を出力
 echo ".vimperatorrc sourced"
