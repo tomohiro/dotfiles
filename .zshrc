@@ -96,7 +96,11 @@ alias diff='colordiff'
 alias irssi="irssi --config=$HOME/.irssi/config.$OS"
 alias ssh=ssh_on_screen
 alias site="vi $HOME/Development/tomohiro.github.com/markdown"
+
+# Alias for todo.sh
 alias t=`which todo.sh`
+alias tl='t ls'
+alias tp='t projectview'
 
 ##### Set Functions #####
 #
@@ -116,7 +120,7 @@ precmd() {
     LANG=en_US.UTF-8 vcs_info
     [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
 
-    # Check background process for Growl/notify-send
+    # Check background process for Growl or notify-send
     check_background_process.rb `history -n -1 | head -1`
 }
 
