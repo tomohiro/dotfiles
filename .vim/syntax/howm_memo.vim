@@ -1,99 +1,53 @@
-"
+scriptencoding utf-8
 " Vim syntax file
-"
-" Language:howm
-" Maintainer:
-" Last Change:
+" Language: QFixHowm
+" Written By: fuenor
+" Maintainer: fuenor@gmail.com
 
-scriptencoding cp932
+"引用文
+syn region txtQuote start="^\s*>\s" end="$"
 
-if &background == 'dark'
-  hi howmTodo     ctermfg=Yellow      guifg=Yellow
-  hi howmTodoUD   ctermfg=Magenta     guifg=LightRed
-  hi howmSchedule ctermfg=Green       guifg=Green
-  hi howmReminder ctermfg=Cyan        guifg=Cyan
-  hi howmFinished ctermfg=DarkGrey    guifg=DarkGrey
-else
-  hi howmTodo     ctermfg=DarkYellow  guifg=DarkYellow
-  hi howmTodoUD   ctermfg=DarkMagenta guifg=DarkMagenta
-  hi howmSchedule ctermfg=DarkGreen   guifg=DarkGreen
-  hi howmReminder ctermfg=Blue        guifg=Blue
-  hi howmFinished ctermfg=DarkGrey    guifg=Grey
-endif
-hi howmDeadline ctermfg=Red     guifg=Red
-hi howmHoliday  ctermfg=Magenta guifg=Magenta
-hi howmSpecial  ctermfg=Red     guifg=Red
+"行頭の - +
+syn region qfhList start="^\s*[-+]\+\s*" end=":" end="$" contains=qfhBullet,qfhColon,qfhFuncs,qfhError keepend
 
-hi def link txtUrl                      Underlined
-hi def link txtFile                     Underlined
-hi def link outlineTitle                Type
-hi def link actionlockDate              Underlined
-hi def link actionlockTime              Constant
-hi def link actionlockLink              Underlined
-hi def link actionlockKeyword           Underlined
-hi def link actionlockMacroAction       Underlined
-hi def link actionlockMacroActionDefine howmFinished
-hi def link actionlockList              Type
-hi def link recentmodeDate              howmFinished
-hi def link howmTitle                   Title
-hi def link howmTitleDesc               Special
-hi def link howmCategory                Label
-hi def link howmEntrySeparator          Special
+"行頭に空白を含む *
+syn region qfhList start="^\s\+[*]\+\s*" end=":" end="$" contains=qfhBullet,qfhColon,qfhFuncs,qfhError keepend
 
-syntax match actionlockList display "{[- *_]}"
+"折りたたみ(*と章形式)
+syn match  foldBullet contained "^[.*]\+\s*" contains=qfhError
+syn region foldTitle start="^[*]" end=":" end="$" contains=foldBullet,qfhColon,qfhFuncs,qfhError,keepend
 
-if exists('g:QFixHowm_Date')
-  exec 'syntax match actionlockDate display "'.g:QFixHowm_Date.'"'
-else
-  syntax match actionlockDate display "\d\{4}-\d\{2}-\d\{2}"
-endif
-syntax match actionlockTime display " \zs\d\d:\d\d\(:\d\d\)\?\ze]"
-"if exists('g:QFixHowm_RecentMode') && (g:QFixHowm_RecentMode >= 3)
-  syntax match recentmodeDate display "(\d\{12})"
-"endif
+syn match  chapterBullet "^\s*[0-9][0-9.]* $"
+syn match  chapterBullet "^\s*\(\*\.\)\+\*\?$"
+syn match  chapterBullet "^\s*\.\+$"
+syn match  chapterBullet contained "^\s*\([0-9.]\+\|[.*]\+\)"
+syn region chapterTitle start="^\s*[0-9][0-9.]* " end=":" end="$" contains=chapterBullet,qfhColon,qfhFuncs,qfhError keepend
+syn region chapterTitle start="^\s*\(\*\.\)\+\*\?" end="$" contains=chapterBullet,qfhColon,qfhFuncs,qfhError keepend
+syn region chapterTitle start="^\.\+" end="$" contains=chapterBullet,qfhColon,qfhFuncs,qfhError keepend
 
-syntax match txtUrl  display "\(howm\|rel\|https\|http\|ftp\|file\):[-{}!#%&+,./0-9:;=?@A-Za-z_~]\+"
-syntax match txtUrl  display "rel://[-{}!#%&+,./0-9:;=?@A-Za-z_~\\]\+"
-syntax match txtUrl  display "howm://[-{}!#%&+,./0-9:;=?@A-Za-z_~\\]\+"
-syntax match txtFile display '\([A-Za-z]:[/\\]\|\~\/\)[-!#%&+,./0-9:;=?@A-Za-z_~\\]\+'
+syn match qfhBullet contained "^\s*[-+*]\+\s*" contains=qfhError
+syn match qfhFuncs contained "(.\{-})" extend
+syn match qfhFuncs contained "\[.\{-}]" extend
+syn match qfhColon contained ":"
 
-if exists('g:QFixHowm_Title') && exists('g:QFixHowm_EscapeTitle')
-  let s:QFixHowm_Title = escape(g:QFixHowm_Title, g:QFixHowm_EscapeTitle)
-  exe 'syn region howmTitle start="^'.s:QFixHowm_Title.'" end="$" contains=ALL'
-  exe 'syn match howmTitleDesc contained "^'.s:QFixHowm_Title.'"'
-  syn match howmCategory +\(\[.\{-}\]\)\++ contained
-  exec 'syntax match outlineTitle display "^'.s:QFixHowm_Title.'\{2,}"'
-endif
-if exists('g:QFixHowm_MergeEntrySeparator')
-  exe 'syntax match howmEntrySeparator display ' . '"^'.g:QFixHowm_MergeEntrySeparator.'"'
-endif
-if exists('g:QFixHowm_Link')
-  exe 'syntax match actionlockLink display ' . '"'.g:QFixHowm_Link.'[^[:return:]].*"'
-endif
-if exists('g:QFixHowm_keyword') && g:QFixHowm_keyword != ''
-  exe 'syntax match actionlockKeyword display "\V\%('.g:QFixHowm_keyword.'\)"'
-endif
-if exists('g:QFixHowm_MacroActionKey') && exists('g:QFixHowm_MacroActionPattern')
-  if g:QFixHowm_MacroActionKey != '' && g:QFixHowm_MacroActionPattern != ''
-    exe 'syntax match actionlockMacroAction display "^.*'.g:QFixHowm_MacroActionPattern.'.*$" contains=actionlockMacroActionDefine'
-    exe 'syntax match actionlockMacroActionDefine display "'.g:QFixHowm_MacroActionPattern.'.*$"'
-  endif
-endif
+"syn match qfhMail contained "<[A-Za-z0-9\._:+-]\+@[A-Za-z0-9\._-]\+>"
 
-let s:pattern = '^\s*\[\d\{4}-\d\{2}-\d\{2}\( \d\{2}:\d\{2}\)\?]'
-if exists('g:QFixHowm_Date')
-  let s:pattern = '^\s*\['.g:QFixHowm_Date.'\( \d\{2}:\d\{2}\)\?]'
-endif
-let s:epat = '\{1,3}\((\([0-9]\+\)\?\([-+*]\?\c\(Sun\|Mon\|Tue\|Wed\|Thu\|Fri\|Sat\|Hdy\)\?\))\)\?[0-9]*'
-exe 'syntax match howmSchedule display "'.s:pattern.'@' . s:epat .'" contains=actionlockDate,actionlockTime'
-exe 'syntax match howmDeadline display "'.s:pattern.'!' . s:epat .'" contains=actionlockDate,actionlockTime'
-exe 'syntax match howmTodo     display "'.s:pattern.'+' . s:epat .'" contains=actionlockDate,actionlockTime'
-exe 'syntax match howmReminder display "'.s:pattern.'-' . s:epat .'" contains=actionlockDate,actionlockTime'
-exe 'syntax match howmTodoUD   display "'.s:pattern.'\~'. s:epat .'" contains=actionlockDate,actionlockTime'
-exe 'syntax match howmFinished display "'.s:pattern.'\."'
-let s:pattern = '&\[\d\{4}-\d\{2}-\d\{2}\( \d\{2}:\d\{2}\)\?]\.'
-if exists('g:QFixHowm_Date')
-  let s:pattern = '&\['.g:QFixHowm_Date.'\( \d\{2}:\d\{2}\)\?]\.'
-endif
-exe 'syntax match howmFinished display "'.s:pattern.'"'
+syn region hatenaSuperPre   matchgroup=hatenaBlockDelimiter start=+^>|[^|]*|$+ end=+^||<$+
+
+hi txtVoice guifg=lightblue
+hi link txtQuote      Comment
+
+hi link foldBullet    Type
+hi link foldTitle     Define
+hi link chapterBullet Type
+hi link chapterTitle  Statement
+
+hi link qfhBullet     Statement
+hi link qfhColon      Label
+hi link qfhList       Identifier
+hi link qfhFuncs      Comment
+hi link qfhError      Folded
+
+hi link hatenaSuperPre          Comment
+hi link hatenaBlockDelimiter    Delimiter
 

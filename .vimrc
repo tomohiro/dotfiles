@@ -116,12 +116,32 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+nmap <Space>pj <SID>(split-to-j)
+nmap <Space>pk <SID>(split-to-k)
+nmap <Space>ph <SID>(split-to-h)
+nmap <Space>pl <SID>(split-to-l)
+
+nnoremap <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+nnoremap <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+
+" encoding
+nmap <silent> eu :set fenc=utf-8<CR>
+nmap <silent> ee :set fenc=euc-jp<CR>
+nmap <silent> es :set fenc=cp932<CR>
+
+" encode reopen encoding
+nmap <silent> eru :e ++enc=utf-8 %<CR>
+nmap <silent> ere :e ++enc=euc-jp %<CR>
+nmap <silent> ers :e ++enc=cp932 %<CR>
+nmap <silent> err :e %<CR>
+
 " for TeX Keybinding
 map <C-p> :silent !tex2preview.sh % > /dev/null <Enter>
 
 " for FileType Settings
 "
-autocmd BufRead ~/.*            :set fileencoding=utf-8
 autocmd BufRead .vimperatorrc   :set ft=vimperator
 autocmd BufRead *screen*        :set ft=screen
 autocmd BufRead *.ihtml         :set ft=php
@@ -166,11 +186,12 @@ let g:user_zen_settings = {'indentation' : '    '}
 let g:vimshell_user_prompt = 'getcwd()'
 
 " for QFixHowm
-let QFixHowm_Key        = 'g'
-let howm_dir            = $HOME . '/Dropbox/howm'
-let howm_filename       = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
-let howm_fileencoding   = 'utf-8'
-let howm_fileformat     = 'unix'
+set runtimepath+=~/.vim/qfixapp
+let QFixHowm_Key      = 'g'
+let howm_dir          = $HOME . '/Dropbox/howm'
+let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let howm_fileencoding = 'utf-8'
+let howm_fileformat   = 'unix'
 
 " autocomplpop and snipMate
 "
