@@ -90,6 +90,7 @@ set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4l
 set mouse=a
 set ttymouse=xterm2
 "set cursorline
+"set cursorcolumn
 
 syntax on
 filetype plugin indent on
