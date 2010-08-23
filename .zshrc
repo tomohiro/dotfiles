@@ -9,6 +9,9 @@ export LISTMAX=10000
 export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
+export RAKUDO_HOME=$HOME/Development/forks/rakudo/parrot_install
+export JRUBY_HOME=/usr/local/lib/jruby
+export PATH=$RAKUDO_HOME/bin:$JRUBY_HOME/bin:$PATH
 
 ##### Prompt Settings #####
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
@@ -93,7 +96,6 @@ alias ll='ls -lh'
 # Application Aliases
 alias vi=$EDITOR
 alias diff='colordiff'
-alias irssi="irssi --config=$HOME/.irssi/config.$OS"
 alias ssh=ssh_on_screen
 alias site="vi $HOME/Development/tomohiro.github.com/markdown"
 
@@ -101,6 +103,15 @@ alias site="vi $HOME/Development/tomohiro.github.com/markdown"
 alias t=`which todo.sh`
 alias tl='t ls'
 alias tp='t projectview'
+
+# Global Alias
+if which pbcopy >/dev/null 2>&1 ; then 
+    # Mac  
+    alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then 
+    # Linux
+    alias -g C='| xsel --input --clipboard'
+fi
 
 ##### Set Functions #####
 #
