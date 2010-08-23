@@ -1,23 +1,22 @@
-chatnets = {
-  Freenode = { type = "IRC"; };
-};
+chatnets = { Tiarra = { type = "IRC"; }; OCC = { type = "IRC"; }; };
 
 servers = (
   {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
+    address = "172.16.5.129";
+    chatnet = "OCC";
+    port = "6666";
     autoconnect = "yes";
-    password = "";
   },
+  {
+    address = "serversman.ddo.jp";
+    chatnet = "Tiarra";
+    port = "6666";
+    password = "xl7cflIcH9AwE";
+    autoconnect = "yes";
+  }
 );
 
-channels = (
-  { name = "#TwitterOkinawa"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#naobot"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#Tomochan"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#Tomohiro"; chatnet = "Freenode"; autojoin = "Yes"; }
-);
+channels = ( );
 
 aliases = {
   J = "join";
@@ -61,7 +60,8 @@ aliases = {
   CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
   SBAR = "STATUSBAR";
   INVITELIST = "mode $C +I";
-  Q = "QUERY"; "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  Q = "QUERY";
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
   EXEMPTLIST = "mode $C +e";
   ATAG = "WINDOW SERVER";
 };
@@ -184,13 +184,19 @@ settings = {
     nick = "Tomohiro";
   };
   "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = { theme = "default"; };
 };
 
 hilights = (
   { text = "ともちゃん"; nick = "yes"; word = "yes"; },
-  { text = "Tomohiro";   nick = "yes"; word = "yes"; },
-  { text = "トモヒロ";   nick = "yes"; word = "yes"; },
-  { text = "ともひろ";   nick = "yes"; word = "yes"; },
-  { text = "平良";       nick = "yes"; word = "yes"; },
-  { text = "知広";       nick = "yes"; word = "yes"; },
+  { text = "Tomohiro"; nick = "yes"; word = "yes"; },
+  { text = "トモヒロ"; nick = "yes"; word = "yes"; },
+  { text = "ともひろ"; nick = "yes"; word = "yes"; },
+  { text = "平良"; nick = "yes"; word = "yes"; },
+  { text = "知広"; nick = "yes"; word = "yes"; }
+);
+ignores = (
+  { mask = "parts"; level = "ALL"; },
+  { mask = "joins"; level = "ALL"; },
+  { mask = "quits"; level = "ALL"; }
 );
