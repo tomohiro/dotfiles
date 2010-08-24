@@ -155,5 +155,13 @@ zle -C dabbrev-complete menu-complete dabbrev-complete
 bindkey '^o' dabbrev-complete
 bindkey '^o^_' reverse-menu-complete
 
+##### Set Other Source #####
+#
+#
+local source_dir=$HOME/.zsh
+for source in `ls $source_dir/*.zshrc`; do
+    source $source
+done
+
 # Startup Message
 fortune
