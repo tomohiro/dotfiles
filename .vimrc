@@ -151,8 +151,8 @@ autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
 autocmd FileType yaml           :set fenc=utf-8
 autocmd FileType css            :set fenc=utf-8
-autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && reload_firefox.rb
-autocmd BufWritePost */slide/*.mkdn :silent !slidedown % > slide.html && reload_firefox.rb
+autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && clifox -r
+autocmd BufWritePost */slide/*.mkdn :silent !slidedown % > slide.html && clifox -r
 
 " for PHP Settings
 "

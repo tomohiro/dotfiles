@@ -1,0 +1,101 @@
+#!/usr/bin/env ruby
+
+module MozRepl
+  module Telnet
+    require 'net/telnet'
+    def self.open(host = nil, port = nil)
+      @host = host || 'localhost'
+      @port = port || 4242
+      @telnet = Net::Telnet.new({'Host' => @host, 'Port' => @port })
+    end
+
+    def self.close
+      @telnet.close
+    end
+
+    def self.cmd(js)
+      @telnet.cmd(js)
+    end
+  end
+
+  module JS
+    def self.reload_current_tab
+      js = <<-JS
+      x = content.window.pageXOffset;
+      y = content.window.pageYOffset;
+      BrowserReload();
+      content.window.scrollTo(x, y);
+      JS
+      Telnet.cmd(js)
+    end
+
+    def self.reload_target_tab(title)
+      js = <<-JS
+      var num = gBrowser.browsers.length;
+      var target = null;
+      for (var i = 0; i < num; i++) {
+          var buf = gBrowser.getBrowserAtIndex(i);
+          try {
+              if (buf.contentTitle.match(/#{title}/)) {
+                  target = buf;
+              }
+          } catch(e) {
+              Components.utils.reportError(e);
+          }
+      }
+
+      if (target) {
+          x = target.pageXOffset;
+          y = target.pageYOffset;
+          target.reload();
+          target.scrollTo(x, y);
+      }
+      JS
+      Telnet.cmd(js)
+    end
+
+    def self.open(uri)
+      Telnet.cmd("gBrowser.selectedTab = gBrowser.addTab('#{uri}')")
+    end
+  end
+end
+
+
+Version = '0.0.0'
+class CLIFox
+  require 'optparse'
+  include MozRepl
+
+  def self.run
+    new.main
+  end
+
+  def main
+    begin
+      repl = Telnet.open
+
+      ARGV.options do |o|
+        o.on('-r', "--reload [page title]") { |v| reload(v) }
+        o.on('-o', "--open URI") { |v| JS.open(v) }
+        o.parse!
+      end
+
+      repl.close
+    rescue => e
+      puts e.inspect
+      exit 1
+    end
+  end
+
+  def reload(title = nil)
+    if title 
+      JS.reload_target_tab(title)
+    else
+      JS.reload_current_tab
+    end
+  end
+end
+
+if __FILE__ == $0
+  CLIFox.run
+end
