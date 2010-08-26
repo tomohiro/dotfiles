@@ -75,8 +75,8 @@ class CLIFox
       repl = Telnet.open
 
       ARGV.options do |o|
-        o.on('-r', "--reload [page title]") { |v| reload(v) }
-        o.on('-o', "--open URI") { |v| JS.open(v) }
+        o.on('-r', '--reload [page title]') { |v| reload(v) }
+        o.on('-o', '--open URI') { |v| JS.open(v) }
         o.parse!
       end
 

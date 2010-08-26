@@ -190,7 +190,7 @@ let g:vimshell_user_prompt = 'getcwd()'
 set runtimepath+=~/.vim/qfixapp
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
-let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.mkd'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 

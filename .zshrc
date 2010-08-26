@@ -77,11 +77,12 @@ bindkey '^R' history-incremental-search-backward
 #fi
 
 ##### Set Aliases #####
+#alias sudo='sudo '
+alias gem='/opt/local/bin/gem'
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias mkdir='nocorrect mkdir'
-alias sudo='sudo '
 alias sl='ls'
 
 if [ $OS = Darwin ]; then
@@ -165,3 +166,5 @@ done
 
 # Startup Message
 fortune
+
+export http_proxy=http://proxy.occ.co.jp:8080
