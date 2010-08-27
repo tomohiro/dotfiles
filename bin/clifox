@@ -29,26 +29,18 @@ module MozRepl
       Telnet.cmd(js)
     end
 
-    def self.reload_target_tab(title)
+    def self.reload_target_tab(query)
       js = <<-JS
       var num = gBrowser.browsers.length;
-      var target = null;
       for (var i = 0; i < num; i++) {
           var buf = gBrowser.getBrowserAtIndex(i);
           try {
-              if (buf.contentTitle.match(/#{title}/)) {
-                  target = buf;
+              if (buf.currentURI.spec.match(/#{query}/) || buf.contentTitle.match(/#{query}/)) {
+                  buf.reload();
               }
           } catch(e) {
               Components.utils.reportError(e);
           }
-      }
-
-      if (target) {
-          x = target.pageXOffset;
-          y = target.pageYOffset;
-          target.reload();
-          target.scrollTo(x, y);
       }
       JS
       Telnet.cmd(js)
@@ -66,25 +58,35 @@ class CLIFox
   require 'optparse'
   include MozRepl
 
+  def initialize
+    @host = nil
+    @port = nil
+  end
+
   def self.run
     new.main
   end
 
   def main
     begin
-      repl = Telnet.open
-
+      opts = {}
       ARGV.options do |o|
-        o.on('-r', '--reload [page title]') { |v| reload(v) }
-        o.on('-o', '--open URI') { |v| JS.open(v) }
+        o.on('-h', '--host [host]') { |v| @host = v }
+        o.on('-p', '--port [port]') { |v| @port = v }
+        o.on('-r', '--reload [page title]') { |v| repl_eval { reload(v) } }
+        o.on('-o', '--open URI') { |v| repl_eval { JS.open(v) } }
         o.parse!
       end
-
-      repl.close
     rescue => e
       puts e.inspect
       exit 1
     end
+  end
+
+  def repl_eval
+    repl = Telnet.open(@host, @port)
+    yield
+    repl.close
   end
 
   def reload(title = nil)
