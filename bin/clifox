@@ -73,7 +73,7 @@ class CLIFox
       ARGV.options do |o|
         o.on('-h', '--host [host]') { |v| @host = v }
         o.on('-p', '--port [port]') { |v| @port = v }
-        o.on('-r', '--reload [page title]') { |v| repl_eval { reload(v) } }
+        o.on('-r', '--reload [page title or uri]') { |v| repl_eval { reload(v) } }
         o.on('-o', '--open URI') { |v| repl_eval { JS.open(v) } }
         o.parse!
       end
@@ -89,9 +89,9 @@ class CLIFox
     repl.close
   end
 
-  def reload(title = nil)
-    if title 
-      JS.reload_target_tab(title)
+  def reload(query = nil)
+    if query
+      JS.reload_target_tab(query)
     else
       JS.reload_current_tab
     end
