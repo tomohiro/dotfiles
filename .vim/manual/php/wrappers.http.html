@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>HTTP と HTTPS</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.file.html">ファイルシステム</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.ftp.html">FTP と FTPS</a></div>
+ <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wrappers.http" class="section">
+   <h2 class="title">HTTP と HTTPS</h2>
+   <p class="simpara">PHP 4、PHP 5。<var class="filename">https://</var> は PHP 4.3.0以降。</p>
+
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara"><var class="filename">http://example.com</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">http://example.com/file.php?var1=val1&amp;var2=val2</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">http://user:password@example.com</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">https://example.com</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">https://example.com/file.php?var1=val1&amp;var2=val2</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">https://user:password@example.com</var></span></li>
+   </ul>
+
+   <p class="simpara">
+    HTTP 1.0 により HTTP GET メソッドを用いてファイル/リソースに読み込みのみの
+    アクセスが可能です。仮想ホストにホスト名でアクセスするために、
+    <i>Host:</i> ヘッダが送信されます。
+    <var class="filename">php.ini</var> ファイルまたはストリームコンテキストによって
+    <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a> 文字列を設定している場合、
+    それはリクエストの中にも含まれます。
+   </p>
+   <div class="warning"><b class="warning">警告</b><p class="para">IIS のような、いくつかの標準に
+対応してない Web サーバは、PHP に警告を発生させるような手順でデータを送信します。
+このようなサーバを使用する場合は、<a href="errorfunc.configuration.html#ini.error-reporting" class="link">
+error_reporting</a> を警告を発生しないレベルまで小さくする必要があります。
+PHP 4.3.7 以降では、<i>https://</i> ラッパーでストリームをオープンする際に
+バグがある IIS サーバソフトウエアを検出することができ、この警告を抑制することができます。
+あなたが <i>ssl://</i> ソケットを作成するために  <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span> を使用している場合、
+自らこの警告を検出し、抑制する必要があります。</p></div>
+   <p class="simpara">
+    PHP 4.0.5 以降、リダイレクトがサポートされています。これ以前のバージョンを
+    使用している場合、URL の末尾にスラッシュを付ける必要があります。
+    (全てのリダイレクトが処理された後に)ドキュメント取得元のリソースの URL を知ることが
+    重要な場合、ストリームから返された一連のレスポンスヘッダを処理する必要があります。
+   </p>
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'http://www.example.com/redirecting_page.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;PHP&nbsp;4.3.0&nbsp;の場合、stream_get_meta_data()&nbsp;の代わりに<br />&nbsp;&nbsp;&nbsp;$http_response_header&nbsp;を使用してください　*/<br /></span><span style="color: #0000BB">$meta_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />foreach(</span><span style="color: #0000BB">$meta_data</span><span style="color: #007700">[</span><span style="color: #DD0000">'wrapper_data'</span><span style="color: #007700">]&nbsp;as&nbsp;</span><span style="color: #0000BB">$response</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;リダイレクトされているか?&nbsp;*/<br />&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #DD0000">'location:&nbsp;'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;$url&nbsp;をリダイレクト先に書き換える&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">18</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="simpara">
+    ストリームにより、リソースの <em class="emphasis">body</em> にアクセスすることが
+    できます。ヘッダは、<var class="varname"><var class="varname"><a href="reserved.variables.httpresponseheader.html" class="classname">$http_response_header</a></var></var> 変数に保存されます。
+    PHP 4.3.0 以降は、ヘッダは <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span>
+    により取得できます。
+   </p>
+   <p class="simpara">
+    HTTP 接続は読み込みのみ可で、HTTP リソースにデータを書き込んだり
+    ファイルをコピーしたりすることはできません。
+   </p>
+   <blockquote><p><b class="note">注意</b>: 
+   <span class="simpara">
+     HTTPS は、PHP 4.3.0 以降で OpenSSL のサポートを組み込んだ場合にサポートされます。
+    </span>
+   </p></blockquote>
+  <p class="simpara">
+   <a href="filesystem.configuration.html#ini.from" class="link">from</a> ディレクティブを
+   <var class="filename">php.ini</var> で設定して <a href="context.html" class="xref">コンテキストオプションとパラメータ</a> では <i>From:</i>
+   ヘッダを定義していない場合、この値が
+   HTTP リクエストの <i>From:</i> ヘッダとして送信されます。
+  </p>
+   <p class="para">
+   <table class="doctable table">
+     <caption><b>ラッパーの概要</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+        <th>属性</th>
+        <th>サポートの可否</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a> で制約される</td>
+        <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">読み込み可</td>
+        <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">書き込み可</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">追記可能</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">同時読み書き可</td>
+        <td align="left">N/A</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.stat.html" class="function">stat()</a></span> をサポート</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.unlink.html" class="function">unlink()</a></span> をサポート</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rename.html" class="function">rename()</a></span> をサポート</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span> をサポート</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span> をサポート</td>
+        <td align="left">No</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+  <p class="para">
+   バージョン 5 より前では、HTTP リクエストで独自のヘッダを送信することができます。
+   これは INI 設定項目 <i>user_agent</i>
+   を処理する際の副作用によるものです。
+   <i>user_agent</i> に何らかの正常な文字列
+   (たとえばデフォルト設定の <i>PHP/version</i> など)
+   を指定し、さらに続けて
+   キャリッジリターン(\r) / ラインフィード(\n)
+   を置いた後に任意のヘッダを記述します。
+   この方法は、PHP 4 以降のバージョンで動作します。
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>例1 HTTP リクエストで独自のヘッダを送信する</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'user_agent'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PHP\r\nX-MyCustomHeader:&nbsp;Foo"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>送信されるリクエストは次のようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+GET /index.php HTTP/1.0
+Host: www.example.com
+User-Agent: PHP
+X-MyCustomHeader: Foo
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.file.html">ファイルシステム</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.ftp.html">FTP と FTPS</a></div>
+ <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

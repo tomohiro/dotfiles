@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Is used to delete an instance</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-disconnect.html">cubrid_disconnect</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-error-code-facility.html">cubrid_error_code_facility</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.cubrid-drop" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_drop</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.0)</p><p class="refpurpose"><span class="refname">cubrid_drop</span> &mdash; <span class="dc-title">Is used to delete an instance </span></p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>cubrid_drop</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$conn_identifier</tt></span>  
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$oid</tt></span>  
+   )</div>
+
+  <p class="para rdfs-comment">
+    The <span class="function"><b>cubrid_drop()</b></span> function is used to delete an instance from database by using <i><tt class="parameter">oid</tt></i>.
+  </p>
+ </div>
+
+
+  <div class="refsect1 parameters">
+ <h3 class="title">パラメータ</h3>
+ <p class="para">
+  <dl>
+
+    <dt>
+
+  <span class="term"><i><tt class="parameter">conn_identifier</tt></i></span>
+  <dd>
+<p class="para">Connection identifier.</p></dd>
+
+   </dt>
+
+   <dt>
+
+  <span class="term"><i><tt class="parameter">oid</tt></i></span>
+  <dd>
+<p class="para">Oid of the instance that you want to delete.</p></dd>
+
+   </dt>
+
+  </dl>
+
+  </p>
+ </div>
+
+ 
+  <div class="refsect1 returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+    <b><tt>TRUE</tt></b>, when process is successful.
+  </p>
+    <p class="para">
+    <b><tt>FALSE</tt></b>, when process is unsuccessful.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">例</h3>
+  <div class="example">
+   <p><b>例1 <span class="function"><b>cubrid_drop()</b></span> example</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$deloid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_get&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$oid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"order"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_drop&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$deloid</span><span style="color: #007700">);&nbsp;&nbsp;<br />if&nbsp;(</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_commit&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_rollback&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+  <div class="refsect1 seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.cubrid-is-instance.html" class="function" rel="rdfs-seeAlso">cubrid_is_instance()</a> - Is used to check whether the instance</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-disconnect.html">cubrid_disconnect</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-error-code-facility.html">cubrid_error_code_facility</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

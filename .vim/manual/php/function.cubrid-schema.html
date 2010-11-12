@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Is used to get the requested schema information</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-save-to-glo.html">cubrid_save_to_glo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-send-glo.html">cubrid_send_glo</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.cubrid-schema" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_schema</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.0)</p><p class="refpurpose"><span class="refname">cubrid_schema</span> &mdash; <span class="dc-title">Is used to get the requested schema information</span></p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b>cubrid_schema</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$conn_identifier</tt></span>  
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$schema_type</tt></span>  
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$class_name</tt></span> 
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$attr_name</tt></span>  
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+    The <span class="function"><b>cubrid_schema()</b></span> function is used to get the requested schema information from database.  You have to designate <i><tt class="parameter">class_name</tt></i>, if you want to get information on certain class, <i><tt class="parameter">attr_name</tt></i>, if you want to get information on certain attribute (can be used only with CUBRID_ SCH_ATTR_PRIVILEGE).
+  </p>
+ </div>
+
+
+<div class="refsect1 parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+  <dl>
+
+    <dt>
+
+  <span class="term"><i><tt class="parameter">conn_identifier</tt></i></span>
+  <dd>
+<p class="para">Connection identifier.</p></dd>
+
+   </dt>
+
+   <dt>
+
+  <span class="term"><i><tt class="parameter">schema_type</tt></i></span>
+  <dd>
+<p class="para">Schema data that you want to know.</p></dd>
+
+   </dt>
+
+   <dt>
+
+  <span class="term"><i><tt class="parameter">class_name</tt></i></span>
+  <dd>
+<p class="para">Class you want to know the schema of.</p></dd>
+
+   </dt>
+
+   <dt>
+
+  <span class="term"><i><tt class="parameter">attr_name</tt></i></span>
+  <dd>
+<p class="para">Attribute you want to know the schema of.</p></dd>
+
+   </dt>
+
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+    Array containing the schema information, when process is successful; 
+  </p>
+  <p class="para">
+    -1, when process is unsuccessful
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">例</h3>
+  <div class="example">
+   <p><b>例1 <span class="function"><b>cubrid_schema()</b></span> example</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$attrs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_ATTRIBUTE</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"person"</span><span style="color: #007700">);<br />while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$attrs</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">[</span><span style="color: #DD0000">"NAME"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">[</span><span style="color: #DD0000">"DOMAIN"</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-save-to-glo.html">cubrid_save_to_glo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-send-glo.html">cubrid_send_glo</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

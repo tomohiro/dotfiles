@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>GMT 日付から Unix タイムスタンプを取得する</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmdate.html">gmdate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gmstrftime.html">gmstrftime</a></div>
+ <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gmmktime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gmmktime</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">gmmktime</span> &mdash; <span class="dc-title">GMT 日付から Unix タイムスタンプを取得する</span></p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>gmmktime</b></span>
+    ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$hour</tt><span class="initializer"> = gmdate(&quot;H&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$minute</tt><span class="initializer"> = gmdate(&quot;i&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$second</tt><span class="initializer"> = gmdate(&quot;s&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt><span class="initializer"> = gmdate(&quot;n&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt><span class="initializer"> = gmdate(&quot;j&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt><span class="initializer"> = gmdate(&quot;Y&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$is_dst</tt><span class="initializer"> = -1</span></span>
+  ]]]]]]] )</div>
+
+  <p class="para rdfs-comment">
+   指定されるパラメータが GMT 日付を表すこと以外は
+   <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span> と同じです。
+   <span class="function"><b>gmmktime()</b></span> は内部で <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span>
+   を使用しているので、ローカル時刻として有効な値のみが使用可能です。
+  </p>
+  <p class="para">
+   <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span> と同様に、
+   引数は右から順に省略することができます。
+   省略された引数は、GMT の日付と時刻に従って、現在の値にセットされます。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">hour</tt></i></span>
+     <dd>
+
+      <p class="para">
+       時
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">minute</tt></i></span>
+     <dd>
+
+      <p class="para">
+       分
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">second</tt></i></span>
+     <dd>
+
+      <p class="para">
+       秒
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">month</tt></i></span>
+     <dd>
+
+      <p class="para">
+       月
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">day</tt></i></span>
+     <dd>
+
+      <p class="para">
+       日
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">year</tt></i></span>
+     <dd>
+
+      <p class="para">
+       年
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">is_dst</tt></i></span>
+     <dd>
+
+      <p class="para">
+       常に GMT 日付を表すので、<i><tt class="parameter">is_dst</tt></i>
+       は結果に影響を及ぼしません。
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   Unix タイムスタンプを <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> で返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead valign="middle">
+      <tr valign="middle">
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td align="left">5.1.0</td>
+       <td align="left">
+        PHP 5.1.0 で、<i><tt class="parameter">is_dst</tt></i> パラメータは廃止されました。
+        その代わりに、新しいタイムゾーン処理機能が使用されます。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>例1 Windows 環境での <span class="function"><b>gmmktime()</b></span></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />gmmktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1970</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;valid&nbsp;in&nbsp;GMT&nbsp;and&nbsp;west,&nbsp;invalid&nbsp;in&nbsp;east<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mktime.html" class="function" rel="rdfs-seeAlso">mktime()</a> - 日付を Unix のタイムスタンプとして取得する</span></li>
+    <li class="member"><span class="function"><a href="function.date.html" class="function" rel="rdfs-seeAlso">date()</a> - ローカルの日付/時刻を書式化する</span></li>
+    <li class="member"><span class="function"><a href="function.time.html" class="function" rel="rdfs-seeAlso">time()</a> - 現在の Unix タイムスタンプを返す</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.gmdate.html">gmdate</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.gmstrftime.html">gmstrftime</a></div>
+ <div class="up"><a href="ref.datetime.html">日付・時刻 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
