@@ -89,10 +89,28 @@ set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
 set mouse=a
 set ttymouse=xterm2
-"set cursorline
 "set cursorcolumn
 
+" カレントウィンドウにのみ罫線を引く
+"set cursorline
+"augroup cch
+"    autocmd! cch
+"    autocmd WinLeave * set nocursorline
+"    autocmd WinEnter,BufRead * set cursorline
+"augroup END
+":hi clear CursorLine
+":hi CursorLine gui=underline
+"highlight CursorLine ctermbg=black guibg=black
+
 syntax on
+
+" pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
+filetype off
+" pathogen.vimによってbundle配下のpluginをpathに加える
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+set helpfile=$VIMRUNTIME/doc/help.txt
+" ファイルタイプ判定をon
 filetype plugin indent on
 
 " 全角スペースを目立たせる
@@ -110,6 +128,9 @@ map <F3> <C-w>_
 map <F4> <C-w>=
 map <F7> :e# <Enter>
 map <F8> :n <Enter>
+
+" remove highlight
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 " for Split Window Keybinding
 map <C-h> <C-w>h
@@ -149,10 +170,15 @@ autocmd BufRead *.ihtml         :set ft=php
 autocmd BufRead *.go            :set ft=go
 autocmd FileType ruby           :set ts=2 sw=2 fenc=utf-8
 autocmd FileType php            :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
+autocmd FileType php            :set dictionary=$HOME/.vim/dictionary/php.dict 
 autocmd FileType yaml           :set fenc=utf-8
 autocmd FileType css            :set fenc=utf-8
-autocmd BufWritePost *.mkd      :silent !cg convert % > /dev/null && clifox -r
-autocmd BufWritePost */slide/*.mkdn :silent !slidedown % > slide.html && clifox -r
+autocmd BufWritePost */markdown/*.mkd :silent !cg convert % > /dev/null && clifox -r
+autocmd BufWritePost slide.mkdn :silent !slidedown % > slide.html && clifox -r
+autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "UnitTest"
+
+" for clifor Keybinding
+"map <C-r> :silent !clifox -h 172.16.5.222 -r <Enter>
 
 " for PHP Settings
 "
@@ -186,11 +212,20 @@ let g:user_zen_settings = {'indentation' : '    '}
 "
 let g:vimshell_user_prompt = 'getcwd()'
 
+" for gtags.vim
+map <C-g>  :Gtags -g 
+map <C-g>f :Gtags -f %<CR>
+map <C-g>r :Gtags -r <CR>
+map <C-g>j :GtagsCursor<CR>
+map <C-n>  :cn<CR>
+map <C-p>  :cp<CR>
+map <C-g>q <C-w><C-w><C-w>q
+
 " for QFixHowm
 set runtimepath+=~/.vim/qfixapp
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
-let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.mkd'
+let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 
