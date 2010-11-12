@@ -8,7 +8,7 @@ servers = (
     autoconnect = "yes";
   },
   {
-    address = "serversman.ddo.jp";
+    address = "tiarra.tomohiro.me";
     chatnet = "Tiarra";
     port = "6666";
     password = "xl7cflIcH9AwE";
