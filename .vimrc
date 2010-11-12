@@ -218,7 +218,7 @@ map <C-p>  :cp<CR>
 map <C-g>q <C-w><C-w><C-w>q
 
 " for QFixHowm
-set runtimepath+=~/.vim/qfixapp
+set runtimepath+=~/.vim/bundle/qfixapp
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
 let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
