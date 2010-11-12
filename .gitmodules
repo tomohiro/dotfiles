@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/snipmate"]
 	path = .vim/bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/css-color/after/ftplugin"]
+	path = .vim/bundle/css-color/after/ftplugin
+	url = git://gist.github.com/228147.git
