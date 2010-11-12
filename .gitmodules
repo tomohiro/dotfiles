@@ -28,3 +28,12 @@
 [submodule ".vim/bundle/markdown"]
 	path = .vim/bundle/markdown
 	url = git://github.com/janne/markdown.vim.git
+[submodule ".vim/bundle/googletranslate-vim"]
+	path = .vim/bundle/googletranslate-vim
+	url = git://github.com/mattn/googletranslate-vim.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
