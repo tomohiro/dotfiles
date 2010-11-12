@@ -9,6 +9,5 @@
 /.gem
 /.gemrc
 /.pit
-/.irssi/config.Linux
-/.irssi/config.Darwin
+/.irssi/config
 /bin/fusemount
