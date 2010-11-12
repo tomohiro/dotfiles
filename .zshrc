@@ -14,8 +14,9 @@ export JRUBY_HOME=/usr/local/lib/jruby
 export PATH=$RAKUDO_HOME/bin:$JRUBY_HOME/bin:$PATH
 
 ##### Prompt Settings #####
+FACE=`ruby -e "puts %w[・_・ ・o・ ・3・ノ].choice"`
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
-:-) %F{white}"
+$FACE %F{white}"
 
 ###### Auto Load Settings #####
 autoload -U colors
@@ -78,7 +79,12 @@ bindkey '^R' history-incremental-search-backward
 
 ##### Set Aliases #####
 #alias sudo='sudo '
-alias gem='/opt/local/bin/gem'
+if [ $OS = Darwin ]; then
+    alias gem='/opt/local/bin/gem'
+else
+    alias gem='/usr/bin/gem'
+fi
+
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
@@ -166,5 +172,3 @@ done
 
 # Startup Message
 fortune
-
-export http_proxy=http://proxy.occ.co.jp:8080
