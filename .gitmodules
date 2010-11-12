@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/css-color/after/ftplugin"]
 	path = .vim/bundle/css-color/after/ftplugin
 	url = git://gist.github.com/228147.git
+[submodule ".vim/bundle/inkpot"]
+	path = .vim/bundle/inkpot
+	url = git://github.com/ciaranm/inkpot.git

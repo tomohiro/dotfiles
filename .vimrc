@@ -237,6 +237,8 @@ let g:acp_behaviorSnipmateLength = 1
 "
 if filereadable($HOME . '/.vim/colors/inkpot.vim')
     colorscheme inkpot
+elseif filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
+    colorscheme inkpot
 else
     colorscheme desert
     set background=dark
