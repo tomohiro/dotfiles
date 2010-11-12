@@ -195,7 +195,7 @@ endif
 
 " for vim-ref
 "
-let g:ref_phpmanual_path = $HOME . '/.vim/manual/php-chunked-xhtml'
+let g:ref_phpmanual_path = $HOME . '/.vim/manual/php'
 
 " for neocomplcache.vim
 "
