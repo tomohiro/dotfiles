@@ -4,16 +4,20 @@ source defaults.screenrc
 autodetach on
 
 # soruce 
-bind R eval "source $HOME/.screen/launcher"
+bind R eval "source $HOME/.screen/launcher.screenrc"
 
-backtick 0 0 0 ruby scripts/chirpuserstreams.rb
+#backtick 0 0 0 ruby scripts/chirpuserstreams.rb
+#backtick 0 0 0 more /tmp/samuraihiroshi
+backtick 0 0 5 ruby scripts/fortune.rb
 
 # Define byobu settings
 backtick 1 9999999 9999999 byobu-status logo
-backtick 2 599 599         byobu-status release
-backtick 3 9999999 9999999 byobu-status arch
+backtick 2 9999999 9999999 uname -s
+backtick 3 9999999 9999999 uname -r
+backtick 4 9999999 9999999 uname -m
+backtick 5 0 10 more /tmp/last.fm_recent_track
 
-caption always "%{= WK}%1` %2`%3` %-w%{= rw} %n %t %{-}%+w %= "
+caption always "%{= Wk}%1` %2` %3` %4` %-w%{= rw} %n %t %{-}%+w %= %{= Wr} [last.fm]%{= Wk} %5`"
 hardstatus alwayslastline "%0`" 
 
 screen -t 'main' screen -qUmc "common.screenrc"
