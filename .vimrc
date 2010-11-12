@@ -68,6 +68,7 @@ set number
 set wildmenu
 set viminfo=
 set nobackup
+set noswapfile
 set nowritebackup
 set backspace=indent,eol,start
 set directory=/tmp/
@@ -85,22 +86,11 @@ set showcmd
 set showmatch
 set ambiwidth=double
 set ww=31
-set laststatus=2
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
 set mouse=a
 set ttymouse=xterm2
-"set cursorcolumn
 
-" カレントウィンドウにのみ罫線を引く
-"set cursorline
-"augroup cch
-"    autocmd! cch
-"    autocmd WinLeave * set nocursorline
-"    autocmd WinEnter,BufRead * set cursorline
-"augroup END
-":hi clear CursorLine
-":hi CursorLine gui=underline
-"highlight CursorLine ctermbg=black guibg=black
+set laststatus=2
+set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
 
 syntax on
 
@@ -203,6 +193,12 @@ if v:version >= 700
     map <F6> gT
 endif
 
+" for neocomplcache.vim
+"
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+
 " for zencoding.vim
 " 
 let g:user_zen_expandabbr_key = '<c-e>'  
@@ -228,10 +224,6 @@ let howm_dir          = $HOME . '/Dropbox/howm'
 let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
-
-" autocomplpop and snipMate
-"
-let g:acp_behaviorSnipmateLength = 1
 
 " for Vim colorscheme Settings
 "
