@@ -193,11 +193,19 @@ if v:version >= 700
     map <F6> gT
 endif
 
+" for vim-ref
+"
+let g:ref_phpmanual_path = $HOME . '/.vim/manual/php-chunked-xhtml'
+
 " for neocomplcache.vim
 "
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+
+" for GoogleTranslate
+"
+nmap <Space>l :Trans<CR>
 
 " for zencoding.vim
 " 
