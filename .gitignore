@@ -11,5 +11,5 @@
 /.pit
 /.irssi/config
 /bin/fusemount
-tags
-tags-ja
+*/tags
+*/tags-ja

@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/scala"]
 	path = .vim/bundle/scala
 	url = git://github.com/vim-scripts/scala.vim.git
+[submodule ".vim/bundle/actionscript"]
+	path = .vim/bundle/actionscript
+	url = git://github.com/vim-scripts/actionscript.vim.git
