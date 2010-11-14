@@ -4,9 +4,6 @@
 [submodule ".vim/bundle/vimproc"]
 	path = .vim/bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
-[submodule ".vim/bundle/zencoding-vim"]
-	path = .vim/bundle/zencoding-vim
-	url = https://github.com/mattn/zencoding-vim.git
 [submodule ".vim/bundle/gtags"]
 	path = .vim/bundle/gtags
 	url = git://github.com/vim-scripts/gtags.vim.git
@@ -49,3 +46,6 @@
 [submodule ".vim/bundle/actionscript"]
 	path = .vim/bundle/actionscript
 	url = git://github.com/vim-scripts/actionscript.vim.git
+[submodule ".vim/bundle/zencoding-vim"]
+	path = .vim/bundle/zencoding-vim
+	url = git://github.com/mattn/zencoding-vim.git
