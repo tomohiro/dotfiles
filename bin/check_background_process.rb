@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 title   = "'GNU screen notify'"
-message = "'command done: #{ARGV}'"
+message = "'command done: #{ARGV.join(' ')}'"
 notify = case %x{ uname }.chomp
          when 'Darwin' then "growlnotify -t #{title} -m #{message}"
          when 'Linux'  then "notify-send -i gtk-dialog-info -t 5000 -u critical #{title} #{message}" 
