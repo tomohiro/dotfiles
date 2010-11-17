@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/textile"]
 	path = .vim/bundle/textile
 	url = git://github.com/timcharper/textile.vim.git
+[submodule ".vim/bundle/unite"]
+	path = .vim/bundle/unite
+	url = git://github.com/Shougo/unite.vim.git
