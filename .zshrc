@@ -12,9 +12,13 @@ export LS_COLORS='di=01;36'
 export RAKUDO_HOME=$HOME/Development/forks/rakudo/parrot_install
 export JRUBY_HOME=/usr/local/lib/jruby
 export PATH=$RAKUDO_HOME/bin:$JRUBY_HOME/bin:$PATH
+export OS=`uname`
+
+#####  for Ruby `rvm` #####
+if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
 
 ##### Prompt Settings #####
-FACE=`ruby -e "puts %w[・_・ ・o・ ・3・ノ].choice"`
+FACE=`ruby -e "puts %w[・_・ ・o・ ・3・ノ].sample"`
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
 $FACE %F{white}"
 
@@ -79,12 +83,6 @@ bindkey '^R' history-incremental-search-backward
 
 ##### Set Aliases #####
 #alias sudo='sudo '
-if [ $OS = Darwin ]; then
-    alias gem='/opt/local/bin/gem'
-else
-    alias gem='/usr/bin/gem'
-fi
-
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
