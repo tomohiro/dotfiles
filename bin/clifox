@@ -3,6 +3,12 @@
 module MozRepl
   module Telnet
     require 'net/telnet'
+    class Net::Telnet
+      def method_missing(m, *args, &block)
+        @sock.__send__(m, *args, &block)
+      end
+    end
+
     def self.open(host = nil, port = nil)
       @host = host || 'localhost'
       @port = port || 4242

@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 # fortune
 function fortune() {
-    command fortune `ruby -e 'puts [:meigen].choice'`
+    command fortune `ruby -e 'puts [:meigen].sample'`
 }
