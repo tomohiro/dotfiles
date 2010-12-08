@@ -88,6 +88,8 @@ set ambiwidth=double
 set ww=31
 set mouse=a
 set ttymouse=xterm2
+set clipboard+=autoselect
+set clipboard+=unnamed
 
 set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
@@ -166,6 +168,7 @@ autocmd FileType css            :set fenc=utf-8
 autocmd BufWritePost */markdown/*.mkd :silent !cg convert % > /dev/null && clifox -r
 autocmd BufWritePost slide.mkdn :silent !slidedown % > slide.html && clifox -r
 autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "UnitTest"
+autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "QUnit"
 
 " for clifor Keybinding
 "map <C-r> :silent !clifox -h 172.16.5.222 -r <Enter>
@@ -216,6 +219,9 @@ let g:user_zen_settings = {'indentation' : '    '}
 "
 let g:vimshell_user_prompt = 'getcwd()'
 
+" for Vimproc
+let g:vimproc_dll_path = $HOME . '/.vim/bundle/vimproc/autoload/' . $OS . '/proc.so'
+
 " for gtags.vim
 map <C-g>  :Gtags -g 
 map <C-g>f :Gtags -f %<CR>
@@ -235,11 +241,12 @@ let howm_fileformat   = 'unix'
 
 " for Vim colorscheme Settings
 "
-if filereadable($HOME . '/.vim/colors/inkpot.vim')
-    colorscheme inkpot
-elseif filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
+if filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
     colorscheme inkpot
 else
     colorscheme desert
     set background=dark
 endif
+
+hi LineNr ctermbg=235 ctermfg=105
+hi StatusLine ctermbg=64 ctermfg=15

@@ -25,7 +25,6 @@ ln -s -f $BASE.gem $HOME/
 OS=`uname`
 
 if [ $OS = Linux ]; then
-    ln -s -f $BASE.network $HOME/
     ln -s -f $BASE.fonts.conf $HOME/
 else
     ln -s -f $BASE.inputrc $HOME/

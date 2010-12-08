@@ -1,3 +1,5 @@
+# 未来を予測する最善の方法は、自らそれを創りだすことである。--アラン・ケイ
+
 ##### Environment Settings #####
 export SHELL=zsh
 export LANG=ja_JP.UTF-8
@@ -9,18 +11,19 @@ export LISTMAX=10000
 export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
-export RAKUDO_HOME=$HOME/Development/forks/rakudo/parrot_install
 export JRUBY_HOME=/usr/local/lib/jruby
-export PATH=$RAKUDO_HOME/bin:$JRUBY_HOME/bin:$PATH
+export PATH=$JRUBY_HOME/bin:$PATH
 export OS=`uname`
 
 #####  for Ruby `rvm` #####
 if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
 
+#####  for Python `pythonbrew` #####
+if [[ -s $HOME/.pythonbrew/etc/bashrc ]] ; then source $HOME/.pythonbrew/etc/bashrc ; fi
+
 ##### Prompt Settings #####
-FACE=`ruby -e "puts %w[・_・ ・o・ ・3・ノ].sample"`
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
-$FACE %F{white}"
+» %F{white}"
 
 ###### Auto Load Settings #####
 autoload -U colors

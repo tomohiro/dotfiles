@@ -9,7 +9,7 @@ module Translate
     base_uri = 'http://ajax.googleapis.com/ajax/services/language'
     begin
       detect = JSON.parse(open("#{base_uri}/detect?v=1.0&q=#{URI.encode(src)}").read)
-      from = detect['responseData']['language']
+      from = detect['responseData']['language'] == 'en' ? 'en' : 'ja'
       to = 'en' if to == from
 
       langpair = "langpair=#{from}%7C#{to}"
