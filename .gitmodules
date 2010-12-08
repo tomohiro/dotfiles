@@ -55,3 +55,9 @@
 [submodule ".vim/bundle/unite"]
 	path = .vim/bundle/unite
 	url = git://github.com/Shougo/unite.vim.git
+[submodule ".vim/bundle/wombat256"]
+	path = .vim/bundle/wombat256
+	url = git://github.com/vim-scripts/wombat256.vim.git
+[submodule ".vim/bundle/jQuery"]
+	path = .vim/bundle/jQuery
+	url = git://github.com/vim-scripts/jQuery.git
