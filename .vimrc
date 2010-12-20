@@ -220,7 +220,7 @@ let g:user_zen_settings = {'indentation' : '    '}
 let g:vimshell_user_prompt = 'getcwd()'
 
 " for Vimproc
-let g:vimproc_dll_path = $HOME . '/.vim/bundle/vimproc/autoload/' . $OS . '/proc.so'
+let g:vimproc_dll_path = $HOME . '/.vim/' . $OS . '/proc.so'
 
 " for gtags.vim
 map <C-g>  :Gtags -g 
