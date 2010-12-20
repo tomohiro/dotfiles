@@ -8,7 +8,7 @@ bind R eval "source $HOME/.screen/launcher.screenrc"
 
 #backtick 0 0 0 ruby scripts/chirpuserstreams.rb
 #backtick 0 0 0 more /tmp/samuraihiroshi
-backtick 0 0 5 ruby scripts/fortune.rb
+backtick 0 0 5 ruby -Ku scripts/fortune.rb
 
 # Define byobu settings
 backtick 1 9999999 9999999 byobu-status logo
