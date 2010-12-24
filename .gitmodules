@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/unite"]
 	path = .vim/bundle/unite
 	url = git://github.com/Shougo/unite.vim.git
+[submodule ".vim/bundle/VimOrganizer"]
+	path = .vim/bundle/VimOrganizer
+	url = git://github.com/hsitz/VimOrganizer.git
