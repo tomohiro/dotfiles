@@ -1,5 +1,0 @@
-#/usr/bin/env zsh
-
-function dropbox_remove_conflicts() {
-    find ~/Dropbox -name "*conflicted*" -print0 | xargs -0 rm -f
-}
