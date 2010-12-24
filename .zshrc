@@ -11,8 +11,6 @@ export LISTMAX=10000
 export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
-export JRUBY_HOME=/usr/local/lib/jruby
-export PATH=$JRUBY_HOME/bin:$PATH
 export OS=`uname`
 
 #####  for Ruby `rvm` #####
@@ -91,6 +89,8 @@ alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias mkdir='nocorrect mkdir'
 alias sl='ls'
+alias u='cd ../'
+alias b='cd -'
 
 if [ $OS = Darwin ]; then
     alias ls='ls -hF -G'
