@@ -15,9 +15,10 @@ backtick 1 9999999 9999999 byobu-status logo
 backtick 2 9999999 9999999 uname -s
 backtick 3 9999999 9999999 uname -r
 backtick 4 9999999 9999999 uname -m
-backtick 5 0 10 more /tmp/last.fm_recent_track
+backtick 5 9999999 9999999 rvm-prompt
+backtick 7 0 10 more /tmp/last.fm_recent_track
 
-caption always "%{= Wk}%1` %2` %3` %4` %-w%{= rw} %n %t %{-}%+w %= %{= Wr} [last.fm]%{= Wk} %5`"
+caption always "%{= Wk}%1` %2` %3` %4` %{= mW} Ruby %{= Wk} %5` %{= mW}` %= %{= Wr} [last.fm]%{= Wk} %7`"
 hardstatus alwayslastline "%0`" 
 
 screen -t 'main' screen -qUmc "common.screenrc"
