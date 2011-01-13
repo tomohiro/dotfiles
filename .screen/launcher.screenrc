@@ -18,7 +18,7 @@ backtick 4 9999999 9999999 uname -m
 backtick 5 9999999 9999999 rvm-prompt
 backtick 7 0 10 more /tmp/last.fm_recent_track
 
-caption always "%{= Wk}%1` %2` %3` %4` %{= mW} Ruby %{= Wk} %5` %{= mW}` %= %{= Wr} [last.fm]%{= Wk} %7`"
+caption always "%{= Wk}%1` %2` %3` %4` %{= mW} Ruby %{= Wk} %5` %= %{= Wr} [last.fm]%{= Wk} %7`"
 hardstatus alwayslastline "%0`" 
 
 screen -t 'main' screen -qUmc "common.screenrc"
