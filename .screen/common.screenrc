@@ -67,7 +67,12 @@ register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 bind ^] paste [.]
 
-sorendition "+rb wM"
+# Change text attributes in caption for flagged windows
+#sorendition "+rb wM"
+rendition bell    '=ub' 'RY'
+rendition monitor '=b'  'BW'
+rendition silence '=u'  'wK'
+rendition so      '='   'wk'
 
 # default screen
 chdir
