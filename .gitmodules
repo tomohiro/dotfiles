@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/VimOrganizer"]
 	path = .vim/bundle/VimOrganizer
 	url = git://github.com/hsitz/VimOrganizer.git
+[submodule ".vim/bundle/Textile-for-VIM"]
+	path = .vim/bundle/Textile-for-VIM
+	url = https://github.com/vim-scripts/Textile-for-VIM.git
