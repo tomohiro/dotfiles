@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/Textile-for-VIM"]
 	path = .vim/bundle/Textile-for-VIM
 	url = https://github.com/vim-scripts/Textile-for-VIM.git
+[submodule ".vim/bundle/unite-outline"]
+	path = .vim/bundle/unite-outline
+	url = git://github.com/h1mesuke/unite-outline.git
