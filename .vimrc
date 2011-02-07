@@ -1,60 +1,54 @@
-" for Charset Encoding 文字コードの自動認識
-"
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
+function! SetEncodings()
+    if &encoding !=# 'utf-8'
+        set encoding=japan
+        set fileencoding=japan
     endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-" 日本語を含まない場合は fileencoding に encoding を使うようにする
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
+    if has('iconv')
+        let s:enc_euc = 'euc-jp'
+        let s:enc_jis = 'iso-2022-jp'
+        if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+            let s:enc_euc = 'eucjp-ms'
+            let s:enc_jis = 'iso-2022-jp-3'
+        elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+            let s:enc_euc = 'euc-jisx0213'
+            let s:enc_jis = 'iso-2022-jp-3'
+        endif
+        if &encoding ==# 'utf-8'
+            let s:fileencodings_default = &fileencodings
+            let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+            let &fileencodings = &fileencodings .','. s:fileencodings_default
+            unlet s:fileencodings_default
+        else
+            let &fileencodings = &fileencodings .','. s:enc_jis
+            set fileencodings+=utf-8,ucs-2le,ucs-2
+            if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+                set fileencodings+=cp932
+                set fileencodings-=euc-jp
+                set fileencodings-=euc-jisx0213
+                set fileencodings-=eucjp-ms
+                let &encoding = s:enc_euc
+                let &fileencoding = s:enc_euc
+            else
+                let &fileencodings = &fileencodings .','. s:enc_euc
+            endif
+        endif
+        unlet s:enc_euc
+        unlet s:enc_jis
     endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
-" 改行コードの自動認識
-set fileformats=unix,dos,mac
-" □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
+    if has('autocmd')
+        function! AU_ReCheck_FENC()
+            if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+                let &fileencoding=&encoding
+            endif
+        endfunction
+        autocmd BufReadPost * call AU_ReCheck_FENC()
+    endif
+    set fileformats=unix,dos,mac
+    if exists('&ambiwidth')
+        set ambiwidth=double
+    endif
+endfunction
+call SetEncodings()
 
 " Vim Option Settings
 "
@@ -96,16 +90,14 @@ set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4l
 
 syntax on
 
-" pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
+" for pathogen.vim
+"
 filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
 filetype plugin indent on
 
-" 全角スペースを目立たせる
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
 match ZenkakuSpace /　/
 
@@ -114,17 +106,12 @@ match ZenkakuSpace /　/
 nnoremap j gj
 nnoremap k gk
 
-map <F1> :tabedit ~/
-map <F2> :sp ~/
-map <F3> <C-w>_
-map <F4> <C-w>=
-map <F7> :e# <Enter>
-map <F8> :n <Enter>
-
 " remove highlight
+"
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 " for Split Window Keybinding
+"
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -141,17 +128,20 @@ nnoremap <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:cou
 nnoremap <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
 
 " encoding
+"
 nmap <silent> eu :set fenc=utf-8<CR>
 nmap <silent> ee :set fenc=euc-jp<CR>
 nmap <silent> es :set fenc=cp932<CR>
 
 " encode reopen encoding
+"
 nmap <silent> eru :e ++enc=utf-8 %<CR>
 nmap <silent> ere :e ++enc=euc-jp %<CR>
 nmap <silent> ers :e ++enc=cp932 %<CR>
 nmap <silent> err :e %<CR>
 
 " for TeX Keybinding
+"
 map <C-p> :silent !tex2preview.sh % > /dev/null <Enter>
 
 " for FileType Settings
@@ -173,16 +163,9 @@ autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "QUnit"
 " for clifor Keybinding
 "map <C-r> :silent !clifox -h 172.16.5.222 -r <Enter>
 
-" for PHP Settings
+" for Vim 7 omnifunc Settings
 "
-let php_sql_query=1
-let php_htmlInStrings=1
-let php_folding=0
-
-" for Vim 7
 if v:version >= 700
-    " for Vim omnifunc Settings
-    "
     set pumheight=15
     hi Pmenu ctermbg=darkgray
     hi PmenuSel ctermbg=blue
@@ -191,10 +174,28 @@ if v:version >= 700
     hi TabLineSel ctermbg=red
     hi TabLineFill ctermbg=white
 
-    " for tab
-    map <F5> gt
     map <F6> gT
 endif
+
+" for PHP Settings
+"
+let php_sql_query=1
+let php_htmlInStrings=1
+let php_folding=0
+
+" for unite
+"
+nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
+nnoremap <silent> <C-u>o :<C-u>Unite outline<CR>
+nnoremap <silent> <C-u>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-u>r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <C-u>m :<C-u>Unite file_mru<CR>
+nnoremap <silent> <C-u>u :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> <C-u>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 
 " for vim-ref
 "
@@ -220,9 +221,11 @@ let g:user_zen_settings = {'indentation' : '    '}
 let g:vimshell_user_prompt = 'getcwd()'
 
 " for Vimproc
+"
 let g:vimproc_dll_path = $HOME . '/.vim/' . $OS . '/proc.so'
 
 " for gtags.vim
+"
 map <C-g>  :Gtags -g 
 map <C-g>f :Gtags -f %<CR>
 map <C-g>r :Gtags -r <CR>
@@ -232,6 +235,7 @@ map <C-p>  :cp<CR>
 map <C-g>q <C-w><C-w><C-w>q
 
 " for QFixHowm
+"
 set runtimepath+=~/.vim/bundle/qfixapp
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
