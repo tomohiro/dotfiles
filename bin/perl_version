@@ -1,0 +1,2 @@
+#!/bin/sh
+echo `perl -v | sed -n 2p | cut -d ' ' -f 3,4`
