@@ -13,11 +13,20 @@ export TERM=$TERM_256
 export LS_COLORS='di=01;36'
 export OS=`uname`
 
-#####  for Ruby `rvm` #####
+##### for Ruby `rvm` #####
 if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
 
-#####  for Python `pythonbrew` #####
+##### for Python `pythonbrew` #####
 if [[ -s $HOME/.pythonbrew/etc/bashrc ]] ; then source $HOME/.pythonbrew/etc/bashrc ; fi
+
+##### for Perl `perlbrew` #####
+if [[ -s $HOME/.perlbrew/perl5/etc/bashrc ]] ; then source $HOME/.perlbrew/perl5/etc/bashrc ; fi
+
+##### for cpanminus #####
+if which cpanm > /dev/null 2>&1 && [ -n $PERLBREW_ROOT ]; then 
+    export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
+    export PERL5LIB=$PERLBREW_ROOT/lib/perl5:$PERL5LIB
+fi
 
 ##### Prompt Settings #####
 PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}

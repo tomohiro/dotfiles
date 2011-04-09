@@ -17,7 +17,8 @@ set titlestring="Firefox"
 set showtabline=1
 
 " GUI オプション
-set go=rb
+" set go=rb
+set go=addons,tabs
 
 " Hit-a-Hintのフォントを大きく
 "highlight Hint background-color: red; color: #fff; font-weight: bold; font-size:15px;
