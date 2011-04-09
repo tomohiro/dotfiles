@@ -216,14 +216,6 @@ nmap <Space>l :Trans<CR>
 let g:user_zen_expandabbr_key = '<c-e>'  
 let g:user_zen_settings = {'indentation' : '    '}
 
-" for VimShell
-"
-let g:vimshell_user_prompt = 'getcwd()'
-
-" for Vimproc
-"
-let g:vimproc_dll_path = $HOME . '/.vim/' . $OS . '/proc.so'
-
 " for gtags.vim
 "
 map <C-g>  :Gtags -g 
