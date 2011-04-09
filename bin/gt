@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'open-uri'
+
+API_URI = 'http://ajax.googleapis.com/ajax/services/language'
+
+words = ARGV.join(' ')
+
+begin
+  detect = JSON.parse(open("#{API_URI}/detect?v=1.0&q=#{URI.encode(words)}").read)
+  from, to = detect['responseData']['language'] == 'en' ? %w[en ja] : %w[ja en]
+
+  result = JSON.parse(open("#{API_URI}/translate?v=1.0&q=#{URI.encode(words)}&langpair=#{from}%7C#{to}").read)
+
+  translated = result['responseData']['translatedText']
+rescue Exception => e
+  "Google: Translation Faild. #{e.to_s}."
+end
+
+puts translated if __FILE__ == $0
