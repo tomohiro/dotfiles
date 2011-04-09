@@ -7,8 +7,8 @@ autodetach on
 bind R eval "source $HOME/.screen/launcher.screenrc"
 
 #backtick 0 0 0 ruby scripts/chirpuserstreams.rb
-#backtick 0 0 0 more /tmp/samuraihiroshi
-backtick 0 0 5 ruby -Ku scripts/fortune.rb
+backtick 0 0 0 more /tmp/atmc
+#backtick 0 0 5 ruby scripts/atmc.rb
 
 # Define byobu settings
 backtick 1 9999999 9999999 byobu-status logo
@@ -16,12 +16,13 @@ backtick 2 9999999 9999999 uname -s
 backtick 3 9999999 9999999 uname -r
 backtick 4 9999999 9999999 uname -m
 backtick 5 9999999 9999999 rvm-prompt
-backtick 6 9999999 9999999 python_version
-backtick 7 9999999 9999999 perl_version
+backtick 6 9999999 9999999 php_version
+backtick 7 9999999 9999999 python_version
+backtick 8 9999999 9999999 perl_version
 backtick 99 0 10 more /tmp/last.fm_recent_track
 
-caption always "%{= Wk}%1` %2` %3` %4` %{= rW} %5` %{= mW} %6` %{= gW} %7` %{= Wk} %= %{= Wr} [last.fm]%{= Wk} %99`"
-hardstatus alwayslastline "%0`" 
+caption always "%{= Wk}%1` %2` %3` %4` %{= rW} %5` %{= mW} %6` %{= gW} %7` %{= BW} %8` %{= Wk} %= %{= Wr} [last.fm]%{= Wk} %99`"
+hardstatus alwayslastline "放射能: %0`" 
 
 screen -t 'main' screen -qUmc "common.screenrc"
 #screen -t 'work' screen -qUmc ".screenrc.${OS}"
