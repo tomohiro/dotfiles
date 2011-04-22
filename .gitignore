@@ -1,3 +1,4 @@
+.netrwhist
 /.gem
 /.gemrc
 /.gitconfig
@@ -6,7 +7,6 @@
 /.pit
 /.ssh/id_rsa
 /.ssh/known_hosts*
-/.vim/.netrwhist
 /.vim/bundle
 /.vimperator/info
 /.zsh/cdd_pwd_list
