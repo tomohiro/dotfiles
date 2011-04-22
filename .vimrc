@@ -1,7 +1,6 @@
-filetype off
-
-" Vundle
+" Vim Bundle Plugin: Vundle
 "
+
       set rtp+=~/.vim/vundle.git/ 
       call vundle#rc()
       
@@ -9,10 +8,11 @@ filetype off
       "
       Bundle 'Shougo/neocomplcache'
       Bundle 'Shougo/unite.vim'
+      Bundle 'ciaram/inkpot'
       Bundle 'h1mesuke/unite-outline'
       Bundle 'janne/markdown.vim'
-      Bundle 'mattn/zencoding-vim'
       Bundle 'mattn/googletranslate-vim'
+      Bundle 'mattn/zencoding-vim'
       Bundle 'msanders/snipmate.vim'
       Bundle 'thinca/vim-ref'
       Bundle 'tpope/vim-surround'
@@ -25,51 +25,56 @@ filetype off
       "
       "Bundle 'git://git.wincent.com/command-t.git'
 
-filetype plugin indent on
+      "filetype off
+      "filetype plugin indent on
 
-" Vim Option Settings
+
+" Vim Default Option:
 "
-set complete+=k
-set visualbell
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set number
-set wildmenu
-set viminfo=
-set nobackup
-set noswapfile
-set nowritebackup
-set backspace=indent,eol,start
-set directory=/tmp/
-set listchars=tab:>_
-set list
-set hlsearch
-set iminsert=0
-set imsearch=0
-set ignorecase
-set smartcase
-set incsearch
-set wrapscan
-set ruler
-set showcmd
-set showmatch
-set ambiwidth=double
-set ww=31
-set mouse=a
-set ttymouse=xterm2
-set clipboard+=autoselect
-set clipboard+=unnamed
-
-set laststatus=2
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
-
-syntax on
-
-
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
-match ZenkakuSpace /　/
+      set enc=utf-8
+      set fenc=utf-8
+      set fencs=utf-8,iso-2022-jp,euc-jp,cp932
+      set fileformats=unix,dos
+      set complete+=k
+      set visualbell
+      set tabstop=4
+      set shiftwidth=4
+      set expandtab
+      set autoindent
+      set number
+      set wildmenu
+      set viminfo=
+      set nobackup
+      set noswapfile
+      set nowritebackup
+      set backspace=indent,eol,start
+      set directory=/tmp/
+      set listchars=tab:>_
+      set list
+      set hlsearch
+      set iminsert=0
+      set imsearch=0
+      set ignorecase
+      set smartcase
+      set incsearch
+      set wrapscan
+      set ruler
+      set showcmd
+      set showmatch
+      set ambiwidth=double
+      set ww=31
+      set mouse=a
+      set ttymouse=xterm2
+      set clipboard+=autoselect
+      set clipboard+=unnamed
+     
+      set laststatus=2
+      set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
+     
+      syntax on
+     
+      highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
+      match ZenkakuSpace /　/
 
 " for Vim Keybinding Customize
 "
