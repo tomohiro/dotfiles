@@ -11,7 +11,10 @@ config = Pit.get('pop_mail', :require => {
 })
 
 
-pop = Net::POP.new(config[:pop_server], 110)
-pop.start(config[:account], config[:password])
-
-puts pop.mails.count
+begin
+  pop = Net::POP.new(config[:pop_server], 110)
+  pop.start(config[:account], config[:password])
+  puts pop.mails.count
+rescue Exception => e
+  puts :Busy!
+end

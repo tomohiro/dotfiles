@@ -10,6 +10,7 @@ require 'rubygems'
 require 'mechanize'
 require 'nokogiri'
 
+@source = 'http://bit.ly/e2TWCd'
 ARGV.options do |o|
   o.on('-s', '--source SOURCE', 'Yahoo Weather URI. ') { |v| @source = v }
   o.parse!
