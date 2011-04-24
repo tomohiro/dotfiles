@@ -1,27 +1,16 @@
-" Tomohiro .vimperatorrc
-" for Vimperator 2
+" for Vimperator 3
 
 " これらの機能で新規タブを開いた際はアクティブにする
 set activate=homepage,tabopen,paste
-
-" TAB キー押さなくても自動補完
-set wildoptions=auto
 
 " :[tab]open コマンドで補完する候補と順番
 set complete=sbhS
 
 " ブラウザタイトルの変更
-set titlestring="Firefox"
-
-" 開いているページがひとつだけならタブを非表示にする
-set showtabline=1
+set titlestring="Firefox 4 { Vimperator 3 }"
 
 " GUI オプション
-" set go=rb
-set go=addons,tabs
-
-" Hit-a-Hintのフォントを大きく
-"highlight Hint background-color: red; color: #fff; font-weight: bold; font-size:15px;
+set gui=tabs
 
 " visualbell有効
 set visualbell
@@ -33,15 +22,15 @@ set focuscontent
 map <C-r> :restart<CR>
 
 " 設定ファイルを再読み込み
-map ,s :so .vimperatorrc<CR>
+map ,s :so ~/.vimperatorrc<CR>
 map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so ~/.vimperatorrc<CR>
 
 " バーの表示切り替え
-map <C-0> :set go=<CR>:set stal=0<CR>
-map <C-1> :set go=<CR>:set stal=1<CR>
-map <C-2> :set go=b<CR>:set stal=1<CR>
-map <C-3> :set go=bT<CR>:set stal=1<CR>
-map <C-4> :set go=bTm<CR>:set stal=1<CR>
+map <C-0> :set gui=all<CR>
+map <C-1> :set gui=none<CR>
+map <C-2> :set gui=none,tabs<CR>
+map <C-3> :set gui=none,tabs,navigation<CR>
+map <C-4> :set gui=none,tabs,navigation,bookmarks<CR>
 
 " 上のディレクトリに移動
 map <BS> gu
@@ -67,10 +56,10 @@ map l <C-n><Esc>
 map <C-h> :tabmove! -1<CR>
 map <C-l> :tabmove! +1<CR>
 
-" C-j を無効化
+" SKK のため C-j を無効化
 cmap <C-j> <Nop>
 imap <C-j> <Nop>
-map <C-j> <Nop>
+map  <C-j> <Nop>
 
 " ソース閲覧
 map V gf
@@ -83,91 +72,92 @@ cmap <Up> <S-Tab>
 map ! :set invum<CR>
 
 " ページのアクセスキーを無効化 
-js <<EOM
+javascript <<JS
   liberator.modules.options.setPref('ui.key.generalAccessKey', 0);
-EOM
+JS
 
-" Statusline Settings
-" ==================================================
-"hi StatusLine font-size: 11px; color: #aaa; background: url("chrome://global/skin/statusbar-background.gif") #444; repeat-x top left; border-top: 1px solid #eee; height: 22px; padding-left: 0.5em;
-"hi StatusLineSecure font-size: 11px; color: #262626; background: url("chrome://global/skin/statusbar-background.gif") #949393 repeat-x top left; border-top: 1px solid #888; height: 22px; padding-left: 0.5em;
-"hi StatusLineBroken font-size: 11px; color: #d00f0f; background: url("chrome://global/skin/statusbar-background.gif") #949393 repeat-x top left; border-top: 1px solid #888; height: 22px; padding-left: 0.5em;
+javascript <<JS
+let statusLine = document.getElementById("liberator-statusline");
+let bottomBar  = document.getElementById("liberator-bottombar");
 
-" ステータスラインに RSS フィードアイコンを表示
-js <<EOM
-(function(){
-    var feedPanel = document.createElement('statusbarpanel');
-    var feedButton = document.getElementById('feed-button');
-    feedPanel.setAttribute('id','feed-panel-clone');
-    feedPanel.appendChild(feedButton.cloneNode(true));
-    feedButton.parentNode.removeChild(feedButton);
-    document.getElementById('status-bar').insertBefore(feedPanel,document.getElementById('security-button'));
-})();
-EOM
+// ステータスラインに戻る/進むを表示
+if(!document.getElementById("history-indicators")) {
+    let xml = <hbox id="history-indicators" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+        <label value="&lt;" id="back-indicator" class="history-indicator">
+        <observes element={document.getElementById("back-button").command} attribute="disabled" />
+        </label>
+        <label value="&gt;" id="forward-indicator" class="history-indicator">
+        <observes element={document.getElementById("forward-button").command} attribute="disabled" />
+        </label>
+        </hbox>;
 
-" ステータスラインに favicon 表示
-js <<EOM
-liberator.plugins.faviconizeStatusBar = function () {
-    var panelInit = function () {
-        var panel = document.getElementById('page-proxy-favicon-clone');
-        if (!panel) {
-            panel = document.createElement('statusbarpanel');
-            panel.setAttribute('id', 'page-proxy-favicon-clone');
-        }
-
-        while (panel.childNodes.length > 0) {
-            panel.removeChild(panel.childNodes.item(0));
-        }
-
-        return panel;
-    };
-
-    var base = document.getElementById('page-proxy-favicon');
-    var panel = panelInit();
-    panel.appendChild(base.cloneNode(true));
-    //base.parentNode.removeChild(base);
-
-    document.getElementById('status-bar').insertBefore(
-        panel,
-        document.getElementById('liberator-statusline')
-    );
+    statusLine.appendChild(document.adoptNode(new DOMParser().parseFromString(xml.toXMLString(), "application/xml").documentElement, true));
 }
-liberator.modules.autocommands.add(
-    'LocationChange',
-    '.*',
-    'js liberator.plugins.faviconizeStatusBar()'
-);
-liberator.modules.autocommands.add(
-    'DOMLoad',
-    '.*',
-    'js liberator.plugins.faviconizeStatusBar()'
-);
-EOM
+
+// ステータスバーにブックマークアイコンを移動
+let (statusBar = document.getElementById("status-bar")) {
+    let (id = "star-button") {
+        if(!document.getElementById("panel-" + id)) {
+            let panel = document.createElement("statusbarpanel");
+            panel.setAttribute("id", "panel-" + id);
+            let (icon = document.getElementById(id)) {
+                icon.setAttribute("class", "");
+                panel.appendChild(icon);
+            }
+            statusBar.insertBefore(panel, statusBar.firstChild);
+        }
+    }
+}
+
+// ステータスラインの横にステータスバーを移動
+let (statusBar = document.getElementById("status-bar")) {
+    statusBar.style.maxHeight = "20px";
+    bottomBar.appendChild(statusBar);
+}
+
+// ステータスラインにfaviconを移動
+let (favicon = document.getElementById("page-proxy-stack")) {
+    favicon.style.maxWidth = favicon.style.maxHeight = "20px";
+    statusLine.insertBefore(favicon, statusLine.firstChild);
+}
+JS
+
+style -name history-indicators chrome://browser/content/browser.xul <<CSS
+#history-indicators {
+    padding: 0 ! important;
+}
+.history-indicator {
+margin: 0 1px ! important;
+color: WindowText;
+}
+.history-indicator[disabled="true"] {
+    //visibility: hidden;
+}
+CSS
+
 
 " Plugin Settings
 " ==================================================
+
 " copy.js
 map cp :copy<Space>
-js <<EOM
+javascript <<JS
 liberator.globalVariables.copy_templates = [
-  { label: 'titleAndURL',    value: '%TITLE% %URL%' },
+  { label: 'titleAndURL',    value: '%TITLE%\n%URL%' },
   { label: 'title',          value: '%TITLE%' },
   { label: 'url',            value: '%URL%' },
-  { label: 'markdown',       value: '[%TITLE%](%URL% "%TITLE%")' },
-  { label: 'markdownsel',    value: '[%SEL%](%URL% "%TITLE%")' },
-  { label: 'htmlblockquote', value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' }
+  { label: 'markdown min',   value: '[%TITLE%](%URL%)' },
+  { label: 'markdown full',  value: '[%TITLE%](%URL% "%TITLE%")' },
 ];
-EOM
+JS
 
-" feedSomeKeys_2.js
-autocmd LocationChange .* :fmapc
-" Gmail
-autocmd LocationChange mail\.google\.com/(mail|a)/ :fmap -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
-" LDR/Fastladder/OpenFL
-autocmd LocationChange http://fastladder\.com/reader/ :fmap j k s a p v c z Z b i r < > o,vj J,<Space> K,<S-Space> q w g u
-" Fastladder Reblog用 (要tombloo.xpi/ldr+tombloo.user.js)
-autocmd LocationChange http://fastladder\.com/reader/ :fmap i,Tj
-autocmd LocationChange http://fastladder\.com/reader/ :fmap e,Tj
+" feedSomeKeys_3.js
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
+lazy fmaps -u='fastladder\.com/reader/' i,Tj
+lazy fmaps -u='fastladder\.com/reader/' e,Tj
 
 " refcontrol.js
 let g:refcontrol_enabled = "true"
@@ -180,10 +170,6 @@ liberator.globalVariables.refcontrol = {
     'ameblo.jp'         : '@FORGE',
 };
 EOM
-
-" hatenabookmark.js
-map <S-h> :hb<Space>
-javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " 読み込んだ事を出力
 echo ".vimperatorrc sourced"
