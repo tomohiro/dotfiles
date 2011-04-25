@@ -3,19 +3,29 @@
 require 'json'
 require 'open-uri'
 
-API_URI = 'http://ajax.googleapis.com/ajax/services/language'
+module Google
 
-words = ARGV.join(' ')
+  API_URI = 'http://ajax.googleapis.com/ajax/services/language'
 
-begin
-  detect = JSON.parse(open("#{API_URI}/detect?v=1.0&q=#{URI.encode(words)}").read)
-  from, to = detect['responseData']['language'] == 'en' ? %w[en ja] : %w[ja en]
+  def self.translate(text)
+    begin
+      encoded = URI.encode text
 
-  result = JSON.parse(open("#{API_URI}/translate?v=1.0&q=#{URI.encode(words)}&langpair=#{from}%7C#{to}").read)
+      detect = JSON.parse(open("#{API_URI}/detect?v=1.0&q=#{encoded}").read)
+      from, to = detect['responseData']['language'] == 'en' ? %w[en ja] : %w[ja en]
 
-  translated = result['responseData']['translatedText']
-rescue Exception => e
-  "Google: Translation Faild. #{e.to_s}."
+      result = JSON.parse(open("#{API_URI}/translate?v=1.0&q=#{encoded}&langpair=#{from}%7C#{to}").read)
+
+      result['responseData']['translatedText']
+    rescue Exception => e
+      "Google: Translation Faild. #{e.to_s}."
+    end
+  end
 end
 
-puts translated if __FILE__ == $0
+if __FILE__ == $0
+  text = STDIN.isatty ? ARGV : STDIN.readlines
+  abort 'Please enter the text.' if text.count == 0
+
+  puts Google.translate text.join ' '
+end
