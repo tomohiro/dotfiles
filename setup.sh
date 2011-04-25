@@ -17,6 +17,8 @@ ln -s -f $BASE.screen $HOME/
 ln -s -f $BASE.screenrc $HOME/
 ln -s -f $BASE.ssh $HOME/
 ln -s -f $BASE.irssi $HOME/
+ln -s -f $BASE.vmc_target $HOME/
+ln -s -f $BASE.vmc_token $HOME/
 ln -s -f $BASE.pit $HOME/
 ln -s -f $BASE.todo $HOME/
 ln -s -f $BASE.todo.actions.d $HOME/
