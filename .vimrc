@@ -1,80 +1,81 @@
 " Vim Bundle Plugin: Vundle
 "
 
-      set rtp+=~/.vim/vundle.git/ 
-      call vundle#rc()
-      
-      " original repos on github
-      "
-      Bundle 'Shougo/neocomplcache'
-      Bundle 'Shougo/unite.vim'
-      Bundle 'ciaram/inkpot'
-      Bundle 'h1mesuke/unite-outline'
-      Bundle 'janne/markdown.vim'
-      Bundle 'mattn/googletranslate-vim'
-      Bundle 'mattn/zencoding-vim'
-      Bundle 'msanders/snipmate.vim'
-      Bundle 'thinca/vim-ref'
-      Bundle 'tpope/vim-surround'
+set rtp+=~/.vim/vundle.git/ 
+call vundle#rc()
 
-      " vim-scripts repos
-      "
-      Bundle 'gtags.vim'
+" original repos on github
+"
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'ciaram/inkpot'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'janne/markdown.vim'
+Bundle 'mattn/googletranslate-vim'
+Bundle 'mattn/zencoding-vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-surround'
 
-      " non github repos
-      "
-      "Bundle 'git://git.wincent.com/command-t.git'
+" vim-scripts repos
+"
+Bundle 'gtags.vim'
 
-      "filetype off
-      "filetype plugin indent on
+" non github repos
+"
+"Bundle 'git://git.wincent.com/command-t.git'
+
+"filetype off
+"filetype plugin indent on
 
 
 " Vim Default Option:
 "
-      set enc=utf-8
-      set fenc=utf-8
-      set fencs=utf-8,iso-2022-jp,euc-jp,cp932
-      set fileformats=unix,dos
-      set complete+=k
-      set visualbell
-      set tabstop=4
-      set shiftwidth=4
-      set expandtab
-      set autoindent
-      set number
-      set wildmenu
-      set viminfo=
-      set nobackup
-      set noswapfile
-      set nowritebackup
-      set backspace=indent,eol,start
-      set directory=/tmp/
-      set listchars=tab:>_
-      set list
-      set hlsearch
-      set iminsert=0
-      set imsearch=0
-      set ignorecase
-      set smartcase
-      set incsearch
-      set wrapscan
-      set ruler
-      set showcmd
-      set showmatch
-      set ambiwidth=double
-      set ww=31
-      set mouse=a
-      set ttymouse=xterm2
-      set clipboard+=autoselect
-      set clipboard+=unnamed
-     
-      set laststatus=2
-      set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
-     
-      syntax on
-     
-      highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
-      match ZenkakuSpace /　/
+set enc=utf-8
+set fenc=utf-8
+set fencs=utf-8,iso-2022-jp,euc-jp,cp932
+set fileformats=unix,dos
+set complete+=k
+set visualbell
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set number
+set wildmenu
+set viminfo=
+set nobackup
+set noswapfile
+set nowritebackup
+set backspace=indent,eol,start
+set directory=/tmp/
+set listchars=tab:>_,trail:_,eol:↲
+set list
+set hlsearch
+set iminsert=0
+set imsearch=0
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set ruler
+set showcmd
+set showmatch
+set ambiwidth=double
+set ww=31
+set mouse=a
+set ttymouse=xterm2
+set autoread
+"set clipboard+=autoselect
+"set clipboard+=unnamed
+
+set laststatus=2
+set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
+
+syntax on
+
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
+match ZenkakuSpace /　/
 
 " for Vim Keybinding Customize
 "
@@ -133,9 +134,8 @@ autocmd FileType css            :set fenc=utf-8
 autocmd BufWritePost */markdown/*.mkd :silent !cg convert % > /dev/null && clifox -r
 autocmd BufWritePost slide.mkdn :silent !slidedown % > slide.html && clifox -r
 autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "UnitTest"
-autocmd BufWritePost */wmf/*    :silent !clifox -h 172.16.5.222 -r "QUnit"
 
-" for clifor Keybinding
+" for clifox Keybinding
 "map <C-r> :silent !clifox -h 172.16.5.222 -r <Enter>
 
 " for Vim 7 omnifunc Settings
@@ -154,9 +154,9 @@ endif
 
 " for PHP Settings
 "
-let php_sql_query=1
-let php_htmlInStrings=1
-let php_folding=0
+let php_sql_query     = 1
+let php_htmlInStrings = 1
+let php_folding       = 0
 
 " for unite
 "
@@ -204,13 +204,29 @@ map <C-g>q <C-w><C-w><C-w>q
 " for QFixHowm
 "
 set runtimepath+=~/.vim/bundle/qfixapp
-let QFixHowm_Key      = 'g'
-let howm_dir          = $HOME . '/Dropbox/howm'
-let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+
+let howm_suffix           = 'markdown'
+let my_blog_draft_dir     = 'Development/tomohiro.heroku.com/_draft'
+
+let QFixHowm_HowmMode      = 0
+let QFixHowm_UserFileType  = 'markdown'
+let QFixHowm_UserFileExt   = howm_suffix
+let QFixHowm_QuickMemoFile = 'Qmem-00-0000-00-00-00000.' . howm_suffix
+let QFixHowm_Title         = '#'
+let QFixHowm_Key           = 'g'
+
+let howm_dir          = $HOME . '/' . my_blog_draft_dir
+let howm_filename     = '%Y-%m-%d-%H%M%S.' . howm_suffix
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 
-" for Vim colorscheme Settings
+let QFixHowm_Template_mkd = [
+  \"%TITLE% %TAG%",
+  \""
+\]
+let QFixHowm_Cmd_NewEntry_mkd = '$a'
+
+" for Vim colorscheme settings
 "
 if filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
     colorscheme inkpot
@@ -219,5 +235,7 @@ else
     set background=dark
 endif
 
-hi LineNr ctermbg=235 ctermfg=105
-hi StatusLine ctermbg=64 ctermfg=15
+" Override colorscheme settings
+"
+hi LineNr     ctermbg=235 ctermfg=105
+hi StatusLine ctermbg=64  ctermfg=15
