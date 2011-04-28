@@ -1,13 +1,11 @@
 source defaults.screenrc
- 
+
 # detach on hangup
 autodetach on
 
-# soruce 
+# soruce
 bind R eval "source $HOME/.screen/launcher.screenrc"
 
-#backtick 0 0 0 ruby scripts/chirpuserstreams.rb
-#backtick 0 0 10 more /tmp/atmc
 backtick 0 0 10 ruby scripts/jojo.rb
 
 # Define byobu settings
@@ -22,9 +20,6 @@ backtick 8 9999999 9999999 perl_version
 backtick 99 0 10 more /tmp/last.fm_recent_track
 
 caption always "%{= Wk}%1` %2` %3` %4` %{= rW} %5` %{= mW} %6` %{= gW} %7` %{= BW} %8` %{= Wk} %= %{= Wr} [last.fm]%{= Wk} %99`"
-hardstatus alwayslastline "%0`" 
+hardstatus alwayslastline "%0`"
 
 screen -t 'main' screen -qUmc "common.screenrc"
-#screen -t 'work' screen -qUmc ".screenrc.${OS}"
-#screen -t 'development' screen -qUmc ".screenrc.${OS}"
-#screen -t 'remote' screen -qUmc ".screenrc.${OS}"
