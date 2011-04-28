@@ -1,7 +1,7 @@
 " Vim Bundle Plugin: Vundle
 "
 
-set rtp+=~/.vim/vundle.git/ 
+set rtp+=~/.vim/vundle/
 call vundle#rc()
 
 " original repos on github
