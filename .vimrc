@@ -8,7 +8,7 @@ call vundle#rc()
 "
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
-Bundle 'ciaram/inkpot'
+Bundle 'ciaranm/inkpot'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'janne/markdown.vim'
 Bundle 'mattn/googletranslate-vim'
@@ -203,7 +203,7 @@ map <C-g>q <C-w><C-w><C-w>q
 
 " for QFixHowm
 "
-set runtimepath+=~/.vim/bundle/qfixapp
+set runtimepath+=~/.vim/qfixapp
 
 let howm_suffix           = 'markdown'
 let my_blog_draft_dir     = 'Development/tomohiro.heroku.com/_draft'
