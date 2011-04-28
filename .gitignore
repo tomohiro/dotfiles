@@ -8,6 +8,7 @@
 /.ssh/id_rsa
 /.ssh/known_hosts*
 /.vim/bundle
+/.vim/vundle
 /.vimperator/info
 /.vmc_token
 /.zsh/cdd_pwd_list
