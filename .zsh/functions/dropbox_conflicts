@@ -1,9 +1,0 @@
-#/usr/bin/env zsh
-
-function dropbox_show_conflicted_files() {
-    find ~/Dropbox -name "*conflicted*"
-}
-
-function dropbox_remove_conflicted_files() {
-    find ~/Dropbox -name "*conflicted*" -print0 | xargs -0 rm -f
-}
