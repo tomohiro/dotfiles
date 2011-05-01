@@ -2,9 +2,9 @@
 /gem/credentials
 /gem/ruby
 /gem/specs
-gemrc
-gitconfig
-irssi/config
+/gemrc
+/gitconfig
+/irssi/config
 network
 pit
 ssh/id_rsa
