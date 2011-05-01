@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>FTP と FTPS</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.http.html">HTTP と HTTPS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.php.html">PHP 入出力ストリーム</a></div>
+ <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wrappers.ftp" class="section">
+  <h2 class="title">FTP と FTPS</h2>
+  <p class="simpara">PHP 4、PHP 5。<var class="filename">ftps://</var> は PHP 4.3.0 以降。</p>
+   
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara"><var class="filename">ftp://example.com/pub/file.txt</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">ftp://user:password@example.com/pub/file.txt</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">ftps://example.com/pub/file.txt</var></span></li>
+    <li class="listitem"><span class="simpara"><var class="filename">ftps://user:password@example.com/pub/file.txt</var></span></li>
+   </ul>
+   
+  <p class="simpara">
+    FTP 経由でのファイルの読み込みと新しいファイルの作成を許可します。
+    サーバがパッシブモードの FTP をサポートしていない場合、接続は失敗します。
+   </p>
+  <p class="simpara">
+    読み込み用または書き込み用のどちらかでファイルをオープンすることが
+    可能ですが、それらを両方同時に指定することはできません。FTP サーバ上の
+    既存のファイルを書き込み用にオープンしようとした場合、もし
+    コンテキストオプション <i>overwrite</i> が指定されていなければ
+    接続は失敗します。既存のファイルを FTP 越しに上書きしたい場合は、
+    コンテキストオプション <i>overwrite</i> を指定したうえで
+    書き込み用にファイルをオープンします。別の方法としては、
+    <a href="ref.ftp.html" class="link">FTP 拡張モジュール</a> を使用することも可能です。
+   </p>
+  <blockquote><p><b class="note">注意</b>: 
+    <b>追記</b><br />
+    <span class="simpara">
+     PHP 5.0.0 では、<i>ftp://</i> URL ラッパー経由での
+     ファイルの追記が可能となりました。それ以前のバージョンでは
+     <i>ftp://</i> 経由でのファイルの追記は失敗していました。
+    </span>
+   </p></blockquote>
+   <p class="simpara">
+    <var class="filename">ftps://</var> は PHP 4.3.0 から有効になりました。
+    これは <var class="filename">ftp://</var> と同じですが、FTP サーバとの
+    安全な接続を確立しようと試みます。もしサーバが SSL をサポートして
+    いなければ、通常の（暗号化されない）FTP を使用します。
+   </p>
+   <blockquote><p><b class="note">注意</b>: 
+   <span class="simpara">
+    FTPS のサポートは PHP 4.3.0 から始まりました。これを使用するには
+    OpenSSL サポートを含めて PHP をコンパイルする必要があります。
+   </span>
+  </p></blockquote>
+  <p class="simpara">
+   <a href="filesystem.configuration.html#ini.from" class="link">from</a> ディレクティブを
+   <var class="filename">php.ini</var> で設定した場合、この値が
+   anonymous FTP のパスワードとして送信されます。
+  </p>
+   <p class="para">
+    <table class="doctable table">
+     <caption><b>ラッパーの概要</b></caption>
+     
+      <thead valign="middle">
+       <tr valign="middle">
+       <th>属性</th>
+        <th>PHP 4</th>
+        <th>PHP 5</th>
+       </tr>
+
+     </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td align="left"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a> で制約される</td>
+        <td align="left">Yes</td>
+       <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">読み込み許可</td>
+       <td align="left">Yes</td>
+        <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">書き込み許可</td>
+       <td align="left">Yes（新規ファイルのみ）</td>
+        <td align="left">Yes（新規ファイル あるいは 既存のファイルで <i><tt class="parameter">overwrite</tt></i> を指定）</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">追加許可</td>
+        <td align="left">No</td>
+       <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left">同時読み書き許可</td>
+        <td align="left">No</td>
+        <td align="left">No</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.stat.html" class="function">stat()</a></span> のサポート</td>
+       <td align="left">No</td>
+        <td align="left">
+         PHP 5.0.0 では <span class="function"><a href="function.filesize.html" class="function">filesize()</a></span>、
+         <span class="function"><a href="function.filetype.html" class="function">filetype()</a></span>、<span class="function"><a href="function.file-exists.html" class="function">file_exists()</a></span>、
+         <span class="function"><a href="function.is-file.html" class="function">is_file()</a></span> および <span class="function"><a href="function.is-dir.html" class="function">is_dir()</a></span> のみ。
+         PHP 5.1.0 で <span class="function"><a href="function.filemtime.html" class="function">filemtime()</a></span>。
+       </td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.unlink.html" class="function">unlink()</a></span> のサポート</td>
+        <td align="left">No</td>
+        <td align="left">Yes</td>
+      </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rename.html" class="function">rename()</a></span> のサポート</td>
+        <td align="left">No</td>
+        <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+       <td align="left"><span class="function"><a href="function.mkdir.html" class="function">mkdir()</a></span> のサポート</td>
+        <td align="left">No</td>
+        <td align="left">Yes</td>
+       </tr>
+
+       <tr valign="middle">
+        <td align="left"><span class="function"><a href="function.rmdir.html" class="function">rmdir()</a></span> のサポート</td>
+        <td align="left">No</td>
+        <td align="left">Yes</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wrappers.http.html">HTTP と HTTPS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wrappers.php.html">PHP 入出力ストリーム</a></div>
+ <div class="up"><a href="wrappers.html">サポートするプロトコル/ラッパー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

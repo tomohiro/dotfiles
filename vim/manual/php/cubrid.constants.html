@@ -1,0 +1,513 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>定義済み定数</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="cubrid.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="cubrid.examples.html">例</a></div>
+ <div class="up"><a href="book.cubrid.html">Cubrid</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="cubrid.constants" class="appendix">
+ <h1>定義済み定数</h1>
+
+ <p class="simpara">
+以下の定数が定義されています。
+この関数の拡張モジュールが PHP 組み込みでコンパイルされているか、
+実行時に動的にロードされている場合のみ使用可能です。
+</p>
+ <p class="para">
+  <dl>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_INCLUDE_OID</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to determine whether to get OID after query execution.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_ASYNC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to execute the query in asynchronous mode.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_NUM</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to get the query result as a numeric array (0-default).
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_ASSOC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to get the query result as an associative array.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_BOTH</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to get the query result as both numeric and associative arrays (default value).
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_OBJECT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to get the query result an object that has the attribute whose name is the same as the column name.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_CURSOR_FIRST</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to move the current cursor to the first position in the result.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_CURSOR_CURRENT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to move the current cursor as a default value if the origin is not specified.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_CURSOR_LAST</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is used to move the current cursor to the last position in the result.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_CURSOR_SUCCESS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the returned value of <span class="function"><a href="function.cubrid-move-cursor.html" class="function">cubrid_move_cursor()</a></span> function in case of success.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_NO_MORE_DATA</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the returned value of <span class="function"><a href="function.cubrid-move-cursor.html" class="function">cubrid_move_cursor()</a></span> function in case of failure.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_CURSOR_ERROR</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the returned value of <span class="function"><a href="function.cubrid-move-cursor.html" class="function">cubrid_move_cursor()</a></span> function in case of failure.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_CLASS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_VCLASS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_QUERY_SPEC</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_ATTRIBUTE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_CLASS_ATTRIBUTE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_METHOD</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_CLASS_METHOD</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_METHOD_FILE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_SUPERCLASS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_SUBCLASS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_CONSTRAINT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_TRIGGER</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_CLASS_PRIVILEGE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_ATTR_PRIVILEGE</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_DIRECT_SUPER_CLASS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+			<dt>
+
+    <span class="term">
+     <b><tt>CUBRID_SCH_ATTR_PRIMARY_KEY</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is a schema type used for <span class="function"><a href="function.cubrid-schema.html" class="function">cubrid_schema()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_FACILITY_DBMS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the facility code of the occurred error code when using <span class="function"><a href="function.cubrid-error-code-facility.html" class="function">cubrid_error_code_facility()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_FACILITY_CAS</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the facility code of the occurred error code when using <span class="function"><a href="function.cubrid-error-code-facility.html" class="function">cubrid_error_code_facility()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_FACILITY_CCI</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the facility code of the occurred error code when using <span class="function"><a href="function.cubrid-error-code-facility.html" class="function">cubrid_error_code_facility()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>CUBRID_FACILITY_CLIENT</tt></b>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+    </span>
+    <dd>
+
+     <span class="simpara">
+        Is the facility code of the occurred error code when using <span class="function"><a href="function.cubrid-error-code-facility.html" class="function">cubrid_error_code_facility()</a></span> function.
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="cubrid.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="cubrid.examples.html">例</a></div>
+ <div class="up"><a href="book.cubrid.html">Cubrid</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

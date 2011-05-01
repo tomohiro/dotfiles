@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Is used to get the number of rows</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-num-fields.html">cubrid_num_fields</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-prepare.html">cubrid_prepare</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.cubrid-num-rows" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_num_rows</h1>
+  <p class="verinfo">(PECL CUBRID &gt;= 8.3.0)</p><p class="refpurpose"><span class="refname">cubrid_num_rows</span> &mdash; <span class="dc-title">Is used to get the number of rows</span></p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b>cubrid_num_rows</b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$req_identifier</tt></span>  
+   )</div>
+
+  <p class="para rdfs-comment">
+    The <span class="function"><b>cubrid_num_rows()</b></span> function is used to get the number of rows from the query result.  You can use it only when the query executed is a select sentence.  When you want to know such value for INSERT, UPDATE, or DELETE query, you have to use the <span class="function"><a href="function.cubrid-affected-rows.html" class="function">cubrid_affected_rows()</a></span> function.
+  </p>
+  <p class="para">
+   Note: The <span class="function"><b>cubrid_num_rows()</b></span> function can only be used for synchronous query; it returns 0 when it is used for asynchronous query.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+  <dl>
+
+    <dt>
+
+  <span class="term"><i><tt class="parameter">req_identifier</tt></i></span>
+  <dd>
+<p class="para">Request identifier.</p></dd>
+
+   </dt>
+
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+    Number of rows, when process is successful.
+  </p>
+  <p class="para">
+    0 when the query was done in async mode. 
+  </p>
+    <p class="para">
+    -1, if SQL sentence is not SELECT.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">例</h3>
+  <div class="example">
+   <p><b>例1 <span class="function"><b>cubrid_num_rows()</b></span> example</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$con</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;member"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$req</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rows_count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_num_rows&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cols_count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_num_cols&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"result&nbsp;set&nbsp;rows&nbsp;count&nbsp;:&nbsp;</span><span style="color: #0000BB">$rows</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"result&nbsp;set&nbsp;columns&nbsp;count&nbsp;:&nbsp;</span><span style="color: #0000BB">$cols</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">cubrid_close_request&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+    <div class="refsect1 seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.cubrid-execute.html" class="function" rel="rdfs-seeAlso">cubrid_execute()</a> - Is used to execute the given SQL sentence.</span></li>  
+    <li class="member"><span class="function"><a href="function.cubrid-num-cols.html" class="function" rel="rdfs-seeAlso">cubrid_num_cols()</a> - Is used to get the number of columns</span></li>  
+    <li class="member"><span class="function"><a href="function.cubrid-affected-rows.html" class="function" rel="rdfs-seeAlso">cubrid_affected_rows()</a> - Get number of affected rows in previous Cubrid operation</span></li>  
+   </ul>
+  </p>
+  </div>
+
+ 
+</div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-num-fields.html">cubrid_num_fields</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-prepare.html">cubrid_prepare</a></div>
+ <div class="up"><a href="ref.cubrid.html">Cubrid 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

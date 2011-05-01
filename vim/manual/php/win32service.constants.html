@@ -1,0 +1,635 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>定義済み定数</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="win32service.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="win32service.examples.html">例</a></div>
+ <div class="up"><a href="book.win32service.html">win32service</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="win32service.constants" class="appendix">
+ <h1>定義済み定数</h1>
+
+ <p class="simpara">
+以下の定数が定義されています。
+この関数の拡張モジュールが PHP 組み込みでコンパイルされているか、
+実行時に動的にロードされている場合のみ使用可能です。
+</p>
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービス型のビットマスク</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_WIN32_OWN_PROCESS</tt></b></td>
+     <td align="left">0x00000010</td>
+     <td align="left">
+      The service that runs in its own process.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_INTERACTIVE_PROCESS</tt></b></td>
+     <td align="left">0x00000100</td>
+     <td align="left">
+      The service can interact with the desktop. This option is not available on Windows Vista or later.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービスステータス定数</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTINUE_PENDING</tt></b></td>
+     <td align="left">0x00000005</td>
+     <td align="left">
+      The service continue is pending.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_PAUSE_PENDING</tt></b></td>
+     <td align="left">0x00000006</td>
+     <td align="left">
+      The service pause is pending.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_PAUSED</tt></b></td>
+     <td align="left">0x00000007</td>
+     <td align="left">
+      The service is paused.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_RUNNING</tt></b></td>
+     <td align="left">0x00000004</td>
+     <td align="left">
+      The service is running.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_START_PENDING</tt></b></td>
+     <td align="left">0x00000002</td>
+     <td align="left">
+      The service is starting.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_STOP_PENDING</tt></b></td>
+     <td align="left">0x00000003</td>
+     <td align="left">
+      The service is stopping.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_STOPPED</tt></b></td>
+     <td align="left">0x00000001</td>
+     <td align="left">
+      The service is not running.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービス制御メッセージ定数</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_CONTINUE</tt></b></td>
+     <td align="left">0x00000003</td>
+     <td align="left">
+      Notifies a paused service that it should resume.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_INTERROGATE</tt></b></td>
+     <td align="left">0x00000004</td>
+     <td align="left">
+      Notifies a service that it should report its current status information
+      to the service control manager.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_PAUSE</tt></b></td>
+     <td align="left">0x00000002</td>
+     <td align="left">
+      Notifies a service that it should pause.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_PRESHUTDOWN</tt></b></td>
+     <td align="left">0x0000000F</td>
+     <td align="left">
+      Notifies a service that the system will be shutting down. A service that
+      handles this notification blocks system shutdown until the service stops
+      or the preshutdown time-out interval expires. This value is not supported
+      by Windows Server 2003 and Windows XP/2000.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_SHUTDOWN</tt></b></td>
+     <td align="left">0x00000005</td>
+     <td align="left">
+      Notifies a service that the system is shutting down so the service can
+      perform cleanup tasks. If a service accepts this control code, it must
+      stop after it performs its cleanup tasks. After the SCM sends this
+      control code, it will not send other control codes to the service.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_CONTROL_STOP</tt></b></td>
+     <td align="left">0x00000001</td>
+     <td align="left">
+      Notifies a service that it should stop.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービス制御メッセージが受領されたときのビットマスク</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ACCEPT_PAUSE_CONTINUE</tt></b></td>
+     <td align="left">0x00000002</td>
+     <td align="left">
+      The service can be paused and continued. This control code allows the
+      service to receive <b><tt>WIN32_SERVICE_CONTROL_PAUSE</tt></b> and
+      <b><tt>WIN32_SERVICE_CONTROL_CONTINUE</tt></b> notifications.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ACCEPT_PRESHUTDOWN</tt></b></td>
+     <td align="left">0x00000100</td>
+     <td align="left">
+      The service can perform preshutdown tasks. This control code enables the
+      service to receive <b><tt>WIN32_SERVICE_CONTROL_PRESHUTDOWN</tt></b>
+      notifications. This value is not supported by Windows Server 2003 and
+      Windows XP/2000.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ACCEPT_SHUTDOWN</tt></b></td>
+     <td align="left">0x00000004</td>
+     <td align="left">
+      The service is notified when system shutdown occurs. This control code
+      allows the service to receive <b><tt>WIN32_SERVICE_CONTROL_SHUTDOWN</tt></b>
+      notifications.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ACCEPT_STOP</tt></b></td>
+     <td align="left">0x00000001</td>
+     <td align="left">
+      The service can be stopped. This control code allows the service to
+      receive <b><tt>WIN32_SERVICE_CONTROL_STOP</tt></b> notifications.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービス開始型定数</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_AUTO_START</tt></b></td>
+     <td align="left">0x00000002</td>
+     <td align="left">
+      A service started automatically by the service control manager during
+      system startup.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_DEMAND_START</tt></b></td>
+     <td align="left">0x00000003</td>
+     <td align="left">
+      A service started by the service control manager when a process calls the
+      StartService function.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_DISABLED</tt></b></td>
+     <td align="left">0x00000004</td>
+     <td align="left">
+      A service that cannot be started. Attempts to start the service result in
+      the error code <b><tt>WIN32_ERROR_SERVICE_DISABLED</tt></b>.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービスエラー制御定数</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ERROR_IGNORE</tt></b></td>
+     <td align="left">0x00000000</td>
+     <td align="left">
+      The startup program ignores the error and continues the startup operation.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_ERROR_NORMAL</tt></b></td>
+     <td align="left">0x00000001</td>
+     <td align="left">
+      The startup program logs the error in the event log but continues the
+      startup operation.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32Service サービスフラグ定数</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_SERVICE_RUNS_IN_SYSTEM_PROCESS</tt></b></td>
+     <td align="left">0x00000001</td>
+     <td align="left">
+      The service runs in a system process that must always be running.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><b>Win32 エラーコード</b></caption>
+  
+   <thead valign="middle">
+    <tr valign="middle">
+     <th>定数</th>
+     <th>値</th>
+     <th>説明</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_ACCESS_DENIED</tt></b></td>
+     <td align="left">0x00000005</td>
+     <td align="left">
+      The handle to the SCM database does not have the appropriate access rights.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_CIRCULAR_DEPENDENCY</tt></b></td>
+     <td align="left">0x00000423</td>
+     <td align="left">
+      A circular service dependency was specified.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_DATABASE_DOES_NOT_EXIST</tt></b></td>
+     <td align="left">0x00000429</td>
+     <td align="left">
+      The specified database does not exist.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_DEPENDENT_SERVICES_RUNNING</tt></b></td>
+     <td align="left">0x0000041B</td>
+     <td align="left">
+      The service cannot be stopped because other running services are dependent
+      on it.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_DUPLICATE_SERVICE_NAME</tt></b></td>
+     <td align="left">0x00000436</td>
+     <td align="left">
+      The display name already exists in the service control manager database
+      either as a service name or as another display name.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INSUFFICIENT_BUFFER</tt></b></td>
+     <td align="left">0x0000007A</td>
+     <td align="left">
+      The buffer is too small for the service status structure. Nothing was
+      written to the structure.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_DATA</tt></b></td>
+     <td align="left">0x0000000D</td>
+     <td align="left">
+      The specified service status structure is invalid.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_HANDLE</tt></b></td>
+     <td align="left">0x00000006</td>
+     <td align="left">
+      The handle to the specified service control manager database is invalid.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_LEVEL</tt></b></td>
+     <td align="left">0x0000007C</td>
+     <td align="left">
+      The InfoLevel parameter contains an unsupported value.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_NAME</tt></b></td>
+     <td align="left">0x0000007B</td>
+     <td align="left">
+      The specified service name is invalid.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_PARAMETER</tt></b></td>
+     <td align="left">0x00000057</td>
+     <td align="left">
+      A parameter that was specified is invalid.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_SERVICE_ACCOUNT</tt></b></td>
+     <td align="left">0x00000421</td>
+     <td align="left">
+      The user account name specified in the <i><tt class="parameter">user</tt></i>
+      parameter does not exist. See <span class="function"><a href="function.win32-create-service.html" class="function">win32_create_service()</a></span>.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_INVALID_SERVICE_CONTROL</tt></b></td>
+     <td align="left">0x0000041C</td>
+     <td align="left">
+      The requested control code is not valid, or it is unacceptable to the service.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_PATH_NOT_FOUND</tt></b></td>
+     <td align="left">0x00000003</td>
+     <td align="left">
+      The service binary file could not be found.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_ALREADY_RUNNING</tt></b></td>
+     <td align="left">0x00000420</td>
+     <td align="left">
+      An instance of the service is already running.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_CANNOT_ACCEPT_CTRL</tt></b></td>
+     <td align="left">0x00000425</td>
+     <td align="left">
+      The requested control code cannot be sent to the service because the state
+      of the service is <b><tt>WIN32_SERVICE_STOPPED</tt></b>,
+      <b><tt>WIN32_SERVICE_START_PENDING</tt></b>, or
+      <b><tt>WIN32_SERVICE_STOP_PENDING</tt></b>.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_DATABASE_LOCKED</tt></b></td>
+     <td align="left">0x0000041F</td>
+     <td align="left">
+      The database is locked.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_DEPENDENCY_DELETED</tt></b></td>
+     <td align="left">0x00000433</td>
+     <td align="left">
+      The service depends on a service that does not exist or has been marked
+      for deletion.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_DEPENDENCY_FAIL</tt></b></td>
+     <td align="left">0x0000042C</td>
+     <td align="left">
+      The service depends on another service that has failed to start.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_DISABLED</tt></b></td>
+     <td align="left">0x00000422</td>
+     <td align="left">
+      The service has been disabled.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_DOES_NOT_EXIST</tt></b></td>
+     <td align="left">0x00000424</td>
+     <td align="left">
+      The specified service does not exist as an installed service.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_EXISTS</tt></b></td>
+     <td align="left">0x00000431</td>
+     <td align="left">
+      The specified service already exists in this database.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_LOGON_FAILED</tt></b></td>
+     <td align="left">0x0000042D</td>
+     <td align="left">
+      The service did not start due to a logon failure. This error occurs if
+      the service is configured to run under an account that does not have the
+      &quot;Log on as a service&quot; right.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_MARKED_FOR_DELETE</tt></b></td>
+     <td align="left">0x00000430</td>
+     <td align="left">
+      The specified service has already been marked for deletion.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_NO_THREAD</tt></b></td>
+     <td align="left">0x0000041E</td>
+     <td align="left">
+      A thread could not be created for the service.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_NOT_ACTIVE</tt></b></td>
+     <td align="left">0x00000426</td>
+     <td align="left">
+      The service has not been started.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SERVICE_REQUEST_TIMEOUT</tt></b></td>
+     <td align="left">0x0000041D</td>
+     <td align="left">
+      The process for the service was started, but it did not call
+      StartServiceCtrlDispatcher, or the thread that called
+      StartServiceCtrlDispatcher may be blocked in a control handler function.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_ERROR_SHUTDOWN_IN_PROGRESS</tt></b></td>
+     <td align="left">0x0000045B</td>
+     <td align="left">
+      The system is shutting down; this function cannot be called.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td align="left"><b><tt>WIN32_NO_ERROR</tt></b></td>
+     <td align="left">0x00000000</td>
+     <td align="left">
+      No error.
+     </td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="win32service.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="win32service.examples.html">例</a></div>
+ <div class="up"><a href="book.win32service.html">win32service</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
