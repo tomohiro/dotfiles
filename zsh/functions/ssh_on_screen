@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# Function For Screen
+function ssh_on_screen() {
+    if [ $WINDOW ]; then
+        cd $HOME
+        eval server=\${$#}
+        screen -t $server ssh "$@"
+        cd -
+    else
+        command ssh "$@"
+    fi
+}
