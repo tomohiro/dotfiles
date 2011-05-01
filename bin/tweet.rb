@@ -23,7 +23,7 @@ module Twitter
         MESSAGES[error]
       end
     end
-   
+
     class UserTimeline
       URI = 'http://api.twitter.com/1/statuses/user_timeline.xml'
       attr_reader :screen_name
@@ -91,7 +91,7 @@ end
 
 tw = Tweet.new
 
-messages = ['@farfalletta', '@fogegeelglelgka']
+messages = ['@warajimusichan', '@fogegeelglelgka']
 messages.each do |m|
   begin
     tw.main(m)
