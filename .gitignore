@@ -2,7 +2,7 @@
 /gem/credentials
 /gem/ruby
 /gem/specs
-/gemrc
+/*gemrc
 /gitconfig
 /irssi/config
 network
