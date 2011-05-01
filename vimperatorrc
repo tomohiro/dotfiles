@@ -7,7 +7,7 @@ set activate=homepage,tabopen,paste
 set complete=sbhS
 
 " ブラウザタイトルの変更
-set titlestring="Firefox 4 { Vimperator 3 }"
+"set titlestring="Firefox"
 
 " GUI オプション
 set gui=tabs
