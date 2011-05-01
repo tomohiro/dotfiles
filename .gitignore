@@ -1,5 +1,7 @@
 .netrwhist
-gem
+/gem/credentials
+/gem/ruby
+/gem/specs
 gemrc
 gitconfig
 irssi/config
