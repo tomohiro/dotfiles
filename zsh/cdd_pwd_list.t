@@ -1,4 +1,4 @@
-2:/Users/Tomohiro/Development/tomohiro.heroku.com
+0:/home/tomohiro
 1:/Users/Tomohiro/.pow
 4:/Users/Tomohiro/Development/tomohiro.heroku.com
 5:/Users/Tomohiro/Development/tomohiro.heroku.com
