@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Environment variable settings
+# Setting environment variables
 
       RED="\033[2;31m"
       GREEN="\033[2;32m"
@@ -19,7 +19,7 @@
 
       echo "$SCRIPT_NAME\nStarting..."
 
-# Ignore files settings
+# Setting ignore files
 
       IGNORES=( bin _vimperatorrc README.mkdn setup.sh )
       case $OS in
@@ -75,7 +75,7 @@
 
 
 
-# Executable permission applyed
+# Apply execute permissions
 
       echo "$YELLOW\n  Executable permission applyed.$WHITE"
 
