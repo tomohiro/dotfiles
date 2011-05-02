@@ -77,7 +77,7 @@
 
 # Apply execute permissions
 
-      echo "$YELLOW\n  Executable permission applyed.$WHITE"
+      echo "$YELLOW\n  Apply exexute permissions.$WHITE"
 
       BIN_DIRS=( bin .screen/scripts .irssi/scripts )
       for bin in ${BIN_DIRS[@]}; do
