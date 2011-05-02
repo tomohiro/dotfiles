@@ -21,18 +21,17 @@
 
 # Setting ignore files
 
-      IGNORES=( bin _vimperatorrc README.mkdn setup.sh )
+      IGNORES=(bin _vimperatorrc README.mkdn setup.sh)
       case $OS in
           Linux)
-              IGNORES[4]='profile'
+              IGNORES=(${IGNORES[@]} profile fonts.conf)
               ;;
           Darwin)
-              IGNORES[4]='bash_profile'
-              IGNORES[5]='fonts.conf'
-              IGNORES[6]='gemrc'
+              IGNORES=(${IGNORES[@]} bash_profile fonts.conf gemrc)
               ;;
           *)
       esac
+
 
 
 # Make base directories symlinks
