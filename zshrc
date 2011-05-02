@@ -29,24 +29,24 @@
 
 ## for Python `pythonbrew`
 
-#     if [[ -s $HOME/.pythonbrew/etc/bashrc ]]; then
-#         source $HOME/.pythonbrew/etc/bashrc
-#     fi
+      if [[ -s $HOME/.pythonbrew/etc/bashrc ]]; then
+          source $HOME/.pythonbrew/etc/bashrc
+      fi
 
 
 ## for Perl `perlbrew`
 
-#     if [[ -s $HOME/.perlbrew/perl5/etc/bashrc ]]; then
-#         source $HOME/.perlbrew/perl5/etc/bashrc;
-#     fi
+      if [[ -s $HOME/.perlbrew/perl5/etc/bashrc ]]; then
+          source $HOME/.perlbrew/perl5/etc/bashrc;
+      fi
 
 
 ## for cpanminus
 
-#     if which cpanm > /dev/null 2>&1 && [ -n $PERLBREW_ROOT ]; then
-#         export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
-#         export PERL5LIB=$PERLBREW_ROOT/lib/perl5:$PERL5LIB
-#     fi
+      if which cpanm > /dev/null 2>&1 && [ -n $PERLBREW_ROOT ]; then
+          export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
+          export PERL5LIB=$PERLBREW_ROOT/lib/perl5:$PERL5LIB
+      fi
 
 
 ## for Android
