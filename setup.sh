@@ -23,13 +23,8 @@
 
       IGNORES=(bin _vimperatorrc README.mkdn setup.sh)
       case $OS in
-          Linux)
-              IGNORES=(${IGNORES[@]} profile fonts.conf)
-              ;;
-          Darwin)
-              IGNORES=(${IGNORES[@]} bash_profile fonts.conf gemrc)
-              ;;
-          *)
+          Linux)  IGNORES=(${IGNORES[@]} profile) ;;
+          Darwin) IGNORES=(${IGNORES[@]} bash_profile fonts.conf gemrc) ;;
       esac
 
 
