@@ -10,7 +10,7 @@ set complete=sbhS
 "set titlestring="Firefox"
 
 " GUI オプション
-set gui=tabs
+set gui=none,tabs
 
 " visualbell有効
 set visualbell
@@ -27,8 +27,8 @@ map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so ~/.vimperatorrc<CR>
 
 " バーの表示切り替え
 map <C-0> :set gui=all<CR>
-map <C-1> :set gui=none<CR>
-map <C-2> :set gui=none,tabs<CR>
+map <C-1> :set gui=none,tabs<CR>
+map <C-2> :set gui=none,tabs,bookmarks<CR>
 map <C-3> :set gui=none,tabs,navigation<CR>
 map <C-4> :set gui=none,tabs,navigation,bookmarks<CR>
 
@@ -71,6 +71,10 @@ cmap <Up> <S-Tab>
 " ! でページのCSSをon/off
 map ! :set invum<CR>
 
+" コマンドライン、テキストエリア内では<C-v>で貼り付け
+cnoremap <C-c> <C-c>
+inoremap <C-c> <C-c>
+
 " ページのアクセスキーを無効化 
 javascript <<JS
   liberator.modules.options.setPref('ui.key.generalAccessKey', 0);
@@ -92,21 +96,6 @@ if(!document.getElementById("history-indicators")) {
         </hbox>;
 
     statusLine.appendChild(document.adoptNode(new DOMParser().parseFromString(xml.toXMLString(), "application/xml").documentElement, true));
-}
-
-// ステータスバーにブックマークアイコンを移動
-let (statusBar = document.getElementById("status-bar")) {
-    let (id = "star-button") {
-        if(!document.getElementById("panel-" + id)) {
-            let panel = document.createElement("statusbarpanel");
-            panel.setAttribute("id", "panel-" + id);
-            let (icon = document.getElementById(id)) {
-                icon.setAttribute("class", "");
-                panel.appendChild(icon);
-            }
-            statusBar.insertBefore(panel, statusBar.firstChild);
-        }
-    }
 }
 
 // ステータスラインの横にステータスバーを移動
@@ -143,11 +132,8 @@ CSS
 map cp :copy<Space>
 javascript <<JS
 liberator.globalVariables.copy_templates = [
-  { label: 'titleAndURL',    value: '%TITLE%\n%URL%' },
-  { label: 'title',          value: '%TITLE%' },
-  { label: 'url',            value: '%URL%' },
-  { label: 'markdown min',   value: '[%TITLE%](%URL%)' },
-  { label: 'markdown full',  value: '[%TITLE%](%URL% "%TITLE%")' },
+  { label: 'Title and URL',  value: '%TITLE%\n%URL%' },
+  { label: 'Markdown',       value: '[%TITLE%](%URL%)' },
 ];
 JS
 
@@ -158,6 +144,10 @@ lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x
 lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
 lazy fmaps -u='fastladder\.com/reader/' i,Tj
 lazy fmaps -u='fastladder\.com/reader/' e,Tj
+
+" http://vimperator.g.hatena.ne.jp/nokturnalmortum/20110406/1302077288
+fmap -modes=i -events=keydown,keypress <C-p> <Up>
+fmap -modes=i -events=keydown,keypress <C-n> <Down>
 
 " refcontrol.js
 let g:refcontrol_enabled = "true"
