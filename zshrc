@@ -55,16 +55,12 @@
           export PATH=$HOME/Library/android-sdk-x86/tools:$PATH
       fi
 
+
 ## for node.js and npm
 
       if which npm > /dev/null 2>&1; then
           export NODE_PATH=/usr/local/lib/node
       fi
-
-## Prompt settings
-
-      PROMPT="%F{red}[%n@%m]%F{yellow}[%d]%1(v|%F{green}%1v%f|)%F{cyan}
-%F{white}» "
 
 
 ## Auto load settings
@@ -149,6 +145,7 @@
       alias sl='ls'
       alias u='cd ../'
       alias b='cd -'
+      alias :q='exit'
 
       if [ $OS = Darwin ]; then
           alias ls='ls -hF -G'
@@ -179,7 +176,7 @@
 
       # load my functions
       local func_dir=$HOME/.zsh/functions
-      for script in `ls $func_dir`; do
+      for script in `command ls $func_dir`; do
           source $func_dir/$script
       done
 
@@ -188,6 +185,14 @@
       }
 
       precmd() {
+          if [[ -f Gemfile || -f .rvmrc ]]; then
+              PROMPT="%F{red}[%n@%m]%F{blue}[%d]%F{magenta}[`rvm current`]%1(v|%F{green}%1v%f|)%F{yellow}
+⚡ %F{white}"
+          else
+              PROMPT="%F{red}[%n@%m]%F{blue}[%d]%1(v|%F{green}%1v%f|)%F{yellow}
+⚡ %F{white}"
+          fi
+
           psvar=()
           # VCS info
           LANG=en_US.UTF-8 vcs_info
@@ -206,7 +211,7 @@
 ## Set other zsh source
 
       local source_dir=$HOME/.zsh
-      for source in `ls $source_dir/*.zshrc`; do
+      for source in `command ls $source_dir/*.zshrc`; do
           source $source
       done
 
@@ -214,3 +219,4 @@
 # Startup message
 
       256colors2.pl
+      command fortune jojo
