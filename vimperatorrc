@@ -18,6 +18,9 @@ set visualbell
 " onload 時にテキストボックス等にオートフォーカスしないようにする
 set focuscontent
 
+" ヒントモードでアルファベットを使う
+set hintchars=ifjklasdweuocvbnm
+
 " C-r でブラウザ再起動
 map <C-r> :restart<CR>
 
@@ -141,7 +144,7 @@ JS
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g g
 lazy fmaps -u='fastladder\.com/reader/' i,Tj
 lazy fmaps -u='fastladder\.com/reader/' e,Tj
 
