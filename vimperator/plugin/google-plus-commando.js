@@ -1,0 +1,1 @@
+/Users/tomohiro/Development/forks/vimperator-plugins/google-plus-commando.js
