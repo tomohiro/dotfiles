@@ -1,36 +1,3 @@
-" Vim Bundle Plugin: Vundle
-"
-
-set rtp+=~/.vim/vundle/
-call vundle#rc()
-
-" original repos on github
-"
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'ciaranm/inkpot'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'janne/markdown.vim'
-Bundle 'mattn/googletranslate-vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-surround'
-
-" vim-scripts repos
-"
-Bundle 'gtags.vim'
-Bundle 'coffee.vim'
-Bundle 'rails.vim'
-
-" non github repos
-"
-"Bundle 'git://git.wincent.com/command-t.git'
-
-"filetype off
-"filetype plugin indent on
-
-
 " Vim Default Option:
 "
 set enc=utf-8
@@ -50,8 +17,8 @@ set nobackup
 set noswapfile
 set nowritebackup
 set backspace=indent,eol,start
-set directory=/tmp/
-set listchars=tab:>_,trail:_,eol:↲
+set directory=/tmp//
+set listchars=tab:>_,trail:_,eol:↩
 set list
 set hlsearch
 set iminsert=0
@@ -75,6 +42,7 @@ set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
 
 syntax on
+filetype plugin indent on
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
 match ZenkakuSpace /　/
@@ -160,6 +128,40 @@ let php_sql_query     = 1
 let php_htmlInStrings = 1
 let php_folding       = 0
 
+
+" Vim Bundle Plugin: Vundle
+"
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" original repos on github
+"
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'ciaranm/inkpot'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'janne/markdown.vim'
+Bundle 'mattn/googletranslate-vim'
+Bundle 'mattn/zencoding-vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-surround'
+Bundle 'skammer/vim-css-color'
+
+" vim-scripts repos
+"
+Bundle 'gtags.vim'
+Bundle 'coffee.vim'
+Bundle 'rails.vim'
+
+" non github repos
+"
+"Bundle 'git://git.wincent.com/command-t.git'
+
+
 " for unite
 "
 nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
@@ -190,7 +192,7 @@ nmap <Space>l :Trans<CR>
 
 " for zencoding.vim
 " 
-let g:user_zen_expandabbr_key = '<c-e>'  
+let g:user_zen_expandabbr_key = '<c-e>'
 let g:user_zen_settings = {'indentation' : '    '}
 
 " for gtags.vim
