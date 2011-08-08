@@ -8,10 +8,11 @@
 /pit
 /ssh/id_rsa
 /ssh/known_hosts*
-/vim/bundle
-/vim/vundle
+/ssh/config
+/vim/bundle/
 /vimperator/info
 /vmc_token
 /zsh/cdd_pwd_list
 /zsh/cdd_pwd_list.t
 /bin/fusemount
+/synergy.conf
