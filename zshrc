@@ -185,14 +185,6 @@
       }
 
       precmd() {
-          if [[ -f Gemfile || -f .rvmrc ]]; then
-              PROMPT="%F{red}[%n@%m]%F{blue}[%d]%F{magenta}[`rvm current`]%1(v|%F{green}%1v%f|)%F{yellow}
-⚡ %F{white}"
-          else
-              PROMPT="%F{red}[%n@%m]%F{blue}[%d]%1(v|%F{green}%1v%f|)%F{yellow}
-⚡ %F{white}"
-          fi
-
           psvar=()
           # VCS info
           LANG=en_US.UTF-8 vcs_info
@@ -206,7 +198,6 @@
           _reg_pwd_screennum
           ls
       }
-
 
 ## Set other zsh source
 
