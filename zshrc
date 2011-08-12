@@ -14,9 +14,10 @@
       export TERM=$TERM_256
       export LS_COLORS='di=01;36'
       export OS=`uname`
+      export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
       if [ $OS = Darwin ]; then
-          export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/X11/bin:$PATH
+          export PATH=/opt/X11/bin:$PATH
       fi
 
 
@@ -62,6 +63,8 @@
           export NODE_PATH=/usr/local/lib/node
       fi
 
+
+      export PATH=$HOME/bin:$PATH
 
 ## Auto load settings
 
@@ -191,7 +194,7 @@
           [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
 
           # Check background process for Growl or notify-send
-          check_background_process.rb `history -n -1 | head -1`
+          #check_background_process.rb `history -n -1 | head -1`
       }
 
       chpwd() {
