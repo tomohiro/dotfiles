@@ -1,1 +1,1 @@
-/Users/tomohiro/Development/forks/vimperator-plugins/feedSomeKeys_3.js
+../../../clone/vimperator-plugins/feedSomeKeys_3.js

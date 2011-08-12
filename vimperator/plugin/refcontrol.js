@@ -1,1 +1,1 @@
-/Users/tomohiro/Development/forks/vimperator-plugins/refcontrol.js
+../../../clone/vimperator-plugins/refcontrol.js

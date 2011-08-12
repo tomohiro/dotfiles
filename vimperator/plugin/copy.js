@@ -1,1 +1,1 @@
-/Users/tomohiro/Development/forks/vimperator-plugins/copy.js
+../../../clone/vimperator-plugins/copy.js

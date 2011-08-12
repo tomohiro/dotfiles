@@ -1,1 +1,1 @@
-/Users/tomohiro/Development/forks/vimperator-plugins/_libly.js
+../../../clone/vimperator-plugins/_libly.js
