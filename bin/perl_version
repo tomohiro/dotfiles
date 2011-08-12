@@ -1,7 +1,11 @@
 #!/bin/sh
 
-if which perlbrew > /dev/null 2>&1 ; then
-    echo `perlbrew list | grep '*' | cut -d ' ' -f 2`
+if [ $OS = Darwin ]; then
+    if which perlbrew > /dev/null 2>&1 ; then
+        echo `perlbrew list | grep '*' | cut -d ' ' -f 2`
+    else
+        echo `perl -v | sed -n 2p | cut -d ' ' -f 3-8`
+    fi
 else
-    echo `perl -v | sed -n 2p | cut -d ' ' -f 3-8`
+    echo `perl -v | sed -n 2p | cut -d ' ' -f 3,4`
 fi
