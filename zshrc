@@ -99,9 +99,10 @@
       setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
       setopt pushd_ignore_dups rm_star_silent sun_keyboard_hack
       setopt extended_glob list_types no_beep always_last_prompt
-      setopt cdable_vars sh_word_split auto_param_keys share_history
+      setopt cdable_vars auto_param_keys share_history
       setopt long_list_jobs magic_equal_subst auto_pushd
       setopt print_eight_bit noflowcontrol
+      # setopt sh_word_split # comment out. rvm not working.
 
 
 ## History settings
@@ -185,21 +186,6 @@
 
       preexec() {
           [[ -n $WINDOW ]] && set_screen_window_title ${(z)2}
-      }
-
-      precmd() {
-          psvar=()
-          # VCS info
-          LANG=en_US.UTF-8 vcs_info
-          [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-
-          # Check background process for Growl or notify-send
-          #check_background_process.rb `history -n -1 | head -1`
-      }
-
-      chpwd() {
-          _reg_pwd_screennum
-          ls
       }
 
 ## Set other zsh source
