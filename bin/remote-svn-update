@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Show usage
+
+    usage()
+    {
+        echo "Usage:"
+        echo " $0"
+        echo "   -r [hostname]"
+        echo "   -d [dirname]"
+        echo "   -h Show this usage"
+    }
+
+
+# Parse options
+
+    if [ $# -ne 0 ]; then
+        while getopts 'r:d:help' op
+        do
+            case $op in
+                r) host=$OPTARG ;;
+                d) dir=$OPTARG ;;
+                h) usage; exit 0 ;;
+            esac
+        done
+    fi
+
+    if [ -z $host -o -z $dir ]; then
+        usage
+        exit 1
+    fi
+
+
+# do svn update at remote server
+
+    result=`ssh $host "cd $dir; svn update"`
+    echo $result
+    exit 0
