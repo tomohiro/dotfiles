@@ -9,17 +9,86 @@ bind R eval "source $HOME/.screen/launcher.screenrc"
 backtick 0 0 10 ruby scripts/jojo.rb
 
 # Define byobu settings
-backtick 1 9999999 9999999 byobu-status logo
-backtick 2 9999999 9999999 uname -s
-backtick 3 9999999 9999999 uname -r
-backtick 4 9999999 9999999 uname -m
-backtick 5 9999999 9999999 rvm-prompt
-backtick 6 9999999 9999999 php_version
-backtick 7 9999999 9999999 python_version
-backtick 8 9999999 9999999 perl_version
-backtick 99 0 10 more /tmp/last.fm_recent_track
+backtick 1  9999999 9999999 byobu-status logo
+backtick 2  9999999 9999999 uname -s
+backtick 3  9999999 9999999 uname -r
+backtick 4  9999999 9999999 uname -m
+backtick 5  9999999 9999999 rvm-prompt
+backtick 6  9999999 9999999 php_version
+backtick 7  9999999 9999999 python_version
+backtick 8  9999999 9999999 perl_version
+backtick 99 0       10      more /tmp/last.fm_recent_track
 
-caption always "%{= Wk}%1` %2` %3` %4` %{= rW} %5` %{= mW} %6` %{= gW} %7` %{= BW} %8` %{= Wk} %= %{= Wr} [last.fm]%{= Wk} %99`"
+caption always "%{= yW}%1` %{-} %2` %3` %4` %{= gW} %{-} %5` %{= mW} %{-} %6` %{= bW} %{-} %7` %{= cW} %{-} %8` %{= GR} %{-} %= %{= rW} last.fm %{-} %99`"
 hardstatus alwayslastline "%0`"
 
 screen -t 'main' screen -qUmc "common.screenrc"
+
+# caption string description:
+#
+# %? - Start of a conditional statement.
+# %F - Use this part of the statement if the window has focus (i.e. it
+# is the only window or the currently active one).
+# %{= gW} - bright white on green.
+# %: - else
+# %{= Kk} - bright black on black
+# %? - End conditional statement.
+# %2n - number of the current window with left 2 padding
+# %f - flags for current window
+# %07= - left 7 padding for window number and flags
+# %t - title of current window
+# %= - truncation/padding point
+
+# hardstatus string description:
+#
+# %m - Two-letter month number
+# %d - Two-letter day number
+# %02c - time (hh:mm) in 24 hour format
+# %s - seconds
+# %{= .g} - green color on default background
+# %H - host name.
+# %{-} - undo last color change(so now we're back to default color)
+# %L= - left padding start here
+# %-w - window list up to but not including the current window (-)
+# %45L> - truncation/padding marker; place this point about 45% of the
+# way into the display area (45)
+# %{=u g.} - default color on green, and underline.
+# %n - number of the current window.
+# %t - title of current window.
+# %{-} - undo last color change
+# %+w - window list from the next window on (-)
+# %-17< - truncation/padding point. place this point zero spaces (0)
+# from the right margin (-).
+# %= - truncation/paddion point.
+# %{= .y} - yellow on default background.
+# %l - host load average.
+
+# APPENDIX: STRING ESCAPES (make extracts from screen (1))
+#
+# The attribute set can either be specified as hexadecimal number
+# or a combination of the following letters:
+#
+# d dim
+# u underline
+# b bold
+# r reverse
+# s standout
+# B blinking
+#
+# Colors are coded either as a hexadecimal number or two letters specifying
+# the desired background and foreground color (in that order).
+# The following colors are known:
+#
+# k black
+# r red
+# g green
+# y yellow
+# b blue
+# m magenta
+# c cyan
+# w white
+# d default color
+# . leave color unchanged
+#
+# The capitalized versions of the letter specify bright colors.
+# You can also use the pseudo-color `i' to set just the brightness and leave the color unchanged.
