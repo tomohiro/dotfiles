@@ -23,6 +23,7 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'skammer/vim-css-color'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 Bundle 't9md/vim-textmanip'
 Bundle 'jceb/vim-orgmode'
 Bundle 'fuenor/qfixhowm'
@@ -78,7 +79,7 @@ set autoread
 "set clipboard+=unnamed
 
 set laststatus=2
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%F%m%r%w%=<%3p%%><%4lL/%4LL:%02cC>
+set statusline=[%n]%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%m%r%w%=%{fugitive#statusline()}\ %l/%L:%c%V\ %3p%%
 
 syntax on
 filetype plugin indent on
