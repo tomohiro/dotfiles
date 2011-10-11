@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $OS = Darwin ]; then
+if [ $KERNEL = Darwin ]; then
     if which perlbrew > /dev/null 2>&1 ; then
         echo `perlbrew list | grep '*' | cut -d ' ' -f 2`
     else
