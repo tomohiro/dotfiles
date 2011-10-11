@@ -25,10 +25,9 @@
 
           # Check Ruby version and gemset at RVM
           if [[ -f Gemfile || -f .rvmrc ]]; then
-              PROMPT="%F{red}[%n@%m]%F{blue}[%d]%F{magenta}[`rvm current`]%1(v|%F{green}%1v%f|)%F{yellow}
-⚡ %F{white}"
+              RPROMPT="%F{white}[`rvm current`]%F{white}"
           else
-              PROMPT=$DEFAULT_PROMPT
+              RPROMPT=""
           fi
       }
 
