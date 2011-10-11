@@ -1,26 +1,31 @@
 #!/bin/bash
 
+set -e
+
 # Show usage
 
     usage()
     {
         echo "Usage:"
-        echo " $0"
-        echo "   -r [hostname]"
-        echo "   -d [dirname]"
-        echo "   -h Show this usage"
+        echo "   "`basename $0`" [Options]"
+        echo
+        echo "[Options]"
+        echo "   --remote|-r [hostname]"
+        echo "   --dir|-d    [dirname]"
+        echo "   --help|-h   Show this usage"
     }
-
 
 # Parse options
 
     if [ $# -ne 0 ]; then
-        while getopts 'r:d:help' op
+        while (( $# > 0 ))
         do
-            case $op in
-                r) host=$OPTARG ;;
-                d) dir=$OPTARG ;;
-                h) usage; exit 0 ;;
+            token=$1
+            shift;
+            case $token in
+                --remote|-r) host=$1 ;;
+                --dir|-d) dir=$1 ;;
+                --help|-h) usage exit 0 ;;
             esac
         done
     fi
