@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $OS = Darwin ]; then
+if [ $KERNEL = Darwin ]; then
     alias sed='gsed'
 fi
 

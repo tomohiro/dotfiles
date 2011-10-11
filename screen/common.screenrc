@@ -1,5 +1,7 @@
+# vim: ft=screen
+
 source defaults.screenrc
-source "backtick.$OS.screenrc"
+source "backtick.$KERNEL.screenrc"
 
 escape ^t^t
 
