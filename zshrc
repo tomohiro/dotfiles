@@ -1,4 +1,4 @@
-# .zshrc
+# vim: set ft=zsh
 
 ## Default environment settings
 
