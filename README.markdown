@@ -1,4 +1,4 @@
-dotfiles setup
+dotfiles setup [![Still Maintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 ================================================================================
 
 
