@@ -1,5 +1,5 @@
 " Vim Bundle Plugin Manager: Vundle
-"
+" see https://github.com/gmarik/vundle
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -10,33 +10,38 @@ call vundle#rc()
 "
 Bundle 'gmarik/vundle'
 
-" original repos on github
-"
-Bundle 'Shougo/neocomplcache'
+" Unite
 Bundle 'Shougo/unite.vim'
-Bundle 'ciaranm/inkpot'
+Bundle 'Shougo/vimfiler'
 Bundle 'h1mesuke/unite-outline'
-Bundle 'janne/markdown.vim'
-Bundle 'mattn/googletranslate-vim'
-Bundle 'mattn/zencoding-vim'
+
+" Completion and snippets
+Bundle 'Shougo/neocomplcache'
 Bundle 'msanders/snipmate.vim'
-Bundle 'skammer/vim-css-color'
-Bundle 'thinca/vim-ref'
+
+" Editing
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
 Bundle 't9md/vim-textmanip'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'jceb/vim-orgmode'
-Bundle 'fuenor/qfixhowm'
-
-" vim-scripts repos
-"
+Bundle 'mattn/zencoding-vim'
 Bundle 'gtags.vim'
-Bundle 'coffee.vim'
-Bundle 'rails.vim'
 
-" non github repos
-"
-"Bundle 'git://git.wincent.com/command-t.git'
+" VCS
+Bundle 'tpope/vim-fugitive'
+Bundle 'vcscommand.vim'
+
+" Tools
+Bundle 'thinca/vim-ref'
+Bundle 'fuenor/qfixhowm'
+Bundle 'mattn/googletranslate-vim'
+
+" Theme
+Bundle 'ciaranm/inkpot'
+
+" syntax
+Bundle 'janne/markdown.vim'
+
 
 " Vim Default Option:
 "
@@ -162,7 +167,7 @@ match ZenkakuSpace /　/
 "
     nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
     nnoremap <silent> <C-u>o :<C-u>Unite outline<CR>
-    nnoremap <silent> <C-u>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> <C-u>f :VimFilerSplit<CR>
     nnoremap <silent> <C-u>r :<C-u>Unite -buffer-name=register register<CR>
     nnoremap <silent> <C-u>m :<C-u>Unite file_mru<CR>
     nnoremap <silent> <C-u>u :<C-u>Unite buffer file_mru<CR>
