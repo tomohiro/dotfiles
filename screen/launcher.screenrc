@@ -17,8 +17,8 @@ backtick 7  9999999 9999999 python_version
 backtick 8  9999999 9999999 perl_version
 backtick 99 0       10      more /tmp/last.fm_recent_track
 
-caption always "%{= yW}%1` %{-} %2` %3` %4` %= %{= rW} last.fm %{-} %99`"
-hardstatus alwayslastline "%{= rW} %{-} %0` %{= gW} %{-} %5` %{= mW} %{-} %6` %{= bW} %{-} %7` %{= cW} %{-} %8`"
+caption always "%{= yW}%1` %{-} %2` %3` %4` %{= mW} %{-} %0`  %= %{= rW} last.fm %{-} %99`"
+hardstatus alwayslastline "%{= GW} %{-} %5` %{= MW} %{-} %6` %{= BW} %{-} %7` %{= cW} %{-} %8`"
 
 screen -t 'main' screen -qUmc "common.screenrc"
 
