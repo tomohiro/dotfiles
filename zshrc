@@ -62,6 +62,11 @@
         export NODE_PATH=/usr/local/lib/node
     fi
 
+## for Play! framework
+    if [[ -s $HOME/play/play ]]; then
+        export PATH=$PATH:$HOME/play
+    fi
+
 
     export PATH=$HOME/bin:$PATH
 
@@ -165,9 +170,15 @@
     if which colordirff >/dev/null 2>&1; then
         alias diff='colordiff'
     fi
-    if which ack-grep >/dev/null 2>&1; then # Ubuntu
-        alias search='ack-grep'
+
+    # search by ack, ack-grep
+    if which ack-grep >/dev/null 2>&1; then # Linux
+        alias s='ack-grep'
     fi
+    if which ack >/dev/null 2>&1; then # Darwin
+        alias s='ack'
+    fi
+
     alias ssh=ssh_on_screen
 
 
