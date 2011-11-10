@@ -27,20 +27,15 @@ Bundle 'jceb/vim-orgmode'
 Bundle 'mattn/zencoding-vim'
 Bundle 'gtags.vim'
 
-" VCS
+" Version Control System
 Bundle 'tpope/vim-fugitive'
-Bundle 'vcscommand.vim'
 
 " Tools
 Bundle 'thinca/vim-ref'
 Bundle 'fuenor/qfixhowm'
-Bundle 'mattn/googletranslate-vim'
 
 " Theme
 Bundle 'ciaranm/inkpot'
-
-" syntax
-Bundle 'janne/markdown.vim'
 
 
 " Vim Default Option:
@@ -180,13 +175,13 @@ match ZenkakuSpace /　/
 
 " for vim-textmanip
 "
-    vmap <C-j> <Plug>(Textmanip.move_selection_down)
-    vmap <C-k> <Plug>(Textmanip.move_selection_up)
-    vmap <C-h> <Plug>(Textmanip.move_selection_left)
-    vmap <C-l> <Plug>(Textmanip.move_selection_right)
+    vmap <C-j> <Plug>(textmanip-move-down)
+    vmap <C-k> <Plug>(textmanip-move-up)
+    vmap <C-h> <Plug>(textmanip-move-left)
+    vmap <C-l> <Plug>(textmanip-move-right)
 
-    vmap <M-d> <Plug>(Textmanip.duplicate_selection_v)
-    nmap <M-d> <Plug>(Textmanip.duplicate_selection_n)
+    vmap <M-d> <Plug>(textmanip-duplicate-down)
+    nmap <M-d> <Plug>(textmanip-duplicate-down)
 
 
 " for vim-ref
