@@ -7,5 +7,5 @@ if __FILE__ == $0
   text = STDIN.isatty ? ARGV : STDIN.readlines
   abort 'Please enter the text.' if text.count == 0
 
-  puts Translate.google text.join ' '
+  puts Translate::eijiro text.join ' '
 end
