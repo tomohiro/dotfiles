@@ -19,3 +19,4 @@
 /bin/fusemount
 synergy.conf
 /heroku
+/zsh/functions/wm_user_search
