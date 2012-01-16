@@ -17,7 +17,8 @@ set gui=none,tabs
 set visualbell
 
 " Enable Vim editing mode
-set noinsertmode
+" set noinsertmode
+set editor="/usr/bin/gvim -f"
 
 " onload 時にテキストボックス等にオートフォーカスしないようにする
 set focuscontent
@@ -172,6 +173,7 @@ EOM
 
 " commandBookmarklet.js
 nnoremap bz :bmlzootool<CR>
+nnoremap bd :bmldelicious<CR>
 
 " Addon shortcut key
 " ==================================================
