@@ -13,22 +13,24 @@ Bundle 'gmarik/vundle'
 " Unite
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimfiler'
-Bundle 'h1mesuke/unite-outline'
 
 " Completion and snippets
 Bundle 'Shougo/neocomplcache'
 Bundle 'msanders/snipmate.vim'
 
 " Editing
-Bundle 'tpope/vim-surround'
 Bundle 't9md/vim-textmanip'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'jceb/vim-orgmode'
 Bundle 'mattn/zencoding-vim'
-Bundle 'gtags.vim'
+Bundle 'Align'
+"Bundle 'gtags.vim'
+Bundle 'thinca/vim-quickrun'
+Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " Version Control System
 Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
 
 " Tools
 Bundle 'thinca/vim-ref'
@@ -36,7 +38,10 @@ Bundle 'fuenor/qfixhowm'
 
 " Theme
 Bundle 'ciaranm/inkpot'
+Bundle 'altercation/vim-colors-solarized'
 
+" Statusline
+Bundle 'Lokaltog/vim-powerline'
 
 " Vim Default Option:
 "
@@ -91,6 +96,7 @@ match ZenkakuSpace /　/
 "
     nnoremap j gj
     nnoremap k gk
+    imap jj <ESC>
 
 
 " remove highlight
@@ -133,7 +139,11 @@ match ZenkakuSpace /　/
 
 " for FileType Settings
 "
+    autocmd BufRead *.md    :set ft=markdown
+    autocmd BufRead *.mkdn  :set ft=markdown
+    autocmd BufRead *.mkd   :set ft=markdown
     autocmd BufRead *.ihtml :set ft=php
+    autocmd BufRead *.txt   :set ft=markdown ff=dos
     autocmd FileType php    :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
     autocmd FileType php    :set dictionary=$HOME/.vim/dictionary/php.dict
     autocmd FileType ruby   :set ts=2 sw=2 fenc=utf-8
@@ -144,11 +154,11 @@ match ZenkakuSpace /　/
 " for omnifunc Settings
 "
     set pumheight=15
-    hi Pmenu ctermbg=darkgray
-    hi PmenuSel ctermbg=blue
-    hi PmenuSbar ctermbg=white
-    hi TabLine ctermbg=white
-    hi TabLineSel ctermbg=red
+    hi Pmenu       ctermbg=darkgray
+    hi PmenuSel    ctermbg=blue
+    hi PmenuSbar   ctermbg=white
+    hi TabLine     ctermbg=white
+    hi TabLineSel  ctermbg=red
     hi TabLineFill ctermbg=white
 
 
@@ -158,10 +168,19 @@ match ZenkakuSpace /　/
     let php_htmlInStrings = 1
     let php_folding       = 0
 
+" for ChangeLog
+"
+    let g:changelog_username = "Tomohiro <tomohiro@occ.co.jp>"
+
+
+" for VimFiler
+"
+    let g:vimfiler_safe_mode_by_default=0
+
+
 " for unite
 "
     nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
-    nnoremap <silent> <C-u>o :<C-u>Unite outline<CR>
     nnoremap <silent> <C-u>f :VimFilerSplit<CR>
     nnoremap <silent> <C-u>r :<C-u>Unite -buffer-name=register register<CR>
     nnoremap <silent> <C-u>m :<C-u>Unite file_mru<CR>
@@ -186,7 +205,7 @@ match ZenkakuSpace /　/
 
 " for vim-ref
 "
-    "let g:ref_phpmanual_path = $HOME . '/.vim/manual/php'
+    let g:ref_phpmanual_path = $HOME . '/.vim/manual/php'
 
 
 " for neocomplcache.vim
@@ -201,17 +220,20 @@ match ZenkakuSpace /　/
     let g:user_zen_expandabbr_key = '<c-e>'
     let g:user_zen_settings = {'indentation' : '    '}
 
+" for vim-powerline
+"
+    let g:Powerline_symbols = 'compatible'
 
 " for gtags.vim
 "
-    map <C-g>  :Gtags -g 
-    map <C-g>f :Gtags -f %<CR>
-    map <C-g>r :Gtags -r <CR>
-    map <C-g>j :GtagsCursor<CR>
-    map <C-n>  :cn<CR>
-    map <C-p>  :cp<CR>
-    map <C-g>q <C-w><C-w><C-w>q
-
+"    nnoremap <silent> <C-g>  :Gtags -g
+"    nnoremap <silent> <C-g>f :Gtags -f %<CR>
+"    nnoremap <silent> <C-g>r :Gtags -r <CR>
+"    nnoremap <silent> <C-g>j :GtagsCursor<CR>
+"    nnoremap <silent> <C-n>  :cn<CR>
+"    nnoremap <silent> <C-p>  :cp<CR>
+"    nnoremap <silent> <C-g>q <C-w><C-w><C-w>q
+"
 
 " for Vim colorscheme settings
 "
