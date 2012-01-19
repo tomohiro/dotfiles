@@ -11,7 +11,7 @@ backtick 1  9999999 9999999 byobu-status logo
 backtick 2  9999999 9999999 uname -s
 backtick 3  9999999 9999999 uname -r
 backtick 4  9999999 9999999 uname -m
-backtick 5  9999999 9999999 rvm-prompt
+backtick 5  9999999 9999999 rbenv version
 backtick 6  9999999 9999999 php_version
 backtick 7  9999999 9999999 python_version
 backtick 8  9999999 9999999 perl_version
