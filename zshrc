@@ -19,6 +19,12 @@
         export PATH=/opt/X11/bin:$PATH
     fi
 
+## for `Bundlizer`
+#
+    if [[ -d $HOME/.bundles/bin ]]; then
+        export PATH=$HOME/.bundles/bin:$PATH
+    fi
+
 
 ## for Ruby `rvm`
 
@@ -26,6 +32,16 @@
         source $HOME/.rvm/scripts/rvm
     fi
 
+## for Ruby `rbenv`
+
+    if [[ -d $HOME/.rbenv/bin ]]; then # Ubuntu
+        export PATH=$HOME/.rbenv/bin:$PATH
+        eval "$(rbenv init -)"
+        source $HOME/.rbenv/completions/rbenv.zsh
+    elif type rbenv &> /dev/null; then # Homebrew on OSX
+        eval "$(rbenv init -)"
+        source /usr/local/Cellar/rbenv/0.3.0/completions/rbenv.zsh
+    fi
 
 ## for Python `pythonbrew`
 
@@ -43,7 +59,7 @@
 
 ## for cpanminus
 
-    if which cpanm > /dev/null 2>&1 && [ -n $PERLBREW_ROOT ]; then
+    if type cpanm &> /dev/null && [ -n $PERLBREW_ROOT ]; then
         export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
         export PERL5LIB=$PERLBREW_ROOT/lib/perl5:$PERL5LIB
     fi
@@ -56,19 +72,24 @@
     fi
 
 
-## for node.js and npm
+## for Node and npm
 
-    if which npm > /dev/null 2>&1; then
+    if type npm &> /dev/null; then
         export NODE_PATH=/usr/local/lib/node
     fi
 
 ## for Play! framework
+
     if [[ -s $HOME/play/play ]]; then
         export PATH=$PATH:$HOME/play
     fi
 
 
+## Export PATH
+
     export PATH=$HOME/bin:$PATH
+    typeset -U path cdpath fpath manpath
+
 
 ## Auto load settings
 
@@ -109,6 +130,7 @@
     setopt cdable_vars auto_param_keys share_history
     setopt long_list_jobs magic_equal_subst auto_pushd
     setopt print_eight_bit noflowcontrol
+    setopt combining_chars
     # setopt sh_word_split # comment out. rvm not working.
 
 
@@ -142,7 +164,7 @@
 ### For PostgreSQL
 
     if [ $KERNEL = Darwin ]; then
-        export PATH=/opt/local/lib/postgresql84/bin:$PATH
+        #export PATH=/opt/local/lib/postgresql84/bin:$PATH
     fi
 
 
@@ -156,6 +178,7 @@
     alias u='cd ../'
     alias b='cd -'
     alias :q='exit'
+    alias tree='tree --charset=C'
 
     if [ $KERNEL = Darwin ]; then
         alias ls='ls -hF -G'
@@ -167,28 +190,35 @@
     alias ll='ls -lh'
 
     alias vi=$EDITOR
-    if which colordirff >/dev/null 2>&1; then
+    if type colordirff &> /dev/null; then
         alias diff='colordiff'
     fi
 
     # search by ack, ack-grep
-    if which ack-grep >/dev/null 2>&1; then # Linux
-        alias s='ack-grep'
+    if type ack-grep &> /dev/null; then # Linux
+        alias search='ack-grep'
     fi
-    if which ack >/dev/null 2>&1; then # Darwin
-        alias s='ack'
+    if type ack &>/dev/null; then # Darwin
+        alias search='ack'
     fi
 
     alias ssh=ssh_on_screen
 
+    if type bundle &> /dev/null; then
+        alias be='bundle exec'
+    fi
 
 ## Global alias
 
-    if which pbcopy >/dev/null 2>&1 ; then # Mac
+    if type pbcopy &> /dev/null; then # Mac
         alias -g C='| pbcopy'
-    elif which xsel >/dev/null 2>&1 ; then # Linux
+    elif type xsel &> /dev/null; then # Linux
         alias -g C='| xsel --input --clipboard'
     fi
+
+    alias -g M='| more'
+    alias -g L='| less'
+    alias -g X='| xargs'
 
 
 ## Set Functions
