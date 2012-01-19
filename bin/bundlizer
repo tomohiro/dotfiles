@@ -1,0 +1,104 @@
+#!/bin/bash
+
+set -e
+
+# Constant
+
+    BUNDLES=$HOME/.bundles
+
+# Check requirements
+
+    initialize()
+    {
+        if ! type gem > /dev/null; then
+            _warn 'Please, install the RubyGemes'
+        fi
+
+        if ! type bundle > /dev/null; then
+            _warn 'Please, install the bundler'
+        fi
+
+        if [ ! -d $BUNDLES ]; then
+            mkdir -p $BUNDLES/bin
+            echo "Create $BUNDLES"
+            echo "Create $BUNDLES/bin"
+            echo
+            echo "Note:"
+            echo "  1. Add path \`$BUNDLES/bin\` to .bashrc"
+            echo "  2. Clone RubyGems repository to $BUNDLES/[foo].gem"
+            exit 0
+        fi
+    }
+
+
+# Return RubyGems executable file list
+
+    get_gem_bin_files()
+    {
+        local bindir=$1
+        if [ -d $bindir ]; then
+            bin=`ls $1`
+            echo $bin
+        fi
+    }
+
+
+# Packaging Gem by Bundler
+
+    packaging_gem()
+    {
+        local gem_path=$1
+        cd $gem_path
+        bundle install --path vendor/bundle
+    }
+
+
+# Define Bundle exec wrapper script template
+
+    template_bundle_exec_wapper()
+    {
+        local gem_path=$1
+        local bin=$2
+        cat << EOF
+#!/bin/sh
+
+cd $gem_path
+bundle exec $bin \$1
+EOF
+    }
+
+
+# Display message
+
+    _message()
+    {
+        echo $1
+        echo
+    }
+
+# Warnig
+
+    _warn()
+    {
+        _message $1
+        exit 1
+    }
+
+
+# Start bundle packaging, and install
+
+    initialize
+
+    for gem_path in `ls -d $BUNDLES/*.gem`; do
+        gem_bin_path=$gem_path/bin
+
+        packaging_gem $gem_path
+
+        for bin in `get_gem_bin_files $gem_bin_path`; do
+            _message "Install \`$bin\` to $BUNDLES/bin"
+            template_bundle_exec_wapper $gem_path $bin > $BUNDLES/bin/$bin
+            chmod +x $BUNDLES/bin/$bin
+        done
+    done
+
+    exit 0
