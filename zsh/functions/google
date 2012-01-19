@@ -12,5 +12,3 @@ function google() {
     fi
     open http://www.google.co.jp/$opt
 }
-
-alias g=google

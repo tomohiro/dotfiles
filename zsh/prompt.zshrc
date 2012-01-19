@@ -8,7 +8,8 @@
 ### set default prompt
 
       DEFAULT_PROMPT="%F{red}[%n@%m]%F{blue}[%d]%1(v|%F{green}%1v%f|)%F{yellow}
-⚡ %F{white}"
+» %F{white}"
+#⚡ %F{white}"
       PROMPT=$DEFAULT_PROMPT
 
 
@@ -24,11 +25,11 @@
           check_background_process.rb `history -n -1 | head -1`
 
           # Check Ruby version and gemset at RVM
-          if [[ -f Gemfile || -f .rvmrc ]]; then
-              RPROMPT="%F{white}[`rvm current`]%F{white}"
-          else
-              RPROMPT=""
-          fi
+          #if [[ -f Gemfile || -f .rvmrc ]]; then
+          #    RPROMPT="%F{red}[`rvm current`]%F{white}"
+          #else
+          #   RPROMPT=""
+          #fi
       }
 
 

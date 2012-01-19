@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # WebMagic User Search
 function wm_user_search() {
-    open 'http://gw.occ.co.jp/address/index.php?adrs_book=wmlist&select_dept=0&search_key='`ruby -e "require 'kconv'; require 'uri'; puts URI.encode('$*'.toeuc)"`
+    open 'http://gw.occ.co.jp/address/index.php?adrs_book=wmlist&select_dept=0&search_key='`ruby -e "require 'kconv'; require 'uri'; puts URI.encode('$*')"`
 }
 
 function wm_user_detail() {
