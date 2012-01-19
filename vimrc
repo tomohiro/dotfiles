@@ -222,7 +222,9 @@ match ZenkakuSpace /　/
 
 " for vim-powerline
 "
-    let g:Powerline_symbols = 'compatible'
+    if $KERNEL == 'Linux'
+        let g:Powerline_symbols = 'fancy'
+    endif
 
 " for gtags.vim
 "
@@ -234,6 +236,38 @@ match ZenkakuSpace /　/
 "    nnoremap <silent> <C-p>  :cp<CR>
 "    nnoremap <silent> <C-g>q <C-w><C-w><C-w>q
 "
+
+" for QFixHowm
+"
+    let QFixHowm_Key = 'g'
+    let howm_dir = '~/Dropbox/howm/'
+    let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.markdown'
+    let howm_fileencoding = 'utf-8'
+    let howm_fileformat = 'unix'
+
+    " Setting autoformat
+    " see https://sites.google.com/site/fudist/Home/qfixhowm/option#auto-format
+    let QFixHowm_Autoformat = 1
+    let QFixHowm_Autoformat_TitleMode = 1
+    let QFixHowm_SaveTime = -1
+
+    " Setting markdown
+    " see https://sites.google.com/site/fudist/Home/qfixhowm/tips/vimwiki
+    let QFixHowm_FileType = 'markdown'
+    let QFixHowm_Title = '#'
+    let QFixHowm_Template = [
+        \"%TITLE%",
+        \"================================================================================",
+        \"",
+        \"",
+        \"H2",
+        \"--------------------------------------------------------------------------------",
+        \"",
+        \"",
+        \"Reference",
+        \"--------------------------------------------------------------------------------"
+    \]
+    let QFixHowm_Cmd_NewEntry = '$a'
 
 " for Vim colorscheme settings
 "
