@@ -20,9 +20,9 @@
     fi
 
 ## for `Bundlizer`
-#
-    if [[ -d $HOME/.bundles/bin ]]; then
-        export PATH=$HOME/.bundles/bin:$PATH
+
+    if [[ -d $HOME/.bundlizer ]]; then
+        source $HOME/.bundlizer/etc/bashrc
     fi
 
 
