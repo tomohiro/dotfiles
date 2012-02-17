@@ -13,6 +13,7 @@
 /ssh/known_hosts*
 /ssh/config
 /vim/bundle/
+/vim/manual/
 /vimperator/info
 /vmc_token
 /dotcloud
