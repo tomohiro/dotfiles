@@ -1,47 +1,53 @@
-" Vim Bundle Plugin Manager: Vundle
-" see https://github.com/gmarik/vundle
+" Vim Bundle Plugin Manager: NeoBundle
+" see https://github.com/Shougo/neobundle.vim
 set nocompatible               " be iMproved
-filetype off                   " required!
+filetype plugin indent off     " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-"
-Bundle 'gmarik/vundle'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+" let NeoBundle manage NeoBundle
+" required!
+NeoBundle 'Shougo/neobundle.vim'
 
 " Unite
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
 
 " Completion and snippets
-Bundle 'Shougo/neocomplcache'
-Bundle 'msanders/snipmate.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'msanders/snipmate.vim'
 
 " Editing
-Bundle 't9md/vim-textmanip'
-Bundle 'mattn/zencoding-vim'
-Bundle 'Align'
-"Bundle 'gtags.vim'
-Bundle 'thinca/vim-quickrun'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Align'
+"NeoBundle 'gtags.vim'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " Version Control System
-Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/gist-vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mattn/gist-vim'
 
 " Tools
-Bundle 'thinca/vim-ref'
-Bundle 'fuenor/qfixhowm'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'fuenor/qfixhowm'
 
 " Theme
-Bundle 'ciaranm/inkpot'
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'ciaranm/inkpot'
+
+" Buffer management
+NeoBundle 'fholgado/minibufexpl.vim'
 
 " Statusline
-Bundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/vim-powerline'
 
 " Vim Default Option:
 "
@@ -215,27 +221,39 @@ match ZenkakuSpace /　/
     let g:neocomplcache_enable_underbar_completion = 1
 
 
+" for vim-indent-guides
+"
+"
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_start_level=2
+    let g:indent_guides_guide_size=1
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+
+
 " for zencoding.vim
 "
     let g:user_zen_expandabbr_key = '<c-e>'
     let g:user_zen_settings = {'indentation' : '    '}
 
+
 " for vim-powerline
 "
-    if $KERNEL == 'Linux'
+    if $KERNEL == 'Linux' && $SSH_CLIENT == ''
         let g:Powerline_symbols = 'fancy'
     endif
 
 " for gtags.vim
 "
-"    nnoremap <silent> <C-g>  :Gtags -g
-"    nnoremap <silent> <C-g>f :Gtags -f %<CR>
-"    nnoremap <silent> <C-g>r :Gtags -r <CR>
-"    nnoremap <silent> <C-g>j :GtagsCursor<CR>
-"    nnoremap <silent> <C-n>  :cn<CR>
-"    nnoremap <silent> <C-p>  :cp<CR>
-"    nnoremap <silent> <C-g>q <C-w><C-w><C-w>q
-"
+    nnoremap <silent> <C-g>  :Gtags -g
+    nnoremap <silent> <C-g>f :Gtags -f %<CR>
+    nnoremap <silent> <C-g>r :Gtags -r <CR>
+    nnoremap <silent> <C-g>j :GtagsCursor<CR>
+    nnoremap <silent> <C-n>  :cn<CR>
+    nnoremap <silent> <C-p>  :cp<CR>
+    nnoremap <silent> <C-g>q <C-w><C-w><C-w>q
+
 
 " for QFixHowm
 "
@@ -268,6 +286,7 @@ match ZenkakuSpace /　/
         \"--------------------------------------------------------------------------------"
     \]
     let QFixHowm_Cmd_NewEntry = '$a'
+
 
 " for Vim colorscheme settings
 "
