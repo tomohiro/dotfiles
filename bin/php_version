@@ -1,4 +1,0 @@
-#!/bin/sh
-
-PHP_VERSION=`php -v | sed -n 1p | cut -d ' ' -f 1,2`
-echo $PHP_VERSION

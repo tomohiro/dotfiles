@@ -1,2 +1,0 @@
-#!/bin/sh
-echo `python -V 2>&1`

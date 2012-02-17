@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# -*- encoding: utf-8 -*-
+# encoding: utf-8
 
 require 'rubygems'
 require 'open-uri'
@@ -85,17 +85,9 @@ class Tweet
   end
 end
 
-def notice(channel, message)
-  puts message
-end
 
-tw = Tweet.new
 
-messages = ['@warajimusichan', '@fogegeelglelgka']
-messages.each do |m|
-  begin
-    tw.main(m)
-  rescue
-    next
-  end
-end
+
+#user = Twitter::API::UserTimeline.new ARGV.first
+user = Twitter::API::UserTimeline.new('Tomohiro')
+p user.tweets(1, 3000)
