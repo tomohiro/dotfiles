@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-# fortune
-function fortune() {
-    #command fortune `ruby -e 'puts [:jojo, :warajimusichan].sample'`
-    command fortune jojo
-}

@@ -202,10 +202,14 @@
         alias search='ack'
     fi
 
-    alias ssh=ssh_on_screen
+    alias ssh-new=ssh_on_screen
 
     if type bundle &> /dev/null; then
         alias be='bundle exec'
+    fi
+
+    if ! type svn &> /dev/null; then
+        alias svn='svn-remote'
     fi
 
 ## Global alias
@@ -244,4 +248,4 @@
 ## Startup message
 
     256colors2.pl
-    command fortune jojo
+    fortune

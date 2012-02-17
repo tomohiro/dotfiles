@@ -22,6 +22,11 @@ function set_screen_window_title() {
                 cmd[1]=$cmd[2]
             fi
             ;&
+        ssh)
+            if (( $#cmd == 2)); then
+                cmd[1]=$cmd[2]
+            fi
+            ;&
         *)
             echo -n "k$cmd[1]:t\\"
             return
