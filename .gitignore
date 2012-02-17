@@ -4,6 +4,9 @@
 /gitconfig
 /irssi/config
 /irssi/fnotify
+/weechat/weechat.conf
+/weechat/logs
+/weechat/*.log
 /network
 /pit
 /ssh/id_rsa
@@ -20,3 +23,4 @@
 synergy.conf
 /heroku
 /zsh/functions/wm_user_search
+/atig
