@@ -11,14 +11,16 @@ backtick 1  9999999 9999999 byobu-status logo
 backtick 2  9999999 9999999 uname -s
 backtick 3  9999999 9999999 uname -r
 backtick 4  9999999 9999999 uname -m
-backtick 5  9999999 9999999 rbenv version
-backtick 6  9999999 9999999 php_version
-backtick 7  9999999 9999999 python_version
-backtick 8  9999999 9999999 perl_version
+#backtick 5  9999999 9999999 rbenv version
+#backtick 6  9999999 9999999 php_version
+#backtick 7  9999999 9999999 python_version
+#backtick 8  9999999 9999999 perl_version
+backtick 9  0       90      get-one-liner-idiom
 backtick 99 0       10      more /tmp/last.fm_recent_track
 
 caption always "%{= yW}%1` %{-} %2` %3` %4` %{= mW} %{-} %0`  %= %{= rW} last.fm %{-} %99`"
-hardstatus alwayslastline "%{= GW} %{-} %5` %{= MW} %{-} %6` %{= BW} %{-} %7` %{= cW} %{-} %8`"
+#hardstatus alwayslastline "%{= GW} %{-} %5` %{= MW} %{-} %6` %{= BW} %{-} %7` %{= cW} %{-} %8`"
+hardstatus alwayslastline "%{= GW} %{-} %9`"
 
 screen -t 'main' screen -qUmc "common.screenrc"
 

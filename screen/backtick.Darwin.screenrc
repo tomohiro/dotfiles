@@ -9,4 +9,4 @@ backtick 3 0 90 more /tmp/mixi_unread_count
 
 # caption and hardstatus settings
 caption    always         " %-w%{= rw} %n %t %{-}%+w %= %l"
-hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | @Gmail(%1`) @OCC(%2`) @mixi(%3`) %{= bw} %="
+hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | Gmail %1` | OCC %2` | mixi %3` %{= bw} %="
