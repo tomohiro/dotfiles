@@ -4,7 +4,7 @@
 /gitconfig
 /irssi/config
 /irssi/fnotify
-/weechat/weechat.conf
+/weechat/irc.conf
 /weechat/logs
 /weechat/*.log
 /network
