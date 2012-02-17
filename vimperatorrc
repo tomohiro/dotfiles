@@ -18,7 +18,7 @@ set visualbell
 
 " Enable Vim editing mode
 " set noinsertmode
-set editor="/usr/bin/gvim -f"
+set editor="~/bin/vim-launcher"
 
 " onload 時にテキストボックス等にオートフォーカスしないようにする
 set focuscontent
@@ -140,10 +140,11 @@ CSS
 map cp :copy<Space>
 javascript <<JS
 liberator.globalVariables.copy_templates = [
-  { label: 'Title and URL', value: '%TITLE%\n%URL%' },
-  { label: 'Markdown',      value: '[%TITLE%](%URL%)' },
-  { label: 'Title',         value: '%TITLE%' },
-  { label: 'URL',           value: '%URL%' },
+  { label: 'Title <br> URL', value: '%TITLE%\n%URL%' },
+  { label: 'Title - URL',    value: '%TITLE% - %URL%' },
+  { label: 'Markdown',       value: '[%TITLE%](%URL%)' },
+  { label: 'Title',          value: '%TITLE%' },
+  { label: 'URL',            value: '%URL%' }
 ];
 JS
 
@@ -167,7 +168,7 @@ liberator.globalVariables.refcontrol = {
     'fc2.com'           : '@FORGE',
     'blogs.yahoo.co.jp' : '@FORGE',
     'blog.goo.ne.jp'    : '@FORGE',
-    'ameblo.jp'         : '@FORGE',
+    'ameblo.jp'         : '@FORGE'
 };
 EOM
 
