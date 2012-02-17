@@ -1,5 +1,6 @@
-set "runtimepath=C:\\Users\\Tomohiro\\vimperator"
-source! "C:\\Users\\Tomohiro\\_vimperatorrc.local"
+" set ft=vim
+set "runtimepath=C:/Users/Tomohiro/vimperator"
+source! "C:/Users/Tomohiro/_vimperatorrc.local"
 
 " for Vimperator 3
 
@@ -28,8 +29,8 @@ set hintchars=ifjklasdweuocvbnm
 map <C-r> :restart<CR>
 
 " 設定ファイルを再読み込み
-map ,s :so C:\Users\Tomohiro\_vimperatorrc<CR>
-map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so C:\Users\Tomohiro\_vimperatorrc<CR>
+map ,s :so C:/Users/Tomohiro/_vimperatorrc<CR>
+map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so C:/Users/Tomohiro/_vimperatorrc<CR>
 
 " バーの表示切り替え
 map <C-0> :set gui=all<CR>
