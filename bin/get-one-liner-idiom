@@ -1,0 +1,2 @@
+#!/bin/sh
+ruby -rjson -ropen-uri -e "puts ->(i) { i['command'] + ' # ' + i['summary'] }.call(JSON.parse(open('http://www.commandlinefu.com/commands/by/root/json/sort-by-votes').read[/\[.+\]/]).shuffle.first)"
