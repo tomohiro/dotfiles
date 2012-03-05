@@ -22,7 +22,6 @@ NeoBundle 'msanders/snipmate.vim'
 
 " Editing
 NeoBundle 'Align'
-"NeoBundle 'gtags.vim'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'h1mesuke/vim-alignta'
@@ -187,7 +186,7 @@ match ZenkakuSpace /　/
 " for unite
 "
     nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
-    nnoremap <silent> <C-u>f :VimFilerSplit<CR>
+    nnoremap <silent> <C-u>f :VimFilerSplit -horizontal<CR>
     nnoremap <silent> <C-u>r :<C-u>Unite -buffer-name=register register<CR>
     nnoremap <silent> <C-u>m :<C-u>Unite file_mru<CR>
     nnoremap <silent> <C-u>u :<C-u>Unite buffer file_mru<CR>
@@ -243,16 +242,6 @@ match ZenkakuSpace /　/
     if $KERNEL == 'Linux' && $SSH_CLIENT == ''
         let g:Powerline_symbols = 'fancy'
     endif
-
-" for gtags.vim
-"
-    nnoremap <silent> <C-g>  :Gtags -g
-    nnoremap <silent> <C-g>f :Gtags -f %<CR>
-    nnoremap <silent> <C-g>r :Gtags -r <CR>
-    nnoremap <silent> <C-g>j :GtagsCursor<CR>
-    nnoremap <silent> <C-n>  :cn<CR>
-    nnoremap <silent> <C-p>  :cp<CR>
-    nnoremap <silent> <C-g>q <C-w><C-w><C-w>q
 
 
 " for QFixHowm
