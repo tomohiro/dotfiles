@@ -26,12 +26,6 @@
     fi
 
 
-## for Ruby `rvm`
-
-    if [[ -s $HOME/.rvm/scripts/rvm ]]; then
-        source $HOME/.rvm/scripts/rvm
-    fi
-
 ## for Ruby `rbenv`
 
     if [[ -d $HOME/.rbenv/bin ]]; then # Ubuntu
@@ -77,6 +71,7 @@
     if type npm &> /dev/null; then
         export NODE_PATH=/usr/local/lib/node
     fi
+
 
 ## for Play! framework
 
@@ -247,5 +242,5 @@
 
 ## Startup message
 
-    256colors2.pl
+    colortest-256
     fortune
