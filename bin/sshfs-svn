@@ -6,6 +6,7 @@
 # 手元のマシンにマウントしている場合，
 # リモート先の svn コマンドを手元で実行するためのコマンド
 #
+#
 # インストール
 # -----------
 #
@@ -38,8 +39,9 @@
 #      svn, バージョン 1.6.11 (r934486)
 
 
-set -e
+set -u -e
 
+# Get a remote host fqdn from directory path
     get_remote_host() {
       local path=$1
       for dir in $(ls $HOME/mnt); do
@@ -53,6 +55,8 @@ set -e
       return 1
     }
 
+
+# Get a subversion working directory path
     get_working_dir() {
       local host=$1
       local path=$2
@@ -67,10 +71,17 @@ host=$(get_remote_host $(pwd))
 if [ $? = 0 ]; then 
   echo "Remote svn client at $host"
   dir=$(get_working_dir $host $(pwd))
-  echo "ssh $host \"cd $dir && svn $@\""
-  ssh $host "cd $dir && svn $@"
-  exit 0
+
+  if [ -d "./.svn" ]; then
+    command="cd $dir && svn $@"
+  else
+    command="svn $@"
+  fi
+
+  echo "ssh $host \"$command\""
+  ssh $host "$command"
+  exit $?
 else
   echo $host
-  exit $?
+  exit 1
 fi
