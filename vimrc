@@ -239,9 +239,7 @@ match ZenkakuSpace /　/
 
 " for vim-powerline
 "
-    if $KERNEL == 'Linux' && $SSH_CLIENT == ''
-        let g:Powerline_symbols = 'fancy'
-    endif
+    let g:Powerline_symbols = 'fancy'
 
 
 " for QFixHowm
