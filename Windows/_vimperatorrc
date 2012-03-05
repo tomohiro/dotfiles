@@ -1,8 +1,8 @@
-" set ft=vim
+" for Vimperator 3
+" vim: ft=vim
+"
 set "runtimepath=C:/Users/Tomohiro/vimperator"
 source! "C:/Users/Tomohiro/_vimperatorrc.local"
-
-" for Vimperator 3
 
 " これらの機能で新規タブを開いた際はアクティブにする
 set activate=homepage,tabopen,paste
@@ -18,6 +18,10 @@ set gui=none,tabs
 
 " visualbell有効
 set visualbell
+
+" Enable Vim editing mode
+" set noinsertmode
+set editor="notepad"
 
 " onload 時にテキストボックス等にオートフォーカスしないようにする
 set focuscontent
@@ -139,12 +143,15 @@ CSS
 map cp :copy<Space>
 javascript <<JS
 liberator.globalVariables.copy_templates = [
-  { label: 'Title and URL',  value: '%TITLE%\n%URL%' },
+  { label: 'Title <br> URL', value: '%TITLE%\n%URL%' },
+  { label: 'Title - URL',    value: '%TITLE% - %URL%' },
   { label: 'Markdown',       value: '[%TITLE%](%URL%)' },
+  { label: 'Title',          value: '%TITLE%' },
+  { label: 'URL',            value: '%URL%' }
 ];
 JS
 
-" feedSomeKeys_3.js
+"" feedSomeKeys_3.js
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
