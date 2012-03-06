@@ -147,14 +147,13 @@
 
 ### For Oracle
 
-    export LD_LIBRARY_PATH=/usr/lib/oracle/10.2.0.1/client/lib
-    export NLS_LANG=Japanese_Japan.JA16SJIS
-    export NLS_TIMESTAMP_FORMAT="YYYY-MM-DD HH24:MI:SS"
+    #export LD_LIBRARY_PATH=/usr/lib/oracle/10.2.0.1/client/lib
+    #export NLS_LANG=Japanese_Japan.JA16SJIS
+    #export NLS_TIMESTAMP_FORMAT="YYYY-MM-DD HH24:MI:SS"
 
 ### For DB2
 
-    export DB2CODEPAGE=943
-
+    #export DB2CODEPAGE=943
 
 ### For PostgreSQL
 
@@ -185,8 +184,13 @@
     alias ll='ls -lh'
 
     alias vi=$EDITOR
+
     if type colordirff &> /dev/null; then
         alias diff='colordiff'
+    fi
+
+    if type weechat-curses &> /dev/null; then
+        alias weechat='TERM=screen-256color weechat-curses'
     fi
 
     # search by ack, ack-grep
@@ -197,15 +201,16 @@
         alias search='ack'
     fi
 
-    alias ssh-new=ssh_on_screen
-
     if type bundle &> /dev/null; then
         alias be='bundle exec'
     fi
 
     if ! type svn &> /dev/null; then
-        alias svn='svn-remote'
+        alias svn='sshfs-svn'
     fi
+
+    alias ssh-new=ssh_on_screen
+
 
 ## Global alias
 
@@ -242,5 +247,8 @@
 
 ## Startup message
 
-    colortest-256
+    if type colortest-256 &> /dev/null; then
+        colortest-256
+    fi
+
     fortune
