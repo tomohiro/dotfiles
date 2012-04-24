@@ -119,20 +119,6 @@ let (favicon = document.getElementById("page-proxy-stack")) {
 }
 JS
 
-style -name history-indicators chrome://browser/content/browser.xul <<CSS
-#history-indicators {
-    padding: 0 ! important;
-}
-.history-indicator {
-margin: 0 1px ! important;
-color: WindowText;
-}
-.history-indicator[disabled="true"] {
-    //visibility: hidden;
-}
-CSS
-
-
 " Plugin Settings
 " ==================================================
 
@@ -155,6 +141,7 @@ lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x
 lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g g
 lazy fmaps -u='fastladder\.com/reader/' i,Tj
 lazy fmaps -u='fastladder\.com/reader/' e,Tj
+lazy fmaps -u='tiarra\.tomohiro\.me' a s o e l h c n f <Esc>
 
 " http://vimperator.g.hatena.ne.jp/nokturnalmortum/20110406/1302077288
 fmap -modes=i -events=keydown,keypress <C-p> <Up>
@@ -171,17 +158,6 @@ liberator.globalVariables.refcontrol = {
     'ameblo.jp'         : '@FORGE'
 };
 EOM
-
-" commandBookmarklet.js
-nnoremap bz :bmlzootool<CR>
-nnoremap bd :bmldelicious<CR>
-
-" Addon shortcut key
-" ==================================================
-
-" Clearly
-nnoremap ,r :js readable_by_evernote__menu__call(buffer.URL)<CR>
-
 
 " Finish
 echo ".vimperatorrc sourced"
