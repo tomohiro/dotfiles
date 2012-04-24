@@ -47,6 +47,7 @@ NeoBundle 'fholgado/minibufexpl.vim'
 
 " Statusline
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'pwdstatus.vim'
 
 " Vim Default Option:
 "
