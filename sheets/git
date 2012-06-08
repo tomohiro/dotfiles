@@ -1,0 +1,11 @@
+# commit 済み,または add してしまったファイルを管理対象から外す
+git rm --cached [file-name] # rm だがファイルは削除されない
+
+# rebase に失敗して `Interactive rebase already started` と言われる場合
+git rebase --abort  # 再度 git rebase する
+
+# GitHub 上の branch を削除
+git push origin :branch-name
+
+# Remote URL の変更 origin の url を変更する場合
+git config remote.origin.url git@github.com:Tomohiro/hoge.git

@@ -1,0 +1,2 @@
+# Start TweetIRCGateway
+nohup ./TwitterIrcGatewayCLI --encoding=utf-8 &

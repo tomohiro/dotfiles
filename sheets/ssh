@@ -1,0 +1,2 @@
+# PuTTY の公開鍵を OpenSSH 形式へ変換する
+ssh-keygen -i -f id_rsa_putty.pub > id_rsa.pub

@@ -1,0 +1,7 @@
+# PHP 5.3.x for tiarraMetro
+wget 'http://jp2.php.net/get/php-5.4.x.tar.bz2/from/jp.php.net/mirror'
+tar jxf php-5.4.x.tar.bz2
+cd php-5.4.x
+./configure --with-mysqli --with-mcrypt --enable-mbstring
+make
+sudo make install

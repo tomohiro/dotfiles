@@ -1,0 +1,8 @@
+# Finder で Cut & Paste する
+1. Finderでファイルを選択した後Command＋Cでファイルをコピー
+2. 移動先にてCommand＋Option＋V
+
+# [[D] Dockの表示時間遅延を無くすとDockを隠しても快適な裏技 - Drift Diary XV](http://blog.drikin.com/2012/05/dockdock.html)
+defaults write com.apple.Dock autohide-delay -float 0 && killall Dock   # Apply
+defaults delete com.apple.Dock autohide-delay && killall Dock           # Back to default
+
