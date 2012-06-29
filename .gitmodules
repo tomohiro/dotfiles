@@ -1,0 +1,6 @@
+[submodule "tmux/bundle/Linux/tmux-powerline"]
+	path = tmux/bundle/Linux/tmux-powerline
+	url = git://github.com/erikw/tmux-powerline.git
+[submodule "tmux/bundle/Darwin/tmux-powerline"]
+	path = tmux/bundle/Darwin/tmux-powerline
+	url = git://github.com/suvash/tmux-powerline-osx.git
