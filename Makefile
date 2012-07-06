@@ -31,10 +31,12 @@ install:
 			fi;\
 		done;\
 		$(RM) $(INSTALLTO)/.$$file;\
+		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$$file $(INSTALLTO)/.$$file;\
 	done;\
 	for file in `ls $(DOTFILES)/$(KERNEL)`; do\
 		$(RM) $(INSTALLTO)/.$$file;\
+		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$(KERNEL)/$$file $(INSTALLTO)/.$$file;\
 	done
 	@echo "Finished."
