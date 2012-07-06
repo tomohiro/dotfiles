@@ -35,19 +35,32 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mattn/gist-vim'
 
+" Redmine
+NeoBundle 'basyura/unite-yarm'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'tyru/open-browser.vim'
+
 " Tools
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'fuenor/qfixhowm'
+NeoBundle 'kien/ctrlp.vim'
 
-" Theme
+" Themes
 NeoBundle 'ciaranm/inkpot'
+NeoBundle 'aereal/vim-magica-colors'
 
 " Buffer management
 NeoBundle 'fholgado/minibufexpl.vim'
 
+" Tab management
+NeoBundle 'kana/vim-tabpagecd'  "http://labs.timedia.co.jp/2012/05/vim-tabpagecd.html
+
 " Statusline
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'pwdstatus.vim'
+
+" LineNumber
+"NeoBundle 'myusuf3/numbers.vim'
 
 " Vim Default Option:
 "
@@ -174,9 +187,23 @@ match ZenkakuSpace /　/
     let php_htmlInStrings = 1
     let php_folding       = 0
 
+
 " for ChangeLog
 "
     let g:changelog_username = "Tomohiro <tomohiro@occ.co.jp>"
+
+
+" for toggle line numbers
+"
+"
+    function! NumberToggle()
+      if(&relativenumber == 1)
+        set number
+      else
+        set relativenumber
+      endif
+    endfunc
+    nnoremap <C-n> :call NumberToggle()<cr>
 
 
 " for VimFiler
