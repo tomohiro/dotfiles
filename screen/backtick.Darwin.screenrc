@@ -3,10 +3,10 @@
 #blankerprg fortune
 
 # backtick
-backtick 1 0 90 more /tmp/gmail_unread_count
-backtick 2 0 90 more /tmp/pop_unread_count
-backtick 3 0 90 more /tmp/mixi_unread_count
+backtick 0 0 90 head -n 1 /tmp/popmail
+backtick 1 0 90 head -n 2 /tmp/popmail
+#backtick 3 0 90 more /tmp/mixi_unread_count
 
 # caption and hardstatus settings
-caption    always         " %-w%{= rw} %n %t %{-}%+w %= %l"
-hardstatus alwayslastline "%{= bw} %Y-%m-%d (%D) %c:%s | Gmail %1` | OCC %2` | mixi %3` %{= bw} %="
+caption always " %-w%{= rw} %n %t %{-}%+w %= %l"
+hardstatus alwayslastline "%{= mw} POP3 ✉ %0` %{= km}⮀%{= kW} %1` %= "

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 require 'net/https'
 require 'rubygems'
@@ -22,7 +23,7 @@ https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new('/mail/feed/atom')
 request.basic_auth(config[:email], config[:password])
-responce = https.request(request).body
-
-xml = Nokogiri::XML(responce)
+response = https.request(request).body
+xml = Nokogiri::XML(response)
 puts (xml/'fullcount').text
+puts (xml/'entry').first.at('title').text + ' - ' + (xml/'entry').first.at('email').text

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 require 'net/pop'
+require 'nkf'
 require 'rubygems'
 require 'pit'
 
@@ -10,11 +12,19 @@ config = Pit.get('pop_mail', :require => {
   :password   => 'your password'
 })
 
-
 begin
-  pop = Net::POP.new(config[:pop_server], 110)
-  pop.start(config[:account], config[:password])
+  pop = Net::POP.start(config[:pop_server], 110, config[:account], config[:password])
   puts pop.mails.count
+
+  header = pop.mails.reverse.first.header
+  info = []
+  if /Subject: (?<subject>.+)/ =~ NKF::nkf('-mw', header)
+    info << subject.chomp
+  end
+  if /From: (?<from>.+)/ =~ NKF::nkf('-mw', header)
+    info << from.chomp
+  end
+  puts info.join ' - '
 rescue Exception => e
-  puts :Busy!
+  puts e.to_s
 end

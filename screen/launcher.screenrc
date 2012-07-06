@@ -1,3 +1,5 @@
+# vim: ft=screen
+
 source defaults.screenrc
 
 # detach on hangup
@@ -18,11 +20,11 @@ backtick 4  9999999 9999999 uname -m
 backtick 9  0       90      get-one-liner-idiom
 backtick 99 0       10      more /tmp/last.fm_recent_track
 
-caption always "%{= yW}%1` %{-} %2` %3` %4` %{= mW} %{-} %0`  %= %{= rW} last.fm %{-} %99`"
+caption always "%{= bW}%1` %2` %3` %4` %{= Wb}⮀ %0` %{= Wk}  %= %{= Wr}⮂%{= rW} last.fm ♫ %99`"
 #hardstatus alwayslastline "%{= GW} %{-} %5` %{= MW} %{-} %6` %{= BW} %{-} %7` %{= cW} %{-} %8`"
 hardstatus alwayslastline "%{= GW} %{-} %9`"
 
-screen -t 'main' screen -qUmc "common.screenrc"
+screen screen -qUmc 'gmail.screenrc'
 
 # caption string description:
 #
