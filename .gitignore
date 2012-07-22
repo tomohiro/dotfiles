@@ -1,7 +1,6 @@
 .netrwhist
 /gem
-/gemrc
-/gitconfig
+/gitconfig.local
 /irssi/config
 /irssi/fnotify
 /weechat/irc.conf

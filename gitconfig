@@ -1,0 +1,25 @@
+[include]
+    path = ~/.gitconfig.local
+[user]
+    name = Tomohiro, TAIRA
+    email = tomohiro.t@gmail.com
+[color]
+    status = auto
+    ui = auto
+    diff = auto
+    branch = auto
+[core]
+    pager = less -r
+    excludesfile = ~/.gitignore
+[alias]
+    st = status -s
+    ci = commit
+    co = checkout
+    br = branch
+    history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+    shorten = !"sh -c 'curl -i http://git.io/ -F url=$1 `[ -n \"$2\" ] && echo -F code=$2`' -"
+    type = cat-file -t
+    dump = cat-file -p
+[merge]
+    tool = vimdiff
