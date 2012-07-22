@@ -9,4 +9,4 @@ backtick 1 0 90 head -n 2 /tmp/popmail
 
 # caption and hardstatus settings
 caption always " %-w%{= rw} %n %t %{-}%+w %= %l"
-hardstatus alwayslastline "%{= mw} POP3 ✉ %0` %{= km}⮀%{= kW} %1` %= "
+hardstatus alwayslastline "%{= gW}  POP3 ✉  %0` %{= kg}⮀%{= kW} %1` %= "
