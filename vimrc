@@ -1,5 +1,6 @@
-" Vim Bundle Plugin Manager: NeoBundle
-" see https://github.com/Shougo/neobundle.vim
+" NeoBundle is Vim plugin manager based on Vundle(https://github.com/gmarik/vundle).
+"   [Shougo/neobundle.vim](https://github.com/Shougo/neobundle.vim)
+"
 set nocompatible               " be iMproved
 filetype plugin indent off     " required!
 
@@ -7,9 +8,15 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
 " let NeoBundle manage NeoBundle
 " required!
 NeoBundle 'Shougo/neobundle.vim'
+
+" Tagbar [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'techlivezheng/tagbar-phpctags'
+NeoBundle 'techlivezheng/phpctags'
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
@@ -22,18 +29,21 @@ NeoBundle 'msanders/snipmate.vim'
 
 " Editing
 NeoBundle 'Align'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundle 't9md/vim-textmanip'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'kchmck/vim-coffee-script'
 
 " Version Control System
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mattn/gist-vim'
+
+" Ruby on Rails
+NeoBundle 'tpope/vim-rails'
 
 " Redmine
 NeoBundle 'basyura/unite-yarm'
@@ -42,12 +52,12 @@ NeoBundle 'tyru/open-browser.vim'
 
 " Tools
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'kien/ctrlp.vim'
 
 " Themes
 NeoBundle 'ciaranm/inkpot'
-NeoBundle 'aereal/vim-magica-colors'
 
 " Buffer management
 NeoBundle 'fholgado/minibufexpl.vim'
@@ -59,22 +69,21 @@ NeoBundle 'kana/vim-tabpagecd'  "http://labs.timedia.co.jp/2012/05/vim-tabpagecd
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'pwdstatus.vim'
 
-" LineNumber
-"NeoBundle 'myusuf3/numbers.vim'
+
+" Encoding
+"
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
+    set fileformats=unix,dos
 
 " Vim Default Option:
 "
-set enc=utf-8
-set fenc=utf-8
-set fencs=utf-8,iso-2022-jp,euc-jp,cp932
-set fileformats=unix,dos
 set complete+=k
-set visualbell
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-set number
 set wildmenu
 set viminfo=
 set nobackup
@@ -82,8 +91,6 @@ set noswapfile
 set nowritebackup
 set backspace=indent,eol,start
 set directory=/tmp//
-set listchars=tab:>_,trail:_,eol:↩
-set list
 set hlsearch
 set iminsert=0
 set imsearch=0
@@ -91,25 +98,58 @@ set ignorecase
 set smartcase
 set incsearch
 set wrapscan
-set ruler
-set showcmd
-set showmatch
-set ambiwidth=double
 set ww=31
 set mouse=a
 set ttymouse=xterm2
+set ttyfast
 set autoread
 "set clipboard+=autoselect
 "set clipboard+=unnamed
 
-set laststatus=2
-set statusline=[%n]%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%m%r%w%=%{fugitive#statusline()}\ %l/%L:%c%V\ %3p%%
+" Visual
+"
+    syntax on
+    set visualbell
+    set number
+    set ruler
+    "set nowrap
+    set ambiwidth=double
+    set showcmd
+    set showmatch
+    set list
+    set listchars=tab:>_,trail:_,eol:↩
+    set cursorline
+    augroup cch
+        autocmd! cch
+        autocmd WinLeave * set nocursorline
+        autocmd WinEnter,BufRead * set cursorline
+    augroup END
+    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
+    match ZenkakuSpace /　/
 
-syntax on
-filetype plugin indent on
+" Fold
+"
+    set foldenable
+    set foldcolumn=1
+    set foldmethod=marker
 
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
-match ZenkakuSpace /　/
+
+"set laststatus=2
+"set statusline=[%n]%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%m%r%w%=%{fugitive#statusline()}\ %l/%L:%c%V\ %3p%%
+
+filetype plugin on
+filetype indent on
+
+
+" Change Leader key into a comma instead of a backslash
+"
+    let mapleader=','
+
+
+" Reload configuration
+"
+    nnoremap <silent> <Leader>s :source $HOME/.vimrc<CR>
+
 
 " for Vim Keybinding Customize
 "
@@ -120,7 +160,7 @@ match ZenkakuSpace /　/
 
 " remove highlight
 "
-    nmap <ESC><ESC> :nohlsearch<CR><ESC>
+    nnoremap <silent> <ESC> <ESC> :nohlsearch<CR>
 
 
 " for Split Window Keybinding
@@ -135,10 +175,10 @@ match ZenkakuSpace /　/
     nmap <Space>ph <SID>(split-to-h)
     nmap <Space>pl <SID>(split-to-l)
 
-    nnoremap <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
-    nnoremap <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
-    nnoremap <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
-    nnoremap <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+    nnoremap <silent> <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
+    nnoremap <silent> <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
+    nnoremap <silent> <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+    nnoremap <silent> <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
 
 
 " encoding
@@ -156,7 +196,7 @@ match ZenkakuSpace /　/
     nmap <silent> err :e %<CR>
 
 
-" for FileType Settings
+" for FileType
 "
     autocmd BufRead *.md    :set ft=markdown
     autocmd BufRead *.mkdn  :set ft=markdown
@@ -166,11 +206,13 @@ match ZenkakuSpace /　/
     autocmd FileType php    :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
     autocmd FileType php    :set dictionary=$HOME/.vim/dictionary/php.dict
     autocmd FileType ruby   :set ts=2 sw=2 fenc=utf-8
+    autocmd FileType sh     :set ts=2 sw=2
+    autocmd FileType bash   :set ts=2 sw=2
     autocmd FileType yaml   :set fenc=utf-8
     autocmd FileType css    :set fenc=utf-8
 
 
-" for omnifunc Settings
+" for omnifunc
 "
     set pumheight=15
     hi Pmenu       ctermbg=darkgray
@@ -181,7 +223,7 @@ match ZenkakuSpace /　/
     hi TabLineFill ctermbg=white
 
 
-" for PHP Settings
+" for PHP
 "
     let php_sql_query     = 1
     let php_htmlInStrings = 1
@@ -195,30 +237,29 @@ match ZenkakuSpace /　/
 
 " for toggle line numbers
 "
-"
     function! NumberToggle()
-      if(&relativenumber == 1)
-        set number
-      else
-        set relativenumber
-      endif
+        (&relativenumber == 1)
+            set number
+        else
+            set relativenumber
+        endif
     endfunc
-    nnoremap <C-n> :call NumberToggle()<cr>
+    nnoremap <silent> <Leader>n :call NumberToggle()<CR>
 
 
 " for VimFiler
 "
     let g:vimfiler_safe_mode_by_default=0
+    nnoremap <silent> <Leader>f :VimFiler -buffer-name=explorer -split -winwidth=40 -toggle -no-quit<CR>
 
 
 " for unite
 "
-    nnoremap <silent> <C-u>b :<C-u>Unite buffer<CR>
-    nnoremap <silent> <C-u>f :VimFilerSplit -horizontal<CR>
-    nnoremap <silent> <C-u>r :<C-u>Unite -buffer-name=register register<CR>
-    nnoremap <silent> <C-u>m :<C-u>Unite file_mru<CR>
-    nnoremap <silent> <C-u>u :<C-u>Unite buffer file_mru<CR>
-    nnoremap <silent> <C-u>a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+    nnoremap <silent> <Leader>ub :Unite buffer<CR>
+    nnoremap <silent> <Leader>ur :Unite -buffer-name=register register<CR>
+    nnoremap <silent> <Leader>um :Unite file_mru<CR>
+    nnoremap <silent> <Leader>uu :Unite buffer file_mru<CR>
+    nnoremap <silent> <Leader>ua :UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
     au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
     au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
     au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
@@ -268,6 +309,7 @@ match ZenkakuSpace /　/
 " for vim-powerline
 "
     let g:Powerline_symbols = 'fancy'
+    call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 
 " for QFixHowm
@@ -303,7 +345,24 @@ match ZenkakuSpace /　/
     let QFixHowm_Cmd_NewEntry = '$a'
 
 
-" for Vim colorscheme settings
+" for Tagbar
+"   [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
+"   [techlivezheng/tagbar-phpctags](https://github.com/techlivezheng/tagbar-phpctags)
+"   [techlivezheng/phpctags](https://github.com/techlivezheng/phpctags)
+"
+    nnoremap <silent> <Leader>t :TagbarToggle<CR>
+    let g:tagbar_phpctags_bin = $HOME . '/.vim/bundle/phpctags/phpctags'
+
+
+" for ctrlp.vim
+"   [ctrlp.vim ÷ home](http://kien.github.com/ctrlp.vim/)
+"
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tar.gz,tgz  " MacOSX/Linux
+
+    let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+
+
+" for Vim colorscheme
 "
     if filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
         colorscheme inkpot
@@ -313,7 +372,10 @@ match ZenkakuSpace /　/
     endif
 
 
-" Override colorscheme settings
+" Override colorscheme
 "
     hi LineNr     ctermbg=235 ctermfg=105
     hi StatusLine ctermbg=64  ctermfg=15
+    hi clear CursorLine
+    hi CursorLine gui=underline
+    hi CursorLine ctermbg=235 guibg=235
