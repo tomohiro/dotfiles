@@ -4,3 +4,9 @@
 [submodule "tmux/bundle/Darwin/tmux-powerline"]
 	path = tmux/bundle/Darwin/tmux-powerline
 	url = git://github.com/suvash/tmux-powerline-osx.git
+[submodule "tmux/colors/solarized"]
+	path = tmux/colors/solarized
+	url = git://github.com/seebi/tmux-colors-solarized.git
+[submodule "zsh/completions"]
+	path = zsh/completions
+	url = git://github.com/zsh-users/zsh-completions.git
