@@ -8,6 +8,7 @@
     export PAGER=lv
     export LISTMAX=10000
     export TERM_256=xterm-256color
+    export TERM_256=screen-256color
     export TERM=$TERM_256
     export LS_COLORS='di=01;36'
     export KERNEL=`uname`

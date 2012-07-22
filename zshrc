@@ -5,7 +5,7 @@
     autoload -U colors
     colors
 
-    fpath=($HOME/.zsh/functions $fpath)
+    fpath=($HOME/.zsh/completions $HOME/.zsh/functions $fpath)
     autoload -U compinit
     compinit
 
