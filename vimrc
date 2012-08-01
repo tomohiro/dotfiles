@@ -37,6 +37,8 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'coderifous/textobj-word-column.vim' " https://github.com/coderifous/textobj-word-column.vim
 
 " Version Control System
 NeoBundle 'tpope/vim-fugitive'
@@ -55,9 +57,11 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tpope/vim-repeat'
 
 " Themes
 NeoBundle 'ciaranm/inkpot'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " Buffer management
 NeoBundle 'fholgado/minibufexpl.vim'
@@ -238,7 +242,7 @@ filetype indent on
 " for toggle line numbers
 "
     function! NumberToggle()
-        (&relativenumber == 1)
+        if (&relativenumber == 1)
             set number
         else
             set relativenumber
@@ -300,6 +304,13 @@ filetype indent on
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
 
 
+" for NERDCommenter
+"   [NERDCommenterで瞬時にコメントをトグるためのショートカット設定 #Vim - Qiita](http://qiita.com/items/b69b41ad4ea2497b3477)
+    let NERDSpaceDelims = 1
+    nmap ,, <Plug>NERDCommenterToggle
+    vmap ,, <Plug>NERDCommenterToggle
+
+
 " for zencoding.vim
 "
     let g:user_zen_expandabbr_key = '<c-e>'
@@ -358,24 +369,25 @@ filetype indent on
 "   [ctrlp.vim ÷ home](http://kien.github.com/ctrlp.vim/)
 "
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tar.gz,tgz  " MacOSX/Linux
-
     let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 
 " for Vim colorscheme
 "
-    if filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
-        colorscheme inkpot
-    else
-        colorscheme desert
+    if filereadable($HOME . '/.vim/bundle/vim-colors-solarized/colors/solarized.vim')
         set background=dark
+        colorscheme solarized
+        let g:solarized_termcolors = 256
+        let g:solarized_visibility = 'high'
+        let g:solarized_contrast = 'high'
+    elseif filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
+        colorscheme inkpot
+        hi LineNr     ctermbg=235 ctermfg=105
+        hi StatusLine ctermbg=64  ctermfg=15
+        hi clear CursorLine
+        hi CursorLine gui=underline
+        hi CursorLine ctermbg=235 guibg=235
+    else
+        set background=dark
+        colorscheme desert
     endif
-
-
-" Override colorscheme
-"
-    hi LineNr     ctermbg=235 ctermfg=105
-    hi StatusLine ctermbg=64  ctermfg=15
-    hi clear CursorLine
-    hi CursorLine gui=underline
-    hi CursorLine ctermbg=235 guibg=235
