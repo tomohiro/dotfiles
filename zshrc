@@ -1,11 +1,11 @@
-# vim:set ft=zsh:
+# vim: ft=zsh
 
 ## Auto load settings
 
     autoload -U colors
     colors
 
-    fpath=($HOME/.zsh/completions $HOME/.zsh/functions $fpath)
+    fpath=($HOME/.zsh/completions $HOME/.zsh/functions /usr/local/share/zsh-completions $fpath)
     autoload -U compinit
     compinit
 
@@ -22,11 +22,6 @@
     zstyle ':completion:*:warnings' format 'No matches for: %d'
     zstyle ':completion:*' group-name ''
 
-    autoload -Uz vcs_info
-    zstyle ':vcs_info:*' formats '(%s)-[%r/%b]'
-    zstyle ':vcs_info:*' actionformats '(%s)-[%r/%b|%a]'
-    zstyle ':vcs_info:*' branchformat '%b:%r'
-
     _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
 
 
@@ -39,8 +34,8 @@
     setopt cdable_vars auto_param_keys share_history
     setopt long_list_jobs magic_equal_subst auto_pushd
     setopt print_eight_bit noflowcontrol
-    setopt combining_chars
-    # setopt sh_word_split # comment out. rvm not working.
+    setopt multibyte combining_chars
+    setopt sh_word_split
 
 
 ## History settings

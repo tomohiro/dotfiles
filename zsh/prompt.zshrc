@@ -1,14 +1,27 @@
-# vim:ft=zsh:
-#
-#
-# functions
-#
-#
+# vim: ft=zsh
+
+### Loading modules
+
+    autoload -U promptinit
+    promptinit
+
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' enbale git cvs svn bzr hg
+    zstyle ':vcs_info:*' formats '%b'
+    zstyle ':vcs_info:*' actionformats '(%s)-[%r/%b|%a]'
+    zstyle ':vcs_info:*' branchformat '%b (current revision is %r)'
+
+    autoload -U colors
+    colors
+
 
 ### set default prompt
 
-    DEFAULT_PROMPT="%F{red}[%n@%m]%F{blue}[%d]%1(v|%F{green}%1v%f|)%F{yellow}
-» %F{white}"
+
+    # DEFAULT_PROMPT="$fg[red][%n@%m]$fg[blue][%d]%1(v|$fg[green]%1v%f|)$fg[yellow]
+# » %F{white}"
+    DEFAULT_PROMPT="%F{cyan}%n%F{white} at %F{magenta}%m%F{white} in %F{blue}%d%F{white} %1(v|on %F{red}%v|)
+%F{yellow}» %F{grey}"
     PROMPT=$DEFAULT_PROMPT
 
 
@@ -19,15 +32,6 @@
         psvar=()
         LANG=en_US.UTF-8 vcs_info
         [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-
-        #if [[ $((RANDOM%2)) == 0 ]]; then
-        #    RPROMPT=' (」・ω・)」うー'
-        #else
-        #    RPROMPT='(/・ω・)/にゃー'
-        #fi
-
-        # Check background process for Growl or notify-send
-        #check_background_process.rb `history -n -1 | head -1`
 
         # Check Ruby version and gemset at RVM
         #if [[ -f Gemfile || -f .rvmrc ]]; then
