@@ -1,11 +1,23 @@
-           __      __  _____ __
-      ____/ /___  / /_/ __(_) /__  _____
-     / __  / __ \/ __/ /_/ / / _ \/ ___/
-    / /_/ / /_/ / /_/ __/ / /  __(__  )
-    \__,_/\____/\__/_/ /_/_/\___/____/
-
+dotfiles
+================================================================================
 
 [![Still Maintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
+
+--
+
+
+My terminal
+--------------------------------------------------------------------------------
+
+### Gnome Terminal on Ubuntu 12.04 LTS
+
+![Terminal 20120809](http://dl.dropbox.com/u/173097/junk/terminal-ss-20120809.png)
+
+
+### iTerm2 on OSX Mountain Lion
+
+Comming soon...
+
 
 
 Installation
