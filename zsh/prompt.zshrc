@@ -20,9 +20,10 @@
 
     # DEFAULT_PROMPT="$fg[red][%n@%m]$fg[blue][%d]%1(v|$fg[green]%1v%f|)$fg[yellow]
 # » %F{white}"
-    DEFAULT_PROMPT="%F{cyan}%n%F{white} at %F{magenta}%m%F{white} in %F{blue}%d%F{white} %1(v|on %F{red}%v|)
+    PROMPT_FORMAT="%F{cyan}%n%F{white} in %F{magenta}%m%F{white} at %F{blue}%d%F{white} %1(v|on %F{red}%v|)
 %F{yellow}» %F{grey}"
-    PROMPT=$DEFAULT_PROMPT
+
+    PROMPT=$PROMPT_FORMAT
 
 
 ### precmd
