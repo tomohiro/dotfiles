@@ -292,9 +292,12 @@ filetype indent on
     let g:neocomplcache_enable_smart_case = 1
     let g:neocomplcache_enable_underbar_completion = 1
 
+" for Vim Quickrun
+"
+    let g:quickrun_config = {}
+
 
 " for vim-indent-guides
-"
 "
     let g:indent_guides_enable_on_vim_startup=1
     let g:indent_guides_start_level=2
@@ -321,6 +324,15 @@ filetype indent on
 "
     let g:Powerline_symbols = 'fancy'
     call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+    " let g:Powerline_mode_v = "VISUAL"
+    " let g:Powerline_mode_V = "V:LINE"
+    " let g:Powerline_mode_cv = "V:BLOCK"
+    " let g:Powerline_mode_s = "SELECT"
+    " let g:Powerline_mode_S = "S:LINE"
+    " let g:Powerline_mode_cs = "S:BLOCK"
+    " let g:Powerline_mode_i = "INSERT"
+    " let g:Powerline_mode_R = "REPLACE"
+    " let g:Powerline_mode_n = "NORMAL"
 
 
 " for QFixHowm
