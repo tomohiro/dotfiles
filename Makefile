@@ -9,7 +9,7 @@ KERNEL      = $(shell uname)
 DEVELOPMENT = $(HOME)/Dropbox/Development
 DOTFILES    = $(DEVELOPMENT)/dotfiles
 INSTALLTO   = $(HOME)
-IGNORES     = bin Makefile README.markdown Darwin Linux Windows
+IGNORES     = bin bundle Makefile README.markdown Darwin Linux Windows
 
 
 .PHONY: help install update-modules
