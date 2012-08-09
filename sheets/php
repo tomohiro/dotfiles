@@ -5,3 +5,9 @@ cd php-5.4.x
 ./configure --with-mysqli --with-mcrypt --enable-mbstring
 make
 sudo make install
+
+# Tags
+- [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
+- [Home · majutsushi/tagbar Wiki](https://github.com/majutsushi/tagbar/wiki)
+- [techlivezheng/phpctags](https://github.com/techlivezheng/phpctags)
+- [techlivezheng/tagbar-phpctags](https://github.com/techlivezheng/tagbar-phpctags)

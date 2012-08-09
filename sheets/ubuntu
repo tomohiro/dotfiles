@@ -1,8 +1,9 @@
 # 英語でセットアップして ssh した時に warning: setlocale: LC_ALL: cannot change locale (ja_JP.UTF-8) とか出る場合
 $ sudo apt-get install language-pack-ja -y
 
-# getty の tty を停止させる
+# getty の tty を停止させる 参考:  http://d.hatena.ne.jp/ttmmrr/20110531/1306827909
 $ sudo initctl stop tty3 # tty3 を停止, initctl list でジョブ一覧を確認
+$ sudo vim /etc/default/console-setup  # ACTIVE_CONSOLE="/dev/tty[1-2]" に変更する
 
 # Ubuntu の環境変数を編集する(http_proxy など)
 $ sudo vim /etc/environment
