@@ -3,8 +3,6 @@ dotfiles
 
 [![Still Maintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 
---
-
 
 My terminal
 --------------------------------------------------------------------------------
@@ -23,14 +21,17 @@ Coming soon...
 Installation
 --------------------------------------------------------------------------------
 
-    $ make install
-
+```sh
+$ make install
+```
 
 Usage
 --------------------------------------------------------------------------------
 
-    $ make help
-    Please type: make [target]
-      install         Install dotfiles to /home/tomohiro
-      update-modules  Update git submodules
-      help            Show this help messages
+```sh
+$ make help
+Please type: make [target]
+  install         Install dotfiles to /home/tomohiro
+  update-modules  Update git submodules
+  help            Show this help messages
+```
