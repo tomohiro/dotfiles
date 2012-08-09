@@ -16,7 +16,7 @@ My terminal
 
 ### iTerm2 on OSX Mountain Lion
 
-Comming soon...
+Coming soon...
 
 
 
