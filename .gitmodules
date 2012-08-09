@@ -7,3 +7,12 @@
 [submodule "tmux/bundle/tmux-powerline"]
 	path = tmux/bundle/tmux-powerline
 	url = git://github.com/erikw/tmux-powerline.git
+[submodule "bundle/spot"]
+	path = bundle/spot
+	url = git://github.com/guille/spot.git
+[submodule "bundle/p"]
+	path = bundle/p
+	url = git@github.com:Tomohiro/p.git
+[submodule "bundle/h"]
+	path = bundle/h
+	url = git@github.com:Tomohiro/h.git
