@@ -1,7 +1,7 @@
 # vim: ft=screen
 
 source defaults.screenrc
-source "backtick.$KERNEL.screenrc"
+source "$KERNEL.screenrc"
 
 escape ^t^t
 
@@ -23,6 +23,9 @@ defscrollback 1000
 
 # erase background with current bg color
 defbce "on"
+
+# focus window
+#focusminsize 0 30
 
 ################
 #

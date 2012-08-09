@@ -8,23 +8,16 @@ autodetach on
 # soruce
 bind R eval "source $HOME/.screen/launcher.screenrc"
 
-backtick 0  9999999 9999999 bash -c '`which gcc` --version | head -n 1'
-backtick 1  9999999 9999999 byobu-status logo
-backtick 2  9999999 9999999 uname -s
-backtick 3  9999999 9999999 uname -r
-backtick 4  9999999 9999999 uname -m
-#backtick 5  9999999 9999999 rbenv version
-#backtick 6  9999999 9999999 php_version
-#backtick 7  9999999 9999999 python_version
-#backtick 8  9999999 9999999 perl_version
-backtick 9  0       90      get-one-liner-idiom
-backtick 99 0       10      more /tmp/last.fm_recent_track
+# Backticks
+# crontab: ruby ~/.screen/scripts/gmail_check.rb > /tmp/gmail
+backtick 0 0 90 head -n 1 /tmp/gmail
+backtick 1 0  0 $HOME/.screen/scripts/github_activity.rb
 
-caption always "%{= bW}%1` %2` %3` %4` %{= Wb}⮀ %0` %{= Wk}  %= %{= Wr}⮂%{= rW} last.fm ♫ %99`"
-#hardstatus alwayslastline "%{= GW} %{-} %5` %{= MW} %{-} %6` %{= BW} %{-} %7` %{= cW} %{-} %8`"
-hardstatus alwayslastline "%{= GW} %{-} %9`"
+# caption and hardstatus settings
+# segments ⮂ ⮃ ⮀ ⮁
+hardstatus alwayslastline "%{= mw} ✉ Gmail ⮁ %0` %{= wm}⮀%{= wk} %-w%{= Bw}⮀%{= BK} %1`"
 
-screen screen -qUmc 'gmail.screenrc'
+screen screen -qUmc 'i_am_a_programmer.screenrc'
 
 # caption string description:
 #

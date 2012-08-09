@@ -1,0 +1,11 @@
+# vim: ft=screen
+
+source defaults.screenrc
+
+# Backticks
+backtick 0 60 60 $HOME/.screen/scripts/programmer.rb
+
+# caption and hardstatus settings. segments ⮂ ⮀ ⮃ ⮁
+hardstatus alwayslastline "%{= Kw} %Y-%m-%d %D ⮃%{= Ky} %= %0` %=%{= Kw}⮁ %02c:%s"
+
+screen screen -qUmc 'workplace.screenrc'

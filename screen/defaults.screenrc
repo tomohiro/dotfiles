@@ -58,7 +58,7 @@ encoding utf8 utf8
 
 # Tell applications  who this is.   The ``screen-256color'' terminfo is  in the
 # ncurses-term package for debian.
-term xterm-256color
+term screen-256color
 
 # chdir is useful for invoking scripts there.
 chdir "$HOME/.screen"
