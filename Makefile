@@ -12,12 +12,13 @@ INSTALLTO   = $(HOME)
 IGNORES     = bin Makefile README.markdown Darwin Linux Windows
 
 
-.PHONY: help install
+.PHONY: help install update-modules
 
 help:
 	@echo "Please type: make [target]"
-	@echo "  install   Install dotfiles to $(INSTALLTO)"
-	@echo "  help      Show this help messages"
+	@echo "  install         Install dotfiles to $(INSTALLTO)"
+	@echo "  update-modules  Update git submodules"
+	@echo "  help            Show this help messages"
 
 
 install:
@@ -40,3 +41,8 @@ install:
 		$(LN) $(DOTFILES)/$(KERNEL)/$$file $(INSTALLTO)/.$$file;\
 	done
 	@echo "Finished."
+
+
+update-modules:
+	@echo "Update git submodules."
+	@git submodule foreach 'git pull origin master'
