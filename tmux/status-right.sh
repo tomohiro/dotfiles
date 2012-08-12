@@ -7,12 +7,12 @@ LC_ALL=C
 cwd=$(dirname $0)
 
 # Source global configurations.
-source "${cwd}/bundle/tmux-powerline/config.sh"
+source "${cwd}/plugins/tmux-powerline/config.sh"
 
 # Source lib functions.
-source "${cwd}/bundle/tmux-powerline/lib.sh"
+source "${cwd}/plugins/tmux-powerline/lib.sh"
 
-segments_path="${cwd}/bundle/tmux-powerline/${segments_dir}"
+segments_path="${cwd}/plugins/tmux-powerline/${segments_dir}"
 
 # Segment
 # Comment/uncomment the register function call to enable or disable a segment.
