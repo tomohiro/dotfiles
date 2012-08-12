@@ -114,5 +114,5 @@
 ### For PostgreSQL
 
     if [ $KERNEL = Darwin ]; then
-        PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+        PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin"
     fi
