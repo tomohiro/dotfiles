@@ -3,8 +3,8 @@
 #blankerprg fortune
 
 # Backticks
-backtick 0 0 0 lsb_release -ds
+backtick 0 0 0 $HOME/.screen/scripts/osx_release
 
 #caption and hardstatus settings
 # segments ⮂ ⮃ ⮀ ⮁
-caption always "%{= Gw} %` %{= wG}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w}%{= wk}%+w %= "
+caption always "%{= Gw} %0` %{= wG}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w}%{= wk}%+w %= "

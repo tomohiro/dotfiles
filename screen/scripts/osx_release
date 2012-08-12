@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$(sw_vers -productName) $(sw_vers -productVersion)"
