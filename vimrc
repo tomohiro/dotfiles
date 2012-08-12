@@ -254,7 +254,7 @@ filetype indent on
 " for VimFiler
 "
     let g:vimfiler_safe_mode_by_default=0
-    nnoremap <silent> <Leader>f :VimFiler -buffer-name=explorer -split -winwidth=40 -toggle -no-quit<CR>
+    nnoremap <silent> <Leader>f :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -no-quit<CR>
 
 
 " for unite
