@@ -19,3 +19,6 @@
 [submodule "bundle/vimperator-plugins"]
 	path = bundle/vimperator-plugins
 	url = git://github.com/vimpr/vimperator-plugins.git
+[submodule "bundle/elfactory"]
+	path = bundle/elfactory
+	url = git://github.com/gongo/elfactory.git
