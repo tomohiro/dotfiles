@@ -14,11 +14,6 @@
     export KERNEL=`uname`
     export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-    # for tmux-powerline: https://github.com/erikw/tmux-powerline
-    if [ $KERNEL = Darwin ]; then
-        export PLATFORM=mac
-    fi
-
     if [ $KERNEL = Darwin ]; then
         export PATH=/opt/X11/bin:$PATH
     fi

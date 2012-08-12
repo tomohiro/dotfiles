@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #Print the status-left for tmux.
-#
-
-LC_ALL=C
 
 # The powerline root directory.
 cwd=$(dirname $0)
 
 # Source global configurations.
 source "${cwd}/plugins/tmux-powerline/config.sh"
+
+# Source local configurations.
+source "${cwd}/config.sh"
 
 # Source lib functions.
 source "${cwd}/plugins/tmux-powerline/lib.sh"
