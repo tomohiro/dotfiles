@@ -1,11 +1,11 @@
 .netrwhist
 /gem
 /gitconfig.local
-/irssi/config
-/irssi/fnotify
-/weechat/irc.conf
-/weechat/logs
-/weechat/*.log
+/Linux/irssi/config
+/Linux/irssi/fnotify
+/Linux/weechat/irc.conf
+/Linux/weechat/logs
+/Linux/weechat/*.log
 /network
 /pit
 /ssh/id_rsa
