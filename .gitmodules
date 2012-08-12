@@ -16,3 +16,6 @@
 [submodule "bundle/tmux-colors-solarized"]
 	path = bundle/tmux-colors-solarized
 	url = git://github.com/seebi/tmux-colors-solarized.git
+[submodule "bundle/vimperator-plugins"]
+	path = bundle/vimperator-plugins
+	url = git://github.com/vimpr/vimperator-plugins.git

@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/feedSomeKeys_3.js
+../../bundle/vimperator-plugins/feedSomeKeys_3.js

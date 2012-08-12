@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/commandBookmarklet.js
+../../bundle/vimperator-plugins/commandBookmarklet.js

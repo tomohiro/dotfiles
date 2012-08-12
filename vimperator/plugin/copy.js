@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/copy.js
+../../bundle/vimperator-plugins/copy.js

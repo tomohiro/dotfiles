@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/refcontrol.js
+../../bundle/vimperator-plugins/refcontrol.js

@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/google-plus-commando.js
+../../bundle/vimperator-plugins/google-plus-commando.js

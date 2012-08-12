@@ -1,1 +1,1 @@
-../../../clone/vimperator-plugins/_libly.js
+../../bundle/vimperator-plugins/_libly.js
