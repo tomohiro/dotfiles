@@ -29,7 +29,7 @@
         }
         zle -N zle-line-init
         zstyle ':completion:*' completer _oldlist _complete
-        zstyle ':auto-fu:var' postdisplay $''
+        zstyle ':auto-fu:var' postdisplay ''
     fi
 
     _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
