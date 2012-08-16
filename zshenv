@@ -14,6 +14,8 @@
     export KERNEL=`uname`
     export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+    REPORTTIME=3
+
     if [ $KERNEL = Darwin ]; then
         export PATH=/opt/X11/bin:$PATH
     fi
@@ -110,4 +112,11 @@
 
     if [ $KERNEL = Darwin ]; then
         PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin"
+    fi
+
+
+### Load local environment
+
+    if [ -f .localenv ]; then
+        source .localenv
     fi
