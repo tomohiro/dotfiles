@@ -13,6 +13,8 @@ if __FILE__ == $0
     "Laziness, Impatience and Hubris",
     "Tell, Don't Ask",
     "Small is beautiful",
+    "No Review, No Merge",
+    "Read The Fucking Manual"
   ]
 
   puts "❝ #{mottoes.sample.upcase} ❞"
