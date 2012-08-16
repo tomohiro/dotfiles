@@ -22,8 +22,16 @@
     zstyle ':completion:*:warnings' format 'No matches for: %d'
     zstyle ':completion:*' group-name ''
 
-    _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
+    if [ -f $HOME/.zsh/auto-fu.zsh ]; then
+        source $HOME/.zsh/auto-fu.zsh
+        function zle-line-init () {
+            auto-fu-init
+        }
+        zle -N zle-line-init
+        zstyle ':completion:*' completer _oldlist _complete
+    fi
 
+    _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
 
 ## Set shell options
 
@@ -119,6 +127,7 @@
     alias -g M='| more'
     alias -g L='| less'
     alias -g X='| xargs'
+    alias -g H='| w3m -T text/html'
 
 
 ## Set Functions

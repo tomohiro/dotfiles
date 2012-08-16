@@ -22,3 +22,6 @@
 [submodule "bundle/elfactory"]
 	path = bundle/elfactory
 	url = git://github.com/gongo/elfactory.git
+[submodule "bundle/auto-fu.zsh"]
+	path = bundle/auto-fu.zsh
+	url = git://github.com/hchbaw/auto-fu.zsh.git
