@@ -50,6 +50,5 @@ bundle-show:
 
 
 bundle-update:
-
 	@echo "Update git submodules."
 	@git submodule foreach 'git pull origin master'
