@@ -1,3 +1,4 @@
+# vim: ft=zsh
 ## Default environment settings
 
     export SHELL=zsh
