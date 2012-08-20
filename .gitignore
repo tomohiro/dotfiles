@@ -6,11 +6,14 @@
 /Linux/weechat/irc.conf
 /Linux/weechat/logs
 /Linux/weechat/*.log
+/Linux/private
+/Darwin/private
 /network
 /pit
 /ssh/id_rsa
 /ssh/known_hosts*
 /ssh/config
+/ssh/identities
 /vim/bundle/
 /vim/manual/
 /vimperator/info
