@@ -13,25 +13,26 @@
     export TERM=$TERM_256
     export LS_COLORS='di=01;36'
     export KERNEL=`uname`
-    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-    REPORTTIME=3
+## Load path settings
+
+    PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     if [ $KERNEL = Darwin ]; then
-        export PATH=/opt/X11/bin:$PATH
+        PATH=/opt/X11/bin:$PATH
     fi
 
-## for `Bundlizer`
+### for `Bundlizer`
 
     if [[ -d $HOME/.bundlizer ]]; then
         source $HOME/.bundlizer/etc/bashrc
     fi
 
 
-## for Ruby `rbenv`
+### for Ruby `rbenv`
 
     if [[ -d $HOME/.rbenv/bin ]]; then # Ubuntu
-        export PATH=$HOME/.rbenv/bin:$PATH
+        PATH=$HOME/.rbenv/bin:$PATH
         eval "$(rbenv init -)"
         source $HOME/.rbenv/completions/rbenv.zsh
     elif type rbenv &> /dev/null; then # Homebrew on OSX
@@ -39,29 +40,29 @@
         source /usr/local/Cellar/rbenv/0.3.0/completions/rbenv.zsh
     fi
 
-## for PHP `phpenv`
+### for PHP `phpenv`
 
     if [[ -d $HOME/.phpenv/bin ]]; then # Ubuntu
-        export PATH=$HOME/.phpenv/bin:$PATH
+        PATH=$HOME/.phpenv/bin:$PATH
         eval "$(phpenv init -)"
         source $HOME/.phpenv/completions/phpenv.zsh
     fi
 
-## for Python `pythonbrew`
+### for Python `pythonbrew`
 
     if [[ -s $HOME/.pythonbrew/etc/bashrc ]]; then
         source $HOME/.pythonbrew/etc/bashrc
     fi
 
 
-## for Perl `perlbrew`
+### for Perl `perlbrew`
 
     if [[ -s $HOME/.perlbrew/perl5/etc/bashrc ]]; then
         source $HOME/.perlbrew/perl5/etc/bashrc;
     fi
 
 
-## for cpanminus
+### for cpanminus
 
     if type cpanm &> /dev/null && [ -n $PERLBREW_ROOT ]; then
         export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
@@ -69,31 +70,32 @@
     fi
 
 
-## for Android
+### for Android
 
     if [ $KERNEL = Darwin -a -d $HOME/Library/android-sdk-x86/tools ]; then
-        export PATH=$HOME/Library/android-sdk-x86/tools:$PATH
+        PATH=$HOME/Library/android-sdk-x86/tools:$PATH
     fi
 
 
-## for Node and npm
+### for Node and npm
 
     if type npm &> /dev/null; then
         export NODE_PATH=/usr/local/lib/node
     fi
 
 
-## for Play! framework
+### for Play! framework
 
     if [[ -s $HOME/play/play ]]; then
-        export PATH=$PATH:$HOME/play
+        PATH=$PATH:$HOME/play
     fi
 
 
-## Export PATH
+### Export PATH
 
-    export PATH=$HOME/bin:$PATH
+    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
     typeset -U path cdpath fpath manpath
+
 
 ## Set Database settings
 
@@ -118,6 +120,7 @@
 
 ### Load local environment
 
-    if [ -f .localenv ]; then
-        source .localenv
+    LOCALENV=$HOME/.private/etc/zshrc
+    if [ -f $LOCALENV ]; then
+        source $LOCALENV
     fi

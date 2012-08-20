@@ -47,6 +47,11 @@
     setopt sh_word_split
 
 
+## Reporttime Settings
+
+    REPORTTIME=3
+
+
 ## History settings
 
     HISTFILE=$HOME/.zsh-history
