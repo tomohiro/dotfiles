@@ -37,7 +37,7 @@ battery+=(["separator"]="${separator_left_bold}")
 register_segment "battery"
 
 declare -A weather
-weather+=(["script"]="${segments_path}/weather.sh")
+weather+=(["script"]="$HOME/.tmux/segments/weather.rb Urasoe")
 weather+=(["foreground"]="colour255")
 weather+=(["background"]="colour37")
 weather+=(["separator"]="${separator_left_bold}")
@@ -45,8 +45,8 @@ register_segment "weather"
 
 declare -A music
 music+=(["script"]="$HOME/.tmux/segments/music.sh")
-music+=(["foreground"]="colour255")
-music+=(["background"]="colour88")
+music+=(["foreground"]="colour218")
+music+=(["background"]="colour236")
 music+=(["separator"]="${separator_left_bold}")
 register_segment "music"
 
