@@ -7,3 +7,7 @@ $ sudo vim /etc/default/console-setup  # ACTIVE_CONSOLE="/dev/tty[1-2]" に変�
 
 # Ubuntu の環境変数を編集する(http_proxy など)
 $ sudo vim /etc/environment
+
+# chkconfig みたいのを入れる
+$ sudo apt-get install sysv-rc-conf
+$ sudo sysv-rc-conf --list | grep 3:on
