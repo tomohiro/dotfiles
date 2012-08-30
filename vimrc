@@ -13,7 +13,8 @@ endif
 " required!
 NeoBundle 'Shougo/neobundle.vim'
 
-" Tagbar [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
+" Tagbar
+"   [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'techlivezheng/tagbar-phpctags'
 NeoBundle 'techlivezheng/phpctags'
@@ -39,6 +40,7 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'coderifous/textobj-word-column.vim' " https://github.com/coderifous/textobj-word-column.vim
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " Version Control System
 NeoBundle 'tpope/vim-fugitive'
@@ -310,8 +312,8 @@ filetype indent on
 " for NERDCommenter
 "   [NERDCommenterで瞬時にコメントをトグるためのショートカット設定 #Vim - Qiita](http://qiita.com/items/b69b41ad4ea2497b3477)
     let NERDSpaceDelims = 1
-    nmap ,, <Plug>NERDCommenterToggle
-    vmap ,, <Plug>NERDCommenterToggle
+    nmap <Leader>c <Plug>NERDCommenterToggle
+    vmap <Leader>c <Plug>NERDCommenterToggle
 
 
 " for zencoding.vim
@@ -382,6 +384,13 @@ filetype indent on
 "
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tar.gz,tgz  " MacOSX/Linux
     let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+
+
+" for EasyMotion
+"   [Lokaltog/vim-easymotion](https://github.com/Lokaltog/vim-easymotion/)
+"   [【Vim】目的の行に素早く移動する（相対行番号と easymotion プラグイン）](http://blog.remora.cx/2012/08/vim-easymotion.html)
+"
+    let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB' " Use home position keys
 
 
 " for Vim colorscheme
