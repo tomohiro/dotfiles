@@ -6,8 +6,7 @@ for d in `ls $pwd/`; do
     if [ -d $pwd/$d ]; then
         cd $pwd/$d
         echo "Into $pwd/$d"
-        git reset --hard
-        git pull
+        git pull --rebase
     fi
 done
 
