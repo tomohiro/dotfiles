@@ -6,8 +6,10 @@
 /Linux/weechat/irc.conf
 /Linux/weechat/logs
 /Linux/weechat/*.log
-/Linux/private
-/Darwin/private
+/Linux/private/bin/*
+/Linux/private/etc/*
+/Darwin/private/etc/*
+/Darwin/private/bin/*
 /network
 /pit
 /ssh/id_rsa
