@@ -1,7 +1,8 @@
 dotfiles
 ================================================================================
 
-[![Still Maintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
+[![Still Maintained](https://dl.dropbox.com/u/173097/github/stillmaintained.png)](http://stillmaintained.com/Tomohiro/dotfiles)
+[![Build Status](https://secure.travis-ci.org/Tomohiro/dotfiles.png)](https://secure.travis-ci.org/Tomohiro/dotfiles)
 
 
 My terminal
@@ -33,7 +34,9 @@ Usage
 $ make help
 Please type: make [target]
   install         Install dotfiles to /home/tomohiro
+  test            Run tests
   bundle-show     Show git submodules
   bundle-update   Update git submodules
+  clean           Cleanup
   help            Show this help messages
 ```
