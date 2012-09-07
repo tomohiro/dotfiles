@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# Define constants
+
+    readonly HOME=/tmp/johndoe
+    readonly DOTFILES=$(cd $(dirname $0) && pwd)
+    readonly TESTS=$DOTFILES/test
+    readonly INSTALLDIR=$HOME/Dropbox/Development
+
+
+# Failed tests count
+
+    FAILED=0
+
+# Define test functions
+
+    success() {
+      echo "[success]" $1
+    }
+
+    failure() {
+      echo "[failure]" $1
+      FAILED=$(echo "$FAILED+1" | bc)
+      return 1
+    }
+
+    assert_true() {
+      local case=$1
+      local result=$2
+      if [ $result = 0 ]; then
+        success $case
+      else
+        failure $case
+      fi
+    }
+
+
+# Bootstrap
+
+    bootstrap() {
+      [ -d $INSTALLDIR ] || mkdir -p $INSTALLDIR
+      cd $HOME
+
+      curl -LO https://github.com/Tomohiro/dotfiles/tarball/master
+      tar zxf master
+      mv Tomohiro* $INSTALLDIR/dotfiles
+
+      assert_true 'Download dotfiles' $?
+    }
+
+
+# Test runner
+
+    run_all_tests() {
+      bootstrap || {
+        cleanup
+        return
+      }
+
+      for test in $(ls $TESTS); do
+        sh $TESTS/$test
+        assert_true $test $?
+      done
+
+      cleanup
+
+      if [ $FAILED = 0 ]; then
+        success 'Yeah! All test passed.'
+      else
+        failure "Oops, test failed. (errors: $FAILED)"
+        exit 1
+      fi
+    }
+
+    cleanup() {
+      [ -d $INSTALLDIR ] && {
+        rm -rf $INSTALLDIR
+        [ $? ] && success 'cleanup'
+      }
+    }
+
+
+
+run_all_tests

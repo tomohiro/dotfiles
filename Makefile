@@ -9,16 +9,18 @@ KERNEL      = $(shell uname)
 DEVELOPMENT = $(HOME)/Dropbox/Development
 DOTFILES    = $(DEVELOPMENT)/dotfiles
 INSTALLTO   = $(HOME)
-IGNORES     = bin bundle Makefile README.markdown Darwin Linux Windows
+IGNORES     = bin bundle Makefile README.markdown Darwin Linux Windows test test-runner
 
 
-.PHONY: help install bundle-show bundle-update
+.PHONY: help test install bundle-show bundle-update
 
 help:
 	@echo "Please type: make [target]"
 	@echo "  install         Install dotfiles to $(INSTALLTO)"
+	@echo "  test            Run tests"
 	@echo "  bundle-show     Show git submodules"
 	@echo "  bundle-update   Update git submodules"
+	@echo "  clean           Cleanup"
 	@echo "  help            Show this help messages"
 
 
@@ -44,6 +46,12 @@ install:
 	@echo "Finished."
 
 
+test:
+	@echo "Run test"
+	./test-runner
+	make clean
+
+
 bundle-show:
 	@echo "Show git submodules."
 	@git submodule status
@@ -52,3 +60,8 @@ bundle-show:
 bundle-update:
 	@echo "Update git submodules."
 	@git submodule foreach 'git pull origin master'
+
+
+clean:
+	@echo "Cleanup"
+	rm -rf /tmp/johndoe
