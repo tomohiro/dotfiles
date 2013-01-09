@@ -11,3 +11,12 @@ $ sudo vim /etc/environment
 # chkconfig みたいのを入れる
 $ sudo apt-get install sysv-rc-conf
 $ sudo sysv-rc-conf --list | grep 3:on
+
+# ntp の設定
+$ sudo vi /etc/default/ntpdate
+NTPSERVERS="ntp.foo.co.jp ntp.ubuntu.com"
+
+# シングルユーザモードでパスワード変更など Ubuntu 12.04
+1. recovery mode で起動して root を選択
+2. mount -o rw,remount / #ファイルシステムを書き込み権限で再マウント
+3. usermode, passwd などのコマンドを使う

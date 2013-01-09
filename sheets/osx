@@ -5,6 +5,8 @@
 - [[D] Dockの表示時間遅延を無くすとDockを隠しても快適な裏技 - Drift Diary XV](http://blog.drikin.com/2012/05/dockdock.html)
 - [Mac OS XのFinderでディレクトリが日本語表記を英語表記に変える方法。](http://d.hatena.ne.jp/warupoke/20100204/1265295415)
 - [Mac Explorer｜ QuickLookの表示上でテキストの選択・コピーができるようにするターミナルコマンド](http://idita.blog11.fc2blog.net/blog-entry-863.html)
+- [Macが妙に重くなる。SystemUIserverが暴走した場合。 | Macとかの雑記帳](http://tukaikta.blog135.fc2.com/blog-entry-9.html)
+- アプリケーションデータ - /Users/tomohiro/Library/Application\ Support/{App Name}
 
 
 # OSX ソフトウェアアップデート
@@ -27,6 +29,7 @@ rake themes:install  # /Users/tomohiro/Library/Application Support/LimeChat/Them
 # QuickLook
 [toland/qlmarkdown](https://github.com/toland/qlmarkdown)
 [Quick Look Plugin - soundscape out](http://d.hatena.ne.jp/tanemori/20071127/QuickLookPlugin)
+[whomwah/qlstephen · GitHub](https://github.com/whomwah/qlstephen)
 
 # スクリーンセーバー
 [I LOVE COLORZ : Home](http://ilovecolorz.net/minimalclock/)

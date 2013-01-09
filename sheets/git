@@ -10,8 +10,11 @@ git push origin :branch-name
 # Remote URL の変更 origin の url を変更する場合
 git config remote.origin.url git@github.com:Tomohiro/hoge.git
 
-# 特定のファイルが未コミットで編集されいた場合，最後のコミットまで戻す
+# 特定のファイルが未コミットで編集されていた場合，最後のコミットまで戻す
 git checkout -- path/to/file
 
 # hub コマンドで github から fork して pull request をさくっと - #生存戦略 、それは - subtech
 http://subtech.g.hatena.ne.jp/secondlife/20120611/1339411825
+
+# Remote の最新まで戻す
+git reset --hard ORIG_HEAD
