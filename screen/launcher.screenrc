@@ -11,11 +11,11 @@ bind R eval "source $HOME/.screen/launcher.screenrc"
 # Backticks
 # crontab: ruby ~/.screen/scripts/gmail_check.rb > /tmp/gmail
 backtick 0 0 90 head -n 1 /tmp/gmail
-backtick 1 0  0 $HOME/.screen/scripts/github_activity.rb
+backtick 1 0  0 $HOME/.screen/scripts/github_event.rb
 
 # caption and hardstatus settings
 # segments ⮂ ⮃ ⮀ ⮁
-hardstatus alwayslastline "%{= mw} ✉ Gmail ⮁ %0` %{= wm}⮀%{= wk} %-w%{= Bw}⮀%{= BK} %1`"
+hardstatus alwayslastline "%{= Mw} ✉ Gmail ⮁ %0` %{= wM}⮀%{= wK} %-w%{= bw}⮀%{= bk} %1`"
 
 screen screen -qUmc 'i_am_a_programmer.screenrc'
 

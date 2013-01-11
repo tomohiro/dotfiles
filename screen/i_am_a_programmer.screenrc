@@ -6,6 +6,6 @@ source defaults.screenrc
 backtick 0 60 60 bash -c 'fortune programmer | tr a-z A-Z'
 
 # caption and hardstatus settings. segments ⮂ ⮀ ⮃ ⮁
-hardstatus alwayslastline "%{= Kw} %Y-%m-%d %D ⮃%{= Ky} %= ❝ %0` ❞ %=%{= Kw}⮁ %02c:%s"
+hardstatus alwayslastline "%{= kw} %Y-%m-%d %D ⮃%{= ky} %= ❝ %0` ❞ %=%{= kw}⮁ %02c:%s"
 
 screen screen -qUmc 'workplace.screenrc'

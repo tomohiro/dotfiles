@@ -7,4 +7,5 @@ backtick 0 0 0 $HOME/.screen/scripts/osx_release
 
 #caption and hardstatus settings
 # segments ⮂ ⮃ ⮀ ⮁
-caption always "%{= Gw} %0` %{= wG}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w}%{= wk}%+w %= "
+caption always "%{= Rw} %0` ⮁ ❏ %n %{= wR}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w} %{= wk}%+w %= "
+#caption always "%{= Rw} %0` %{= wR}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w}%{= wk}%+w %= "
