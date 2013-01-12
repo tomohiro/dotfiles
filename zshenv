@@ -1,4 +1,5 @@
 # vim: ft=zsh
+
 ## Default environment settings
 
     export SHELL=zsh
@@ -14,6 +15,7 @@
     export LS_COLORS='di=01;36'
     export KERNEL=`uname`
 
+
 ## Load path settings
 
     PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -21,6 +23,7 @@
     if [ $KERNEL = Darwin ]; then
         PATH=/opt/X11/bin:$PATH
     fi
+
 
 ### for `Bundlizer`
 
@@ -37,7 +40,7 @@
         source $HOME/.rbenv/completions/rbenv.zsh
     elif type rbenv &> /dev/null; then # Homebrew on OSX
         eval "$(rbenv init -)"
-        source /usr/local/Cellar/rbenv/0.3.0/completions/rbenv.zsh
+        source /usr/local/opt/rbenv/completions/rbenv.zsh
     fi
 
 ### for PHP `phpenv`
@@ -70,24 +73,10 @@
     fi
 
 
-### for Android
-
-    if [ $KERNEL = Darwin -a -d $HOME/Library/android-sdk-x86/tools ]; then
-        PATH=$HOME/Library/android-sdk-x86/tools:$PATH
-    fi
-
-
 ### for Node and npm
 
     if type npm &> /dev/null; then
         export NODE_PATH=/usr/local/lib/node
-    fi
-
-
-### for Play! framework
-
-    if [[ -s $HOME/play/play ]]; then
-        PATH=$PATH:$HOME/play
     fi
 
 
@@ -98,18 +87,6 @@
 
 
 ## Set Database settings
-
-### For Oracle
-
-    #export LD_LIBRARY_PATH=/usr/lib/oracle/10.2.0.1/client/lib
-    #export NLS_LANG=Japanese_Japan.JA16SJIS
-    #export NLS_TIMESTAMP_FORMAT="YYYY-MM-DD HH24:MI:SS"
-
-
-### For DB2
-
-    #export DB2CODEPAGE=943
-
 
 ### For PostgreSQL
 
