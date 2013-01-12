@@ -5,7 +5,7 @@
     autoload -U colors
     colors
 
-    fpath=($HOME/.zsh/completions $HOME/.zsh/functions /usr/local/share/zsh-completions $fpath)
+    fpath=($HOME/.zsh/completions $HOME/.zsh/functions $fpath)
     autoload -U compinit
     compinit
 
@@ -118,6 +118,8 @@
     if ! type mosh &> /dev/null; then
         alias mosh='mosh -p 60000'
     fi
+
+    alias d='downcer'
 
     alias ssh-new=ssh_on_screen
 
