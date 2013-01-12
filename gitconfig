@@ -1,6 +1,6 @@
 # vim: ft=gitconfig
 [user]
-    name = Tomohiro, TAIRA
+    name = Tomohiro TAIRA
     email = tomohiro.t@gmail.com
 [color]
     status = auto
