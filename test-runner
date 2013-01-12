@@ -20,7 +20,7 @@
 
     failure() {
       echo "[failure]" $1
-      FAILED=$(echo "$FAILED+1" | bc)
+      FAILED=$(($FAILED+1))
       return 1
     }
 
