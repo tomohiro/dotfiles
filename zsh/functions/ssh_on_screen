@@ -4,9 +4,9 @@ function ssh_on_screen() {
     if [ $WINDOW ]; then
         cd $HOME
         eval server=\${$#}
-        screen -t $server ssh "$@"
+        TERM=xterm screen -t $server ssh "$@"
         cd -
     else
-        command ssh "$@"
+        TERM=xterm command ssh "$@"
     fi
 }
