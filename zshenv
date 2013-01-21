@@ -43,6 +43,7 @@
         source /usr/local/opt/rbenv/completions/rbenv.zsh
     fi
 
+
 ### for PHP `phpenv`
 
     if [[ -d $HOME/.phpenv/bin ]]; then # Ubuntu
@@ -51,6 +52,7 @@
         source $HOME/.phpenv/completions/phpenv.zsh
     fi
 
+
 ### for Python `pythonbrew`
 
     if [[ -s $HOME/.pythonbrew/etc/bashrc ]]; then
@@ -58,10 +60,10 @@
     fi
 
 
-### for Perl `perlbrew`
+### for Perl `plenv`
 
-    if [[ -s $HOME/.perlbrew/perl5/etc/bashrc ]]; then
-        source $HOME/.perlbrew/perl5/etc/bashrc;
+    if which plenv > /dev/null; then
+        eval "$(plenv init -)";
     fi
 
 
