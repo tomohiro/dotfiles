@@ -67,14 +67,6 @@
     fi
 
 
-### for cpanminus
-
-    if type cpanm &> /dev/null && [ -n $PERLBREW_ROOT ]; then
-        export PERL_CPANM_OPT=--local-lib=$PERLBREW_ROOT
-        export PERL5LIB=$PERLBREW_ROOT/lib/perl5:$PERL5LIB
-    fi
-
-
 ### for Node and npm
 
     if type npm &> /dev/null; then
