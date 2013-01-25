@@ -29,6 +29,7 @@
 
     if [[ -d $HOME/.bundlizer ]]; then
         source $HOME/.bundlizer/etc/bashrc
+        source $HOME/.bundlizer/completions/bundlizer.zsh
     fi
 
 
@@ -84,7 +85,7 @@
 
 ### For PostgreSQL
 
-    if [ $KERNEL = Darwin ]; then
+    if [ -d /Applications/Postgres.app/Contents/MacOS/bin ]; then
         PATH="$PATH:/Applications/Postgres.app/Contents/MacOS/bin"
     fi
 
