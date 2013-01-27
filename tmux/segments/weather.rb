@@ -26,7 +26,8 @@ class GoogleWeather
   end
 
   def to_s
-    "#{@symbol} #{@temp}"
+    #"#{@symbol} #{@temp}"
+    "#{@symbol}"
   end
 
   def get_symbol(condition)
@@ -34,7 +35,7 @@ class GoogleWeather
     when /sunny|partly sunny|mostly sunny/
       hour = Time.now.hour
       (hour > 22 or hour < 5) ? '☾' : '☼'
-    when /partly cloudy|mostly cloudy|cloudy|overcast/
+    when /partly cloudy|mostly cloudy|cloudy|scattered clouds|overcast/
       '☁'
     when /rain and snow|chance of rain|light rain|rain|heavy rain|freezing drizzle|flurries|showers|scattered showers|drizzle|rain showers/
       '☔'
