@@ -25,3 +25,6 @@
 [submodule "bundle/elfactory"]
 	path = bundle/elfactory
 	url = git://github.com/gongo/elfactory.git
+[submodule "bundle/geed"]
+	path = bundle/geed
+	url = git://github.com/kinjo/geed.git
