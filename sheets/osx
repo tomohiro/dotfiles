@@ -26,6 +26,9 @@ rake themes:install  # /Users/tomohiro/Library/Application Support/LimeChat/Them
 # Terminal.app のカラープロファイルを追加
 [AP_Dark8.terminal for Lion を公開しました | Apribase](http://apribase.net/2011/07/31/ap_dark8_for_lion/)
 
+# iTerm2.app のカラープロファイルを追加
+
+
 # QuickLook
 [toland/qlmarkdown](https://github.com/toland/qlmarkdown)
 [Quick Look Plugin - soundscape out](http://d.hatena.ne.jp/tanemori/20071127/QuickLookPlugin)
@@ -48,9 +51,10 @@ Homebrew from the GitHub
 - [Bowtie](http://bowtieapp.com/)
 - Dropbox
 - Skype
+- Cloudapp
+- Degrees
 - [JourneyForMac/Journey](https://github.com/JourneyForMac/Journey)
-- [GitHub play/play-cocoa](https://github.com/play/play-cocoa/downloads)
-- [App Cleaner FreeMacSoft](http://www.freemacsoft.net/appcleaner/)
+- [Anvil for Mac - Available Now](http://anvilformac.com/)
 
 
 ## AirRocket
