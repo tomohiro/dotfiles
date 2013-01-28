@@ -31,3 +31,4 @@
 /zsh/cdd_pwd_list.t
 /zsh/functions/wm_user_search
 /downcerrc
+/ssh/*.old
