@@ -28,3 +28,6 @@
 [submodule "bundle/geed"]
 	path = bundle/geed
 	url = git://github.com/kinjo/geed.git
+[submodule "bundle/git-prune-remote-branch"]
+	path = bundle/git-prune-remote-branch
+	url = git://github.com/kyanny/git-prune-remote-branch.git
