@@ -27,6 +27,15 @@ $ make install
 ```
 
 
+Add submodules
+--------------------------------------------------------------------------------
+
+```sh
+$ git submodule add git://github.com/johndoe/foo-command bundle/foo-command
+$ git commit -m 'add foo-command' .gitmodules bundle/foo-command
+```
+
+
 Usage
 --------------------------------------------------------------------------------
 
