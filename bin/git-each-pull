@@ -6,7 +6,7 @@ for d in `ls $pwd/`; do
     if [ -d $pwd/$d ]; then
         cd $pwd/$d
         echo "Into $pwd/$d"
-        git pull --rebase
+        git pull --rebase origin master
     fi
 done
 
