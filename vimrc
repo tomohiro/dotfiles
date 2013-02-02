@@ -29,7 +29,6 @@ NeoBundle 'ujihisa/neco-look'
 NeoBundle 'msanders/snipmate.vim'
 
 " Editing
-NeoBundle 'Align'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'scrooloose/syntastic'
@@ -41,6 +40,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'coderifous/textobj-word-column.vim' " https://github.com/coderifous/textobj-word-column.vim
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'everzet/phpfolding.vim'
 
 " Version Control System
 NeoBundle 'tpope/vim-fugitive'
@@ -63,7 +63,8 @@ NeoBundle 'tpope/vim-repeat'
 
 " Themes
 NeoBundle 'ciaranm/inkpot'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 " Buffer management
 NeoBundle 'fholgado/minibufexpl.vim'
@@ -136,8 +137,8 @@ set autoread
 " Fold
 "
     set foldenable
-    set foldcolumn=1
     set foldmethod=marker
+    set foldcolumn=1
 
 
 "set laststatus=2
@@ -325,7 +326,7 @@ filetype indent on
 " for vim-powerline
 "
     let g:Powerline_symbols = 'fancy'
-    call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+    "call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
     " let g:Powerline_mode_v = "VISUAL"
     " let g:Powerline_mode_V = "V:LINE"
     " let g:Powerline_mode_cv = "V:BLOCK"
@@ -395,14 +396,8 @@ filetype indent on
 
 " for Vim colorscheme
 "
-    if filereadable($HOME . '/.vim/bundle/vim-colors-solarized/colors/solarized.vim')
-        set background=dark
-        colorscheme solarized
-        let g:solarized_termcolors = 256
-        let g:solarized_visibility = 'high'
-        let g:solarized_contrast = 'high'
-    elseif filereadable($HOME . '/.vim/bundle/inkpot/colors/inkpot.vim')
-        colorscheme inkpot
+    if filereadable($HOME . '/.vim/bundle/molokai/colors/molokai.vim')
+        colorscheme molokai
         hi LineNr     ctermbg=235 ctermfg=105
         hi StatusLine ctermbg=64  ctermfg=15
         hi clear CursorLine
