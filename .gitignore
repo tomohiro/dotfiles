@@ -1,4 +1,5 @@
 .netrwhist
+.DS_Store
 /Darwin/private/bin/*
 /Darwin/private/etc/*
 /Linux/irssi/config
