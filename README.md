@@ -1,21 +1,22 @@
 dotfiles
 ================================================================================
 
-[![Still Maintained](https://dl.dropbox.com/u/173097/github/stillmaintained.png)](http://stillmaintained.com/Tomohiro/dotfiles)
+[![Stillmaintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 [![Build Status](https://secure.travis-ci.org/Tomohiro/dotfiles.png)](https://secure.travis-ci.org/Tomohiro/dotfiles)
+
 
 
 My terminal
 --------------------------------------------------------------------------------
 
+### iTerm2 on OS X Mountain Lion
+
+![Terminal OS X](https://dl.dropbox.com/u/173097/junk/terminal-ss-20130220.png)
+
+
 ### Gnome Terminal on Ubuntu 12.04 LTS
 
-![Terminal 20120809](http://dl.dropbox.com/u/173097/junk/terminal-ss-20120809.png)
-
-
-### iTerm2 on OSX Mountain Lion
-
-Coming soon...
+![Terminal Ubuntu](http://dl.dropbox.com/u/173097/junk/terminal-ss-20120809.png)
 
 
 
