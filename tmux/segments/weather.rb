@@ -26,8 +26,7 @@ class GoogleWeather
   end
 
   def to_s
-    #"#{@symbol} #{@temp}"
-    "#{@symbol}"
+    "#{@symbol}#{@temp}"
   end
 
   def get_symbol(condition)
