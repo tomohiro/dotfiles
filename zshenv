@@ -3,7 +3,7 @@
 ## Default environment settings
 
     export SHELL=zsh
-    export LANG=ja_JP.UTF-8
+    export LANG=en_US.UTF-8
     export LC_ALL=$LANG
     export EDITOR=`which vim`
     export SVN_EDITOR=$EDITOR
@@ -50,7 +50,7 @@
     if [[ -d $HOME/.phpenv/bin ]]; then # Ubuntu
         PATH=$HOME/.phpenv/bin:$PATH
         eval "$(phpenv init -)"
-        source $HOME/.phpenv/completions/phpenv.zsh
+        #source $HOME/.phpenv/completions/phpenv.zsh
     fi
 
 
