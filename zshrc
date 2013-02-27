@@ -1,6 +1,4 @@
-# vim: ft=zsh
-
-## Auto load settings
+## Autoload settings
 
     autoload -U colors
     colors
@@ -142,7 +140,7 @@
 
     # load my functions
     local func_dir=$HOME/.zsh/functions
-    for script in `command ls $func_dir`; do
+    for script in $(command ls $func_dir); do
         source $func_dir/$script
     done
 
@@ -152,7 +150,7 @@
 
 ## Set other zsh source
 
-    local source_dir=$HOME/.zsh
+    local source_dir=$HOME/.zsh/autoload
     for source in $(command ls $source_dir/*.zsh); do
         source $source
     done
