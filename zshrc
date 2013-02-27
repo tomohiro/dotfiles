@@ -153,7 +153,7 @@
 ## Set other zsh source
 
     local source_dir=$HOME/.zsh
-    for source in `command ls $source_dir/*.zshrc`; do
+    for source in $(command ls $source_dir/*.zsh); do
         source $source
     done
 
