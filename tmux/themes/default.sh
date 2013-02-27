@@ -23,11 +23,11 @@ TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SE
 
 if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
   TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-    "battery 148 127" \
-    "hostname 33 0" \
-    "ifstat 30 255" \
+    'battery 148 127' \
+    'hostname 33 0' \
+    'ifstat 30 255' \
     "lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
-    "wan_ip 24 255" \
+    'wan_ip 24 255' \
     #"vcs_branch 230 88" \
     #"vcs_compare 60 255" \
     #"vcs_staged 64 255" \
@@ -39,8 +39,8 @@ fi
 if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
   TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
     #"pwd 89 211" \
-    "load 234 167" \
-    #"weather 37 255" \
-    "music 236 7" \
+    'load 234 167' \
+    'weather 37 255' \
+    'music 236 7' \
   )
 fi
