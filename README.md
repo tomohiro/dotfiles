@@ -1,9 +1,7 @@
-dotfiles
+dotfiles [![Stillmaintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 ================================================================================
 
-[![Stillmaintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 [![Build Status](https://secure.travis-ci.org/Tomohiro/dotfiles.png)](https://secure.travis-ci.org/Tomohiro/dotfiles)
-
 
 
 My terminal
