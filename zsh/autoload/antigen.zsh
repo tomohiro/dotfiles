@@ -7,3 +7,6 @@ source $HOME/Development/dotfiles/bundle/antigen/antigen.zsh
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# Tell antigen that you're done.
+antigen-apply
