@@ -22,18 +22,22 @@ TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SE
 # Format: segment_name background_color foreground_color [non_default_separator]
 
 if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
-  TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-    'battery 148 127' \
-    'hostname 33 0' \
-    'ifstat 30 255' \
-    "lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
-    'wan_ip 24 255' \
-    #"vcs_branch 230 88" \
-    #"vcs_compare 60 255" \
-    #"vcs_staged 64 255" \
-    #"vcs_modified 9 255" \
-    #"vcs_others 245 0" \
-  )
+  if [ $KERNEL = Darwin ]; then
+    TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
+      'battery 148 127' \
+      'hostname 33 0' \
+      'ifstat 30 255' \
+      "lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
+      'wan_ip 24 255' \
+    )
+  else
+    TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
+      'hostname 33 0' \
+      'ifstat 30 255' \
+      "lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
+      'wan_ip 24 255' \
+    )
+  fi
 fi
 
 if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
