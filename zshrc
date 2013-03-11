@@ -77,10 +77,10 @@
     alias tree='tree --charset=C'
 
     if [ $KERNEL = Darwin ]; then
-        alias ls='ls -hF -G'
+        alias ls='ls -hF -G -v'
     else
         alias open='gnome-open'
-        alias ls='ls -hF --color=auto'
+        alias ls='ls -hF -v --color=auto'
     fi
     alias la='ls -lAh'
     alias ll='ls -lh'
