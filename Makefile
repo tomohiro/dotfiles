@@ -60,6 +60,9 @@ bundle-show:
 bundle-update:
 	@echo "Update git submodules."
 	@git submodule foreach 'git pull origin master'
+	@echo "Commit and push to the GitHub"
+	@git commit -m 'update submodules' bundle
+	@git push origin master
 
 
 clean:
