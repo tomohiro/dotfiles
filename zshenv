@@ -71,7 +71,8 @@
 ### for Node and npm
 
     if type npm &> /dev/null; then
-        export NODE_PATH=/usr/local/lib/node
+        export NODE_PATH=/usr/local/lib/node_modules
+        export PATH=/usr/local/share/npm/bin:$PATH
     fi
 
 
