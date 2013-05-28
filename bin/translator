@@ -28,7 +28,7 @@ module Translate
 
     def translate(body)
       uri = "http://www.google.com/translate_t?langpair=#{@method}&text=#{URI::escape(body)}"
-      translated = Nokogiri::HTML(open(uri)).search('span#result_box/span').first.content
+      translated = Nokogiri::HTML(open(uri)).search('span#result_box/span').map(&:content).join
       translated == '' ? 'Translate failed' : translated
     end
   end
