@@ -1,50 +1,49 @@
 " for Vimperator 3
 " vim: ft=vim
 
-" これらの機能で新規タブを開いた際はアクティブにする
 set activate=homepage,tabopen,paste
 
-" :[tab]open コマンドで補完する候補と順番
+" Priority of completion
 set complete=sbhS
 
-" ブラウザタイトルの変更
+" Change the browser title
 "set titlestring="Firefox"
 
-" GUI オプション
+" Enable GUI options
 set gui=none,tabs
 
-" visualbell有効
+" Enable visualbell
 set visualbell
 
 " Enable Vim editing mode
 " set noinsertmode
 set editor="~/bin/vim-launcher"
 
-" onload 時にテキストボックス等にオートフォーカスしないようにする
+" Do not focus to a textbox when onload
 set focuscontent
 
-" ヒントモードでアルファベットを使う
-set hintchars=ifjklasdweuocvbnm
+" Use the alphabets at the hint mode
+"set hintchars=ifjklasdweuocvbnm
 
-" C-r でブラウザ再起動
+" Restart the browser
 "map <C-r> :restart<CR>
 
-" 設定ファイルを再読み込み
+" Reloading configuration
 map ,s :so ~/.vimperatorrc<CR>
 map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:so ~/.vimperatorrc<CR>
 
-" バーの表示切り替え
+" Change display to GUI bars
 map <C-1> :set gui=none,tabs<CR>
 map <C-2> :set gui=none,tabs,bookmarks<CR>
 map <C-3> :set gui=none,tabs,navigation<CR>
 map <C-4> :set gui=none,tabs,navigation,bookmarks<CR>
 map <C-9> :set gui=all<CR>
 
-" 上のディレクトリに移動
+" Move up to the directory
 map <BS> gu
 map <C-BS> gU
 
-" ]]/[[ で次/前のページに移動
+" Move next/prev by hit the ]]/[[
 set nextpattern+=次を表示,次のページ,\b次.*,→\b
 set previouspattern+=前を表示,前のページ,\b前.*,\b←
 
@@ -141,7 +140,6 @@ lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x
 lazy fmaps -u='www\.google\.(com|co\.jp)/reader' -events=vkeypress <Space> j k n p m o s v A r S N P X O gh ga gs gt gu u / ? J K
 lazy fmaps -u='www\.google\.(com|co\.jp)/reader' -events=vkeyup z
 lazy fmaps -u='livedoor\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g g
-lazy fmaps -u='tiarra\.tomohiro\.me' -events=vkeypress a s o e l h c n f <Esc>
 
 " http://vimperator.g.hatena.ne.jp/nokturnalmortum/20110406/1302077288
 fmap -modes=i -events=keydown,keypress <C-p> <Up>
