@@ -61,7 +61,7 @@ bundle-update:
 	@echo "Update git submodules."
 	@git submodule foreach 'git pull origin master'
 	@echo "Commit and push to the GitHub"
-	@git commit -m 'update submodules' bundle
+	@git commit -m 'Update submodules' bundle
 	@git push origin master
 
 
