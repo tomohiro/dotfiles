@@ -140,6 +140,7 @@ lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x
 lazy fmaps -u='www\.google\.(com|co\.jp)/reader' -events=vkeypress <Space> j k n p m o s v A r S N P X O gh ga gs gt gu u / ? J K
 lazy fmaps -u='www\.google\.(com|co\.jp)/reader' -events=vkeyup z
 lazy fmaps -u='livedoor\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g g
+lazy fmaps -u='cloud\.feedly\.com/*' j k p n o v M gm ga gg gl J / r m x s t c V
 
 " http://vimperator.g.hatena.ne.jp/nokturnalmortum/20110406/1302077288
 fmap -modes=i -events=keydown,keypress <C-p> <Up>
