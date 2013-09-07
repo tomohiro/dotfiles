@@ -11,6 +11,6 @@ if [ -d vendor/bundle ]; then
 fi
 
 if [ -f Gemfile ]; then
-  echo 'Start bundler re:Install'
-  bundle install --path vendor/bundle
+  echo 'Start bundler reinstall'
+  bundle install --path vendor/bundle --jobs=4
 fi
