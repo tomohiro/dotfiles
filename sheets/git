@@ -22,5 +22,9 @@ git checkout -- path/to/file
 # hub コマンドで github から fork して pull request をさくっと - #生存戦略 、それは - subtech
 http://subtech.g.hatena.ne.jp/secondlife/20120611/1339411825
 
+# hub pull-request
+#               {-i issue_id}  {-b pull-request to}          {-h pull-request from}
+hub pull-request -i 123         -b webmagic-dev:release/4.2.1 -h webmagic-dev:add-awesome-feature
+
 # Remote の最新まで戻す
 git reset --hard ORIG_HEAD
