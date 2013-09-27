@@ -11,3 +11,34 @@ sudo make install
 - [Home · majutsushi/tagbar Wiki](https://github.com/majutsushi/tagbar/wiki)
 - [techlivezheng/phpctags](https://github.com/techlivezheng/phpctags)
 - [techlivezheng/tagbar-phpctags](https://github.com/techlivezheng/tagbar-phpctags)
+
+# How to build PHP
+
+### PHP のビルドオプション
+
+- [PHP: 中心となる configure オプションのリスト - Manual](http://www.php.net/manual/ja/configure.about.php)
+
+### PECL モジュールについて
+
+- [PHP: PECL 拡張モジュールを PHP に静的に組み込む - Manual](http://www.php.net/manual/ja/install.pecl.static.php)
+
+>  拡張モジュールによって、--enable-extname もしくは --with-extname オプションを指定します。 
+>  外部ライブラリを使用しない拡張モジュールについては、 --enable が使われるのが一般的です。
+
+EXTENSION を php-src/ext/ 以下に配置して buildconf を実行し configure ファイルを再作成する。
+
+buildconf の後で、以下を行うとオプションが確認できます。
+$ ./configure --help | grep extname
+
+
+### PHP の情報を知る
+
+1. 有効になっているモジュールを調べる
+
+    $ php -m
+
+2. PHP の設定を調べる
+
+    $ php-config
+
+- [PHP: php-config - Manual](http://www.php.net/manual/ja/install.pecl.php-config.php)
