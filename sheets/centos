@@ -1,2 +1,0 @@
-# Install mosh for CentOS 5.8 at Serversman VPS
-sudo yum --enablerepo=epel install mosh
