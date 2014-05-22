@@ -33,3 +33,4 @@
 /zsh/functions/wm_user_search
 /downcerrc
 /ssh/*.old
+/chef/data_bag_key
