@@ -1,5 +1,9 @@
 # vim: ft=zsh
 
+if [ -f $HOME/.proxy ]; then
+  source $HOME/.proxy
+fi
+
 export KERNEL=$(uname)
 
 ## Load path settings
@@ -9,6 +13,17 @@ export KERNEL=$(uname)
     if [ $KERNEL = Darwin ]; then
         [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
         [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+    fi
+
+# Starting keychain
+
+    KEYCHAIN=`which keychain`
+    if [ $? = 0 ]; then
+        HOST=`hostname`
+        IDENTITY=~/.ssh/id_rsa
+        SSH_AGENT=~/.keychain/$HOST-sh
+        $KEYCHAIN $IDENTITY
+        . $SSH_AGENT
     fi
 
 
@@ -87,7 +102,7 @@ export KERNEL=$(uname)
 
 ### for WebMagic development
 
-    export WEBMAGIC_SRC_PATH=$HOME/Boxes/webmagic-boxes/vagrant/webmagic-dev-box/webmagic
+    export WEBMAGIC_SRC_PATH=$HOME/Workspaces/Repositories/webmagic
 
 
 ### For PostgreSQL
@@ -95,6 +110,7 @@ export KERNEL=$(uname)
     if [ -d /Applications/Postgres93.app/Contents/MacOS/bin ]; then
         PATH="$PATH:/Applications/Postgres93.app/Contents/MacOS/bin"
     fi
+
 
 ### For Glassfish
 
@@ -104,9 +120,14 @@ export KERNEL=$(uname)
     fi
 
 
+### For Docker
+
+    export DOCKER_HOST=tcp://localhost:4243
+
+
 ### For Packer
 
-    export PACKER_CACHE_DIR=$HOME/Boxes/packer_cache
+    export PACKER_CACHE_DIR=$HOME/Workspaces/Images
 
 
 ## Load local environment
