@@ -52,10 +52,8 @@ export KERNEL=$(uname)
 
 ### for Ruby `rbenv`
 
-    if [[ -d $HOME/.rbenv/bin ]]; then # Ubuntu
-        PATH=$HOME/.rbenv/bin:$PATH
+    if type rbenv &> /dev/null; then
         eval "$(rbenv init -)"
-        source $HOME/.rbenv/completions/rbenv.zsh
     fi
 
 
@@ -102,7 +100,9 @@ export KERNEL=$(uname)
 
 ### for WebMagic development
 
-    export WEBMAGIC_SRC_PATH=$HOME/Workspaces/Repositories/webmagic
+    if [ -d $HOME/Workspaces/Repositories/webmagic  ]; then
+        export WEBMAGIC_SRC_PATH=$HOME/Workspaces/Repositories/webmagic
+    fi
 
 
 ### For PostgreSQL
@@ -122,13 +122,22 @@ export KERNEL=$(uname)
 
 ### For Docker
 
-    export DOCKER_HOST=tcp://localhost:4243
+    if type docker &> /dev/null; then
+        export DOCKER_HOST=tcp://localhost:4243
+    fi
 
 
 ### For Packer
 
-    export PACKER_CACHE_DIR=$HOME/Workspaces/Images
+    if type packer &> /dev/null; then
+        export PACKER_CACHE_DIR=$HOME/Workspaces/Images
+    fi
 
+### For Golang
+
+    if type go &> /dev/null; then
+        export GOPATH=$HOME/Workspaces/Golang
+    fi
 
 ## Load local environment
 
