@@ -43,3 +43,6 @@
 [submodule "bundle/bd"]
 	path = bundle/bd
 	url = git@github.com:vigneshwaranr/bd.git
+[submodule "bundle/warp"]
+	path = bundle/warp
+	url = git@github.com:Tomohiro/warp
