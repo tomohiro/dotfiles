@@ -61,7 +61,8 @@
 
     bindkey -v
     bindkey '^Q' push-line-or-edit
-    bindkey '^R' history-incremental-search-backward
+    bindkey '^R' peco-select-history #history-incremental-search-backward
+    bindkey '^@' peco-cdr
 
 
 ## Set Aliases
@@ -73,7 +74,7 @@
     alias sl='ls'
     alias u='cd ../'
     alias b='cd -'
-    alias :q='exit'
+    alias j='ghq list -p | peco | while read SRC_PATH; do cd $SRC_PATH; done'
     alias tree='tree --charset=C'
 
     if [ $KERNEL = Darwin ]; then
