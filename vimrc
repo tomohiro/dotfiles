@@ -13,20 +13,9 @@ endif
 " required!
 NeoBundle 'Shougo/neobundle.vim'
 
-" Tagbar
-"   [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'techlivezheng/tagbar-phpctags'
-NeoBundle 'techlivezheng/phpctags'
-
-" Unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-
 " Completion and snippets
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'msanders/snipmate.vim'
 
 " Editing
 NeoBundle 'h1mesuke/vim-alignta'
@@ -35,45 +24,27 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'coderifous/textobj-word-column.vim' " https://github.com/coderifous/textobj-word-column.vim
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'everzet/phpfolding.vim'
+NeoBundle 'mhinz/vim-signify'
 
-" Version Control System
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mattn/gist-vim'
 
-" Ruby on Rails
-NeoBundle 'tpope/vim-rails'
-
-" Redmine
-NeoBundle 'basyura/unite-yarm'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
+" Project support
+NeoBundle 'supermomonga/projectlocal.vim'
 
 " Tools
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tpope/vim-repeat'
 
 " Themes
-NeoBundle 'ciaranm/inkpot'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 " Buffer management
 NeoBundle 'fholgado/minibufexpl.vim'
 
-" Tab management
-NeoBundle 'kana/vim-tabpagecd'  "http://labs.timedia.co.jp/2012/05/vim-tabpagecd.html
-
 " Statusline
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'pwdstatus.vim'
 
 
@@ -92,7 +63,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set wildmenu
-set viminfo=
 set nobackup
 set noswapfile
 set nowritebackup
@@ -115,7 +85,7 @@ set autoread
 
 " Visual
 "
-    syntax on
+    syntax enable
     set visualbell
     set number
     set ruler
@@ -163,6 +133,7 @@ filetype indent on
     nnoremap j gj
     nnoremap k gk
     imap jj <ESC>
+    imap kk <ESC>
 
 
 " remove highlight
@@ -210,8 +181,6 @@ filetype indent on
     autocmd BufRead *.mkd   :set ft=markdown
     autocmd BufRead *.ihtml :set ft=php
     autocmd BufRead *.txt   :set ft=markdown ff=dos
-    autocmd FileType php    :set makeprg=php\ -l\ % errorformat=%m\ in\ %f\ on\ line\ %l 
-    autocmd FileType php    :set dictionary=$HOME/.vim/dictionary/php.dict
     autocmd FileType ruby   :set ts=2 sw=2 fenc=utf-8
     autocmd FileType sh     :set ts=2 sw=2
     autocmd FileType bash   :set ts=2 sw=2
@@ -254,25 +223,6 @@ filetype indent on
     nnoremap <silent> <Leader>n :call NumberToggle()<CR>
 
 
-" for VimFiler
-"
-    let g:vimfiler_safe_mode_by_default=0
-    nnoremap <silent> <Leader>f :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -no-quit<CR>
-
-
-" for unite
-"
-    nnoremap <silent> <Leader>ub :Unite buffer<CR>
-    nnoremap <silent> <Leader>ur :Unite -buffer-name=register register<CR>
-    nnoremap <silent> <Leader>um :Unite file_mru<CR>
-    nnoremap <silent> <Leader>uu :Unite buffer file_mru<CR>
-    nnoremap <silent> <Leader>ua :UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-    au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-    au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-
-
 " for vim-textmanip
 "
     vmap <C-j> <Plug>(textmanip-move-down)
@@ -284,20 +234,32 @@ filetype indent on
     nmap <M-d> <Plug>(textmanip-duplicate-down)
 
 
-" for vim-ref
-"
-    let g:ref_phpmanual_path = $HOME . '/.vim/manual/php'
-
-
 " for neocomplcache.vim
 "
     let g:neocomplcache_enable_at_startup = 1
     let g:neocomplcache_enable_smart_case = 1
     let g:neocomplcache_enable_underbar_completion = 1
 
-" for Vim Quickrun
-"
-    let g:quickrun_config = {}
+
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplcache#undo_completion()
+    inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      "return neocomplcache#smart_close_popup() . "\<CR>"
+      " For no inserting <CR> key.
+      return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplcache#close_popup()
+    inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
 " for vim-indent-guides
@@ -317,68 +279,15 @@ filetype indent on
     vmap <Leader>c <Plug>NERDCommenterToggle
 
 
-" for zencoding.vim
-"
-    let g:user_zen_expandabbr_key = '<c-e>'
-    let g:user_zen_settings = {'indentation' : '    '}
+" for lightline.vim
 
-
-" for vim-powerline
-"
-    let g:Powerline_symbols = 'fancy'
-    "call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
-    " let g:Powerline_mode_v = "VISUAL"
-    " let g:Powerline_mode_V = "V:LINE"
-    " let g:Powerline_mode_cv = "V:BLOCK"
-    " let g:Powerline_mode_s = "SELECT"
-    " let g:Powerline_mode_S = "S:LINE"
-    " let g:Powerline_mode_cs = "S:BLOCK"
-    " let g:Powerline_mode_i = "INSERT"
-    " let g:Powerline_mode_R = "REPLACE"
-    " let g:Powerline_mode_n = "NORMAL"
-
-
-" for QFixHowm
-"
-    let QFixHowm_Key = 'g'
-    let howm_dir = '~/Dropbox/howm/'
-    let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.markdown'
-    let howm_fileencoding = 'utf-8'
-    let howm_fileformat = 'unix'
-
-    " Setting autoformat
-    " see https://sites.google.com/site/fudist/Home/qfixhowm/option#auto-format
-    let QFixHowm_Autoformat = 1
-    let QFixHowm_Autoformat_TitleMode = 1
-    let QFixHowm_SaveTime = -1
-
-    " Setting markdown
-    " see https://sites.google.com/site/fudist/Home/qfixhowm/tips/vimwiki
-    let QFixHowm_FileType = 'markdown'
-    let QFixHowm_Title = '#'
-    let QFixHowm_Template = [
-        \"%TITLE%",
-        \"================================================================================",
-        \"",
-        \"",
-        \"H2",
-        \"--------------------------------------------------------------------------------",
-        \"",
-        \"",
-        \"Reference",
-        \"--------------------------------------------------------------------------------"
-    \]
-    let QFixHowm_Cmd_NewEntry = '$a'
-
-
-" for Tagbar
-"   [Tagbar, the Vim class outline viewer](http://majutsushi.github.com/tagbar/)
-"   [techlivezheng/tagbar-phpctags](https://github.com/techlivezheng/tagbar-phpctags)
-"   [techlivezheng/phpctags](https://github.com/techlivezheng/phpctags)
-"
-    nnoremap <silent> <Leader>t :TagbarToggle<CR>
-    let g:tagbar_phpctags_bin = $HOME . '/.vim/bundle/phpctags/phpctags'
-
+    let g:lightline = {
+          \ 'component': {
+          \   'readonly': '%{&readonly?"⭤":""}',
+          \ },
+          \ 'separator': { 'left': '⮀', 'right': '⮂' },
+          \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+          \ }
 
 " for ctrlp.vim
 "   [ctrlp.vim ÷ home](http://kien.github.com/ctrlp.vim/)
@@ -396,14 +305,9 @@ filetype indent on
 
 " for Vim colorscheme
 "
-    if filereadable($HOME . '/.vim/bundle/molokai/colors/molokai.vim')
-        colorscheme molokai
-        hi LineNr     ctermbg=235 ctermfg=105
-        hi StatusLine ctermbg=64  ctermfg=15
-        hi clear CursorLine
-        hi CursorLine gui=underline
-        hi CursorLine ctermbg=235 guibg=235
-    else
-        set background=dark
-        colorscheme desert
-    endif
+    colorscheme molokai
+    hi LineNr     ctermbg=235 ctermfg=105
+    hi StatusLine ctermbg=64  ctermfg=15
+    hi clear CursorLine
+    hi CursorLine gui=underline
+    hi CursorLine ctermbg=235 guibg=235
