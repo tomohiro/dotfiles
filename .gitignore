@@ -23,6 +23,8 @@
 /ssh/config
 /ssh/id_rsa
 /ssh/identities
+/ssh/id_boot2docker
+/ssh/id_boot2docker.pub
 /ssh/known_hosts*
 /vim/bundle/
 /vim/manual/
@@ -34,3 +36,7 @@
 /downcerrc
 /ssh/*.old
 /chef/data_bag_key
+/waterworks
+/tugboat
+/skk
+/chef
