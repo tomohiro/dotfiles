@@ -1,8 +1,0 @@
-#!/bin/sh
-if type gvim 2>&1 > /dev/null; then
-  exec gvim -f $@
-fi
-
-if type mvim 2>&1 /dev/null; then
-  exec mvim -f $@
-fi
