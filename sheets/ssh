@@ -3,3 +3,6 @@ ssh-keygen -i -f id_rsa_putty.pub > id_rsa.pub
 
 # 大容量のファイルを SCP する(暗号化なし)
 scp -c arcfour256 ./filename username@hostname:/tmp
+
+# 公開鍵暗号方式の確認コマンド
+ssh-keygen -l -f .ssh/id_rsa.pub
