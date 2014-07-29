@@ -29,7 +29,7 @@ export KERNEL=$(uname)
 
 ## Default environment settings
 
-    export SHELL=zsh
+    export SHELL=$(which zsh)
     export LANG=en_US.UTF-8
     export LC_ALL=$LANG
     export EDITOR=$(which vim)
@@ -98,10 +98,18 @@ export KERNEL=$(uname)
     typeset -U path cdpath fpath manpath
 
 
+### For Golang
+
+    if type go &> /dev/null; then
+        export GOPATH=$HOME/Workspaces/Repositories
+        export PATH=$PATH:$GOPATH/bin
+    fi
+
+
 ### for WebMagic development
 
-    if [ -d $HOME/Workspaces/Repositories/webmagic  ]; then
-        export WEBMAGIC_SRC_PATH=$HOME/Workspaces/Repositories/webmagic
+    if [ -d $GOPATH/src/github.com/occ-corp/webmagic  ]; then
+        export WEBMAGIC_SRC_PATH=$GOPATH/src/github.com/occ-corp/webmagic
     fi
 
 
@@ -131,12 +139,6 @@ export KERNEL=$(uname)
 
     if type packer &> /dev/null; then
         export PACKER_CACHE_DIR=$HOME/Workspaces/Images
-    fi
-
-### For Golang
-
-    if type go &> /dev/null; then
-        export GOPATH=$HOME/Workspaces/Golang
     fi
 
 ## Load local environment
