@@ -9,7 +9,7 @@
     branch = auto
 [core]
     pager = less -r
-    excludesfile = ~/.gitignore
+    excludesfile = /opt/boxen/config/git/gitignore
     quotepath = false # git status for file name in japanese
 [alias]
     master = checkout master
@@ -25,6 +25,10 @@
     dump = cat-file -p
 [merge]
     tool = vimdiff
+[pager]
+    #log = diff-highlight | less
+    #show = diff-highlight | less
+    #diff = diff-highlight | less
 
 # Git repository aliases
 #   Clone Me Maybe - http://robots.thoughtbot.com/post/27695057156/clone-me-maybe
@@ -38,3 +42,12 @@
 # Include private gitconfig
 [include]
     path = ~/.gitconfig.local
+
+[credential]
+    helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+    protocol = https
+
+[ghq]
+    root = ~/Workspaces/Repositories/src
