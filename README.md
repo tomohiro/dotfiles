@@ -4,20 +4,6 @@ dotfiles [![Stillmaintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](
 [![Build Status](https://secure.travis-ci.org/Tomohiro/dotfiles.png)](https://secure.travis-ci.org/Tomohiro/dotfiles)
 
 
-My terminal
---------------------------------------------------------------------------------
-
-### iTerm2 on OS X Mountain Lion
-
-![Terminal OS X](https://dl.dropbox.com/u/173097/junk/terminal-ss-20130220.png)
-
-
-### Gnome Terminal on Ubuntu 12.04 LTS
-
-![Terminal Ubuntu](http://dl.dropbox.com/u/173097/junk/terminal-ss-20120809.png)
-
-
-
 Installation
 --------------------------------------------------------------------------------
 
