@@ -15,6 +15,7 @@ export KERNEL=$(uname)
         [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
     fi
 
+
 # Starting keychain
 
     KEYCHAIN=`which keychain`
@@ -120,8 +121,11 @@ export KERNEL=$(uname)
     fi
 
 
-### For Glassfish
+### For Java
 
+    JAVA_HOME=$(/usr/libexec/java_home)
+
+    # GlassFish
     if [ -d /usr/local/opt/glassfish ]; then
         export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
         PATH=${PATH}:${GLASSFISH_HOME}/bin
