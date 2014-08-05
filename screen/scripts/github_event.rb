@@ -11,7 +11,7 @@ module GitHub
       @last  = Time.now
       @feeds = [
         "https://github.com/#{user}.private.atom?token=#{token}",
-        "https://github.com/#{user}.private.actor.atom?token=#{token}"
+        "https://github.com/#{user}.atom"
       ]
     end
 
