@@ -151,3 +151,7 @@ export KERNEL=$(uname)
     if [ -f $LOCALENV ]; then
         source $LOCALENV
     fi
+
+## Load direnv
+
+    eval "$(direnv hook zsh)"
