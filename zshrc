@@ -98,14 +98,6 @@
         alias weechat='TERM=screen-256color weechat-curses'
     fi
 
-    # search by ack, ack-grep
-    if type ack-grep &> /dev/null; then # Linux
-        alias search='ack-grep'
-    fi
-    if type ack &>/dev/null; then # Darwin
-        alias search='ack'
-    fi
-
     if type bundle &> /dev/null; then
         alias be='bundle exec'
     fi
