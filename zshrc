@@ -94,18 +94,6 @@
         alias diff='colordiff'
     fi
 
-    if type weechat-curses &> /dev/null; then
-        alias weechat='TERM=screen-256color weechat-curses'
-    fi
-
-    if type bundle &> /dev/null; then
-        alias be='bundle exec'
-    fi
-
-    if ! type svn &> /dev/null; then
-        alias svn='sshfs-svn'
-    fi
-
     if ! type mosh &> /dev/null; then
         alias mosh='mosh -p 60000'
     fi
