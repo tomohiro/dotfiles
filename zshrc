@@ -72,8 +72,6 @@
     alias rm='nocorrect rm'
     alias mkdir='nocorrect mkdir'
     alias sl='ls'
-    alias u='cd ../'
-    alias b='cd -'
     alias j='ghq list -p | peco | while read SRC_PATH; do cd $SRC_PATH; done'
     alias tree='tree --charset=C'
 
@@ -88,14 +86,8 @@
 
     alias vi=$EDITOR
 
-    alias plan="vi $HOME/.plan"
-
     if type colordirff &> /dev/null; then
         alias diff='colordiff'
-    fi
-
-    if ! type mosh &> /dev/null; then
-        alias mosh='mosh -p 60000'
     fi
 
     alias d='downcer'
