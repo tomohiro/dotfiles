@@ -127,6 +127,10 @@ let mapleader=','
 "
 nnoremap <silent> <Leader>s :source $HOME/.vimrc<CR>
 
+" Refresh display
+"
+nnoremap <silent> <Leader>r :redraw!<CR>
+
 
 " for Vim Keybinding Customize
 "
