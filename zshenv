@@ -58,41 +58,6 @@ export KERNEL=$(uname)
     fi
 
 
-### for PHP `phpenv`
-
-    if [[ -d $HOME/.phpenv/bin ]]; then
-        PATH=$HOME/.phpenv/bin:$PATH
-        eval "$(phpenv init -)"
-        source $HOME/.phpenv/completions/phpenv.zsh
-    fi
-
-
-### for Python `pythonbrew`
-
-    if [[ -s $HOME/.pythonbrew/etc/bashrc ]]; then
-        source $HOME/.pythonbrew/etc/bashrc
-    fi
-
-
-### for Perl `plenv`
-
-    if [[ -d $HOME/.plenv/bin ]]; then
-        export PATH=$HOME/.plenv/bin:$PATH
-        eval "$(plenv init -)";
-        source $HOME/.plenv/completions/plenv.zsh
-    elif which plenv > /dev/null; then
-        eval "$(plenv init -)";
-    fi
-
-
-### for Node and npm
-
-    if type npm &> /dev/null; then
-        export NODE_PATH=/usr/local/lib/node_modules
-        export PATH=/usr/local/share/npm/bin:$PATH
-    fi
-
-
 ### Export PATH
 
     export PATH=$HOME/.private/bin:$HOME/bin:$PATH
