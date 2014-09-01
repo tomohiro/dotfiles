@@ -10,9 +10,6 @@
 [submodule "bundle/zsh-completions"]
 	path = bundle/zsh-completions
 	url = git://github.com/zsh-users/zsh-completions.git
-[submodule "bundle/tmux-colors-solarized"]
-	path = bundle/tmux-colors-solarized
-	url = git://github.com/seebi/tmux-colors-solarized.git
 [submodule "bundle/vimperator-plugins"]
 	path = bundle/vimperator-plugins
 	url = git://github.com/vimpr/vimperator-plugins.git
