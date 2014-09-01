@@ -39,10 +39,6 @@
 [url "git@heroku.com:"]
     insteadOf = heroku:
 
-# Include private gitconfig
-[include]
-    path = ~/.gitconfig.local
-
 [credential]
     helper = /opt/boxen/bin/boxen-git-credential
 
@@ -51,3 +47,7 @@
 
 [ghq]
     root = ~/Workspaces/Repositories/src
+
+# Include private gitconfig
+[include]
+    path = ~/.gitconfig.local
