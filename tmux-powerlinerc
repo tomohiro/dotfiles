@@ -1,3 +1,4 @@
+#!/bin/sh
 # Configuration file for tmux-powerline.
 
 ## General
@@ -20,7 +21,7 @@
     export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT="short"
 
 
-## music.sh
+## tmux-powerline/segments/now_playing.sh 
 
     export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="35"
     export TMUX_POWERLINE_SEG_NOW_PLAYING_TRIM_METHOD="trim"
@@ -28,6 +29,7 @@
     export TMUX_POWERLINE_SEG_NOW_PLAYING_MUSIC_PLAYER="lastfm"
     export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_USERNAME="tomohiro-taira"
     export TMUX_POWERLINE_SEG_NOW_PLAYING_LASTFM_UPDATE_PERIOD="30"
+    export TMUX_POWERLINE_SEG_NOW_PLAYING_NOTE_CHAR="$(emoji cd) "
 
 
 ## pwd.sh

@@ -45,6 +45,6 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
     #"pwd 89 211" \
     'load 234 167' \
     'weather 37 255' \
-    'music 236 7' \
+    'now_playing 236 7' \
   )
 fi
