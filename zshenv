@@ -58,6 +58,13 @@ export KERNEL=$(uname)
     fi
 
 
+### for Perl `plenv`
+
+    if type plenv &> /dev/null; then
+        eval "$(plenv init -)"
+    fi
+
+
 ### Export PATH
 
     export PATH=$HOME/.private/bin:$HOME/bin:$PATH
