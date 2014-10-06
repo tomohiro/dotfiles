@@ -35,6 +35,7 @@ NeoBundle 'supermomonga/projectlocal.vim'
 
 " Tools
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'mattn/ctrlp-ghq'
 NeoBundle 'tpope/vim-repeat'
 
 " Themes
@@ -190,6 +191,7 @@ autocmd FileType sh     :set ts=2 sw=2
 autocmd FileType bash   :set ts=2 sw=2
 autocmd FileType yaml   :set fenc=utf-8
 autocmd FileType css    :set fenc=utf-8
+autocmd FileType go     :set ts=4 sw=4 noexpandtab
 
 
 " for omnifunc
@@ -284,7 +286,8 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 
 
 " for lightline.vim
-
+"   [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
+"
 let g:lightline = {
       \ 'component': {
       \   'readonly': '%{&readonly?"⭤":""}',
@@ -299,6 +302,9 @@ let g:lightline = {
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tar.gz,tgz  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
+" for ctrlp-ghq
+"   [mattn/ctrlp-ghq](https://github.com/mattn/ctrlp-ghq)
+nmap <Leader>j :CtrlPGhq<CR>
 
 " for EasyMotion
 "   [Lokaltog/vim-easymotion](https://github.com/Lokaltog/vim-easymotion/)
