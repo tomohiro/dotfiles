@@ -27,9 +27,9 @@ filename="${title}-${id}"
 
 
 echo "Downloading: $title from YouTube..."
-sound=141
+audio=141
 video=$(youtube-dl -F $url | grep 1080 | grep mp4 | tail -n 1 | cut -d ' ' -f 1)
-run "youtube-dl -f $sound,$video $url"
+run "youtube-dl -f $audio,$video $url"
 
 
 echo "Converting: unite audio and video..."
