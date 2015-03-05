@@ -28,9 +28,6 @@
 [submodule "bundle/antigen"]
 	path = bundle/antigen
 	url = git://github.com/zsh-users/antigen.git
-[submodule "bundle/itunes-sync-bitcasa"]
-	path = bundle/itunes-sync-bitcasa
-	url = git://github.com/Tomohiro/itunes-sync-bitcasa.git
 [submodule "bundle/bd"]
 	path = bundle/bd
 	url = git@github.com:vigneshwaranr/bd.git
