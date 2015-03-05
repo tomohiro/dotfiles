@@ -37,3 +37,6 @@
 [submodule "bundle/warp"]
 	path = bundle/warp
 	url = git@github.com:Tomohiro/warp
+[submodule "bundle/c"]
+	path = bundle/c
+	url = git@github.com:ryanmjacobs/c.git
