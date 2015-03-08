@@ -1,6 +1,6 @@
 # [zsh-users/antigen · GitHub](https://github.com/zsh-users/antigen)
 
-source $HOME/Development/dotfiles/bundle/antigen/antigen.zsh
+source $GOPATH/src/github.com/Tomohiro/dotfiles/bundle/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 # antigen-lib
