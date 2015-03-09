@@ -1,17 +1,22 @@
 " NeoBundle is Vim plugin manager based on Vundle(https://github.com/gmarik/vundle).
 "   [Shougo/neobundle.vim](https://github.com/Shougo/neobundle.vim)
 "
-set nocompatible               " be iMproved
-filetype plugin indent off     " required!
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
 
 if has('vim_starting')
+  set nocompatible               " be iMproved
+
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " let NeoBundle manage NeoBundle
 " required!
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Completion and snippets
 NeoBundle 'Shougo/neocomplcache'
@@ -28,7 +33,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'coderifous/textobj-word-column.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mhinz/vim-signify'
-
 
 " Project support
 NeoBundle 'supermomonga/projectlocal.vim'
@@ -48,6 +52,14 @@ NeoBundle 'fholgado/minibufexpl.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'pwdstatus.vim'
 
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 " Encoding
 "
@@ -59,8 +71,8 @@ set fileformats=unix,dos
 " Vim Default Option:
 "
 set complete+=k
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set wildmenu
@@ -181,16 +193,10 @@ nmap <silent> err :e %<CR>
 
 " for FileType
 "
-autocmd BufRead *.md    :set ft=markdown
-autocmd BufRead *.mkdn  :set ft=markdown
-autocmd BufRead *.mkd   :set ft=markdown
+autocmd BufRead *.md    :set ts=4 sw=4 ft=markdown
 autocmd BufRead *.ihtml :set ft=php
 autocmd BufRead *.txt   :set ft=markdown ff=dos
-autocmd FileType ruby   :set ts=2 sw=2 fenc=utf-8
-autocmd FileType sh     :set ts=2 sw=2
-autocmd FileType bash   :set ts=2 sw=2
-autocmd FileType yaml   :set fenc=utf-8
-autocmd FileType css    :set fenc=utf-8
+autocmd FileType php    :set ts=4 sw=4
 autocmd FileType go     :set ts=4 sw=4 noexpandtab
 
 
