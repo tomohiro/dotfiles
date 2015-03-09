@@ -51,3 +51,9 @@
 # Include private gitconfig
 [include]
     path = ~/.gitconfig.local
+
+# Git Hawser located GitHub.app/Contents/Resources/hawser/bin/git-hawser
+[filter "hawser"]
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
