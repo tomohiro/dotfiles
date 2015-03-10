@@ -20,7 +20,6 @@
 /downcerrc
 /ssh/*.old
 /chef/data_bag_key
-/waterworks
 /tugboat
 /skk
 /chef
