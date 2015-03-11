@@ -1,6 +1,5 @@
 " VIM-PLUG A minimalist Vim plugin manager
 "   https://github.com/junegunn/vim-plug
-
 call plug#begin('~/.vim/plugged')
 
 " Completion and snippets
@@ -26,6 +25,7 @@ Plug 'supermomonga/projectlocal.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/ctrlp-ghq'
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-dirvish'
 
 " Themes
 Plug 'tomasr/molokai'
@@ -176,6 +176,7 @@ autocmd BufRead *.ihtml :set ft=php
 autocmd BufRead *.txt   :set ft=markdown ff=dos
 autocmd FileType php    :set ts=4 sw=4
 autocmd FileType go     :set ts=4 sw=4 noexpandtab
+autocmd FileType vim    :set ts=4 sw=4
 
 
 " for omnifunc
