@@ -1,65 +1,43 @@
-" NeoBundle is Vim plugin manager based on Vundle(https://github.com/gmarik/vundle).
-"   [Shougo/neobundle.vim](https://github.com/Shougo/neobundle.vim)
-"
-" Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
+" VIM-PLUG A minimalist Vim plugin manager
+"   https://github.com/junegunn/vim-plug
 
-if has('vim_starting')
-  set nocompatible               " be iMproved
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" let NeoBundle manage NeoBundle
-" required!
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Completion and snippets
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'ujihisa/neco-look'
+Plug 'Shougo/neocomplcache'
+Plug 'ujihisa/neco-look'
 
 " Editing
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'coderifous/textobj-word-column.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'mhinz/vim-signify'
+Plug 'h1mesuke/vim-alignta'
+Plug 't9md/vim-textmanip'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-endwise'
+Plug 'coderifous/textobj-word-column.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mhinz/vim-signify'
 
 " Project support
-NeoBundle 'supermomonga/projectlocal.vim'
+Plug 'supermomonga/projectlocal.vim'
 
 " Tools
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'mattn/ctrlp-ghq'
-NeoBundle 'tpope/vim-repeat'
+Plug 'kien/ctrlp.vim'
+Plug 'mattn/ctrlp-ghq'
+Plug 'tpope/vim-repeat'
 
 " Themes
-NeoBundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 
 " Buffer management
-NeoBundle 'fholgado/minibufexpl.vim'
+Plug 'fholgado/minibufexpl.vim'
 
 " Statusline
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'pwdstatus.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'pwdstatus.vim'
 
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 
 " Encoding
 "
@@ -327,3 +305,5 @@ hi StatusLine ctermbg=64  ctermfg=15
 hi clear CursorLine
 hi CursorLine gui=underline
 hi CursorLine ctermbg=235 guibg=235
+set colorcolumn=80
+hi ColorColumn ctermbg=235
