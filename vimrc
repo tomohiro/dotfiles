@@ -9,14 +9,12 @@ Plug 'ujihisa/neco-look'
 " Editing
 Plug 'h1mesuke/vim-alignta'
 Plug 't9md/vim-textmanip'
-Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'mhinz/vim-signify'
 Plug 'bronson/vim-trailing-whitespace'
 
 " Project support
@@ -27,6 +25,11 @@ Plug 'kien/ctrlp.vim'
 Plug 'mattn/ctrlp-ghq'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-dirvish'
+
+" Looks
+Plug 'scrooloose/syntastic'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mhinz/vim-signify'
 
 " Themes
 Plug 'tomasr/molokai'
