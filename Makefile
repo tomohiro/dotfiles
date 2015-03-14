@@ -26,7 +26,6 @@ help:
 
 install:
 	@echo "Install dotfiles Start"
-	$(LN) $(DEVELOPMENT) $(INSTALLTO)/
 	$(LN) $(DOTFILES)/bin $(INSTALLTO)/
 	@for file in `ls $(DOTFILES)`; do\
 		for ignore in $(IGNORES); do\
