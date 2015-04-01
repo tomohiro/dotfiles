@@ -301,6 +301,11 @@ nmap <Leader>j :CtrlPGhq<CR>
 "
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB' " Use home position keys
 
+" for Syntastic
+" https://github.com/scrooloose/syntastic/wiki/JavaScript:---jsxhint
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_jsx_jsxhint_checker = 1
+
 
 " for Vim colorscheme
 "
