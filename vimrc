@@ -115,7 +115,7 @@ filetype indent on
 
 " Change Leader key into a comma instead of a backslash
 "
-let mapleader=','
+let g:mapleader=','
 
 
 " Reload configuration
@@ -186,19 +186,19 @@ autocmd FileType vim    :set ts=4 sw=4
 " for omnifunc
 "
 set pumheight=15
-hi Pmenu       ctermbg=darkgray
-hi PmenuSel    ctermbg=blue
-hi PmenuSbar   ctermbg=white
-hi TabLine     ctermbg=white
-hi TabLineSel  ctermbg=red
-hi TabLineFill ctermbg=white
+highlight Pmenu       ctermbg=darkgray
+highlight PmenuSel    ctermbg=blue
+highlight PmenuSbar   ctermbg=white
+highlight TabLine     ctermbg=white
+highlight TabLineSel  ctermbg=red
+highlight TabLineFill ctermbg=white
 
 
 " for PHP
 "
-let php_sql_query     = 1
-let php_htmlInStrings = 1
-let php_folding       = 0
+let g:php_sql_query     = 1
+let g:php_htmlInStrings = 1
+let g:php_folding       = 0
 
 
 " for ChangeLog
@@ -263,13 +263,13 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=235
 
 
 " for NERDCommenter
 "   [NERDCommenterで瞬時にコメントをトグるためのショートカット設定 #Vim - Qiita](http://qiita.com/items/b69b41ad4ea2497b3477)
-let NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
@@ -310,10 +310,14 @@ let g:syntastic_jsx_jsxhint_checker = 1
 " for Vim colorscheme
 "
 colorscheme molokai
-hi LineNr     ctermbg=235 ctermfg=105
-hi StatusLine ctermbg=64  ctermfg=15
-hi clear CursorLine
-hi CursorLine gui=underline
-hi CursorLine ctermbg=235 guibg=235
+
+
+" for highlight
+"
+highlight LineNr     ctermbg=235 ctermfg=105
+highlight StatusLine ctermbg=64  ctermfg=15
+highlight clear CursorLine
+highlight CursorLine gui=underline
+highlight CursorLine ctermbg=235 guibg=235
 set colorcolumn=80
-hi ColorColumn ctermbg=235
+highlight ColorColumn ctermbg=235
