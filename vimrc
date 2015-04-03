@@ -78,6 +78,24 @@ set autoread
 "set clipboard+=autoselect
 "set clipboard+=unnamed
 
+
+" Reset autocmd
+"
+augroup vimrc
+  autocmd!
+augroup END
+
+
+" Set autocmd
+"
+autocmd BufRead *.md    :set ts=4 sw=4 ft=markdown
+autocmd BufRead *.ihtml :set ft=php
+autocmd BufRead *.txt   :set ft=markdown ff=dos
+autocmd FileType php    :set ts=4 sw=4
+autocmd FileType go     :set ts=4 sw=4 noexpandtab
+autocmd FileType vim    :set ts=4 sw=4
+
+
 " Visual
 "
 syntax enable
@@ -92,9 +110,9 @@ set list
 set listchars=tab:>_,trail:_,eol:↩
 set cursorline
 augroup cch
-    autocmd! cch
-    autocmd WinLeave * set nocursorline
-    autocmd WinEnter,BufRead * set cursorline
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
 augroup END
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
 match ZenkakuSpace /　/
@@ -173,16 +191,6 @@ nmap <silent> ers :e ++enc=cp932 %<CR>
 nmap <silent> err :e %<CR>
 
 
-" for FileType
-"
-autocmd BufRead *.md    :set ts=4 sw=4 ft=markdown
-autocmd BufRead *.ihtml :set ft=php
-autocmd BufRead *.txt   :set ft=markdown ff=dos
-autocmd FileType php    :set ts=4 sw=4
-autocmd FileType go     :set ts=4 sw=4 noexpandtab
-autocmd FileType vim    :set ts=4 sw=4
-
-
 " for omnifunc
 "
 set pumheight=15
@@ -209,11 +217,11 @@ let g:changelog_username = "Tomohiro <tomohiro.t@gmail.com>"
 " for toggle line numbers
 "
 function! NumberToggle()
-    if (&relativenumber == 1)
-        set norelativenumber
-    else
-        set relativenumber
-    endif
+  if (&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
 endfunc
 nnoremap <silent> <Leader>n :call NumberToggle()<CR>
 
