@@ -1,6 +1,6 @@
 .DS_Store
-/Darwin/private/bin/*
-/Darwin/private/etc/*
+/private/bin/*
+/private/etc/*
 /gem
 /gitconfig.local
 /netrc
@@ -13,6 +13,7 @@
 /ssh/id_boot2docker
 /ssh/id_boot2docker.pub
 /ssh/known_hosts*
+/ssh/transcripts
 /vim/
 /vimperator/info
 /zsh/cdd_pwd_list

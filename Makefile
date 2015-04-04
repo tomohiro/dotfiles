@@ -5,7 +5,6 @@ LN = ln -sf
 RM = rm -f
 
 # Define constants.
-KERNEL      = $(shell uname)
 DEVELOPMENT = $(HOME)/Dropbox/Development
 DOTFILES    = $(DEVELOPMENT)/dotfiles
 INSTALLTO   = $(HOME)
@@ -36,12 +35,7 @@ install:
 		$(RM) $(INSTALLTO)/.$$file;\
 		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$$file $(INSTALLTO)/.$$file;\
-	done;\
-	for file in `ls $(DOTFILES)/$(KERNEL)`; do\
-		$(RM) $(INSTALLTO)/.$$file;\
-		echo " [linkup] $(INSTALLTO)/.$$file";\
-		$(LN) $(DOTFILES)/$(KERNEL)/$$file $(INSTALLTO)/.$$file;\
-	done
+	done;
 	@echo "Finished."
 
 
