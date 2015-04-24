@@ -88,13 +88,6 @@ export KERNEL=$(uname)
     fi
 
 
-### For PostgreSQL
-
-    if [ -d /Applications/Postgres93.app/Contents/MacOS/bin ]; then
-        PATH="$PATH:/Applications/Postgres93.app/Contents/MacOS/bin"
-    fi
-
-
 ### For Java
 
     JAVA_HOME=$(/usr/libexec/java_home)
