@@ -108,6 +108,12 @@ export KERNEL=$(uname)
     fi
 
 
+### Atom Workaround
+
+    # https://github.com/atom/apm/issues/322#issuecomment-96430856
+    export ATOM_NODE_URL=http://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist
+
+
 ### For Packer
 
     if type packer &> /dev/null; then
