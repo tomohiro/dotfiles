@@ -74,13 +74,9 @@
     alias sl='ls'
     alias j='ghq list -p | peco | while read SRC_PATH; do cd $SRC_PATH; done'
     alias tree='tree --charset=C'
+    alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
-    if [ $KERNEL = Darwin ]; then
-        alias ls='ls -hF -G -v'
-    else
-        alias open='gnome-open'
-        alias ls='ls -hF -v --color=auto'
-    fi
+    alias ls='ls -hF -G -v'
     alias la='ls -lAh'
     alias ll='ls -lh'
 
