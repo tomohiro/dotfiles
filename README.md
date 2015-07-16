@@ -31,5 +31,6 @@ Please type: make [target]
   install         Install dotfiles to /home/tomohiro
   bundle-show     Show git submodules
   bundle-update   Update git submodules
+  setup-vim       Setup vim-plug
   help            Show this help messages
 ```

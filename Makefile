@@ -11,13 +11,14 @@ INSTALLTO   = $(HOME)
 IGNORES     = bin bundle Makefile README.md
 
 
-.PHONY: help test install bundle-show bundle-update
+.PHONY: help install bundle-show bundle-update setup-vim
 
 help:
 	@echo "Please type: make [target]"
-	@echo "  install         Install dotfiles $(DOTFILES) to $(INSTALLTO)"
+	@echo "  install         Install dotfiles to $(INSTALLTO)"
 	@echo "  bundle-show     Show git submodules"
 	@echo "  bundle-update   Update git submodules"
+	@echo "  setup-vim       Setup vim-plug"
 	@echo "  help            Show this help messages"
 
 
@@ -48,3 +49,10 @@ bundle-update:
 	@echo "Commit and push to the GitHub"
 	@git commit -m 'Update submodules' bundle
 	@git push origin master
+
+
+setup-vim:
+	@echo "Setup Vim plugins."
+	@curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	@echo "Finished."
