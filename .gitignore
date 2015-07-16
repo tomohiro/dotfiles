@@ -1,20 +1,14 @@
+# OS X
 .DS_Store
-/private/bin/*
-/private/etc/*
-/gem
-/gitconfig.local
-/netrc
-/network
-/pit
-/sheets/*
-/vim/
+
+# Vimperator
 /vimperator/info
+
+# Zsh
 /zsh/cdd_pwd_list
 /zsh/cdd_pwd_list.t
-/downcerrc
-/ssh/*.old
-/tugboat
-/skk
+
+# Tmux
 /tmux/plugins
 
 # Atom
