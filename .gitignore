@@ -20,8 +20,6 @@
 /zsh/cdd_pwd_list.t
 /downcerrc
 /ssh/*.old
-/chef/data_bag_key
 /tugboat
 /skk
-/chef
 /tmux/plugins
