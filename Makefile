@@ -5,8 +5,7 @@ LN = ln -sf
 RM = rm -f
 
 # Define constants.
-DEVELOPMENT = $(GOPATH)/src/github.com/$(USER)
-DOTFILES    = $(DEVELOPMENT)/dotfiles
+DOTFILES    = $(shell pwd)
 INSTALLTO   = $(HOME)
 IGNORES     = bin bundle Makefile README.md
 
