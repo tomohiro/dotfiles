@@ -7,13 +7,6 @@
 /network
 /pit
 /sheets/*
-/ssh/config
-/ssh/id_rsa
-/ssh/identities
-/ssh/id_boot2docker
-/ssh/id_boot2docker.pub
-/ssh/known_hosts*
-/ssh/transcripts
 /vim/
 /vimperator/info
 /zsh/cdd_pwd_list
@@ -23,3 +16,12 @@
 /tugboat
 /skk
 /tmux/plugins
+
+# Atom
+/atom/storage
+/atom/packages
+/atom/compile-cache
+/atom/.apm
+/atom/.apmrc
+/atom/.node-gyp
+/atom/.npm
