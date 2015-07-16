@@ -16,18 +16,6 @@ export KERNEL=$(uname)
     fi
 
 
-# Starting keychain
-
-    KEYCHAIN=`which keychain`
-    if [ $? = 0 ]; then
-        HOST=`hostname`
-        IDENTITY=~/.ssh/id_rsa
-        SSH_AGENT=~/.keychain/$HOST-sh
-        $KEYCHAIN $IDENTITY
-        . $SSH_AGENT
-    fi
-
-
 ## Default environment settings
 
     export SHELL=$(which zsh)
@@ -41,6 +29,17 @@ export KERNEL=$(uname)
     export TERM_256=screen-256color
     export TERM=$TERM_256
     export LS_COLORS='di=01;36'
+
+
+# Starting keychain
+
+    if type keychain &> /dev/null; then
+        HOST=$(hostname)
+        IDENTITY=$HOME/.ssh/id_rsa
+        SSH_AGENT=$HOME/.keychain/$HOST-sh
+        keychain $IDENTITY
+        source $SSH_AGENT
+    fi
 
 
 ### for `Bundlizer`
