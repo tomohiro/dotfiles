@@ -29,9 +29,7 @@ Usage
 $ make help
 Please type: make [target]
   install         Install dotfiles to /home/tomohiro
-  test            Run tests
   bundle-show     Show git submodules
   bundle-update   Update git submodules
-  clean           Cleanup
   help            Show this help messages
 ```

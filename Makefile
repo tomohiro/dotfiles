@@ -8,7 +8,7 @@ RM = rm -f
 DEVELOPMENT = $(HOME)/Dropbox/Development
 DOTFILES    = $(DEVELOPMENT)/dotfiles
 INSTALLTO   = $(HOME)
-IGNORES     = bin bundle Makefile README.md Darwin test test-runner
+IGNORES     = bin bundle Makefile README.md
 
 
 .PHONY: help test install bundle-show bundle-update
@@ -16,10 +16,8 @@ IGNORES     = bin bundle Makefile README.md Darwin test test-runner
 help:
 	@echo "Please type: make [target]"
 	@echo "  install         Install dotfiles to $(INSTALLTO)"
-	@echo "  test            Run tests"
 	@echo "  bundle-show     Show git submodules"
 	@echo "  bundle-update   Update git submodules"
-	@echo "  clean           Cleanup"
 	@echo "  help            Show this help messages"
 
 
@@ -39,12 +37,6 @@ install:
 	@echo "Finished."
 
 
-test:
-	@echo "Run test"
-	./test-runner
-	make clean
-
-
 bundle-show:
 	@echo "Show git submodules."
 	@git submodule status
@@ -56,8 +48,3 @@ bundle-update:
 	@echo "Commit and push to the GitHub"
 	@git commit -m 'Update submodules' bundle
 	@git push origin master
-
-
-clean:
-	@echo "Cleanup"
-	rm -rf /tmp/johndoe
