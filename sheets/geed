@@ -1,5 +1,5 @@
 # 複数ファイルのメソッド名を置換する
-grep -n 'foo_method' app/models/*.rb > target-methods     # 対象メソッドの一覧を得る
+git grep -n 'foo_method' app/models/*.rb > target-methods # 対象メソッドの一覧を得る
 vi target-methods                                         # foo_method を bar_method に置換
-cat target-methods | geed-repl | ed                       # ed を実行してメソッド名を置換
+geed-repl < cat target-methods | ed                       # ed を実行してメソッド名を置換
 git diff                                                  # diff で実行結果を確認する
