@@ -5,7 +5,7 @@ LN = ln -sf
 RM = rm -f
 
 # Define constants.
-DEVELOPMENT = $(HOME)/Dropbox/Development
+DEVELOPMENT = $(GOPATH)/src/github.com/$(USER)
 DOTFILES    = $(DEVELOPMENT)/dotfiles
 INSTALLTO   = $(HOME)
 IGNORES     = bin bundle Makefile README.md
@@ -15,7 +15,7 @@ IGNORES     = bin bundle Makefile README.md
 
 help:
 	@echo "Please type: make [target]"
-	@echo "  install         Install dotfiles to $(INSTALLTO)"
+	@echo "  install         Install dotfiles $(DOTFILES) to $(INSTALLTO)"
 	@echo "  bundle-show     Show git submodules"
 	@echo "  bundle-update   Update git submodules"
 	@echo "  help            Show this help messages"
