@@ -37,3 +37,6 @@
 [submodule "bundle/c"]
 	path = bundle/c
 	url = git@github.com:ryanmjacobs/c.git
+[submodule "bundle/pecrant"]
+	path = bundle/pecrant
+	url = git@github.com:gongo/pecrant
