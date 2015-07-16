@@ -81,13 +81,6 @@ export KERNEL=$(uname)
     fi
 
 
-### for WebMagic development
-
-    if [ -d $GOPATH/src/github.com/occ-corp/webmagic  ]; then
-        export WEBMAGIC_SRC_PATH=$GOPATH/src/github.com/occ-corp/webmagic
-    fi
-
-
 ### For Java
 
     JAVA_HOME=$(/usr/libexec/java_home)
