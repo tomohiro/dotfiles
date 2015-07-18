@@ -1,7 +1,18 @@
 # vim: ft=screen
 
 source defaults.screenrc
-source "$KERNEL.screenrc"
+
+# screen blanker
+idle 3600
+blankerprg fortune
+
+# Backticks
+backtick 0 0 0 $HOME/.screen/scripts/osx_release
+
+# caption and hardstatus settings
+# segments ⮂ ⮃ ⮀ ⮁
+caption always "%{= Rw} %0` ⮁ ❏ %n %{= wR}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w} %{= wk}%+w %= "
+
 
 escape ^t^t
 
