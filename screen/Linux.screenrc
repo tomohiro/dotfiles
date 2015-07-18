@@ -1,9 +1,0 @@
-# screen blanker
-#idle 3600
-#blankerprg fortune
-
-# Backticks
-backtick 0 0 0 lsb_release -ds
-
-#caption and hardstatus settings. segments ⮂  ⮀ ⮃ ⮁
-caption always "%{= Gw} %0` ⮁ ❏ %n %{= wG}⮀%{= wk} %-w%{= Bw}⮀ %{= Bk}%n ⮁ %t %{= wB}⮀%{= w} %{= wk}%+w %= "
