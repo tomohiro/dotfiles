@@ -65,7 +65,7 @@ bind U eval "encoding utf8"
 bind E eval "encoding euc"
 bind J eval "encoding sjis"
 
-# soruce 
+# soruce
 bind 'R' eval "source $HOME/.screen/common.screenrc"
 
 register [ "\033:se noai\015a"
