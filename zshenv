@@ -10,10 +10,8 @@ export KERNEL=$(uname)
 
     PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-    if [ $KERNEL = Darwin ]; then
-        [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
-        [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-    fi
+    [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
+    [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 
 ## Default environment settings
@@ -26,7 +24,6 @@ export KERNEL=$(uname)
     export PAGER=lv
     export LISTMAX=10000
     export TERM_256=xterm-256color
-    export TERM_256=screen-256color
     export TERM=$TERM_256
     export LS_COLORS='di=01;36'
 
@@ -35,9 +32,8 @@ export KERNEL=$(uname)
 
     if type keychain &> /dev/null; then
         HOST=$(hostname)
-        IDENTITY=$HOME/.ssh/id_rsa
         SSH_AGENT=$HOME/.keychain/$HOST-sh
-        keychain $IDENTITY
+        keychain
         source $SSH_AGENT
     fi
 
