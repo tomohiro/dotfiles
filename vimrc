@@ -16,6 +16,7 @@ Plug 'tpope/vim-endwise'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'mattn/vim-maketable'
 
 " Project support
 Plug 'supermomonga/projectlocal.vim'
