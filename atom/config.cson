@@ -7,9 +7,6 @@
     fontSize: 12
   core:
     projectHome: "/Users/tomohiro/Workspaces/Repositories"
-    disabledPackages: [
-      "linter-rubocop"
-    ]
   "exception-reporting":
     userId: "0bb8d154-bc69-8ab5-f933-e62955baca45"
   "release-notes":
