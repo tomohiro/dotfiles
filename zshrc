@@ -32,6 +32,10 @@
 
     _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
 
+    unalias run-help
+    autoload run-help
+    HELPDIR=$HOMEBREW_ROOT/share/zsh/help
+
 ## Set shell options
 
     setopt auto_menu auto_cd correct auto_name_dirs auto_remove_slash
