@@ -33,7 +33,7 @@ export KERNEL=$(uname)
     if type keychain &> /dev/null; then
         HOST=$(hostname)
         SSH_AGENT=$HOME/.keychain/$HOST-sh
-        keychain
+        keychain $HOME/.ssh/id_rsa
         source $SSH_AGENT
     fi
 
