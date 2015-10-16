@@ -85,6 +85,7 @@
     alias ll='ls -lh'
 
     alias vi=$EDITOR
+    alias rake='noglob rake'
 
     if type colordirff &> /dev/null; then
         alias diff='colordiff'
