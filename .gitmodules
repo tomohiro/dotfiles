@@ -40,3 +40,6 @@
 [submodule "bundle/pecrant"]
 	path = bundle/pecrant
 	url = git@github.com:gongo/pecrant
+[submodule "bundle/XVim"]
+	path = bundle/XVim
+	url = git@github.com:XVimProject/XVim.git
