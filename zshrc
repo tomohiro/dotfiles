@@ -76,7 +76,7 @@
     alias rm='nocorrect rm'
     alias mkdir='nocorrect mkdir'
     alias sl='ls'
-    alias j='ghq list -p | peco | while read SRC_PATH; do cd $SRC_PATH; done'
+    alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
     alias tree='tree --charset=C'
     alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
