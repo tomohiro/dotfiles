@@ -76,6 +76,14 @@ export KERNEL=$(uname)
     fi
 
 
+### For Xcode
+
+    XCODE_PATH=/Applications/Xcode.app
+    if [ -d $XCODE_PATH ]; then
+      PATH=${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+    fi
+
+
 ### For Java
 
     JAVA_HOME=$(/usr/libexec/java_home)

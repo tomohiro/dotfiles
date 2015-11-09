@@ -40,7 +40,7 @@
     insteadOf = heroku:
 
 [credential]
-    helper = /usr/local/bin/git-credential-osxkeychain
+    helper = /opt/boxen/bin/boxen-git-credential
 
 [hub]
     protocol = https
