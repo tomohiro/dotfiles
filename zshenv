@@ -83,6 +83,12 @@ export KERNEL=$(uname)
       PATH=${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
     fi
 
+### For Rust/Cargo
+
+    if [ -d $HOME/.cargo ]; then
+      PATH=${PATH}:${HOME}/.cargo/bin
+    fi
+
 
 ### For Java
 
