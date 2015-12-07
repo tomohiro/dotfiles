@@ -8,6 +8,10 @@ export KERNEL=$(uname)
 
 ## Load path settings
 
+    # Disable loading global profiles for OS X El Capitan.
+    #   - http://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
+    setopt no_global_rcs
+
     PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
@@ -33,7 +37,7 @@ export KERNEL=$(uname)
     if type keychain &> /dev/null; then
         HOST=$(hostname)
         SSH_AGENT=$HOME/.keychain/$HOST-sh
-        keychain $HOME/.ssh/id_rsa
+        keychain -q $HOME/.ssh/id_rsa
         source $SSH_AGENT
     fi
 
