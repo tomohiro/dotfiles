@@ -1,12 +1,15 @@
 "*":
   editor:
-    fontFamily: "Menlo"
     showInvisibles: true
     showIndentGuide: true
     invisibles: {}
-    fontSize: 12
+    fontFamily: "Inconsolata for Powerline"
+    softWrapAtPreferredLineLength: true
   core:
     projectHome: "/Users/tomohiro/Workspaces/Repositories"
+    disabledPackages: [
+      "vim-mode"
+    ]
   "exception-reporting":
     userId: "0bb8d154-bc69-8ab5-f933-e62955baca45"
   "release-notes":
@@ -25,7 +28,8 @@
     traverseIntoSymlinkDirectories: true
   gocode:
     includeCompletionsFromAllBuffers: true
-  linter: {}
+  linter:
+    errorPanelHeight: 28
   "autocomplete-plus": {}
   "linter-rubocop": {}
   toolbar:
@@ -34,3 +38,4 @@
   react: {}
   "tool-bar":
     position: "Left"
+  "vim-mode-plus": {}
