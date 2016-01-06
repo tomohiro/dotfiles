@@ -15,6 +15,7 @@
 /atom/storage
 /atom/packages
 /atom/compile-cache
+/atom/blob-store
 /atom/.apm
 /atom/.apmrc
 /atom/.node-gyp
