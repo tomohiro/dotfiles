@@ -43,3 +43,6 @@
 [submodule "bundle/XVim"]
 	path = bundle/XVim
 	url = git@github.com:XVimProject/XVim.git
+[submodule "bundle/coreos-xhyve"]
+	path = bundle/coreos-xhyve
+	url = git@github.com:coreos/coreos-xhyve
