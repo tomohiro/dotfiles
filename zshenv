@@ -57,6 +57,13 @@ export KERNEL=$(uname)
     fi
 
 
+### for Node.js `nodenv`
+
+    if type nodenv &> /dev/null; then
+        eval "$(nodenv init -)"
+    fi
+
+
 ### for Perl `plenv`
 
     if type plenv &> /dev/null; then
