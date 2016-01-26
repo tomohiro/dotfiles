@@ -13,7 +13,7 @@ usage() {
   echo '  init               # Create configuration to ~/.config/coreos-xhyve.conf'
   echo '  fetch              # Fetch CoreOS images from specified channel (default: alpha)'
   echo '  run                # Run coreos-xhyve'
-  echo '  help, --help, -h   # Run coreos-xhyve'
+  echo '  help, --help, -h   # Show this message'
 }
 
 # Init creates coreos-xhyve configuration
