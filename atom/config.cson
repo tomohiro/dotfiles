@@ -1,41 +1,41 @@
 "*":
-  editor:
-    showInvisibles: true
-    showIndentGuide: true
-    invisibles: {}
-    fontFamily: "Inconsolata for Powerline"
-    softWrapAtPreferredLineLength: true
+  "autocomplete-plus": {}
   core:
-    projectHome: "/Users/tomohiro/Workspaces/Repositories"
     disabledPackages: [
       "vim-mode"
     ]
+    projectHome: "/Users/tomohiro/Workspaces/Repositories"
+  editor:
+    fontFamily: "Inconsolata for Powerline"
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "0bb8d154-bc69-8ab5-f933-e62955baca45"
-  "release-notes":
-    viewedVersion: "0.95.0"
-  welcome:
-    showOnStartup: false
-  metrics:
-    userId: "352e9fd2d0c2d68f6f6a4794b8f8daa71bcbdfce"
   "file-types":
     json: "composer.lock"
-  rspec:
-    command: "bundle exec rspec"
-  "go-plus":
-    vetOnSave: false
   "fuzzy-finder":
     traverseIntoSymlinkDirectories: true
+  "go-plus":
+    vetOnSave: false
   gocode:
     includeCompletionsFromAllBuffers: true
   linter:
     errorPanelHeight: 28
-  "autocomplete-plus": {}
   "linter-rubocop": {}
+  metrics:
+    userId: "352e9fd2d0c2d68f6f6a4794b8f8daa71bcbdfce"
+  react: {}
+  "release-notes":
+    viewedVersion: "0.95.0"
+  rspec:
+    command: "bundle exec rspec"
+  "tool-bar":
+    position: "Left"
   toolbar:
     position: "Left"
     visible: false
-  react: {}
-  "tool-bar":
-    position: "Left"
   "vim-mode-plus": {}
+  welcome:
+    showOnStartup: false
