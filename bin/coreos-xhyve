@@ -22,6 +22,7 @@ init() {
 # See https://github.com/coreos/coreos-xhyve#customize
 MEMORY=2048
 CHANNEL=alpha
+UUID=$(uuidgen)
 ROOT_HDD=/Users/tomohiro/Workspaces/xhyve.img
 EOF
   echo "Saved configuration to $HOME/.config/coreos-xhyve.conf"
