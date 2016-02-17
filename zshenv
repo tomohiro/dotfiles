@@ -56,6 +56,12 @@ export KERNEL=$(uname)
         eval "$(rbenv init -)"
     fi
 
+### for Python `pyenv`
+
+    if type pyenv &> /dev/null; then
+      export PYENV_ROOT=/usr/local/var/pyenv
+      eval "$(pyenv init -)"
+    fi
 
 ### for Node.js `nodenv`
 
