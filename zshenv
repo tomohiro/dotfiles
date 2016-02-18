@@ -56,6 +56,12 @@ export KERNEL=$(uname)
         eval "$(rbenv init -)"
     fi
 
+### for Python `pyenv`
+
+    if type pyenv &> /dev/null; then
+      export PYENV_ROOT=/usr/local/var/pyenv
+      eval "$(pyenv init -)"
+    fi
 
 ### for Node.js `nodenv`
 
@@ -115,7 +121,8 @@ export KERNEL=$(uname)
 ### For Docker
 
     if type docker &> /dev/null; then
-        export DOCKER_HOST=tcp://172.17.8.101:2375
+        # coreos-xhyve IP address and port
+        export DOCKER_HOST=tcp://192.168.64.2:2375
     fi
 
 

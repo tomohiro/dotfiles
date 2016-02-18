@@ -46,3 +46,4 @@
 [submodule "bundle/coreos-xhyve"]
 	path = bundle/coreos-xhyve
 	url = git@github.com:coreos/coreos-xhyve
+	ignore = dirty
