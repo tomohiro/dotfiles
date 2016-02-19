@@ -4,42 +4,14 @@ if [ -f $HOME/.proxy ]; then
   source $HOME/.proxy
 fi
 
-export KERNEL=$(uname)
 
 ## Load path settings
 
     # Disable loading global profiles for OS X El Capitan.
     #   - http://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
     setopt no_global_rcs
-
     PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
     [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
-    [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
-
-## Default environment settings
-
-    export SHELL=$(which zsh)
-    export LANG=en_US.UTF-8
-    export LC_ALL=$LANG
-    export EDITOR=$(which vim)
-    export SVN_EDITOR=$EDITOR
-    export PAGER=lv
-    export LISTMAX=10000
-    export TERM_256=xterm-256color
-    export TERM=$TERM_256
-    export LS_COLORS='di=01;36'
-
-
-# Starting keychain
-
-    if type keychain &> /dev/null; then
-        HOST=$(hostname)
-        SSH_AGENT=$HOME/.keychain/$HOST-sh
-        keychain -q $HOME/.ssh/id_rsa
-        source $SSH_AGENT
-    fi
 
 
 ### for `Bundlizer`
@@ -49,38 +21,26 @@ export KERNEL=$(uname)
         source $HOME/.bundlizer/completions/bundlizer.zsh
     fi
 
+    if [ -f /opt/boxen/env.sh ]; then
+        source /opt/boxen/env.sh
+    else
+        if type rbenv &> /dev/null; then
+            eval "$(rbenv init -)"
+        fi
 
-### for Ruby `rbenv`
+        if type pyenv &> /dev/null; then
+            export PYENV_ROOT=/usr/local/var/pyenv
+            eval "$(pyenv init -)"
+        fi
 
-    if type rbenv &> /dev/null; then
-        eval "$(rbenv init -)"
+        if type nodenv &> /dev/null; then
+            eval "$(nodenv init -)"
+        fi
+
+        if type plenv &> /dev/null; then
+            eval "$(plenv init -)"
+        fi
     fi
-
-### for Python `pyenv`
-
-    if type pyenv &> /dev/null; then
-      export PYENV_ROOT=/usr/local/var/pyenv
-      eval "$(pyenv init -)"
-    fi
-
-### for Node.js `nodenv`
-
-    if type nodenv &> /dev/null; then
-        eval "$(nodenv init -)"
-    fi
-
-
-### for Perl `plenv`
-
-    if type plenv &> /dev/null; then
-        eval "$(plenv init -)"
-    fi
-
-
-### Export PATH
-
-    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
-    typeset -U path cdpath fpath manpath
 
 
 ### For Golang
@@ -97,13 +57,13 @@ export KERNEL=$(uname)
 
     XCODE_PATH=/Applications/Xcode.app
     if [ -d $XCODE_PATH ]; then
-      PATH=${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        PATH=${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
     fi
 
 ### For Rust/Cargo
 
     if [ -d $HOME/.cargo ]; then
-      PATH=${PATH}:${HOME}/.cargo/bin
+        PATH=${PATH}:${HOME}/.cargo/bin
     fi
 
 
@@ -117,6 +77,33 @@ export KERNEL=$(uname)
         PATH=${PATH}:${GLASSFISH_HOME}/bin
     fi
 
+
+## Default environment settings
+
+    export SHELL=$(which zsh)
+    export LANG=en_US.UTF-8
+    export LC_ALL=$LANG
+    export EDITOR=$(which vim)
+    export SVN_EDITOR=$EDITOR
+    export PAGER=lv
+    export LISTMAX=10000
+    export TERM_256=xterm-256color
+    export TERM=$TERM_256
+    export LS_COLORS='di=01;36'
+
+
+### Export PATH
+
+    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
+    typeset -U path cdpath fpath manpath
+
+
+## Load local environment
+
+    LOCALENV=$HOME/.private/etc/zshrc
+    if [ -f $LOCALENV ]; then
+        source $LOCALENV
+    fi
 
 ### For Docker
 
@@ -132,13 +119,17 @@ export KERNEL=$(uname)
         export PACKER_CACHE_DIR=$HOME/Workspaces/Images
     fi
 
-## Load local environment
-
-    LOCALENV=$HOME/.private/etc/zshrc
-    if [ -f $LOCALENV ]; then
-        source $LOCALENV
-    fi
 
 ## Load direnv
 
     eval "$(direnv hook zsh)"
+
+
+# Starting keychain
+
+    if type keychain &> /dev/null; then
+        HOST=$(hostname)
+        SSH_AGENT=$HOME/.keychain/$HOST-sh
+        keychain -q $HOME/.ssh/id_rsa
+        source $SSH_AGENT
+    fi
