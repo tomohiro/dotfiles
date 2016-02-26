@@ -27,8 +27,11 @@ Plug 'mattn/ctrlp-ghq'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-dirvish'
 
-" Looks
+" Linting
 Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+
+" Looks
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 
