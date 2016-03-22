@@ -1,7 +1,6 @@
 dotfiles
 ================================================================================
 
-[![Stillmaintained](http://stillmaintained.com/Tomohiro/dotfiles.png)](http://stillmaintained.com/Tomohiro/dotfiles)
 [![Build Status](https://img.shields.io/travis/Tomohiro/dotfiles.svg?style=flat-square)](https://secure.travis-ci.org/Tomohiro/dotfiles)
 
 
