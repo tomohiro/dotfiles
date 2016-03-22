@@ -7,6 +7,9 @@
 # Zsh
 /zsh/cdd_pwd_list
 /zsh/cdd_pwd_list.t
+/zsh/repos
+/zsh/.cache
+/zsh/zcompdump
 
 # Tmux
 /tmux/plugins

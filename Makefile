@@ -11,7 +11,7 @@ XDG_CONFIG_HOME = $(HOME)/.config
 IGNORES         = bin bundle Makefile README.md
 
 
-.PHONY: help install bundle-show bundle-update setup-vim
+.PHONY: help install bundle-show bundle-update setup-plugin-managers
 
 help:
 	@echo "Please type: make [target]"
@@ -57,8 +57,11 @@ bundle-update:
 	@git push origin master
 
 
-setup-vim:
+setup-plugin-managers:
 	@echo "Setup Vim plugins."
 	@curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	@echo "Setup Zsh plugins."
+	@curl -fLo $(INSTALLTO)/.zsh/repos/b4b4r07/zplug/zplug --create-dirs \
+		https://raw.githubusercontent.com/b4b4r07/zplug/master/zplug
 	@echo "Finished."
