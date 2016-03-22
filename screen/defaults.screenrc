@@ -58,6 +58,9 @@ defscrollback 0
 defencoding utf8
 encoding utf8 utf8
 
+# Resolve Vim ESC key response is slow
+maptimeout 0
+
 # Tell applications  who this is.   The ``screen-256color'' terminfo is  in the
 # ncurses-term package for debian.
 term screen-256color
