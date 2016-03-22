@@ -75,8 +75,12 @@ set smartcase
 set incsearch
 set wrapscan
 set ww=31
-set mouse=a
-set ttymouse=xterm2
+
+if !has('nvim')
+  set mouse=a
+  set ttymouse=xterm2
+endif
+
 set ttyfast
 set autoread
 "set clipboard+=autoselect
@@ -99,6 +103,8 @@ autocmd FileType php    :set ts=4 sw=4
 autocmd FileType go     :set ts=4 sw=4 noexpandtab
 autocmd FileType vim    :set ts=4 sw=4
 
+" For Python
+autocmd BufRead requirements*txt :set ft=text ff=unix
 
 " Visual
 "
