@@ -34,3 +34,34 @@ Please type: make [target]
   setup-vim       Setup vim-plug
   help            Show this help messages
 ```
+
+
+Plugin Managers
+--------------------------------------------------------------------------------
+
+### Zsh
+
+Update all plugins:
+
+```
+$ zplug update
+```
+
+### Vim
+
+Update all plugins:
+
+```
+$ vi
+:PlugUpdate  # Updates plugins
+:PlugUpgrade # Upgrade vim-plug
+```
+
+### Tmux
+
+Update all plugins:
+
+```
+$ (TMUX PREFFIX KEY) + U
+all <ENTER>
+```
