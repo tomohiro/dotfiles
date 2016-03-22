@@ -3,7 +3,7 @@ bindkey "^[Q" push-line
 bindkey "^Q" push-line
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-bindkey '^R' history-incremental-search-backward
+bindkey '^R' peco-select-history
 bindkey '^N' down-line-or-history
 bindkey '^O' accept-line-and-down-history
 bindkey '^P' up-line-or-history

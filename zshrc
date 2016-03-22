@@ -65,8 +65,7 @@
 
     bindkey -v
     bindkey '^Q' push-line-or-edit
-    bindkey '^R' peco-select-history #history-incremental-search-backward
-    bindkey '^@' peco-cdr
+    bindkey '^R' history-incremental-search-backward
 
 
 ## Set Aliases
