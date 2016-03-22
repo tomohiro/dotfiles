@@ -22,7 +22,7 @@ help:
 	@echo "  help            Show this help messages"
 
 
-install: setup-vim
+install: setup-plugin-managers
 	@echo "Install dotfiles Start"
 	@echo " [linkup] $(INSTALLTO)/bin"
 	@$(LN) $(DOTFILES)/bin $(INSTALLTO)/
