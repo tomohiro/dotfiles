@@ -1,1 +1,0 @@
-../bundle/auto-fu.zsh/auto-fu.zsh

@@ -13,9 +13,6 @@
 [submodule "bundle/vimperator-plugins"]
 	path = bundle/vimperator-plugins
 	url = git://github.com/vimpr/vimperator-plugins.git
-[submodule "bundle/auto-fu.zsh"]
-	path = bundle/auto-fu.zsh
-	url = git://github.com/hchbaw/auto-fu.zsh.git
 [submodule "bundle/geed"]
 	path = bundle/geed
 	url = git://github.com/kinjo/geed.git
