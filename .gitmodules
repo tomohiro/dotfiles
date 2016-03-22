@@ -7,9 +7,6 @@
 [submodule "bundle/h"]
 	path = bundle/h
 	url = git://github.com/Tomohiro/h.git
-[submodule "bundle/zsh-completions"]
-	path = bundle/zsh-completions
-	url = git://github.com/zsh-users/zsh-completions.git
 [submodule "bundle/vimperator-plugins"]
 	path = bundle/vimperator-plugins
 	url = git://github.com/vimpr/vimperator-plugins.git

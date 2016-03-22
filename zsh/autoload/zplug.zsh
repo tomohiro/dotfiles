@@ -5,6 +5,7 @@ source $ZPLUG_HOME/repos/b4b4r07/zplug/zplug
 zplug 'b4b4r07/zplug'
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-completions'
 
 # zplug check return true if all plugins are installed
 # Therefore, when it returns not true (thus false),
