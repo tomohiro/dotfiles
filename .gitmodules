@@ -22,12 +22,6 @@
 [submodule "bundle/git-prune-remote-branch"]
 	path = bundle/git-prune-remote-branch
 	url = git://github.com/kyanny/git-prune-remote-branch.git
-[submodule "antigen"]
-	path = antigen
-	url = git://github.com/zsh-users/antigen.git
-[submodule "bundle/antigen"]
-	path = bundle/antigen
-	url = git://github.com/zsh-users/antigen.git
 [submodule "bundle/bd"]
 	path = bundle/bd
 	url = git@github.com:vigneshwaranr/bd.git
