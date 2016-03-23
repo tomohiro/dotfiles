@@ -121,20 +121,9 @@
         [[ -n $WINDOW ]] && set_screen_window_title ${(z)2}
     }
 
-## Set other zsh source
+## Set other zsh sources
 
     local source_dir=$HOME/.zsh/autoload
     for source in $(command ls $source_dir/*.zsh); do
         source $source
     done
-
-
-## Startup message
-
-    if type colortest-256 &> /dev/null; then
-        colortest-256
-    fi
-
-    if type fortune &> /dev/null; then
-       fortune
-    fi
