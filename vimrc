@@ -3,7 +3,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Completion and snippets
-Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'ujihisa/neco-look'
 
 " Editing
@@ -247,32 +249,53 @@ vmap <M-d> <Plug>(textmanip-duplicate-down)
 nmap <M-d> <Plug>(textmanip-duplicate-down)
 
 
-" for neocomplcache.vim
+" for neocomplete.vim
+"   https://github.com/Shougo/neocomplete.vim
 "
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  "return neocomplcache#smart_close_popup() . "\<CR>"
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
-  return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+" for neosnippet
+"   https://github.com/Shougo/neosnippet.vim
+"
+" Plugin key-mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ neosnippet#expandable_or_jumpable() ?
+    \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 
 " for vim-indent-guides
