@@ -36,6 +36,6 @@
 ### if change directory
 
     chpwd() {
-        _reg_pwd_screennum
+        _cdd_chpwd
         ls
     }
