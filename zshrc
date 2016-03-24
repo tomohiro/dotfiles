@@ -80,14 +80,11 @@
     fi
 
     alias b='bundle'
-    alias c="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/c/c"
     alias d='downcer'
-    alias h="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/h/h"
     alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
-    alias m="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/warp/warp"
-    alias p="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/p/p"
-    alias s="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/spot/spot.sh"
-    alias v="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/pecrant/pecrant"
+    alias m='warp'
+    alias s='spot.sh'
+    alias v='pecrant'
 
     alias ssh-new=ssh_on_screen
 

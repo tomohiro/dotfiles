@@ -1,33 +1,6 @@
-[submodule "bundle/spot"]
-	path = bundle/spot
-	url = git://github.com/guille/spot.git
-[submodule "bundle/p"]
-	path = bundle/p
-	url = git://github.com/Tomohiro/p.git
-[submodule "bundle/h"]
-	path = bundle/h
-	url = git://github.com/Tomohiro/h.git
 [submodule "bundle/vimperator-plugins"]
 	path = bundle/vimperator-plugins
 	url = git://github.com/vimpr/vimperator-plugins.git
-[submodule "bundle/geed"]
-	path = bundle/geed
-	url = git://github.com/kinjo/geed.git
-[submodule "bundle/git-prune-remote-branch"]
-	path = bundle/git-prune-remote-branch
-	url = git://github.com/kyanny/git-prune-remote-branch.git
-[submodule "bundle/bd"]
-	path = bundle/bd
-	url = git@github.com:vigneshwaranr/bd.git
-[submodule "bundle/warp"]
-	path = bundle/warp
-	url = git@github.com:Tomohiro/warp
-[submodule "bundle/c"]
-	path = bundle/c
-	url = git@github.com:ryanmjacobs/c.git
-[submodule "bundle/pecrant"]
-	path = bundle/pecrant
-	url = git@github.com:gongo/pecrant
 [submodule "bundle/XVim"]
 	path = bundle/XVim
 	url = git@github.com:XVimProject/XVim.git
