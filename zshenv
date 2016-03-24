@@ -120,9 +120,11 @@ fi
     fi
 
 
-## Load direnv
+## Load Direnv
 
-    eval "$(direnv hook zsh)"
+    if type direnv &> /dev/null; then
+        eval "$(direnv hook zsh)"
+    fi
 
 
 # Starting keychain
