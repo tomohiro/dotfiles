@@ -83,7 +83,7 @@
     alias d='downcer'
     alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
     alias m='warp'
-    alias s='spot.sh'
+    alias s='spot'
     alias v='pecrant'
 
     alias ssh-new=ssh_on_screen
