@@ -20,17 +20,7 @@
     zstyle ':completion:*:warnings' format 'No matches for: %d'
     zstyle ':completion:*' group-name ''
 
-    if [ -f $HOME/.zsh/auto-fu.zsh ]; then
-        source $HOME/.zsh/auto-fu.zsh
-        function zle-line-init () {
-            auto-fu-init
-        }
-        zle -N zle-line-init
-        zstyle ':completion:*' completer _oldlist _complete
-        zstyle ':auto-fu:var' postdisplay ''
-    fi
-
-    _cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
+    _cache_hosts=(`perl -ne 'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
 
     unalias run-help
     autoload run-help
@@ -75,7 +65,6 @@
     alias rm='nocorrect rm'
     alias mkdir='nocorrect mkdir'
     alias sl='ls'
-    alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
     alias tree='tree --charset=C'
     alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
@@ -90,7 +79,15 @@
         alias diff='colordiff'
     fi
 
+    alias b='bundle'
+    alias c="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/c/c"
     alias d='downcer'
+    alias h="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/h/h"
+    alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
+    alias m="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/warp/warp"
+    alias p="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/p/p"
+    alias s="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/spot/spot.sh"
+    alias v="${GOPATH}/src/github.com/Tomohiro/dotfiles/bundle/pecrant/pecrant"
 
     alias ssh-new=ssh_on_screen
 
