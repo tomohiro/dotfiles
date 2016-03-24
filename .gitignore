@@ -5,11 +5,12 @@
 /vimperator/info
 
 # Zsh
-/zsh/cdd_pwd_list
-/zsh/cdd_pwd_list.t
+/zsh/bin
 /zsh/repos
 /zsh/.cache
 /zsh/zcompdump
+/zsh/cdd_pwd_list
+/zsh/cdd_pwd_list.t
 
 # Tmux
 /tmux/plugins
