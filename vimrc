@@ -80,10 +80,8 @@ set backupdir=$HOME/.vim/backups
 set directory=$HOME/.vim/swaps
 set undodir=$HOME/.vim/undo
 
-if !has('nvim')
-  set mouse=a
-  set ttymouse=xterm2
-endif
+set mouse=a
+set ttymouse=xterm2
 
 set ttyfast
 set autoread
