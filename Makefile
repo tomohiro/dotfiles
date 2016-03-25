@@ -11,19 +11,20 @@ XDG_CONFIG_HOME = $(HOME)/.config
 IGNORES         = bin bundle Makefile README.md
 
 
-.PHONY: help install bundle-show bundle-update setup-plugin-managers
+.PHONY: help install bundle-show bundle-update symlinks setup-plugin-managers
 
 help:
 	@echo "Please type: make [target]"
 	@echo "  install         Install dotfiles to $(INSTALLTO)"
 	@echo "  bundle-show     Show git submodules"
 	@echo "  bundle-update   Update git submodules"
-	@echo "  setup-vim       Setup vim-plug"
 	@echo "  help            Show this help messages"
 
 
-install: setup-plugin-managers
-	@echo "Install dotfiles Start"
+install: symlinks setup-plugin-managers
+
+symlinks:
+	@echo "Create symlinks..."
 	@echo " [linkup] $(INSTALLTO)/bin"
 	@$(LN) $(DOTFILES)/bin $(INSTALLTO)/
 	@for file in `ls $(DOTFILES)`; do\
@@ -36,11 +37,6 @@ install: setup-plugin-managers
 		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$$file $(INSTALLTO)/.$$file;\
 	done;
-	@[ ! -d $(XDG_CONFIG_HOME) ] && mkdir $(XDG_CONFIG_HOME) || :
-	@echo " [linkup] $(INSTALLTO)/.config/neovim"
-	@$(LN) $(INSTALLTO)/.vim $(XDG_CONFIG_HOME)/nvim
-	@echo " [linkup] $(INSTALLTO)/.config/neovim/init.vim"
-	@$(LN) $(DOTFILES)/vimrc $(XDG_CONFIG_HOME)/nvim/init.vim
 	@echo "Finished."
 
 
@@ -58,7 +54,7 @@ bundle-update:
 
 
 setup-plugin-managers:
-	@echo "Setup Plugin Managers"
+	@echo "Setup plugin managers..."
 	@if [ ! -f $(INSTALLTO)/.vim/autoload/plug.vim ]; then\
 		echo "===> Setup Vim plugins.";\
 		curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs \

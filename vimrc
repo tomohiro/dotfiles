@@ -64,11 +64,7 @@ set shiftwidth=2
 set expandtab
 set autoindent
 set wildmenu
-set nobackup
-set noswapfile
-set nowritebackup
 set backspace=indent,eol,start
-set directory=/tmp//
 set hlsearch
 set iminsert=0
 set imsearch=0
@@ -77,6 +73,12 @@ set smartcase
 set incsearch
 set wrapscan
 set ww=31
+
+" Set directory for backups, swaps, undo history
+"
+set backupdir=$HOME/.vim/backups
+set directory=$HOME/.vim/swaps
+set undodir=$HOME/.vim/undo
 
 if !has('nvim')
   set mouse=a
