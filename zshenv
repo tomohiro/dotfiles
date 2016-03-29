@@ -47,6 +47,7 @@ fi
 
     if type go &> /dev/null; then
         export GOPATH=$HOME/Workspaces/Repositories
+        export GOROOT=$(go env GOROOT)
         export CGO_CFLAGS=$CFLAGS
         export CGO_LDFLAGS=$LDFLAGS
         export PATH=$PATH:$GOPATH/bin
