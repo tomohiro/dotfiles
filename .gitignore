@@ -11,6 +11,7 @@
 /zsh/zcompdump
 /zsh/cdd_pwd_list
 /zsh/cdd_pwd_list.t
+/zsh/autoload/local.zsh
 
 # Tmux
 /tmux/plugins

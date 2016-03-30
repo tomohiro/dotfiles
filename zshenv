@@ -1,10 +1,5 @@
 # vim: ft=zsh
 
-if [ -f $HOME/.proxy ]; then
-  source $HOME/.proxy
-fi
-
-
 ## Load path settings
 
     # Disable loading global profiles for OS X El Capitan.
@@ -95,16 +90,10 @@ fi
 
 ### Export PATH
 
-    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
+    # Set `-U` option to remove duplicated paths
     typeset -U path cdpath fpath manpath
+    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
 
-
-## Load local environment
-
-    LOCALENV=$HOME/.private/etc/zshrc
-    if [ -f $LOCALENV ]; then
-        source $LOCALENV
-    fi
 
 ### For Docker
 
