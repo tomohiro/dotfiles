@@ -74,6 +74,13 @@
     fi
 
 
+### For PostgreSQL
+
+    if [ -d /Applications/Postgres.app/Contents/Versions/9.3/bin ]; then
+        PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin"
+    fi
+
+
 ## Default environment settings
 
     export SHELL=$(which zsh)
