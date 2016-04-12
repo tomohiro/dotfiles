@@ -76,8 +76,8 @@
 
 ### For PostgreSQL
 
-    if [ -d /Applications/Postgres.app/Contents/Versions/9.3/bin ]; then
-        PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin"
+    if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
+        PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
     fi
 
 
