@@ -21,7 +21,7 @@
     export TMUX_POWERLINE_SEG_HOSTNAME_FORMAT="short"
 
 
-## tmux-powerline/segments/now_playing.sh 
+## tmux-powerline/segments/now_playing.sh
 
     export TMUX_POWERLINE_SEG_NOW_PLAYING_MAX_LEN="35"
     export TMUX_POWERLINE_SEG_NOW_PLAYING_TRIM_METHOD="trim"
