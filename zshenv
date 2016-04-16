@@ -73,6 +73,12 @@
         PATH=${PATH}:${GLASSFISH_HOME}/bin
     fi
 
+### For Google Cloud SDK
+
+    if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk ]; then
+        source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+        source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+    fi
 
 ### For PostgreSQL
 
