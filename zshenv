@@ -108,14 +108,6 @@
     export PATH=$HOME/.private/bin:$HOME/bin:$PATH
 
 
-### For Docker
-
-    if type docker &> /dev/null; then
-        # coreos-xhyve IP address and port
-        export DOCKER_HOST=tcp://192.168.64.2:2375
-    fi
-
-
 ### For Packer
 
     if type packer &> /dev/null; then
