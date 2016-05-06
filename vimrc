@@ -358,7 +358,6 @@ colorscheme molokai
 highlight LineNr     ctermbg=235 ctermfg=105
 highlight StatusLine ctermbg=64  ctermfg=15
 highlight clear CursorLine
-highlight CursorLine gui=underline
-highlight CursorLine ctermbg=235 guibg=235
+highlight CursorLine ctermbg=235
 set colorcolumn=80
 highlight ColorColumn ctermbg=235
