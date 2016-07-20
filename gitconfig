@@ -27,7 +27,7 @@
     tool = vimdiff
 [commit]
     # https://help.github.com/articles/signing-commits-using-gpg/
-    gpgsign = true
+    gpgsign = false
 [pager]
     #log = diff-highlight | less
     #show = diff-highlight | less
