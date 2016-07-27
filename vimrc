@@ -19,6 +19,7 @@ Plug 'coderifous/textobj-word-column.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'mattn/vim-maketable'
+Plug 'hashivim/vim-terraform'
 
 " Project support
 Plug 'supermomonga/projectlocal.vim'
@@ -341,6 +342,11 @@ nmap <Leader>j :CtrlPGhq<CR>
 "   [【Vim】目的の行に素早く移動する（相対行番号と easymotion プラグイン）](http://blog.remora.cx/2012/08/vim-easymotion.html)
 "
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB' " Use home position keys
+
+" for vim-terraform
+"   [hashivim/vim-terraform](https://github.com/hashivim/vim-terraform)
+"
+let g:terraform_fmt_on_save = 1
 
 " for Syntastic
 " https://github.com/scrooloose/syntastic/wiki/JavaScript:---jsxhint
