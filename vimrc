@@ -349,6 +349,7 @@ let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB' " U
 let g:terraform_fmt_on_save = 1
 
 " for Syntastic
+"
 " https://github.com/scrooloose/syntastic/wiki/JavaScript:---jsxhint
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_jsx_jsxhint_checker = 1
