@@ -1,5 +1,16 @@
+# Flake8 Configuration
+# http://flake8.pycqa.org/en/latest/user/configuration.html
 [flake8]
-ignore = D203
+
+# Ignore configuration
+#
+# It's not a bug that we aren't using all of hacking
+# pydocstyle: http://www.pydocstyle.org/en/latest/error_codes.html
+#
+# D203: 1 blank line required before class docstring
+# D204: 1 blank line required before class docstring
+ignore = D203,D204
+
 exclude =
     .git,
     __pycache__,
@@ -7,4 +18,5 @@ exclude =
     old,
     build,
     dist
+
 max-complexity = 10
