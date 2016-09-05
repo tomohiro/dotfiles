@@ -1,0 +1,4 @@
+#!/bin/sh
+# https://github.com/reorx/httpstat
+BUNDLE_DIR=$(cd $(readlink $(cd $(dirname $0) && pwd))/.. && pwd)/bundle
+python ${BUNDLE_DIR}/httpstat/httpstat.py $@

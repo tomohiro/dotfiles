@@ -8,3 +8,6 @@
 	path = bundle/coreos-xhyve
 	url = git@github.com:coreos/coreos-xhyve
 	ignore = dirty
+[submodule "bundle/httpstat"]
+	path = bundle/httpstat
+	url = git@github.com:reorx/httpstat.git
