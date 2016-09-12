@@ -19,6 +19,7 @@
 
 ### Set default prompt
 
+    RPROMPT=''
     PROMPT_FORMAT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%d%f %1(v|on %F{red}%v|)
 %F{magenta}❯%f "
     PROMPT=$PROMPT_FORMAT
