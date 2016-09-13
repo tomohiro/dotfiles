@@ -74,6 +74,7 @@ set smartcase
 set incsearch
 set wrapscan
 set ww=31
+set breakindent
 
 " Set directory for backups, swaps, undo history
 "
