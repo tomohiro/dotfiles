@@ -5,7 +5,7 @@ typeset -x ZPLUG_HOME=$HOME/.zsh
 typeset -x ZPLUG_EXTERNAL=/dev/null
 
 # Load zplug functions
-source $ZPLUG_HOME/repos/b4b4r07/zplug/zplug
+source $ZPLUG_HOME/repos/b4b4r07/zplug/init.zsh
 
 # Zsh Plugins
 zplug 'b4b4r07/zplug'
@@ -13,7 +13,7 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-history-substring-search'
-zplug 'm4i/cdd', of:cdd
+zplug 'm4i/cdd', use:cdd
 
 # CLI tools
 zplug 'Tomohiro/warp', as:command
@@ -23,7 +23,7 @@ zplug 'gongo/pecrant', as:command
 zplug 'kinjo/geed', as:command
 zplug 'kyanny/git-prune-remote-branch', as:command
 zplug 'ryanmjacobs/c', as:command
-zplug 'guille/spot', as:command, file:spot
+zplug 'guille/spot', as:command, rename-to:spot
 zplug 'vigneshwaranr/bd', as:command
 
 
