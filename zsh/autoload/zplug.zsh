@@ -1,14 +1,13 @@
 #!/bin/zsh
 
 # Configure zplug options
-typeset -x ZPLUG_HOME=$HOME/.zsh
+typeset -x ZPLUG_HOME=/usr/local/opt/zplug
 typeset -x ZPLUG_EXTERNAL=/dev/null
 
 # Load zplug functions
-source $ZPLUG_HOME/repos/b4b4r07/zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
 
 # Zsh Plugins
-zplug 'b4b4r07/zplug'
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
