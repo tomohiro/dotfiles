@@ -20,6 +20,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'mattn/vim-maketable'
 Plug 'hashivim/vim-terraform'
+Plug 'vim-scripts/nginx.vim'
 
 " Project support
 Plug 'supermomonga/projectlocal.vim'
