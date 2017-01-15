@@ -11,3 +11,6 @@
 [submodule "bundle/httpstat"]
 	path = bundle/httpstat
 	url = git@github.com:reorx/httpstat.git
+[submodule "bundle/tpdiff"]
+	path = bundle/tpdiff
+	url = git@github.com:gongo/tpdiff
