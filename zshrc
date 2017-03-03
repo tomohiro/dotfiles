@@ -79,6 +79,10 @@
         alias diff='colordiff'
     fi
 
+    if type assh &> /dev/null; then
+        alias ssh='assh wrapper ssh'
+    fi
+
     alias b='bundle'
     alias d='downcer'
     alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
