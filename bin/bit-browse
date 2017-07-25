@@ -1,0 +1,4 @@
+#!/bin/sh
+
+repo=$(git config remote.origin.url | cut -d ':' -f 2)
+open "https://bitbucket.org/${repo}"
