@@ -1,0 +1,3 @@
+#!/bin/sh
+# https://hub.docker.com/r/composer/composer/
+docker run --rm -v $(pwd):/app composer/composer:alpine $@

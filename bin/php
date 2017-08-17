@@ -1,0 +1,7 @@
+#!/bin/sh
+# https://hub.docker.com/_/php/
+if [ $# == 0 ]; then
+  docker run --rm -it -v $(pwd):/app -w /app php:7.1-alpine
+else
+  docker run --rm -it -v $(pwd):/app -w /app php:7.1-alpine php $@
+fi
