@@ -19,15 +19,20 @@ zplug 'Tomohiro/warp', as:command
 zplug 'Tomohiro/p', as:command
 zplug 'Tomohiro/h', as:command
 zplug 'gongo/pecrant', as:command
-zplug 'kinjo/geed', as:command
+zplug 'kinjo/geed', as:command, use:'geed-*'
 zplug 'kyanny/git-prune-remote-branch', as:command
 zplug 'ryanmjacobs/c', as:command
-zplug 'guille/spot', as:command, rename-to:spot
+zplug 'guille/spot', as:command, use:'spot.sh', rename-to:spot
 zplug 'vigneshwaranr/bd', as:command
 
 
-# Install all Zsh plugins if these are not installed.
-zplug check || zplug install
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
 # Load Zsh plugins and then add these to the PATH.
 # If you want to see detail, add `--verbose` option when runs `zplug load`.
