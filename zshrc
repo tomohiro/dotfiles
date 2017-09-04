@@ -75,12 +75,16 @@
     alias vi=$EDITOR
     alias rake='noglob rake'
 
-    if type colordirff &> /dev/null; then
+    if type colordiff &> /dev/null; then
         alias diff='colordiff'
     fi
 
     if type assh &> /dev/null; then
         alias ssh='assh wrapper ssh'
+    fi
+
+    if type ccat &> /dev/null; then
+      alias cat='ccat'
     fi
 
     alias b='bundle'
