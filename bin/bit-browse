@@ -1,4 +1,10 @@
 #!/bin/sh
 
 repo=$(git config remote.origin.url | cut -d ':' -f 2)
-open "https://bitbucket.org/${repo}"
+branch=$(git symbolic-ref --short HEAD)
+
+if [ $branch == 'master' ]; then
+  open "https://bitbucket.org/${repo}"
+else
+  open "https://bitbucket.org/${repo}/branch/${branch}"
+fi
