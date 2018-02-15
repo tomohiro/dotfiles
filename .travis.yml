@@ -3,7 +3,11 @@ sudo: false
 git:
   submodules: false
 
-script: make install
+before_script:
+  - mkdir /tmp/john.doe
+
+script:
+  - HOME=/tmp/john.doe make install
 
 notifications:
   email: false
