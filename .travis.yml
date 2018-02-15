@@ -3,7 +3,13 @@ sudo: false
 git:
   submodules: false
 
-script: make install
+before_script:
+  - mkdir /tmp/test
+
+script:
+  - ls -l ~/
+  - ls -l ~/bin/
+  - HOME=/tmp/test make install
 
 notifications:
   email: false
