@@ -1,6 +1,6 @@
 # vim: ft=gitconfig
 [user]
-    name = Tomohiro TAIRA
+    name = Tomohiro Taira
     email = tomohiro.t@gmail.com
 [color]
     status = auto
@@ -55,12 +55,9 @@
 [include]
     path = ~/.gitconfig.local
 
-# Git Hawser located GitHub.app/Contents/Resources/hawser/bin/git-hawser
-[filter "hawser"]
-    clean = git hawser clean %f
-    smudge = git hawser smudge %f
-    required = true
+# Git Large File Storage https://github.com/git-lfs/git-lfs
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
     required = true
+    process = git-lfs filter-process
