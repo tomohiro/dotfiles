@@ -21,6 +21,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'mattn/vim-maketable'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/nginx.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Project support
 Plug 'supermomonga/projectlocal.vim'
