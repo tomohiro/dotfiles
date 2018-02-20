@@ -48,7 +48,6 @@ Plug 'fholgado/minibufexpl.vim'
 
 " Statusline
 Plug 'itchyny/lightline.vim'
-Plug 'pwdstatus.vim'
 
 call plug#end()
 
