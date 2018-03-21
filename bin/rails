@@ -1,0 +1,3 @@
+#!/bin/sh
+# https://hub.docker.com/r/tomohiro/rails/
+docker run --rm tomohiro/rails:latest $@
