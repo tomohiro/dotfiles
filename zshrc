@@ -37,6 +37,7 @@
     setopt print_eight_bit noflowcontrol
     setopt multibyte combining_chars
     setopt sh_word_split
+    setopt interactivecomments
 
 
 ## Reporttime Settings
