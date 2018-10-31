@@ -67,7 +67,6 @@
     alias mkdir='nocorrect mkdir'
     alias sl='ls'
     alias tree='tree --charset=C'
-    alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
     alias ls='ls -hF -G -v'
     alias la='ls -lAh'
