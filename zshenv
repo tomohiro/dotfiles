@@ -16,27 +16,26 @@
         source $HOME/.bundlizer/completions/bundlizer.zsh
     fi
 
-    if [ -f /opt/boxen/env.sh ]; then
-        source /opt/boxen/env.sh
-    else
-        if type rbenv &> /dev/null; then
-            eval "$(rbenv init -)"
-        fi
-
-        if type pyenv &> /dev/null; then
-            export PYENV_ROOT=/usr/local/var/pyenv
-            eval "$(pyenv init -)"
-        fi
-
-        if type nodenv &> /dev/null; then
-            eval "$(nodenv init -)"
-        fi
-
-        if type plenv &> /dev/null; then
-            eval "$(plenv init -)"
-        fi
+    if type rbenv &> /dev/null; then
+        eval "$(rbenv init -)"
     fi
 
+    if type pyenv &> /dev/null; then
+        export PYENV_ROOT=/usr/local/var/pyenv
+        eval "$(pyenv init -)"
+    fi
+
+    if type nodenv &> /dev/null; then
+        eval "$(nodenv init -)"
+    fi
+
+    if type plenv &> /dev/null; then
+        eval "$(plenv init -)"
+    fi
+
+    if type thefuck &> /dev/null; then
+        eval $(thefuck --alias)
+    fi
 
 ### For Golang
 
