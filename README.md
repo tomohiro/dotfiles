@@ -65,3 +65,12 @@ Update all plugins:
 $ (TMUX PREFFIX KEY) + U
 all <ENTER>
 ```
+
+
+Submodule Information
+--------------------------------------------------------------------------------
+
+Module Name | URL
+----------- | ------------------------------------------------------------------
+Xvim        | https://github.com/XVimProject/XVim
+Tpdiff      | https://github.com/gongo/tpdiff
