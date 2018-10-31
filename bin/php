@@ -3,5 +3,5 @@
 if [ $# == 0 ]; then
   docker run --rm -it -v $(pwd):/app -w /app php:7-alpine
 else
-  docker run --rm -it -v $(pwd):/app -w /app php:7-alpine php $@
+  docker run --rm -it -p 80:80 -v $(pwd):/app -w /app php:7-alpine php $@
 fi
