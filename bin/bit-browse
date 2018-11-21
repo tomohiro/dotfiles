@@ -1,10 +1,21 @@
 #!/bin/sh
 
-repo=$(git config remote.origin.url | cut -d ':' -f 2)
+remote_origin_url=$(git config remote.origin.url)
+case $remote_origin_url in
+  https*)
+    repository_url=$remote_origin_url
+    ;;
+  git@bitbucket.org*)
+    repository_url="https://bitbucket.org/$(echo ${remote_origin_url} | cut -d ':' -f 2)"
+    ;;
+esac
 branch=$(git symbolic-ref --short HEAD)
 
 if [ $branch == 'master' ]; then
-  open "https://bitbucket.org/${repo}"
+   url=$repository_url
 else
-  open "https://bitbucket.org/${repo}/branch/${branch}"
+   url="${repository_url}/branch/${branch}"
 fi
+
+echo "Open browser to ${url}"
+open $url
