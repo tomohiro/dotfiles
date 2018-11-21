@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+
+command=${@}
 remote_origin_url=$(git config remote.origin.url)
 case $remote_origin_url in
   https*)
@@ -9,13 +12,34 @@ case $remote_origin_url in
     repository_url="https://bitbucket.org/$(echo ${remote_origin_url} | cut -d ':' -f 2)"
     ;;
 esac
-branch=$(git symbolic-ref --short HEAD)
 
-if [ $branch == 'master' ]; then
-   url=$repository_url
-else
-   url="${repository_url}/branch/${branch}"
-fi
+open_with_browser() {
+  local url="$1"
+  echo "Open ${url}"
+  open $url
+}
 
-echo "Open browser to ${url}"
-open $url
+open_home() {
+  open_with_browser $repository_url
+}
+
+open_branch() {
+  branch=$(git symbolic-ref --short HEAD)
+  if [ $branch == 'master' ]; then
+     branch_url=$repository_url
+  else
+     branch_url="${repository_url}/branch/${branch}"
+  fi
+  open_with_browser $branch_url
+}
+
+case $command in
+  browse)
+    open_branch
+    ;;
+  home)
+    open_home
+    ;;
+  *)
+    ;;
+esac
