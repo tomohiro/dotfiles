@@ -1,131 +1,100 @@
 # vim: ft=zsh
 
-## Load path settings
+# __is_installed checks install status the specified command
+function __is_installed() {
+  type $1 &> /dev/null
+}
 
-    # Disable loading global profiles for OS X El Capitan.
-    #   - http://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
-    setopt no_global_rcs
-    PATH=/usr/local/bin:/usr/local/sbin:$PATH
-    [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
+# Disable loading global profiles for OS X El Capitan.
+#   - http://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
+setopt no_global_rcs
 
+# Add Homebrew directories to the `$PATH`
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+[ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
 
-### for `Bundlizer`
-
-    if [[ -d $HOME/.bundlizer ]]; then
-        source $HOME/.bundlizer/etc/bashrc
-        source $HOME/.bundlizer/completions/bundlizer.zsh
-    fi
-
-    if type rbenv &> /dev/null; then
-        eval "$(rbenv init -)"
-    fi
-
-    if type pyenv &> /dev/null; then
-        export PYENV_ROOT=/usr/local/var/pyenv
-        eval "$(pyenv init -)"
-    fi
-
-    if type nodenv &> /dev/null; then
-        eval "$(nodenv init -)"
-    fi
-
-    if type plenv &> /dev/null; then
-        eval "$(plenv init -)"
-    fi
-
-    if type thefuck &> /dev/null; then
-        eval $(thefuck --alias)
-    fi
-
-### For Golang
-
-    if type go &> /dev/null; then
-        export GOPATH=$HOME/Workspaces/Repositories
-        export GOROOT=$(go env GOROOT)
-        export CGO_CFLAGS=$CFLAGS
-        export CGO_LDFLAGS=$LDFLAGS
-        export PATH=$PATH:$GOPATH/bin
-    fi
+# Set XDG XDG Base Directory
+#   - https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 
 
-### For Xcode
+if [ -d $HOME/.bundlizer ]; then
+  source $HOME/.bundlizer/etc/bashrc
+  source $HOME/.bundlizer/completions/bundlizer.zsh
+fi
 
-    XCODE_PATH=/Applications/Xcode.app
-    if [ -d $XCODE_PATH ]; then
-        PATH=${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-    fi
+if __is_installed rbenv; then
+  export RBENV_ROOT=$XDG_DATA_HOME/rbenv
+  eval "$(rbenv init -)"
+fi
 
-### For Rust/Cargo
+if __is_installed pyenv; then
+  export PYENV_ROOT=$XDG_DATA_HOME/pyenv
+  eval "$(pyenv init -)"
+fi
 
-    if [ -d $HOME/.cargo ]; then
-        PATH=${PATH}:${HOME}/.cargo/bin
-    fi
+if __is_installed nodenv; then
+  export NODENV_ROOT=$XDG_DATA_HOME/nodenv
+  eval "$(nodenv init -)"
+fi
 
+if __is_installed go; then
+  export GOPATH=$HOME/Workspaces/Repositories
+  export GOROOT=$(go env GOROOT)
+  export CGO_CFLAGS=$CFLAGS
+  export CGO_LDFLAGS=$LDFLAGS
+  export PATH=$PATH:$GOPATH/bin
+fi
 
-### For Java
+if __is_installed rustc; then
+  PATH=$PATH:$HOME/.cargo/bin
+fi
 
-    JAVA_HOME=$(/usr/libexec/java_home)
+XCODE_PATH=/Applications/Xcode.app
+if [ -d $XCODE_PATH ]; then
+  PATH=$PATH:$XCODE_PATH/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+fi
 
-    # GlassFish
-    if [ -d /usr/local/opt/glassfish ]; then
-        export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
-        PATH=${PATH}:${GLASSFISH_HOME}/bin
-    fi
+# For Google Cloud SDK
+if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
 
-### For Google Cloud SDK
-
-    if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk ]; then
-        source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-        source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-    fi
-
-### For PostgreSQL
-
-    if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
-        PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
-    fi
-
-
-## Default environment settings
-
-    export SHELL=$(which zsh)
-    export LANG=en_US.UTF-8
-    export LC_ALL=$LANG
-    export EDITOR=$(which vim)
-    export SVN_EDITOR=$EDITOR
-    export PAGER=lv
-    export LISTMAX=10000
-    export TERM_256=xterm-256color
-    export TERM=$TERM_256
-    export LS_COLORS='di=01;36'
-
-
-### Export PATH
-
-    # Set `-U` option to remove duplicated paths
-    typeset -U path cdpath fpath manpath
-    export PATH=$HOME/.private/bin:$HOME/bin:$PATH
+# Default environment settings
+export SHELL=$(which zsh)
+export LANG=en_US.UTF-8
+export LC_ALL=$LANG
+export EDITOR=$(which vim)
+export SVN_EDITOR=$EDITOR
+export PAGER=lv
+export LISTMAX=10000
+export TERM_256=xterm-256color
+export TERM=$TERM_256
+export LS_COLORS='di=01;36'
 
 
-### For Packer
+# Set `-U` option to remove duplicated paths
+typeset -U path cdpath fpath manpath
 
-    if type packer &> /dev/null; then
-        export PACKER_CACHE_DIR=$HOME/Workspaces/Images
-    fi
+# Export PATH
+export PATH=$HOME/.private/bin:$HOME/bin:$PATH
 
+# For Packer
+if __is_installed packer; then
+  export PACKER_CACHE_DIR=$XDG_CACHE_HOME/packer
+fi
 
-## Load Direnv
-
-    if type direnv &> /dev/null; then
-        eval "$(direnv hook zsh)"
-    fi
-
+# Load some tools
+__is_installed direnv && eval "$(direnv hook zsh)"
+__is_installed thefuck && eval $(thefuck --alias)
 
 # Starting keychain
-
-    if type keychain &> /dev/null; then
-        HOST=$(hostname)
-        SSH_AGENT=$HOME/.keychain/$HOST-sh
-        keychain -q $HOME/.ssh/id_rsa
-        source $SSH_AGENT
-    fi
+if __is_installed keychain; then
+  KEYCHAIN_HOME=$XDG_CACHE_HOME/keychain
+  SSH_AGENT=$KEYCHAIN_HOME/$(hostname)-sh
+  keychain -q $HOME/.ssh/id_rsa --dir $KEYCHAIN_HOME
+  source $SSH_AGENT
+fi
