@@ -2,6 +2,9 @@
 "   https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
+" Modern default configuration
+Plug 'tpope/vim-sensible'
+
 " Completion and snippets
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
@@ -20,8 +23,11 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'mattn/vim-maketable'
 Plug 'hashivim/vim-terraform'
-Plug 'vim-scripts/nginx.vim'
 Plug 'editorconfig/editorconfig-vim'
+
+" Syntax highlight
+Plug 'chr4/nginx.vim'
+Plug 'leafgarland/typescript-vim'
 
 " Project support
 Plug 'supermomonga/projectlocal.vim'
@@ -107,6 +113,7 @@ autocmd BufRead *.txt   :set ft=markdown ff=dos
 autocmd FileType php    :set ts=4 sw=4
 autocmd FileType go     :set ts=4 sw=4 noexpandtab
 autocmd FileType vim    :set ts=4 sw=4
+autocmd FileType nginx  :set ts=4 sw=4
 
 " For Python
 autocmd BufRead requirements*txt :set ft=text ff=unix
@@ -240,6 +247,16 @@ function! NumberToggle()
 endfunc
 nnoremap <silent> <Leader>n :call NumberToggle()<CR>
 
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 " for vim-textmanip
 "
@@ -266,9 +283,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+  return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
