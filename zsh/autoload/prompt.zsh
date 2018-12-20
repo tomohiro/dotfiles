@@ -1,7 +1,6 @@
 ### Loading modules
 
-    autoload -U promptinit
-    promptinit
+    autoload -U promptinit; promptinit
 
     autoload -Uz vcs_info
     zstyle ':vcs_info:*' enbale git cvs svn bzr hg
@@ -20,7 +19,7 @@
 ### Set default prompt
 
     RPROMPT=''
-    PROMPT_FORMAT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%d%f %1(v|on %F{red}%v|)
+    PROMPT_FORMAT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{red}%v|)
 %F{magenta}❯%f "
     PROMPT=$PROMPT_FORMAT
 
