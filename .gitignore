@@ -15,6 +15,7 @@
 
 # Tmux
 /tmux/plugins
+/tmux/sidebar
 
 # Vim
 /vim/plugged
