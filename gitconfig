@@ -9,7 +9,6 @@
     branch = auto
 [core]
     pager = less -r
-    excludesfile = /opt/boxen/config/git/gitignore
     quotepath = false # git status for file name in japanese
 [alias]
     master = checkout master
