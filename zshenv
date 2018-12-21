@@ -13,14 +13,14 @@ setopt no_global_rcs
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 [ -d /opt/X11/bin ] && PATH=/opt/X11/bin:$PATH
 
-# Set XDG XDG Base Directory
+# Set XDG Base Directory
 #   - https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
 
-if [ -d $HOME/.bundlizer ]; then
+if __is_installed bundlizer; then
   source $HOME/.bundlizer/etc/bashrc
   source $HOME/.bundlizer/completions/bundlizer.zsh
 fi
@@ -58,10 +58,21 @@ if [ -d $XCODE_PATH ]; then
 fi
 
 # For Google Cloud SDK
-if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
+if __is_installed gcloud; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
+
+# Set environment variables for Packer
+# https://www.packer.io/docs/other/environment-variables.html
+if __is_installed packer; then
+  export PACKER_CACHE_DIR=$XDG_CACHE_HOME/packer
+  export PACKER_CONFIG=$XDG_CONFIG_HOME/packer
+fi
+
+# Load some tools
+__is_installed direnv && eval "$(direnv hook zsh)"
+__is_installed thefuck && eval $(thefuck --alias)
 
 # Default environment settings
 export SHELL=$(which zsh)
@@ -75,26 +86,8 @@ export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
 
-
 # Set `-U` option to remove duplicated paths
 typeset -U path cdpath fpath manpath
 
 # Export PATH
 export PATH=$HOME/.private/bin:$HOME/bin:$PATH
-
-# For Packer
-if __is_installed packer; then
-  export PACKER_CACHE_DIR=$XDG_CACHE_HOME/packer
-fi
-
-# Load some tools
-__is_installed direnv && eval "$(direnv hook zsh)"
-__is_installed thefuck && eval $(thefuck --alias)
-
-# Starting keychain
-if __is_installed keychain; then
-  KEYCHAIN_HOME=$XDG_CACHE_HOME/keychain
-  SSH_AGENT=$KEYCHAIN_HOME/$(hostname)-sh
-  keychain -q $HOME/.ssh/id_rsa --dir $KEYCHAIN_HOME
-  source $SSH_AGENT
-fi
