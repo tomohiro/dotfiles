@@ -60,8 +60,4 @@ setup-plugin-managers:
 		curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 	fi
-	@if [ ! -d $(INSTALLTO)/.zsh/repos/b4b4r07/zplug ]; then\
-		echo "===> Setup Zsh plugins.";\
-		git clone https://github.com/b4b4r07/zplug $(INSTALLTO)/.zsh/repos/b4b4r07/zplug;\
-	fi
 	@echo "Finished."
