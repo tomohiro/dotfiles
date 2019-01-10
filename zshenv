@@ -52,6 +52,13 @@ if __is_installed rustc; then
   PATH=$PATH:$HOME/.cargo/bin
 fi
 
+# For Docker for Mac
+if __is_installed docker; then
+  # Enable buildkit to fast docker build (Experimental feature)
+  export DOCKER_BUILDKIT=1
+fi
+
+# For Xcode
 XCODE_PATH=/Applications/Xcode.app
 if [ -d $XCODE_PATH ]; then
   PATH=$PATH:$XCODE_PATH/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
