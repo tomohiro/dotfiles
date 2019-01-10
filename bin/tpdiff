@@ -1,4 +1,0 @@
-#!/bin/sh
-# https://github.com/gongo/tpdiff
-BUNDLE_DIR=$(cd $(readlink $(cd $(dirname $0) && pwd))/.. && pwd)/bundle
-${BUNDLE_DIR}/tpdiff/tpdiff $@

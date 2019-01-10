@@ -22,6 +22,7 @@ zplug 'Tomohiro/warp', as:command
 zplug 'Tomohiro/p', as:command
 zplug 'Tomohiro/h', as:command
 zplug 'gongo/pecrant', as:command
+zplug 'gongo/tpdiff', as:command
 zplug 'kinjo/geed', as:command, use:'geed-*'
 zplug 'kyanny/git-prune-remote-branch', as:command
 zplug 'ryanmjacobs/c', as:command
