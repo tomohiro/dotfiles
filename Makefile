@@ -8,25 +8,22 @@ RM = rm -f
 DOTFILES        = $(shell pwd)
 INSTALLTO       = $(HOME)
 XDG_CONFIG_HOME = $(HOME)/.config
-IGNORES         = bin bundle Makefile README.md
+IGNORES         = bin Makefile README.md
 
 
-.PHONY: help install bundle-show bundle-update symlinks setup-plugin-managers
+.PHONY: help install symlinks setup-vim-plug
 
 help:
 	@echo "Please type: make [target]"
 	@echo "  install         Install dotfiles to $(INSTALLTO)"
-	@echo "  bundle-show     Show git submodules"
-	@echo "  bundle-update   Update git submodules"
+	@echo "  setup-vim-plug  Install vim-plug to $(INSTALLTO)/.vim"
 	@echo "  help            Show this help messages"
 
 
-install: symlinks setup-plugin-managers
+install: symlinks setup-vim-plug
 
 symlinks:
 	@echo "Create symlinks..."
-	@echo " [linkup] $(INSTALLTO)/bin"
-	@$(LN) $(DOTFILES)/bin $(INSTALLTO)/
 	@for file in `ls $(DOTFILES)`; do\
 		for ignore in $(IGNORES); do\
 			if [ $$ignore = $$file ]; then\
@@ -39,21 +36,7 @@ symlinks:
 	done;
 	@echo "Finished."
 
-
-bundle-show:
-	@echo "Show git submodules."
-	@git submodule status
-
-
-bundle-update:
-	@echo "Update git submodules."
-	@git submodule foreach 'git pull origin master'
-	@echo "Commit and push to the GitHub"
-	@git commit -m 'Update submodules' bundle
-	@git push origin master
-
-
-setup-plugin-managers:
+setup-vim-plugin-managers:
 	@echo "Setup plugin managers..."
 	@if [ ! -f $(INSTALLTO)/.vim/autoload/plug.vim ]; then\
 		echo "===> Setup Vim plugins.";\
