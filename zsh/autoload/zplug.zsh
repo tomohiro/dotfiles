@@ -18,6 +18,7 @@ zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'm4i/cdd', use:cdd
 
 # CLI tools
+zplug "Tomohiro/dotfiles", as:command, use:"bin/{*}"
 zplug 'Tomohiro/warp', as:command
 zplug 'Tomohiro/p', as:command
 zplug 'Tomohiro/h', as:command
