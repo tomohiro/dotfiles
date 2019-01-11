@@ -29,7 +29,7 @@ zplug 'kyanny/git-prune-remote-branch', as:command
 zplug 'ryanmjacobs/c', as:command
 zplug 'guille/spot', as:command, use:'spot.sh', rename-to:spot
 zplug 'vigneshwaranr/bd', as:command
-zplug "paulirish/git-open", as:plugin
+zplug "paulirish/git-open", as:command, use:'git-open'
 
 
 # Install plugins if there are plugins that have not been installed
