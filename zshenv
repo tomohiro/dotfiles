@@ -60,7 +60,9 @@ if __is_installed rustc; then
 fi
 
 # For Docker for Mac
+# https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
 if __is_installed docker; then
+  export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
   # Enable buildkit to fast docker build (Experimental feature)
   export DOCKER_BUILDKIT=1
 fi
