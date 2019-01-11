@@ -1,3 +1,12 @@
+# vim: ft=zsh
+
+# Initialize Zsh cache directory
+ZSH_CACHE_HOME="${XDG_CACHE_HOME}/zsh"
+if [ ! -d $ZSH_CACHE_HOME ]; then
+  mkdir $ZSH_CACHE_HOME
+fi
+
+
 ## Autoload settings
 
     autoload -U colors
@@ -5,7 +14,7 @@
 
     fpath=($HOME/.zsh/completions $HOME/.zsh/functions $fpath)
     autoload -U compinit
-    compinit
+    compinit -d $ZSH_CACHE_HOME/zcompdump
 
     autoload -Uz zmv
     #alias zmv='noglob zmv -W'
@@ -47,7 +56,7 @@
 
 ## History settings
 
-    HISTFILE=$HOME/.zsh-history
+    HISTFILE=$ZSH_CACHE_HOME/zsh-history
     HISTSIZE=100000
     SAVEHIST=100000
 
