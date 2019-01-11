@@ -15,7 +15,8 @@ PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Set XDG Base Directory
 #   - https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_DATA_HOME=$HOME/.local/share
+export XDG_LOCAL_HOME=$HOME/.local
+export XDG_DATA_HOME=$XDG_LOCAL_HOME/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
@@ -41,11 +42,17 @@ if __is_installed nodenv; then
 fi
 
 if __is_installed go; then
-  export GOPATH=$HOME/Workspaces/Repositories
+  export GOPATH=$XDG_LOCAL_HOME
   export GOROOT=$(go env GOROOT)
   export CGO_CFLAGS=$CFLAGS
   export CGO_LDFLAGS=$LDFLAGS
   export PATH=$PATH:$GOPATH/bin
+fi
+
+# Set environment variables for Ghq
+# https://github.com/motemen/ghq#environment-variables
+if __is_installed ghq; then
+  export GHQ_ROOT=$GOPATH/src
 fi
 
 if __is_installed rustc; then
@@ -77,6 +84,12 @@ if __is_installed packer; then
   export PACKER_CONFIG=$XDG_CONFIG_HOME/packer
 fi
 
+# Set environment variables for Vagrant
+# https://www.vagrantup.com/docs/other/environmental-variables.html#vagrant_home
+if __is_installed vagrant; then
+  export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+fi
+
 # Load some tools
 __is_installed direnv && eval "$(direnv hook zsh)"
 __is_installed thefuck && eval $(thefuck --alias)
@@ -97,4 +110,4 @@ export LS_COLORS='di=01;36'
 typeset -U path cdpath fpath manpath
 
 # Export PATH
-export PATH=$HOME/.private/bin:$HOME/bin:$PATH
+export PATH=$PATH
