@@ -47,9 +47,6 @@
 [hub]
     protocol = https
 
-[ghq]
-    root = ~/Workspaces/Repositories/src
-
 # Include private gitconfig
 [include]
     path = ~/.gitconfig.local
