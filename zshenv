@@ -20,10 +20,11 @@ export XDG_DATA_HOME=$XDG_LOCAL_HOME/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
-
-if __is_installed bundlizer; then
-  source $HOME/.bundlizer/etc/bashrc
-  source $HOME/.bundlizer/completions/bundlizer.zsh
+if __is_installed ruby; then
+  export RUBY_CACHE_HOME=$XDG_CACHE_HOME/ruby
+  if [ ! -d $RUBY_CACHE_HOME ]; then
+    mkdir $RUBY_CACHE_HOME
+  fi
 fi
 
 if __is_installed rbenv; then
@@ -90,6 +91,12 @@ fi
 # https://www.vagrantup.com/docs/other/environmental-variables.html#vagrant_home
 if __is_installed vagrant; then
   export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
+fi
+
+if [ -d $XDG_DATA_HOME/bundlizer ]; then
+  export BUNDLIZER_ROOT=$XDG_DATA_HOME/bundlizer
+  source $BUNDLIZER_ROOT/etc/bashrc
+  source $BUNDLIZER_ROOT/completions/bundlizer.zsh
 fi
 
 # Load some tools

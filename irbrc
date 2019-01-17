@@ -1,20 +1,23 @@
-require 'irb/ext/save-history'
-IRB.conf[:USE_READLINE] = true
-IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_PATH] = File::expand_path("~/.irb.history")
+# Initialize
+if ENV['RUBY_CACHE_HOME']
+  IRB_HISTORY_FILE = "#{ENV['RUBY_CACHE_HOME']}/irb-history"
+else
+  IRB_HISTORY_FILE = "#{ENV['HOME']}/.irb-history"
+end
 
+# Load Builtin gems to default
 require 'pp'
 require 'ostruct'
 require 'yaml'
 require 'open-uri'
 
-# RubyGems
+# Load third-party gems to defualt
 require 'rubygems'
 require 'nokogiri'
-#require 'mechanize'
-#require 'rss'
-#require 'json'
-#require 'wirble'
 
-#Wirble.init(:skip_prompt => :DEFAULT)
-#Wirble.colorize
+# Load IRB options
+require 'irb/completion'
+require 'irb/ext/save-history'
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = IRB_HISTORY_FILE
