@@ -21,9 +21,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
 if __is_installed ruby; then
-  export RUBY_CACHE_HOME=$XDG_CACHE_HOME/ruby
-  if [ ! -d $RUBY_CACHE_HOME ]; then
-    mkdir $RUBY_CACHE_HOME
+  export RUBY_DATA_HOME=$XDG_DATA_HOME/ruby
+  if [ ! -d $RUBY_DATA_HOME ]; then
+    mkdir $RUBY_DATA_HOME
   fi
 fi
 

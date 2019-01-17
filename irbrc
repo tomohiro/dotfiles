@@ -1,6 +1,6 @@
 # Initialize
-if ENV['RUBY_CACHE_HOME']
-  IRB_HISTORY_FILE = "#{ENV['RUBY_CACHE_HOME']}/irb-history"
+if ENV['RUBY_DATA_HOME']
+  IRB_HISTORY_FILE = "#{ENV['RUBY_DATA_HOME']}/irb-history"
 else
   IRB_HISTORY_FILE = "#{ENV['HOME']}/.irb-history"
 end
