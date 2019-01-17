@@ -56,8 +56,11 @@ if __is_installed ghq; then
   export GHQ_ROOT=$GOPATH/src
 fi
 
+# Set environment variables for Rust/Cargo
+# https://doc.rust-lang.org/cargo/reference/environment-variables.html
 if __is_installed rustc; then
-  PATH=$PATH:$HOME/.cargo/bin
+  export CARGO_HOME=$XDG_DATA_HOME/cargo
+  PATH=$PATH:$CARGO_HOME/bin
 fi
 
 # For Docker for Mac
