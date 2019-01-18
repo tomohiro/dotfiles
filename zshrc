@@ -1,16 +1,16 @@
 # vim: ft=zsh
 
-# Initialize Zsh cache directory
-ZSH_CACHE_HOME="${XDG_CACHE_HOME}/zsh"
-if [ ! -d $ZSH_CACHE_HOME ]; then
-  mkdir $ZSH_CACHE_HOME
+# Initialize Zsh data directory
+ZSH_DATA_HOME="${XDG_DATA_HOME}/zsh"
+if [ ! -d $ZSH_DATA_HOME ]; then
+  mkdir $ZSH_DATA_HOME
 fi
 
 # Report CPU usage for commands running longer than 3 seconds
 REPORTTIME=3
 
 # History settings
-HISTFILE=$ZSH_CACHE_HOME/zsh-history
+HISTFILE=$ZSH_DATA_HOME/zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
 
