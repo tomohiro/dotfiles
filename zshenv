@@ -123,7 +123,6 @@ export SHELL=$(which zsh)
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export EDITOR=$(which vim)
-export SVN_EDITOR=$EDITOR
 export PAGER=lv
 export LISTMAX=10000
 export TERM_256=xterm-256color

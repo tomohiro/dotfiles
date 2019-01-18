@@ -10,7 +10,6 @@
     zstyle ':vcs_info:git:*' unstagedstr "+"
     zstyle ':vcs_info:git:*' formats '%b [%c%u]'
     zstyle ':vcs_info:git:*' actionformats '(%s)-[%r/%b|%a]'
-    zstyle ':vcs_info:svn:*' branchformat '%b (current revision is %r)'
 
     autoload -U colors
     colors
