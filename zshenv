@@ -7,6 +7,13 @@ function __is_installed() {
   type $1 &> /dev/null
 }
 
+# __is_exists_or_create find a path or create it
+function __is_exists_or_create() {
+  if [ ! -d $1 ]; then
+    mkdir -p $1
+  fi
+}
+
 # Disable loading global profiles for OS X El Capitan.
 #   - http://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
 setopt no_global_rcs
@@ -22,11 +29,15 @@ export XDG_DATA_HOME=$XDG_LOCAL_HOME/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
+# Initialize when not exists XDG directories
+__is_exists_or_create $XDG_LOCAL_HOME
+__is_exists_or_create $XDG_DATA_HOME
+__is_exists_or_create $XDG_CONFIG_HOME
+__is_exists_or_create $XDG_CACHE_HOME
+
 if __is_installed ruby; then
   export RUBY_DATA_HOME=$XDG_DATA_HOME/ruby
-  if [ ! -d $RUBY_DATA_HOME ]; then
-    mkdir $RUBY_DATA_HOME
-  fi
+  __is_exists_or_create $RUBY_DATA_HOME
 fi
 
 if __is_installed rbenv; then
@@ -68,11 +79,17 @@ fi
 # Set environment variables to MySQL
 # https://dev.mysql.com/doc/refman/8.0/en/environment-variables.html
 if __is_installed mysql; then
-  export MYSQL_DATA_HOME=$XDG_DATA_HOME/mysql/
-  if [ ! -d $MYSQL_DATA_HOME ]; then
-    mkdir $MYSQL_DATA_HOME
-  fi
+  MYSQL_DATA_HOME=$XDG_DATA_HOME/mysql/
+  __is_exists_or_create $MYSQL_DATA_HOME
   export MYSQL_HISTFILE=$MYSQL_DATA_HOME/mysql_history
+fi
+
+# Set environment variables to PostgreSQL (PSQL)
+# https://www.postgresql.org/docs/11/app-psql.html
+if __is_installed psql; then
+  POSTGRES_DATA_HOME=$XDG_DATA_HOME/postgres/
+  __is_exists_or_create $POSTGRES_DATA_HOME
+  export PSQL_HISTORY=$POSTGRES_DATA_HOME/psql_history
 fi
 
 # For Docker for Mac
