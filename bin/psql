@@ -4,4 +4,4 @@ docker run \
   -v $POSTGRES_DATA_HOME/psql_history:/var/spool/postgres/psql_history \
   -e "PGHOST=host.docker.internal" \
   -e "PSQL_HISTORY=/var/spool/postgres/psql_history" \
-  --rm -it postgres:alpine bash $@
+  --rm -it postgres:alpine psql $@
