@@ -31,6 +31,8 @@ zplug 'guille/spot', as:command, use:'spot.sh', rename-to:spot
 zplug 'vigneshwaranr/bd', as:command
 zplug "paulirish/git-open", as:command, use:'git-open'
 
+# Set environment variables to zplug managed tools/functions/plugins
+export CDD_FILE=$ZSH_DATA_HOME/cdd-history
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
