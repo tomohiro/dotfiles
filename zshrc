@@ -66,6 +66,7 @@ __is_installed ccat && alias cat='ccat'
 # Set short aliases
 alias b='bundle'
 alias d='downcer'
+alias e='env | peco --layout bottom-up'
 alias j='ghq list -p | peco --layout bottom-up | while read SRC_PATH; do cd $SRC_PATH; done'
 alias m='warp'
 alias s='spot'
