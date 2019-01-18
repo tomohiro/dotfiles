@@ -2,6 +2,8 @@
 
 # __is_installed checks install status the specified command
 function __is_installed() {
+  # Add zplug path to search command temporarily
+  PATH=$PATH:/usr/local/opt/zplug/bin
   type $1 &> /dev/null
 }
 
@@ -61,6 +63,16 @@ fi
 if __is_installed rustc; then
   export CARGO_HOME=$XDG_DATA_HOME/cargo
   PATH=$PATH:$CARGO_HOME/bin
+fi
+
+# Set environment variables to MySQL
+# https://dev.mysql.com/doc/refman/8.0/en/environment-variables.html
+if __is_installed mysql; then
+  export MYSQL_DATA_HOME=$XDG_DATA_HOME/mysql/
+  if [ ! -d $MYSQL_DATA_HOME ]; then
+    mkdir $MYSQL_DATA_HOME
+  fi
+  export MYSQL_HISTFILE=$MYSQL_DATA_HOME/mysql_history
 fi
 
 # For Docker for Mac
