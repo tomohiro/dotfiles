@@ -87,7 +87,7 @@ fi
 # Set environment variables to PostgreSQL (PSQL)
 # https://www.postgresql.org/docs/11/app-psql.html
 if __is_installed psql; then
-  export POSTGRES_DATA_HOME=$XDG_DATA_HOME/postgres/
+  export POSTGRES_DATA_HOME=$XDG_DATA_HOME/postgres
   __is_exists_or_create $POSTGRES_DATA_HOME
   export PSQL_HISTORY=$POSTGRES_DATA_HOME/psql_history
 fi
