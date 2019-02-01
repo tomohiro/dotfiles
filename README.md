@@ -1,7 +1,7 @@
 dotfiles
 ================================================================================
 
-[![Build Status](https://img.shields.io/travis/Tomohiro/dotfiles.svg?style=flat-square)](https://secure.travis-ci.org/Tomohiro/dotfiles)
+[![Build Status](https://img.shields.io/travis/tomohiro/dotfiles.svg?style=flat-square)](https://secure.travis-ci.org/tomohiro/dotfiles)
 
 
 Installation
@@ -65,12 +65,3 @@ Update all plugins:
 $ (TMUX PREFFIX KEY) + U
 all <ENTER>
 ```
-
-
-Submodule Information
---------------------------------------------------------------------------------
-
-Module Name | URL
------------ | ------------------------------------------------------------------
-Xvim        | https://github.com/XVimProject/XVim
-Tpdiff      | https://github.com/gongo/tpdiff
