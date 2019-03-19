@@ -6,6 +6,7 @@
     status = auto
     ui = auto
     diff = auto
+    diff-highlight = always
     branch = auto
 [core]
     pager = less -r
