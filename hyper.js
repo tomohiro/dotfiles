@@ -67,29 +67,13 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '0px 5px',
+    // padding: '0px 5px',
+    padding: '0px 5px 15px 5px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
-    colors: {
-      black: '#000000',
-      red: '#D77B79',
-      green: '#C1C67A',
-      yellow: '#F3CF86',
-      blue: '#92B1C9',
-      magenta: '#C0A6C7',
-      cyan: '#9AC8C3',
-      white: '#FEFEFE',
-      lightBlack: '#000000',
-      lightRed: '#D77B79',
-      lightGreen: '#C1C67A',
-      lightYellow: '#F3CF86',
-      lightBlue: '#92B1C9',
-      lightMagenta: '#C0A6C7',
-      lightCyan: '#9AC8C3',
-      lightWhite: '#FEFEFE',
-    },
+    colors: {},
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
@@ -129,6 +113,21 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    // Plugin configuration
+    //  You can find awesome plugins here: https://github.com/bnb/awesome-hyper
+    //
+    // Hyperline - https://github.com/Hyperline/hyperline/
+    hyperline: {
+      plugins: [
+        'battery',
+        'ip',
+        'network',
+        'docker',
+        'cpu',
+        'memory',
+      ]
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -137,14 +136,12 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ['hyper-search'],
+  plugins: ['hyper-search', 'hyperline',  'hyper-iceberg'],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
   localPlugins: [],
 
-  keymaps: {
-    'window:devtools': 'cmd+alt+o',
-  },
+  keymaps: {},
 };
