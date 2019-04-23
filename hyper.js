@@ -41,6 +41,7 @@ module.exports = {
         'docker',
         'cpu',
         'memory',
+        'spotify'
       ]
     },
   },
