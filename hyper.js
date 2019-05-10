@@ -27,7 +27,7 @@ module.exports = {
 
     // Appearance
     selectionColor: 'rgba(71, 75, 82, 0.3)',
-    padding: '0px 5px 15px 5px',
+    padding: '0px 5px 20px 5px',
     bell: 'SOUND',
 
     // Selected text will automatically be copied to the clipboard
