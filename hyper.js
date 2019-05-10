@@ -5,6 +5,10 @@ module.exports = {
   config: {
     updateChannel: 'stable',
 
+    // Disable webGL to fix Powerline spacing reggression
+    // https://github.com/zeit/hyper/issues/3575
+    webGLRenderer: false,
+
     // Font
     fontSize: 12,
     fontFamily: 'Menlo for Powerline, monospace',
