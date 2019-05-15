@@ -1,0 +1,8 @@
+# vim: ft=zsh
+# Set current directory (`pwd`) information to cdd
+__enable_cdd() {
+  _cdd_chpwd
+  ls
+}
+[[ -z $chpwd_functions ]] && chpwd_functions=()
+chpwd_functions=($chpwd_functions __enable_cdd)

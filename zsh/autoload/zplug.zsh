@@ -12,6 +12,7 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-history-substring-search'
+#zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
 
 # zplug plugins
 zplug 'plugins/docker-compose', from:oh-my-zsh

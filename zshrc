@@ -30,6 +30,7 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 # For SSH completion
+# TODO: Load from ssh config
 _cache_hosts=(
   $(perl -ne 'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' $HOME/.ssh/known_hosts)
 )
@@ -57,9 +58,8 @@ alias la='ls -lAh'
 alias ll='ls -lh'
 alias tree='tree --charset=C'
 
-alias rake='noglob rake'
-
 # Set additional command aliases
+__is_installed mdfind && alias locate='mdfind'
 __is_installed colordiff && alias diff='colordiff'
 __is_installed ccat && alias cat='ccat'
 
@@ -85,10 +85,6 @@ local func_dir=$HOME/.zsh/functions
 for script in $(command ls $func_dir); do
     source $func_dir/$script
 done
-
-preexec() {
-    [[ -n $WINDOW ]] && set_screen_window_title ${(z)2}
-}
 
 # Set other zsh sources
 local source_dir=$HOME/.zsh/autoload
