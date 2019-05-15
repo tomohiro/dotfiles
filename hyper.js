@@ -55,7 +55,7 @@ module.exports = {
     'hyper-search',
     'hyper-quit',
     'hyperline',
-    'hyper-tab-icons',
+    'hyper-tab-icons-plus',
   ],
 
   // in development, you can create a directory under
