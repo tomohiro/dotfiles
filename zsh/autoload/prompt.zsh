@@ -1,22 +1,15 @@
 # Set left prompt
-PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{green}%1v%f|) %2(v|%F{yellow}(%2v)%f|)
-%F{magenta}❯%f "
+PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{magenta}%1v%f|) %2(v|%F{yellow}%2v%f|)%3(v|%F{red}%3v%f|)
+%F{green}❯%f "
 
 # Set right prompt
-RPROMPT=''
+RPROMPT=
 
 # Enable color
 autoload -U colors; colors
 
 # Prepare to show VCS information on prompt
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enbale git cvs svn bzr hg
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' check-for-staged-changes true
-zstyle ':vcs_info:git:*' stagedstr '!'
-zstyle ':vcs_info:git:*' unstagedstr '+'
-zstyle ':vcs_info:git:*' formats '%s:%b' '%c%u'
-zstyle ':vcs_info:git:*' actionformats '(%s)-[%r/%b|%a]'
 
 # Export 3 type messages
 #   $vcs_info_msg_0: Normal
@@ -32,6 +25,20 @@ __show_vcs_info_precmd() {
 }
 [[ -z $precmd_functions ]] && precmd_functions=()
 precmd_functions=($precmd_functions __show_vcs_info_precmd)
+
+# vcs_info defaults
+zstyle ':vcs_info:*' enbale git cvs svn bzr hg
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' check-for-staged-changes true
+
+# vcs_info for Git
+GIT_SYMBOL=''
+GIT_STAGED_SYMBOL='⇡'
+GIT_UNSTAGED_SYMBOL='⇣'
+zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
+zstyle ':vcs_info:git:*' unstagedstr ${GIT_UNSTAGED_SYMBOL}
+zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
+zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
 
 # If you want to load prompt themes, please enable following line.
 #
