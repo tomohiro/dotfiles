@@ -47,7 +47,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mhinz/vim-signify'
 
 " Themes
-Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+Plug 'cocopon/iceberg.vim'
 
 " Buffer management
 Plug 'fholgado/minibufexpl.vim'
@@ -89,8 +90,9 @@ set backupdir=$HOME/.vim/backups
 set directory=$HOME/.vim/swaps
 set undodir=$HOME/.vim/undo
 
-set mouse=a
-set ttymouse=xterm2
+" Disable mouse
+" set mouse=a
+" set ttymouse=xterm2
 
 set ttyfast
 set autoread
@@ -123,7 +125,7 @@ autocmd BufRead requirements*txt :set ft=text ff=unix
 syntax enable
 set visualbell
 set number
-set ruler
+" set ruler
 "set nowrap
 set ambiwidth=double
 set showcmd
@@ -339,6 +341,7 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 "   [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 "
 let g:lightline = {
+      \ 'colorscheme': 'iceberg',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
@@ -374,16 +377,19 @@ let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_jsx_jsxhint_checker = 1
 
 
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+
 " for Vim colorscheme
 "
-colorscheme molokai
+colorscheme onedark
 
 
 " for highlight
 "
-highlight LineNr     ctermbg=235 ctermfg=105
-highlight StatusLine ctermbg=64  ctermfg=15
-highlight clear CursorLine
-highlight CursorLine ctermbg=235
+" highlight LineNr     ctermbg=235 ctermfg=105
+" highlight StatusLine ctermbg=64  ctermfg=15
+" highlight clear CursorLine
+" highlight CursorLine ctermbg=235
 set colorcolumn=80
-highlight ColorColumn ctermbg=235
+" highlight ColorColumn ctermbg=235
