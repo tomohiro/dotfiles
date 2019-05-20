@@ -1,12 +1,12 @@
 # Enable color
-autoload -U colors; colors
+autoload -Uz colors && colors
 
 # If you want to load prompt themes, please enable following line.
 #
 # Example:
 #   prompt adam1 # Load adam1 theme
 #
-# autoload -U promptinit; promptinit # Set left prompt
+# autoload -Uz promptinit && promptinit # Set left prompt
 
 # Set left prompt format yourself
 PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{magenta}%1v%f|) %2(v|%F{yellow}%2v%f|)%3(v|%F{red}%3v%f|)
@@ -48,4 +48,3 @@ zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
 zstyle ':vcs_info:git:*' unstagedstr ${GIT_UNSTAGED_SYMBOL}
 zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
 zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
-
