@@ -48,4 +48,4 @@ fi
 
 # Load Zsh plugins and then add these to the PATH.
 # If you want to see detail, add `--verbose` option when runs `zplug load`.
-zplug load --verbose
+zplug load

@@ -1,8 +1,10 @@
 # vim: ft=zsh
+# Eanble `addz-zsh-hook`
+autoload -Uz add-zsh-hook
+
 # Set current directory (`pwd`) information to cdd
 __enable_cdd() {
   _cdd_chpwd
   ls
 }
-[[ -z $chpwd_functions ]] && chpwd_functions=()
-chpwd_functions=($chpwd_functions __enable_cdd)
+add-zsh-hook chpwd __enable_cdd
