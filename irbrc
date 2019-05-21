@@ -1,3 +1,5 @@
+# vim: ft=ruby
+
 # Define path to IRB history file
 if ENV['RUBY_DATA_HOME']
   IRB_HISTORY_FILE = "#{ENV['RUBY_DATA_HOME']}/irb-history"
