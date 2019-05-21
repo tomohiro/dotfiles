@@ -12,6 +12,8 @@ module IRB
     def load_gem(name)
       puts "  - #{name}"
       require name
+    rescue LoadError => e
+      puts "  - Failed to load: #{e}"
     end
 
     # Enable Rspec::Matchers
@@ -61,6 +63,7 @@ begin
   puts 'Load third-party gems'
   load_gem 'rubygems'
   load_gem 'nokogiri'
+  load_gem 'awesome_print'
 
   puts 'Enable Bundler'
   load_gem 'bundler/setup'
