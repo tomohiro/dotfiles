@@ -9,10 +9,14 @@ end
 
 module IRB
   module Helpers
+    # https://docs.ruby-lang.org/ja/latest/library/irb.html
+    # https://docs.ruby-lang.org/ja/latest/class/IRB=3a=3aContext.html
     def override_irb_configuratoin!
       require 'irb/completion'
       require 'irb/ext/save-history'
-      # IRB.conf[:PROMPT_MODE] = :SIMPLE
+      IRB.conf[:AUTO_INDENT] = true
+      IRB.conf[:ECHO] = true
+      IRB.conf[:PROMPT_MODE] = :DEFAULT # Or :SIMPLE
       IRB.conf[:USE_READLINE] = true
       IRB.conf[:EVAL_HISTORY] = 1000
       IRB.conf[:SAVE_HISTORY] = 1000
@@ -23,7 +27,7 @@ module IRB
       puts "  - #{name}"
       require name
     rescue LoadError => e
-      puts "  - Failed to load: #{e}"
+      warn "  - Failed to load: #{e}"
     end
 
     # Enable Rspec::Matchers
@@ -40,9 +44,8 @@ module IRB
       require 'rspec/expectations'
       include RSpec::Matchers
       puts 'RSpec matchers load succeed.'
-    rescue LoadError
-      puts e
-      puts 'Failed to load. You should install `rspec`'
+    rescue LoadError => e
+      warn "Failed to load. #{e}"
     end
 
     def enable_awesome_print!
@@ -50,8 +53,14 @@ module IRB
       require 'awesome_print'
       AwesomePrint.irb!
     rescue LoadError => e
-      puts e
-      puts 'Failed to load. You should install `awesome_print`'
+      warn "Failed to load. #{e}"
+    end
+
+    def enable_irbtools!
+      puts '  - irbtools'
+      require 'irbtools'
+    rescue LoadError => e
+      warn "Failed to load. #{e}"
     end
   end
 end
