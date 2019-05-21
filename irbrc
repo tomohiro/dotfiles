@@ -33,7 +33,9 @@ module IRB
     def override_irb_configuratoin!
       require 'irb/completion'
       require 'irb/ext/save-history'
+      # IRB.conf[:PROMPT_MODE] = :SIMPLE
       IRB.conf[:USE_READLINE] = true
+      IRB.conf[:EVAL_HISTORY] = 1000
       IRB.conf[:SAVE_HISTORY] = 1000
       IRB.conf[:HISTORY_FILE] = IRB_HISTORY_FILE
     end
@@ -44,13 +46,14 @@ extend IRB::Helpers
 
 # Initialize
 begin
-  puts "Ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} (##{RUBY_RELEASE_DATE})"
-  puts "[#{RUBY_PLATFORM} - #{RUBY_COPYRIGHT}]\n"
+  puts "IRB: Ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} (##{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM} - #{RUBY_COPYRIGHT}]\n"
+  puts '---'
 
   puts 'Load Builtin gems'
   load_gem 'pp'
   load_gem 'ostruct'
   load_gem 'yaml'
+  load_gem 'json'
   load_gem 'open-uri'
 
   puts 'Load third-party gems'
