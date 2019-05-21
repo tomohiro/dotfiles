@@ -9,6 +9,16 @@ end
 
 module IRB
   module Helpers
+    def override_irb_configuratoin!
+      require 'irb/completion'
+      require 'irb/ext/save-history'
+      # IRB.conf[:PROMPT_MODE] = :SIMPLE
+      IRB.conf[:USE_READLINE] = true
+      IRB.conf[:EVAL_HISTORY] = 1000
+      IRB.conf[:SAVE_HISTORY] = 1000
+      IRB.conf[:HISTORY_FILE] = IRB_HISTORY_FILE
+    end
+
     def load_gem(name)
       puts "  - #{name}"
       require name
@@ -29,19 +39,19 @@ module IRB
       require 'rspec/core'
       require 'rspec/expectations'
       include RSpec::Matchers
-    rescue LoadError => e
-      puts 'Failed to load. You should install `RSpec`'
+      puts 'RSpec matchers load succeed.'
+    rescue LoadError
       puts e
+      puts 'Failed to load. You should install `rspec`'
     end
 
-    def override_irb_configuratoin!
-      require 'irb/completion'
-      require 'irb/ext/save-history'
-      # IRB.conf[:PROMPT_MODE] = :SIMPLE
-      IRB.conf[:USE_READLINE] = true
-      IRB.conf[:EVAL_HISTORY] = 1000
-      IRB.conf[:SAVE_HISTORY] = 1000
-      IRB.conf[:HISTORY_FILE] = IRB_HISTORY_FILE
+    def enable_awesome_print!
+      puts '  - awesome_print'
+      require 'awesome_print'
+      AwesomePrint.irb!
+    rescue LoadError => e
+      puts e
+      puts 'Failed to load. You should install `awesome_print`'
     end
   end
 end
@@ -50,7 +60,7 @@ extend IRB::Helpers
 
 # Initialize
 begin
-  puts "IRB: Ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} (##{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM} - #{RUBY_COPYRIGHT}]\n"
+  puts "IRB: Ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} (##{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM} - #{RUBY_COPYRIGHT}]"
   puts '---'
 
   puts 'Load Builtin gems'
@@ -59,17 +69,18 @@ begin
   load_gem 'yaml'
   load_gem 'json'
   load_gem 'open-uri'
-
-  puts 'Load third-party gems'
   load_gem 'rubygems'
-  load_gem 'nokogiri'
-  load_gem 'awesome_print'
+
+  # Enable IRB plugins
+  puts 'Enable IRB plugins'
+  enable_awesome_print!
+
+  # Load IRB options
+  puts 'Override IRB configration'
+  override_irb_configuratoin!
 
   puts 'Enable Bundler'
   load_gem 'bundler/setup'
-
-  # Load IRB options
-  override_irb_configuratoin!
 rescue LoadError => e
   puts e
 end
