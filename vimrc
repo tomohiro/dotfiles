@@ -26,7 +26,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Syntax highlight
 Plug 'chr4/nginx.vim'
-Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
