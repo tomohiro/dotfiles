@@ -1,4 +1,4 @@
-# Eanble `addz-zsh-hook`
+# Eanble `add-zsh-hook`
 autoload -Uz add-zsh-hook
 
 # Override auto-title when static titles are desired

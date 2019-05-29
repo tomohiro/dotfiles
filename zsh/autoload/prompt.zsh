@@ -6,7 +6,7 @@ autoload -Uz colors && colors
 # Example:
 #   prompt adam1 # Load adam1 theme
 #
-# autoload -Uz promptinit && promptinit # Set left prompt
+# autoload -Uz promptinit && promptinit
 
 # Set left prompt format yourself
 PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{magenta}%1v%f|) %2(v|%F{yellow}%2v%f|)%3(v|%F{red}%3v%f|)
@@ -15,7 +15,7 @@ PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{magenta}%1v%f
 # Set right prompt
 RPROMPT=
 
-# Eanble `addz-zsh-hook`
+# Eanble `add-zsh-hook`
 autoload -Uz add-zsh-hook
 
 # Prepare to show VCS information on prompt
