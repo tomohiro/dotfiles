@@ -48,13 +48,10 @@ Plug 'mhinz/vim-signify'
 
 " Themes
 Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
-
-" Buffer management
-Plug 'fholgado/minibufexpl.vim'
 
 " Statusline
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -110,7 +107,6 @@ augroup END
 " Set autocmd
 "
 autocmd BufRead *.md    :set ts=4 sw=4 ft=markdown
-autocmd BufRead *.ihtml :set ft=php
 autocmd BufRead *.txt   :set ft=markdown ff=dos
 autocmd FileType php    :set ts=4 sw=4
 autocmd FileType go     :set ts=4 sw=4 noexpandtab
@@ -125,9 +121,9 @@ autocmd BufRead requirements*txt :set ft=text ff=unix
 syntax enable
 set visualbell
 set number
-" set ruler
-"set nowrap
-set ambiwidth=double
+set ruler
+set nowrap
+set ambiwidth=single " double
 set showcmd
 set showmatch
 set list
@@ -235,7 +231,7 @@ let g:php_folding       = 0
 
 " for ChangeLog
 "
-let g:changelog_username = "Tomohiro <tomohiro.t@gmail.com>"
+let g:changelog_username = "Tomohiro Taira <tomohiro.t@gmail.com>"
 
 
 " for toggle line numbers
@@ -337,18 +333,6 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
 
-" for lightline.vim
-"   [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
-"
-let g:lightline = {
-      \ 'colorscheme': 'iceberg',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-
 " for ctrlp.vim
 "   [ctrlp.vim ÷ home](http://kien.github.com/ctrlp.vim/)
 "
@@ -376,20 +360,23 @@ let g:terraform_fmt_on_save = 1
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_jsx_jsxhint_checker = 1
 
+" for vim-airline
+" https://github.com/vim-airline/vim-airline/
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
+" for vim-airline-themes
+"   https://github.com/vim-airline/vim-airline-themes
+"   https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme='minimalist'
+
 
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+set colorcolumn=80
 
 " for Vim colorscheme
 "
 colorscheme onedark
-
-
-" for highlight
-"
-" highlight LineNr     ctermbg=235 ctermfg=105
-" highlight StatusLine ctermbg=64  ctermfg=15
-" highlight clear CursorLine
-" highlight CursorLine ctermbg=235
-set colorcolumn=80
-" highlight ColorColumn ctermbg=235
