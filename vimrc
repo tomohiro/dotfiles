@@ -9,6 +9,7 @@ Plug 'tpope/vim-sensible'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'        " Intensely orgasmic commenting
 Plug 'bronson/vim-trailing-whitespace' " Highlights trailing whitespace
+Plug 'vim-syntastic/syntastic'
 
 " Completion
 Plug 'Shougo/neocomplete'
@@ -16,13 +17,15 @@ Plug 'Shougo/neocomplete'
 " Appearance
 Plug 'nathanaelkane/vim-indent-guides' " Change bgcolor for indent
 Plug 'mhinz/vim-signify'               " Show git diff status on each line
+Plug 'ryanoasis/vim-devicons'
 
 " Themes
 Plug 'joshdick/onedark.vim'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes' " airline theme collection
+Plug 'cocopon/iceberg.vim'            " iceberg theme for airline
 
 " Syntax highlight
 Plug 'chr4/nginx.vim'
@@ -42,9 +45,6 @@ set complete+=k
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set autoindent
-set wildmenu
-set backspace=indent,eol,start
 set hlsearch
 set iminsert=0
 set imsearch=0
@@ -53,7 +53,7 @@ set smartcase
 set incsearch
 set wrapscan
 set ww=31
-set breakindent
+set autoread
 
 " Set directory for backups, swaps, undo history
 "
@@ -61,56 +61,20 @@ set backupdir=$HOME/.vim/backups
 set directory=$HOME/.vim/swaps
 set undodir=$HOME/.vim/undo
 
-" Disable mouse
-" set mouse=a
-" set ttymouse=xterm2
-
-set ttyfast
-set autoread
-"set clipboard+=autoselect
-"set clipboard+=unnamed
-
-
-" Reset autocmd
-"
-augroup vimrc
-  autocmd!
-augroup END
-
-
-" Set autocmd
-"
-autocmd BufRead *.md    :set ts=4 sw=4 ft=markdown
-autocmd BufRead *.txt   :set ft=markdown ff=dos
-autocmd FileType php    :set ts=4 sw=4
-autocmd FileType go     :set ts=4 sw=4 noexpandtab
-autocmd FileType vim    :set ts=4 sw=4
-autocmd FileType nginx  :set ts=4 sw=4
-
-" For Python
-autocmd BufRead requirements*txt :set ft=text ff=unix
-
 " Visual
 "
-syntax enable
+set ambiwidth=single " double
+set ttyfast
 set visualbell
 set number
-set ruler
 set nowrap
-set ambiwidth=single " double
+set breakindent
 set showcmd
 set showmatch
 set list
-set listchars=tab:>_,trail:_,eol:↩
+set listchars=tab:>_,trail:_,extends:>,precedes:<,nbsp:+,eol:↩
 set cursorline
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=black
-match ZenkakuSpace /　/
-
+set colorcolumn=80
 
 " Fold
 "
@@ -118,18 +82,13 @@ set foldenable
 set foldmethod=marker
 set foldcolumn=1
 
-
-" Enable Plugin
-"
-filetype plugin on
-filetype indent on
-
 " Set color
 "
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-set colorcolumn=80
-
+augroup custom_color
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=none
+  autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+augroup END
 
 " Change Leader key into a comma instead of a backslash
 "
@@ -153,77 +112,15 @@ imap jj <ESC>
 imap kk <ESC>
 
 
-" remove highlight
+" Remove highlight
 "
 nnoremap <silent> <ESC> <ESC> :nohlsearch<CR>
-
-
-" for Split Window Keybinding
-"
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-nmap <Space>pj <SID>(split-to-j)
-nmap <Space>pk <SID>(split-to-k)
-nmap <Space>ph <SID>(split-to-h)
-nmap <Space>pl <SID>(split-to-l)
-
-nnoremap <silent> <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
-nnoremap <silent> <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
-nnoremap <silent> <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
-nnoremap <silent> <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
-
-
-" encoding
-"
-nmap <silent> eu :set fenc=utf-8<CR>
-nmap <silent> ee :set fenc=euc-jp<CR>
-nmap <silent> es :set fenc=cp932<CR>
-
-
-" encode reopen encoding
-"
-nmap <silent> eru :e ++enc=utf-8 %<CR>
-nmap <silent> ere :e ++enc=euc-jp %<CR>
-nmap <silent> ers :e ++enc=cp932 %<CR>
-nmap <silent> err :e %<CR>
-
-
-" for omnifunc
-"
-set pumheight=15
-highlight Pmenu       ctermbg=darkgray
-highlight PmenuSel    ctermbg=blue
-highlight PmenuSbar   ctermbg=white
-highlight TabLine     ctermbg=white
-highlight TabLineSel  ctermbg=red
-highlight TabLineFill ctermbg=white
-
-
-" for PHP
-"
-let g:php_sql_query     = 1
-let g:php_htmlInStrings = 1
-let g:php_folding       = 0
 
 
 " for ChangeLog
 "
 let g:changelog_username = "Tomohiro Taira <tomohiro.t@gmail.com>"
 
-
-" for toggle line numbers
-"
-function! NumberToggle()
-  if (&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <silent> <Leader>n :call NumberToggle()<CR>
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -274,9 +171,11 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=235
-
+augroup vim_indent_guides
+  autocmd!
+  autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  ctermbg=235
+  autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven ctermbg=235
+augroup END
 
 " for NERDCommenter
 "   https://github.com/scrooloose/nerdcommenter
@@ -286,23 +185,38 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 
 
-" for EasyMotion
-"   https://github.com/Lokaltog/vim-easymotion/
-"   http://blog.remora.cx/2012/08/vim-easymotion.html
-let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB' " Use home position keys
-
-
 " for vim-airline
 "   https://github.com/vim-airline/vim-airline/
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+" Set symbols from nerd fonts
+"   https://nerdfonts.com/
+"   https://github.com/ryanoasis/powerline-extra-symbols
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = "\ue0b8 "
+let g:airline_left_alt_sep = "\ue0b1"
+let g:airline_right_sep = "\ue0ba "
+let g:airline_right_alt_sep = "\ue0bb"
+" Override section
+let g:airline_section_a = airline#section#create_left(["\ue7c5", 'mode'])
+
 
 " for vim-airline-themes
 "   https://github.com/vim-airline/vim-airline-themes
 "   https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme='minimalist'
+"   https://github.com/cocopon/iceberg.vim
+let g:airline_theme='iceberg'
+
+
+" for vim-devicons
+"   https://github.com/ryanoasis/vim-devicons
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+
 
 " for Vim colorscheme
 "   https://github.com/joshdick/onedark.vim
