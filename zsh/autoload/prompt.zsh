@@ -41,7 +41,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' check-for-staged-changes true
 
 # vcs_info for Git
-GIT_SYMBOL=''
+GIT_SYMBOL='' # or \uf408(  )
 GIT_STAGED_SYMBOL='⇡'
 GIT_UNSTAGED_SYMBOL='⇣'
 zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
