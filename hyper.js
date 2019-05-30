@@ -11,7 +11,7 @@ module.exports = {
 
     // Font
     fontSize: 12,
-    fontFamily: 'Menlo for Powerline, monospace',
+    fontFamily: 'MesloLGS Nerd Font, Menlo for Powerline, monospace',
     fontWeight: 'normal',
     fontWeightBold: 'bold',
 
