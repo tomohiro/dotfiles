@@ -22,16 +22,16 @@ autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 # Export 3 type messages
-#   $vcs_info_msg_0: Normal
-#   $vcs_info_msg_1: Warning
-#   $vcs_info_msg_2: Error
+#   $vcs_info_msg_0_: Normal
+#   $vcs_info_msg_1_: Warning
+#   $vcs_info_msg_2_: Error
 zstyle ':vcs_info:*' max-exports 3
 __show_vcs_info_precmd() {
-   vcs_info
-   psvar=()
-   [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
-   [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_
-   [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_
+  vcs_info
+  psvar=()
+  [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$vcs_info_msg_0_
+  [[ -n $vcs_info_msg_1_ ]] && psvar[2]=$vcs_info_msg_1_
+  [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_
 }
 add-zsh-hook precmd __show_vcs_info_precmd
 
@@ -41,10 +41,18 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' check-for-staged-changes true
 
 # vcs_info for Git
-GIT_SYMBOL='' # or \uf408(  )
 GIT_STAGED_SYMBOL='⇡'
 GIT_UNSTAGED_SYMBOL='⇣'
 zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
 zstyle ':vcs_info:git:*' unstagedstr ${GIT_UNSTAGED_SYMBOL}
-zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
-zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
+__define_git_symbol() {
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
+    return 1
+  fi
+  GIT_SYMBOL=''
+  [[ $(git remote get-url origin | grep github) ]] && GIT_SYMBOL=' '
+  [[ $(git remote get-url origin | grep bitbucket) ]] && GIT_SYMBOL=''
+  zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
+  zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
+}
+add-zsh-hook chpwd __define_git_symbol
