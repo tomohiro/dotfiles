@@ -32,14 +32,7 @@ Plug 'chr4/nginx.vim'
 
 call plug#end()
 
-" Encoding
-"
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
-set fileformats=unix,dos
-
-" Vim Default Option:
+" Vim Default Option
 "
 set complete+=k
 set tabstop=2
@@ -63,7 +56,7 @@ set undodir=$HOME/.vim/undo
 
 " Visual
 "
-set ambiwidth=single " double
+set ambiwidth=double
 set ttyfast
 set visualbell
 set number
@@ -75,12 +68,6 @@ set list
 set listchars=tab:>_,trail:_,extends:>,precedes:<,nbsp:+,eol:↩
 set cursorline
 set colorcolumn=80
-
-" Fold
-"
-set foldenable
-set foldmethod=marker
-set foldcolumn=1
 
 " Set color
 "
@@ -108,19 +95,14 @@ nnoremap <silent> <Leader>r :redraw!<CR>
 "
 nnoremap j gj
 nnoremap k gk
-imap jj <ESC>
-imap kk <ESC>
-
 
 " Remove highlight
 "
-nnoremap <silent> <ESC> <ESC> :nohlsearch<CR>
+nnoremap <silent> <Leader>c :nohlsearch<CR>
 
-
-" for ChangeLog
-"
-let g:changelog_username = "Tomohiro Taira <tomohiro.t@gmail.com>"
-
+" Don't create .vim/.netrwhist
+"   https://vim-jp.org/vimdoc-ja/pi_netrw.html#g:netrw_dirhistmax
+let g:netrw_dirhistmax=0
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -197,9 +179,9 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_left_sep = "\ue0b8 "
+let g:airline_left_sep = "\ue0b8"
 let g:airline_left_alt_sep = "\ue0b1"
-let g:airline_right_sep = "\ue0ba "
+let g:airline_right_sep = "\ue0ba"
 let g:airline_right_alt_sep = "\ue0bb"
 " Override section
 let g:airline_section_a = airline#section#create_left(["\ue7c5", 'mode'])
