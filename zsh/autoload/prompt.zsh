@@ -1,6 +1,20 @@
 # Enable color
 autoload -Uz colors && colors
 
+# Set left prompt format yourself
+#   * Using set color from Zsh's colors function
+PROMPT="${fg[cyan]}%n${reset_color} at "          # Username
+PROMPT+="${fg[yellow]}%m${reset_color} in "       # Hostname
+PROMPT+="${fg[green]}%2d${reset_color} "          # Directory
+PROMPT+="%1(v|on ${fg[blue]}%1v${reset_color}|) " # VCS branch
+PROMPT+="%2(v|${fg[yellow]}%2v${reset_color}|)"   # VCS status
+PROMPT+="%3(v|%${fg[red]}%3v${reset_color}|)"     # VCS error messages
+PROMPT+='
+❯ '
+
+# Set right prompt
+RPROMPT=
+
 # If you want to load prompt themes, please enable following line.
 #
 # Example:
@@ -8,12 +22,6 @@ autoload -Uz colors && colors
 #
 # autoload -Uz promptinit && promptinit
 
-# Set left prompt format yourself
-PROMPT="%F{cyan}%n%f at %F{yellow}%m%f in %F{blue}%2d%f %1(v|on %F{magenta}%1v%f|) %2(v|%F{yellow}%2v%f|)%3(v|%F{red}%3v%f|)
-%F{green}❯%f "
-
-# Set right prompt
-RPROMPT=
 
 # Eanble `add-zsh-hook`
 autoload -Uz add-zsh-hook
@@ -41,8 +49,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' check-for-staged-changes true
 
 # vcs_info for Git
-GIT_STAGED_SYMBOL='⇡'
-GIT_UNSTAGED_SYMBOL='⇣'
+readonly GIT_STAGED_SYMBOL='⇡'
+readonly GIT_UNSTAGED_SYMBOL='⇣'
 zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
 zstyle ':vcs_info:git:*' unstagedstr ${GIT_UNSTAGED_SYMBOL}
 __define_git_symbol() {
