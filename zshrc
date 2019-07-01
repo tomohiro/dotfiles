@@ -29,11 +29,9 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
+
 # For SSH completion
-# TODO: Load from ssh config
-_cache_hosts=(
-  $(perl -ne 'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' $HOME/.ssh/known_hosts)
-)
+_cache_hosts=($(grep -oE '^Host.+$' $HOME/.ssh/config | cut -d ' ' -f 2))
 
 # Set shell options
 setopt auto_menu auto_cd correct auto_name_dirs auto_remove_slash
