@@ -97,8 +97,14 @@ fi
 # For Docker for Mac
 # https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
 if __is_installed docker; then
+  # This is not works on macOS
+  # https://github.com/docker/for-mac/issues/2635
   export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
-  # Enable buildkit to fast docker build (Experimental feature)
+  if [ ! -d $HOME/.docker ]; then
+    ln -s $DOCKER_CONFIG $HOME/.docker
+  fi
+
+  # Enable buildkit to fast docker build
   export DOCKER_BUILDKIT=1
 fi
 
