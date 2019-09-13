@@ -72,8 +72,9 @@ fi
 
 # Set environment variables for Rust/Cargo
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
-if __is_installed rustc; then
+if __is_installed rustup-init; then
   export CARGO_HOME=$XDG_DATA_HOME/cargo
+  __is_exists_or_create $CARGO_HOME
   PATH=$PATH:$CARGO_HOME/bin
 fi
 
