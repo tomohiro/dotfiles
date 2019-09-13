@@ -53,6 +53,7 @@ fi
 if __is_installed nodenv; then
   export NODENV_ROOT=$XDG_DATA_HOME/nodenv
   eval "$(nodenv init -)"
+  __is_installed npm && export NODE_PATH=$(npm root -g)
 fi
 
 if __is_installed go; then
