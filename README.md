@@ -8,17 +8,7 @@ Installation
 --------------------------------------------------------------------------------
 
 ```sh
-$ git submodule update
 $ make install
-```
-
-
-Add submodules
---------------------------------------------------------------------------------
-
-```sh
-$ git submodule add git@github.com:johndoe/foo-command bundle/foo-command
-$ git commit -m 'add foo-command' .gitmodules bundle/foo-command
 ```
 
 
@@ -28,10 +18,8 @@ Usage
 ```sh
 $ make help
 Please type: make [target]
-  install         Install dotfiles to /home/tomohiro
-  bundle-show     Show git submodules
-  bundle-update   Update git submodules
-  setup-vim       Setup vim-plug
+  install         Install dotfiles to ~/
+  setup-vim-plug  Install vim-plug to ~/.vim
   help            Show this help messages
 ```
 
@@ -65,3 +53,9 @@ Update all plugins:
 $ (TMUX PREFFIX KEY) + U
 all <ENTER>
 ```
+
+
+Author
+--------------------------------------------------------------------------------
+
+Tomohiro Taira
