@@ -1,7 +1,7 @@
 dotfiles
 ================================================================================
 
-[![Build Status](https://img.shields.io/travis/tomohiro/dotfiles.svg?style=flat-square)](https://secure.travis-ci.org/tomohiro/dotfiles)
+[![Build Status](https://img.shields.io/travis/com/tomohiro/dotfiles.svg?style=flat-square)](https://travis-ci.com/tomohiro/dotfiles)
 
 
 Installation
