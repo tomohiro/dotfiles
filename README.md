@@ -18,9 +18,10 @@ Usage
 ```sh
 $ make help
 Please type: make [target]
-  install         Install dotfiles to ~/
-  setup-vim-plug  Install vim-plug to ~/.vim
-  help            Show this help messages
+  install     Install dotfiles to ${HOME}
+  setup-vim   Install vim-plug to ${HOME}/.vim
+  setup-tmux  Install tpm to ${HOME}/.tmux
+  help        Show this help messages
 ```
 
 

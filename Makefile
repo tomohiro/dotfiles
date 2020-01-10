@@ -5,23 +5,24 @@ LN = ln -sf
 RM = rm -f
 
 # Define constants.
-DOTFILES        = $(shell pwd)
-INSTALLTO       = $(HOME)
-XDG_CONFIG_HOME = $(HOME)/.config
-IGNORES         = bin Makefile README.md
+DOTFILES  = $(shell pwd)
+INSTALLTO = $(HOME)
+IGNORES   = bin Makefile README.md
 
 
-.PHONY: help install symlinks setup-vim-plug
-
+.PHONY: help
 help:
 	@echo "Please type: make [target]"
-	@echo "  install         Install dotfiles to $(INSTALLTO)"
-	@echo "  setup-vim-plug  Install vim-plug to $(INSTALLTO)/.vim"
-	@echo "  help            Show this help messages"
+	@echo "  install     Install dotfiles to $(INSTALLTO)"
+	@echo "  setup-vim   Install vim-plug to $(INSTALLTO)/.vim"
+	@echo "  setup-tmux  Install tpm to $(INSTALLTO)/.tmux"
+	@echo "  help        Show this help messages"
 
 
-install: symlinks setup-vim-plug
+.PHONY: install
+install: symlinks setup-vim setup-tmux
 
+.PHONY: symlinks
 symlinks:
 	@echo "Create symlinks..."
 	@for file in `ls $(DOTFILES)`; do\
@@ -34,13 +35,21 @@ symlinks:
 		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$$file $(INSTALLTO)/.$$file;\
 	done;
-	@echo "Finished."
+	@echo "Finished.\n"
 
-setup-vim-plugin-managers:
-	@echo "Setup plugin managers..."
+.PHONY: setup-vim
+setup-vim:
 	@if [ ! -f $(INSTALLTO)/.vim/autoload/plug.vim ]; then\
-		echo "===> Setup Vim plugins.";\
-		curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs \
+		echo "Setup Vim plugin manager.";\
+		curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs\
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
+		echo "Finished.\n"; \
 	fi
-	@echo "Finished."
+
+.PHONY: setup-tmux
+setup-tmux:
+	@if [ ! -d $(INSTALLTO)/.tmux/plugins/tpm ]; then\
+		echo "Setup Tmux plugin manager..."; \
+		git clone https://github.com/tmux-plugins/tpm $(INSTALLTO)/.tmux/plugins/tpm;\
+		echo "Finished.\n"; \
+	fi
