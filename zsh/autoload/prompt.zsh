@@ -3,10 +3,10 @@ autoload -Uz colors && colors
 
 # Set left prompt format yourself
 #   * Using set color from Zsh's colors function
-PROMPT="${fg[cyan]}%n${reset_color} at "          # Username
-PROMPT+="${fg[yellow]}%m${reset_color} in "       # Hostname
+PROMPT="${fg[cyan]}%n${reset_color} in "          # Username
+PROMPT+="${fg[yellow]}%m${reset_color} on "       # Hostname
 PROMPT+="${fg[green]}%2d${reset_color} "          # Directory
-PROMPT+="%1(v|on ${fg[blue]}%1v${reset_color}|) " # VCS branch
+PROMPT+="%1(v|at ${fg[blue]}%1v${reset_color}|) " # VCS branch
 PROMPT+="%2(v|${fg[yellow]}%2v${reset_color}|)"   # VCS status
 PROMPT+="%3(v|%${fg[red]}%3v${reset_color}|)"     # VCS error messages
 PROMPT+='
@@ -58,8 +58,8 @@ __define_git_symbol() {
     return 1
   fi
   GIT_SYMBOL=''
-  [[ $(git remote get-url origin | grep github) ]] && GIT_SYMBOL=' '
-  [[ $(git remote get-url origin | grep bitbucket) ]] && GIT_SYMBOL=''
+  [[ $(git remote get-url origin 2>/dev/null | grep github) ]] && GIT_SYMBOL=' '
+  [[ $(git remote get-url origin 2>/dev/null | grep bitbucket) ]] && GIT_SYMBOL=' '
   zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
   zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
 }
