@@ -6,8 +6,6 @@ if [ ! -d $ZSH_DATA_HOME ]; then
   mkdir $ZSH_DATA_HOME
 fi
 
-ZSH_CONFIG_HOME="${HOME}/.zsh"
-
 # Report CPU usage for commands running longer than 3 seconds
 REPORTTIME=3
 
@@ -79,7 +77,7 @@ alias -g X='| xargs'
 __is_installed w3m && alias -g H='| w3m -T text/html'
 __is_installed pbcopy && alias -g C='| pbcopy'
 
-# Load other Zsh configuration, function
-for script in $(command ls ${ZSH_CONFIG_HOME}); do
-    source ${ZSH_CONFIG_HOME}/${script}
+# Load other Zsh scripts, functions
+for script in $(command ls ${ZDOTDIR}/*.zsh); do
+    source ${script}
 done

@@ -7,8 +7,9 @@ RM = rm -f
 # Define constants.
 DOTFILES  = $(shell pwd)
 INSTALLTO = $(HOME)
-IGNORES   = bin Makefile README.md
+IGNORES   = bin config Makefile README.md
 
+XDG_CONFIG_HOME=$(HOME)/.config
 
 .PHONY: help
 help:
@@ -34,6 +35,11 @@ symlinks:
 		$(RM) $(INSTALLTO)/.$$file;\
 		echo " [linkup] $(INSTALLTO)/.$$file";\
 		$(LN) $(DOTFILES)/$$file $(INSTALLTO)/.$$file;\
+	done;
+	@for file in `ls $(DOTFILES)/config`; do\
+		$(RM) $(XDG_CONFIG_HOME)/$$file;\
+		echo " [linkup] $(XDG_CONFIG_HOME)/$$file";\
+		$(LN) $(DOTFILES)/config/$$file $(XDG_CONFIG_HOME)/$$file;\
 	done;
 	@echo "Finished.\n"
 
