@@ -38,6 +38,12 @@ __is_exists_or_create $XDG_CACHE_HOME
 # Set Zsh config directory
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
+# Setup Vim directories
+__is_exists_or_create $XDG_CACHE_HOME/vim/swap
+__is_exists_or_create $XDG_CACHE_HOME/vim/backup
+__is_exists_or_create $XDG_CACHE_HOME/vim/undo
+
+
 if __is_installed ruby; then
   export RUBY_DATA_HOME=$XDG_DATA_HOME/ruby
   __is_exists_or_create $RUBY_DATA_HOME

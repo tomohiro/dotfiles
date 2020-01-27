@@ -19,7 +19,6 @@
 # Vim
 /vim/plugged
 /vim/autoload
-/vim/swaps/*
 
 # Atom
 /atom/storage

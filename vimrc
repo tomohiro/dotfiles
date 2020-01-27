@@ -50,9 +50,10 @@ set autoread
 
 " Set directory for backups, swaps, undo history
 "
-set backupdir=$HOME/.vim/backups
-set directory=$HOME/.vim/swaps
-set undodir=$HOME/.vim/undo
+set backupdir=${XDG_CACHE_HOME}/vim/backup,/tmp
+set directory=${XDG_CACHE_HOME}/vim/swap,/tmp
+set undodir=${XDG_CACHE_HOME}/vim/undo,/tmp
+set viminfo+=n${XDG_CACHE_HOME}/vim/viminfo
 
 " Visual
 "
