@@ -1,10 +1,8 @@
 sudo: false
 
-git:
-  submodules: false
-
 before_script:
   - mkdir /tmp/john.doe
+  - mkdir /tmp/john.doe/.config
 
 script:
   - HOME=/tmp/john.doe make install
