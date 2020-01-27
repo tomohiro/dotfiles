@@ -47,6 +47,8 @@ __is_exists_or_create $XDG_CACHE_HOME/vim/undo
 if __is_installed ruby; then
   export RUBY_DATA_HOME=$XDG_DATA_HOME/ruby
   __is_exists_or_create $RUBY_DATA_HOME
+
+  export IRBRC=$XDG_CONFIG_HOME/irb/irbrc
 fi
 
 if __is_installed rbenv; then
