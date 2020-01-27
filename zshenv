@@ -142,6 +142,11 @@ if __is_installed vagrant; then
   export VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 fi
 
+# Set enviroment variable for Atom
+if __is_installed atom; then
+  export ATOM_HOME=$XDG_CONFIG_HOME/atom
+fi
+
 if [ -d $XDG_DATA_HOME/bundlizer ]; then
   export BUNDLIZER_ROOT=$XDG_DATA_HOME/bundlizer
   source $BUNDLIZER_ROOT/etc/bashrc

@@ -1,8 +1,5 @@
-# OS X
+# macOS
 .DS_Store
-
-# Vimperator
-/vimperator/info
 
 # Zsh
 /config/zsh/bin
@@ -21,11 +18,11 @@
 /vim/autoload
 
 # Atom
-/atom/storage
-/atom/packages
-/atom/compile-cache
-/atom/blob-store
-/atom/.apm
-/atom/.apmrc
-/atom/.node-gyp
-/atom/.npm
+/config/atom/storage
+/config/atom/packages
+/config/atom/compile-cache
+/config/atom/blob-store
+/config/atom/.apm
+/config/atom/.apmrc
+/config/atom/.node-gyp
+/config/atom/.npm

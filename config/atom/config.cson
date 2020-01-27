@@ -33,7 +33,8 @@
     includeCompletionsFromAllBuffers: true
   linter: {}
   "linter-rubocop": {}
-  "linter-ui-default": {}
+  "linter-ui-default":
+    showPanel: true
   metrics:
     userId: "352e9fd2d0c2d68f6f6a4794b8f8daa71bcbdfce"
   minimap:
