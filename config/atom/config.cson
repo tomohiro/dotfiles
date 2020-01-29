@@ -4,16 +4,15 @@
       formatOnSave: true
   "autocomplete-plus": {}
   core:
-    automaticallyUpdate: false
     disabledPackages: [
       "vim-mode"
       "linter"
       "vim-mode-plus"
     ]
-    projectHome: "/Users/tomohiro/Workspaces/Repositories"
+    projectHome: "/Users/tomohiro.taira/.local/src/"
     telemetryConsent: "no"
   editor:
-    fontFamily: "Menlo"
+    fontFamily: "\"MesloLGS Nerd Font\", \"Menlo for Powerline\", monospace"
     fontSize: 12
     invisibles: {}
     showIndentGuide: true
