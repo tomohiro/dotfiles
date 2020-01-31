@@ -1,26 +1,20 @@
 # vim: ft=zsh
 
-# Initialize Zsh data directory
-ZSH_DATA_HOME="${XDG_DATA_HOME}/zsh"
-if [ ! -d $ZSH_DATA_HOME ]; then
-  mkdir $ZSH_DATA_HOME
-fi
-
 # Report CPU usage for commands running longer than 3 seconds
 REPORTTIME=3
 
 # History settings
-HISTFILE=$ZSH_DATA_HOME/zsh-history
+HISTFILE="${ZSH_DATA_HOME}/zsh-history"
 HISTSIZE=100000
 SAVEHIST=100000
 
 # Completion Configuration
-fpath=($HOME/.zsh/functions $(brew --prefix)/share/zsh-completions $fpath)
+fpath=(${ZDOTDIR} $(brew --prefix)/share/zsh-completions ${fpath})
 # Additionally, if you receive "zsh compinit: insecure directories" warnings
 # when attempting to load these completions, you may need to run this:
 #   $ chmod go-w '/usr/local/share'
 autoload -Uz compinit && compinit
-zstyle ':completion:*:sudo:*' command-path $PATH
+zstyle ':completion:*:sudo:*' command-path ${PATH}
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:processes' command 'ps x'
@@ -31,7 +25,7 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # For SSH completion
-_cache_hosts=($(grep -oE '^Host.+$' $HOME/.ssh/config | cut -d ' ' -f 2))
+_cache_hosts=($(grep -oE '^Host.+$' "${HOME}/.ssh/config" | cut -d ' ' -f 2))
 
 # Set shell options
 setopt auto_menu auto_cd correct auto_name_dirs auto_remove_slash
@@ -78,6 +72,6 @@ __is_installed w3m && alias -g H='| w3m -T text/html'
 __is_installed pbcopy && alias -g C='| pbcopy'
 
 # Load other Zsh scripts, functions
-for script in $(command ls ${ZDOTDIR}/*.zsh); do
-    source ${script}
+for script in $(ls ${ZDOTDIR}/*.zsh); do
+  source ${script}
 done
