@@ -1,14 +1,6 @@
 # macOS
 .DS_Store
 
-# Zsh
-/config/zsh/bin
-/config/zsh/repos
-/config/zsh/.cache
-/config/zsh/.zcompdump
-/config/zsh/cdd_pwd_list
-/config/zsh/cdd_pwd_list.t
-
 # Tmux
 /tmux/plugins
 /tmux/sidebar
@@ -16,6 +8,15 @@
 # Vim
 /vim/plugged
 /vim/autoload
+
+
+# Zsh
+/config/zsh/bin
+/config/zsh/repos
+/config/zsh/.cache
+/config/zsh/.zcompdump
+/config/zsh/cdd_pwd_list
+/config/zsh/cdd_pwd_list.t
 
 # Atom
 /config/atom/storage
@@ -26,3 +27,7 @@
 /config/atom/.apmrc
 /config/atom/.node-gyp
 /config/atom/.npm
+
+# pgcli
+/config/pgcli/history
+/config/pgcli/log
