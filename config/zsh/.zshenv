@@ -100,12 +100,6 @@ if __is_installed docker; then
   export DOCKER_BUILDKIT=1
 fi
 
-# For Xcode
-XCODE_PATH=/Applications/Xcode.app
-if [ -d ${XCODE_PATH} ]; then
-  PATH="${PATH}:${XCODE_PATH}/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
-fi
-
 # For Google Cloud SDK
 if __is_installed gcloud; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
