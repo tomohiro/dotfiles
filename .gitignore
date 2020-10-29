@@ -15,6 +15,7 @@
 /config/zsh/repos
 /config/zsh/.cache
 /config/zsh/.zcompdump
+/config/zsh/.zcompcache
 /config/zsh/cdd_pwd_list
 /config/zsh/cdd_pwd_list.t
 
