@@ -22,7 +22,6 @@ RPROMPT=
 #
 # autoload -Uz promptinit && promptinit
 
-
 # Eanble `add-zsh-hook`
 autoload -Uz add-zsh-hook
 
@@ -42,6 +41,7 @@ __show_vcs_info_precmd() {
   [[ -n $vcs_info_msg_2_ ]] && psvar[3]=$vcs_info_msg_2_
 }
 add-zsh-hook precmd __show_vcs_info_precmd
+add-zsh-hook chpwd __show_vcs_info_precmd
 
 # vcs_info defaults
 zstyle ':vcs_info:*' enbale git cvs svn bzr hg
@@ -63,4 +63,5 @@ __define_git_symbol() {
   zstyle ':vcs_info:git:*' formats "${GIT_SYMBOL} %b" '%u%c'
   zstyle ':vcs_info:git:*' actionformats "${GIT_SYMBOL} %b" '%u%c %m' '<!%a>'
 }
+add-zsh-hook precmd __define_git_symbol
 add-zsh-hook chpwd __define_git_symbol

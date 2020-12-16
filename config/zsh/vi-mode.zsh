@@ -1,8 +1,9 @@
 bindkey -v
-bindkey "^[Q" push-line
-bindkey "^Q" push-line
+bindkey '^[Q' push-line
+bindkey '^Q' push-line
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+bindkey '^F' peco-select-repository
 bindkey '^R' peco-select-history
 bindkey '^N' down-line-or-history
 bindkey '^O' accept-line-and-down-history
@@ -32,7 +33,7 @@ readuntil () {
 #
 # If the $SHOWMODE variable is set, displays the vi mode, specified by
 # the $VIMODE variable, under the current command line.
-# 
+#
 # Arguments:
 #
 #   1 (optional): Beyond normal calculations, the number of additional
