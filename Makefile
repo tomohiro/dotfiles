@@ -17,7 +17,7 @@ help:
 	@echo "Please type: make [target]"
 	@echo "  install     Install dotfiles to $(INSTALLTO)"
 	@echo "  setup-vim   Install vim-plug to $(XDG_DATA_HOME)/vim"
-	@echo "  setup-tmux  Install tpm to $(XDG_CONFIG_HOME)/tmux"
+	@echo "  setup-tmux  Install tpm to $(XDG_DATA_HOME)/tmux"
 	@echo "  help        Show this help messages"
 
 
@@ -55,8 +55,8 @@ setup-vim:
 
 .PHONY: setup-tmux
 setup-tmux:
-	@if [ ! -d $(XDG_CONFIG_HOME)/tmux/plugins/tpm ]; then\
+	@if [ ! -d $(XDG_DATA_HOME)/tmux/plugins/tpm ]; then\
 		echo "Setup Tmux plugin manager..."; \
-		git clone https://github.com/tmux-plugins/tpm $(XDG_CONFIG_HOME)/tmux/plugins/tpm;\
+		git clone https://github.com/tmux-plugins/tpm $(XDG_DATA_HOME)/tmux/plugins/tpm;\
 		echo "Finished.\n"; \
 	fi
