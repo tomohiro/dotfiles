@@ -1,15 +1,6 @@
 # macOS
 .DS_Store
 
-# Tmux
-/config/tmux/plugins
-/config/tmux/sidebar
-
-# Vim
-/vim/plugged
-/vim/autoload
-
-
 # Zsh
 /config/zsh/bin
 /config/zsh/repos
