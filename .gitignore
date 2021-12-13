@@ -2,8 +2,8 @@
 .DS_Store
 
 # Tmux
-/tmux/plugins
-/tmux/sidebar
+/config/tmux/plugins
+/config/tmux/sidebar
 
 # Vim
 /vim/plugged

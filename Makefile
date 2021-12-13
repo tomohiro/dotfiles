@@ -54,8 +54,8 @@ setup-vim:
 
 .PHONY: setup-tmux
 setup-tmux:
-	@if [ ! -d $(INSTALLTO)/.tmux/plugins/tpm ]; then\
+	@if [ ! -d $(XDG_CONFIG_HOME)/tmux/plugins/tpm ]; then\
 		echo "Setup Tmux plugin manager..."; \
-		git clone https://github.com/tmux-plugins/tpm $(INSTALLTO)/.tmux/plugins/tpm;\
+		git clone https://github.com/tmux-plugins/tpm $(XDG_CONFIG_HOME)/tmux/plugins/tpm;\
 		echo "Finished.\n"; \
 	fi
