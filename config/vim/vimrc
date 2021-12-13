@@ -1,6 +1,7 @@
 " VIM-PLUG A minimalist Vim plugin manager
 "   https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/plugged')
+source ${XDG_DATA_HOME}/vim/autoload/plug.vim
+call plug#begin('~/.local/share/vim/plugged')
 
 " Modern default configuration
 Plug 'tpope/vim-sensible'

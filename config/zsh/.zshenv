@@ -23,7 +23,7 @@ PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 mkdir -p "${XDG_CACHE_HOME}/vim/swap"
 mkdir -p "${XDG_CACHE_HOME}/vim/backup"
 mkdir -p "${XDG_CACHE_HOME}/vim/undo"
-
+export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
 
 if __is_installed ruby; then
   export RUBY_DATA_HOME="${XDG_DATA_HOME}/ruby"

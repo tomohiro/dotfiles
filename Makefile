@@ -10,13 +10,14 @@ INSTALLTO = $(HOME)
 IGNORES   = bin config Makefile README.md
 
 XDG_CONFIG_HOME=$(HOME)/.config
+XDG_DATA_HOME=$(HOME)/.local/share
 
 .PHONY: help
 help:
 	@echo "Please type: make [target]"
 	@echo "  install     Install dotfiles to $(INSTALLTO)"
-	@echo "  setup-vim   Install vim-plug to $(INSTALLTO)/.vim"
-	@echo "  setup-tmux  Install tpm to $(INSTALLTO)/.tmux"
+	@echo "  setup-vim   Install vim-plug to $(XDG_DATA_HOME)/vim"
+	@echo "  setup-tmux  Install tpm to $(XDG_CONFIG_HOME)/tmux"
 	@echo "  help        Show this help messages"
 
 
@@ -45,9 +46,9 @@ symlinks:
 
 .PHONY: setup-vim
 setup-vim:
-	@if [ ! -f $(INSTALLTO)/.vim/autoload/plug.vim ]; then\
+	@if [ ! -f $(XDG_DATA_HOME)/vim/autoload/plug.vim ]; then\
 		echo "Setup Vim plugin manager.";\
-		curl -fLo $(INSTALLTO)/.vim/autoload/plug.vim --create-dirs\
+		curl -fLo $(XDG_DATA_HOME)/vim/autoload/plug.vim --create-dirs\
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 		echo "Finished.\n"; \
 	fi
