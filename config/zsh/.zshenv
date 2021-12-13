@@ -39,6 +39,7 @@ fi
 
 if __is_installed pyenv; then
   export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
+  eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
 
@@ -46,6 +47,10 @@ if __is_installed nodenv; then
   export NODENV_ROOT="${XDG_DATA_HOME}/nodenv"
   eval "$(nodenv init -)"
   __is_installed npm && export NODE_PATH=$(npm root -g)
+
+  # Yarn Version Manager (yvm) configuration
+  export YVM_ROOT=/usr/local/opt/yvm
+  [ -r ${YVM_ROOT}/yvm.sh ] && source ${YVM_ROOT}/yvm.sh
 fi
 
 if __is_installed go; then
