@@ -54,7 +54,6 @@ module.exports = {
     'hyper-one-dark',
     'hyper-search',
     'hyper-quit',
-    'hyperline',
     'hyper-tab-icons-plus',
   ],
 
