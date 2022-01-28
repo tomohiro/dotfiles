@@ -49,6 +49,12 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' check-for-staged-changes true
 
 # vcs_info for Git
+#
+# If already defined `GIT_STAGED_SYMBOL` then return to avoid define the
+# variable again.
+if [[ ${GIT_STAGED_SYMBOL} != '' ]]; then
+  return
+fi
 readonly GIT_STAGED_SYMBOL='⇡'
 readonly GIT_UNSTAGED_SYMBOL='⇣'
 zstyle ':vcs_info:git:*' stagedstr ${GIT_STAGED_SYMBOL}
