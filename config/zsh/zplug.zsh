@@ -4,7 +4,7 @@
 # https://github.com/zplug/zplug/blob/master/doc/guide/ja/README.md
 
 # Configure zplug options
-typeset -x ZPLUG_HOME=/usr/local/opt/zplug
+typeset -x ZPLUG_HOME="${HOMEBREW_PREFIX}/opt/zplug"
 typeset -x ZPLUG_EXTERNAL=/dev/null
 
 # Load zplug functions
