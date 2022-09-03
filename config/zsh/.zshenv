@@ -21,6 +21,9 @@ setopt no_global_rcs
 eval $(${HOMEBREW_PREFIX}/bin/brew shellenv)
 #[ -d /opt/X11/bin ] && PATH="/opt/X11/bin:${PATH}"
 
+# Add `/usr/local/bin` to PATH
+PATH="/usr/local/bin:${PATH}"
+
 # Setup Vim directories
 mkdir -p "${XDG_CACHE_HOME}/vim/swap"
 mkdir -p "${XDG_CACHE_HOME}/vim/backup"
@@ -152,8 +155,8 @@ export TERM_256=xterm-256color
 export TERM=$TERM_256
 export LS_COLORS='di=01;36'
 
+# Export PATH
+export PATH="${XDG_LOCAL_HOME}/bin:${PATH}"
+
 # Set `-U` option to remove duplicated paths
 typeset -U path cdpath fpath manpath
-
-# Export PATH
-export PATH=${PATH}
