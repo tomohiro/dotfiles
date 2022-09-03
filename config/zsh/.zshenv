@@ -1,9 +1,11 @@
 # vim: ft=zsh
 
+export HOMEBREW_PREFIX="$(/opt/homebrew/bin/brew --prefix)"
+
 # __is_installed checks install status the specified command
 function __is_installed() {
   # Add zplug path to search command temporarily
-  PATH="${PATH}:/usr/local/opt/zplug/bin"
+  PATH="${PATH}:${HOMEBREW_PREFIX}/opt/zplug/bin"
   type ${1} &> /dev/null
 }
 
@@ -16,14 +18,20 @@ mkdir -p ${ZSH_DATA_HOME}
 setopt no_global_rcs
 
 # Add Homebrew directories to the `$PATH`
-PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
-[ -d /opt/X11/bin ] && PATH="/opt/X11/bin:${PATH}"
+eval $(${HOMEBREW_PREFIX}/bin/brew shellenv)
+#[ -d /opt/X11/bin ] && PATH="/opt/X11/bin:${PATH}"
 
 # Setup Vim directories
 mkdir -p "${XDG_CACHE_HOME}/vim/swap"
 mkdir -p "${XDG_CACHE_HOME}/vim/backup"
 mkdir -p "${XDG_CACHE_HOME}/vim/undo"
 export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
+
+if __is_installed tmux; then
+  # Set Tmux plugin directory
+  # https://github.com/tmux-plugins/tpm/blob/master/docs/changing_plugins_install_dir.md
+  export TMUX_PLUGIN_MANAGER_PATH="${XDG_DATA_HOME}/tmux/plugins"
+fi
 
 if __is_installed ruby; then
   export RUBY_DATA_HOME="${XDG_DATA_HOME}/ruby"
@@ -49,7 +57,7 @@ if __is_installed nodenv; then
   __is_installed npm && export NODE_PATH=$(npm root -g)
 
   # Yarn Version Manager (yvm) configuration
-  export YVM_ROOT=/usr/local/opt/yvm
+  export YVM_ROOT="${HOMEBREW_PREFIX}/opt/yvm"
   [ -r ${YVM_ROOT}/yvm.sh ] && source ${YVM_ROOT}/yvm.sh
 fi
 
@@ -107,8 +115,8 @@ fi
 
 # For Google Cloud SDK
 if __is_installed gcloud; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+  source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "${HOMEBREW_PREFIX}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
 
 # Set environment variables for Packer

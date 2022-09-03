@@ -19,8 +19,8 @@ Usage
 $ make help
 Please type: make [target]
   install     Install dotfiles to ${HOME}
-  setup-vim   Install vim-plug to ${HOME}/.vim
-  setup-tmux  Install tpm to ${HOME}/.tmux
+  setup-vim   Install vim-plug to ${HOME}/.local/share/vim
+  setup-tmux  Install tpm to ${HOME}/.local/share/tmux/plugins.tmux
   help        Show this help messages
 ```
 

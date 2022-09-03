@@ -17,7 +17,7 @@ help:
 	@echo "Please type: make [target]"
 	@echo "  install     Install dotfiles to $(INSTALLTO)"
 	@echo "  setup-vim   Install vim-plug to $(XDG_DATA_HOME)/vim"
-	@echo "  setup-tmux  Install tpm to $(XDG_DATA_HOME)/tmux"
+	@echo "  setup-tmux  Install tpm to $(XDG_DATA_HOME)/tmux/plugins"
 	@echo "  help        Show this help messages"
 
 
