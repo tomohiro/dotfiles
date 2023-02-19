@@ -81,9 +81,10 @@ fi
 # Set environment variables for Rust/Cargo
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 if __is_installed rustup-init; then
+  export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
   export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-  mkdir -p ${CARGO_HOME}
-  PATH="${PATH}:${CARGO_HOME}/bin"
+
+  test -f "${CARGO_HOME}/env" && source "${CARGO_HOME}/env"
 fi
 
 # Set environment variables to MySQL
